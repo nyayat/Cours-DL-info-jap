@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head> 
+	<meta charset="UTF-8">
+	<style>
+	.parent {
+		margin : 150px;
+		width:70%;
+		border: 3px solid green;
+		/*position: relative */
+	}
+	#div1, #div3 {
+		background-color: pink;
+		border: 1px solid orange;
+		width: 200px;
+		height: 100px;
+	}
+	#div2 {
+		background-color: orange;
+		border: 1px solid orange;
+		width:200px;
+		height: 50px;
+		position: absolute;
+		top:30px;
+		left:0px;
+	}
+	
+	</style>
+</head>
+<body>
+
+
+<div class="parent"> 
+
+	<div id ="div1"> div 1, static </div>
+	<div id ="div2" > div 2 absolute </div>
+	<div id ="div3"> div 3, static </div>   
+   
+</div>
+
+
+</body> 
+</html>

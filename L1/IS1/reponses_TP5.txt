@@ -1,0 +1,76 @@
+FRANCOIS Tanya SAMSON Pierre
+
+Exercice 3
+
+On se place dans Jokers
+3.cat Boileau/* >> poeme_boileau
+
+4.cat Ronsard/urgwe6 Ronsard/vawGl Ronsard/zuk4 >> poeme_ronsard
+
+Exercice 4
+
+1.La profondeur de Vide est de 5 (en le comptant :
+Vide => .Cachée => .Caradoc => A => A)
+2. Il y en a 5 distincs.
+
+Exercice 5
+
+On se place dans TP5
+mkdir Spirou
+touch Spirou/champignac
+mkdir Spirou/Fantasio
+
+Pour afficher 5 dans le  ls -ld Spirou
+mkdir Spirou/.coucou
+mkdir Spirou/.bonsoir
+
+Pour afficher 8 dans le  du -a Spirou | wc -
+touch Spirou/.où.txt
+touch Spirou/.là.txt
+touch Spirou/.ici.txt
+
+Exercice 6
+
+On se place dans TP5
+1.mkdir Poudlard Poudlard/CabaneHurlante Poudlard/CabaneHurlante/Honeydukes Poudlard/SauleCogneur
+
+echo "Voici un animal fantastique" >> Poudlard/CabaneHurlante/fumseck
+
+3.On ne peut pas modifier les droits de ls_fumseck
+
+4. On ne peut lire que lp_fumseck.
+Restreindre l'accès au fichier semble avoir un effet sur le lien symbolique.
+
+5.Tout est normal pour lp_fumseck tandis que pour ls_fumseck, il y a la même erreur.
+Le lien symbolique semble affecter par les changements de dossiers du fichier original.
+
+6.lp_fumseck reste relier au premier fumseck.
+Tandis que pour ls_fumseck, il lit le contenu du nouveau fichier.
+le lien physique prend compte uniquement du fichier original.
+Alors que le lien symbolique prend en compte le titre et son emplacement.
+
+
+7.Déplacer le lien symbolique provoque une erreur.
+
+8.Le lien symbolique marche.
+Le déplacement du lien symbolique n'est donc pas important, mais celui du lien original oui.
+
+10.
+cd passageSecret
+cd SauleCogneur/tunnel/Honeydukes/
+cd CabaneHurlante/Honeydukes/
+
+Avec la commande pwd, cela affiche différents chemins absolus.
+Alors qu'avec pwd -P cela affiche la même : ... TP5/Poudlard/CabaneHurlante/Honeydukes
+
+12. On se place dans Honeydukes
+
+mkdir fred
+ln -s fred george
+mv george ..
+mkdir george
+rm -d fred
+ln -s george fred
+rm -d george
+cd ..
+mv george Honeydukes/

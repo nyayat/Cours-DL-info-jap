@@ -1,0 +1,88 @@
+DAI Anna
+SAILLY Steven
+
+Exercice 1
+1) ls --file-type
+
+2) ls ~/Cours/2019/IS1/TP2/*/*/* -d
+
+3) ls -R
+
+
+Exercice 2
+1) cat */*/*/haddock
+cat ~/Cours/2019/IS1/TP2/Tintin/Personnages/haddock
+cat TP2/Tintin/Personnages/haddock
+
+2) cat ../../*/*/haddock
+cat ~/Cours/2019/IS1/TP2/Tintin/Personnages/haddock
+cat ../../Tintin/Personnages/haddock
+
+3) Tous les sous-répertoires de TP2/Tintin : Lieux, Personnages et Vehicules
+
+4) ls ../*/Lieux
+
+5) cat Personnages/d*
+
+
+Exercice 3
+2) ~chouquet/index.html
+
+
+Exercice 4
+ls -a
+Nom des fichiers :
+.  ..  .emeraudes  .lingots  .pepites  .perles	.rubis
+
+
+Exercice 5
+2) du -s ~/Cours/2019/IS1/TP2
+
+3) du -a ~/Cours/2019/IS1/TP2
+
+4) du ~/Cours/2019/IS1/TP2 | sort -n -r | head -n 2
+
+
+Exercice 7
+1) cp -r ~/Cours/2019/IS1/TP2/Tintin ~/Cours/2019/IS1/TP2/Sauvegarde
+
+2) diff  ~/Cours/2019/IS1/TP2/Tintin/Personnages/milou ~/Cours/2019/IS1/TP2/Sauvegarde/Personnages/milou
+Pas d'affichage ni d'erreur => copie conforme
+
+3) diff -r  ~/Cours/2019/IS1/TP2/Tintin/ ~/Cours/2019/IS1/TP2/Sauvegarde/
+Même remarque qu'en 2)
+
+6) mkdir -p ~/Cours/2019/IS1/TP2/Toto/Tutu/Titi
+
+
+Exercice 8
+1) ls -d /usr/bin/r*
+
+2) ls -d /usr/bin/*r*
+
+3) ls -d /usr/bin/*r
+
+4) ls -d /usr/bin/p*n
+
+5) ls -d /usr/bin/??r*
+
+6) ls -d /usr/bin/r????
+
+7) ls -d /usr/bin/r????*
+
+8) ls -d /usr/bin/r?? /usr/bin/r??? /usr/bin/r????
+
+9) ls -d /usr/bin/*[ls]*
+
+10) ls -d /usr/bin/*[0-9]*
+
+11) ls -d /usr/bin/*[!a-zA-Z]*
+
+12) ls -d /usr/bin/*[r]*[n]* /usr/bin/*[n]*[r]*
+
+13) ls -d /usr/bin/[lmnopq]*[r]*
+
+14) ls -d /usr/bin/[!n]*[r]*
+
+15) ls -d /usr/bin/[!lmnop]*[r]*
+

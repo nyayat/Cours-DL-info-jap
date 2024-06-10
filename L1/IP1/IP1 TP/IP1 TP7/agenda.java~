@@ -1,0 +1,164 @@
+import java.io.*;
+import java.util.*;
+
+class agenda {
+
+    // parametres 2016
+    static int yearLength = 366; // 2016 est une année bisextile
+    static int firstWDay = 4; // 2016 commence un vendredi
+
+    /* ***********************************************************/
+    /* FONCTION PRINCIPALE                                       */
+    /* ***********************************************************/
+
+    public static int compteur (String[]t){
+	int c=0;
+	for(int i=0; i<t.length; i++){
+	    if(!(t[i].equals(""))){
+		c++;
+	    }
+	}
+	return c;
+    }
+
+    public static void showAgenda2 (String []t, int startDay, boolean reverse){
+	if(reverse==true){
+	    for(int i=startDay; i>=0; i--){
+		if(!(t[i].equals(""))){
+		    System.out.println(i+" "+t[i]);
+		}
+	    }
+	}
+	else{
+	    for(int i=0; i<t.length; i++){
+		if(!(t[i].equals(""))){
+		    System.out.println(i+" "+t[i]);
+		}
+	    }
+	}
+    }
+
+    public static void showAgenda (String []t, String[]wDays){
+	System.out.println("Il y a "+compteur(t)+" événements dans l'agenda.");
+	for(int i=0; i<t.length; i++){
+	    if(!(t[i].equals(""))){
+		System.out.print(wDays[(i+4)%7]+" ");
+		print(dateOfDayNumber(i));
+		System.out.println(" "+t[i]);
+	    }
+	}
+    }
+    
+    /* ***********************************************************/
+    /* CONVERSION DE DATE                                        */
+    /* ***********************************************************/
+
+    public static int monthOfDayNumber (int dayNumber) {
+	int [] daysInMonth = {31,29,31,30,31,30,31,31,30,31,30,31};
+	int res = 1;
+	dayNumber++;
+	for (int i = 0; i<12; i++){  
+	    if (dayNumber > daysInMonth[i]) {
+		dayNumber = dayNumber - daysInMonth[i];
+		res++; 
+	    }
+	}
+	return res;
+    }
+
+    public static int[] dateOfDayNumber(int dayNumber){
+	int [] daysInMonth = {31,29,31,30,31,30,31,31,30,31,30,31};
+	int [] res= new int[2];
+	res[1]=monthOfDayNumber(dayNumber+1);
+	res[0]=dayNumber+1;
+	for(int i=0; i<res[1]-1; i++){
+	    res[0]=res[0]-daysInMonth[i];
+	}
+	if (res[0]==0){
+	    res[1]=res[1]-1;
+	    res[0]=daysInMonth[res[1]-1];
+	}
+	return res;
+    }
+
+    public static void calender(String[] t){
+	String [] wDays = { " Lun " ," Mar " ," Mer " ," Jeu " , " Ven " ," Sam " ," Dim " };
+	String [] Month={"Janvier","Fevrier", "Mars", "Avril", "Mai", "Juin","Juillet","Aout","Septembre","Octobre","Novembre","Decembre"};
+	for(int i=0;i<yearLength; i++){
+	    int date=dateOfDayNumber(i)[1];
+	    int mois=dateOfDayNumber(i)[0];
+	    String dat=" "+String.valueOf(date);
+	    if(date<10){
+		dat=" 0"+String.valueOf(date);
+	    }
+	    if(date==1){
+		System.out.println(Month[mois-1]);
+		System.out.println("---------------------------");
+		for (int j=0;j<7;j++){
+		    System.out.print(wDays[j]);
+		}
+		System.out.println();
+		for(int k=0; k<(i+firstWDay+1)%7; k++){
+		    System.out.print("    ");
+		}
+	    }
+	    if(!(t[i].equals(""))){
+		System.out.println(dat);
+	    }
+	    else{
+		System.out.println("...");
+	    }
+	}
+	System.out.println("salut");
+    }
+
+    public static void main (String [] args) {
+
+	String [] t = loadAgenda("agenda.dat");
+	String [] wDays = { " Lun " ," Mar " ," Mer " ," Jeu " , " Ven " ," Sam " ," Dim " };
+	String [] Month={"Janvier","Février", "Mars", "Avril", "Mai", "Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"};
+
+        //showAgenda(t,wDays);
+	//showAgenda2(t,87,true);
+	//print(dateOfDayNumber(86));
+	//print(dateOfDayNumber(0));
+	calender(t);
+	
+    }
+    
+
+    /* ***********************************************************/
+    /* ANNEXE                                                    */
+    /* ***********************************************************/
+
+    public static String [] loadAgenda(String fileName) {
+    // Lit un fichier contenant un agenda et le renvoie sous forme
+    // de tableau
+
+	String [] res = new String[yearLength];
+
+	for (int i=0;i<yearLength;i++){
+	    res[i] = "";
+	}
+
+	try { 
+	    Scanner sc = new Scanner (new File(fileName)).useDelimiter("\n");
+	    while (sc.hasNext()) {
+		String [] line = sc.next().split(":");
+		int day = Integer.parseInt(line[0]);
+		String desc = line[1];
+		res[day] = desc;
+	    }
+	    return res;
+	} catch (IOException e) {
+	    System.out.println("erreur de lecture de fichier"); 
+	    return res;
+	}
+	
+    }
+
+    public static void print(int []t){
+	System.out.print(t[0]+"/"+t[1]);
+    }
+
+}

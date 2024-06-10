@@ -1,0 +1,30 @@
+DAI Anna
+SAILLY Steven
+
+Exercice 1
+2) echo "Bonjour $USER, vous êtes actuellement
+   dans le répertoire $PWD"
+3) On se dirige vers le HOME défini précédemment
+4) Redirige vers le dernier répertoire visité
+
+Exercice 2
+3) Affiche l'argument de echo sauf quand on utilise
+   "fic.sh" depuis .../TP9 : ce n'est pas une commande
+4) PATH=$PATH:/home2/ssaill26/Cours/2019/IS1/TP9
+5) Erreur lors de l'exécution depuis mybin uniquement
+   PATH=$PATH:/home2/ssaill26/mybin
+
+Exercice 3
+3) NOM=Poisson-torpille
+   Pour moins de platitude dans le TP =)
+5) Affichage : "Bonjour,
+   	        Bonjour, Tartempion"
+   La variable NOM ne change pas de valeur
+6) Ne s'affiche pas dans un autre terminal
+   Affichage dans le terminal initial :
+   "Bonjour, Poisson-torpille
+    Bonjour, Tartempion"
+   Valeur de NOM : Poisson-torpille
+7) Les variables d'environnement sont utilisables
+   par des fichiers bash mais restent confinées
+   à un unique terminal

@@ -1,0 +1,71 @@
+DAI Anna
+SAILLY Steven
+
+Répertoires courants :
+Exercice 3 : ~/Cours/2019/IS1/TP7/Shadocks
+Exercices 5 à 7\{Q7} : ~/Cours/2019/IS1/TP7/SnowWhite
+Sinon : ~/Cours/2019/IS1/TP7
+
+Exercice 1
+1) ">" redirige dans le fichier en argument
+ce qui est reçu sur l’entrée standard ; écrase
+l'ancien contenu
+2) ">>" redirige à la fin du fichier en
+argument ce qui est reçu sur l’entrée
+standard ; n'écrase pas l'ancien contenu
+
+Exercice 2
+1) Type caractère (c)
+2) Affiche la sortie de la commande "date"
+dans le premier terminal
+3) Message d'erreur
+Après avoir modifié les droits : la sortie
+standard s'affiche sur le terminal du voisin
+
+Exercice 3
+3) "2>" permet de rediriger la sortie
+d'erreur, d'où la redirection du message
+
+Exercice 4
+1) cat LesCowboysFringants/*/*[A-Z]* 2> /dev/null
+2) ls -R LesCowboysFringants/ > /dev/null
+
+Exercice 5
+cat BlancheNeige : affiche contenu de BlancheNeige
+cat < BlancheNeige : idem
+wc BlancheNeige : nb lignes/mots/octets + nom fichier
+wc < BlancheNeige : idem\{nom fichier}
+Aucune différence pour "cat" car il écrit sur
+la sortie standard ; différence pour "wc" car il
+lit l'entrée standard
+
+Exercice 6 :
+2) Ctrl-D : arrête le processus de la commande
+seulement s'il n'y a pas de données à traiter
+Ctrl-C : arrête le processus de la commande sans
+traiter les dernières données entrées
+3) Numérote les lignes
+4) cat -s Sorciere > Reine
+
+Exercice 7 :
+1) head Reine
+tail Reine
+head -n 6 Reine
+2) Affiche les trois dernières lignes tapées
+Explication : tail affiche les dernières lignes,
+l'argument précise le nombre 3
+3) Force l'arrêt après 3 lignes tapées ; l'affichage
+se fait juste après avoir appuyé sur "Entrée"
+Explication : Pour "tail", on ne sait pas jusqu'où
+le texte ira, or on a besoin de la fin de celui-ci :
+on décide l'arrêt ; head ne prend que les n premières
+lignes : on peut s'arrêter après avoir tapé lesdites
+lignes
+4) Choix du nombre d'octets=caractères (car un
+caractère est codé sur un octet) à afficher
+5) Renvoie le texte à partir de la deuxième
+ligne
+6) Option permettant de supprimer l'affichage
+des noms : -q
+7) head -q Brassens/* > LeGorille
+tail -q -n 6 Brassens/* > LesPassants

@@ -1,0 +1,46 @@
+DAI Anna
+SAILLY Steven
+
+Exercice 1
+2) Un processus créé (sleep)
+   Processus xclock créé après avoir tué sleep
+3) Deux processus créés : sleep en arrière-plan,
+   xclock en avant-plan
+   Tuer un processus ne tue que celui-ci
+4) systemd──xfce4-terminal──bash──bash──sleep
+   Tuer le processus qui exécute sleep => tue
+   sleep et lance xclock en arrière-plan :
+   systemd──xfce4-terminal──bash──bash──xclock
+   Après avoir tué xclock, il reste le dernier
+   processus bash
+5) Nouvel arbre : systemd──sleep ; arrête le
+   processus (sleep 500 ; xclock)
+
+Exercice 2
+1) Valeur retour : 0
+   Avec fichier\in\mathbb{C}\backslash\{\mathbb{R}\} : 2
+3) Valeur retour : 130
+   Avec SIGKILL : 137
+   Avec SIGHUP : 129
+   Avec SIGUSR1 : 138
+
+Exercice 3
+1) sleep 5 || xclock : ne lance que sleep
+   sleep 5 && xclock : lance sleep, tue sleep
+   et lance xclock
+2) sleep 500 || xclock : lance sleep puis lance xclock
+   après avoir tué sleep
+   sleep 500 && xclock : lance sleep mais ne lance pas
+   xclock après avoir tué sleep
+
+Exercice 4
+1) Sur fichiers identiques : 0
+   Sur fichiers différents : 1
+2) Le message correspond à la sortie standard
+4) cmp fic1 fic2>/dev/null ; (($?==0)) && echo
+   "Les deux fichiers sont identiques."
+5) cmp fic1 fic2>/dev/null ; (($?==1)) && echo
+   "Les deux fichiers sont différents."
+6) cmp fic1 fic2>/dev/null ; ((($?==0)) && echo
+   "Les deux fichiers sont identiques.")||((($?==1))
+   && echo "Les deux fichiers sont différents.")

@@ -1,0 +1,57 @@
+DAI Anna
+SAILLY Steven
+
+Exercice 1
+2) c) cat ratp.csv | grep "Paris;13"
+   d) cat ratp.csv | grep ";13;"
+   e) cat ratp.csv | grep "ceaux"
+   (car Sceaux/sceaux + PARC DES SCEAUX)
+
+Exercice 2
+1) b) cut -d';' -f9 ratp.csv | tail -n +2 |
+      sort -d -f -i
+   c) cut -d';' -f9 ratp.csv | tail -n +2 |
+      tr 'a-zéè' 'A-ZÉÈ' | sort -d | uniq
+   e) cut -d';' -f9 ratp.csv | tail -n +2 |
+      tr 'a-zéè' 'A-ZÉÈ' | sort -d | uniq -c -i |
+      sort -n -r
+   f) cut -d';' -f9,10 ratp.csv | tail -n +2 |
+      sort -d | uniq -c | sort -n -r | tr ';' ' '
+2) a) cut -d';' -f2,3 ratp.csv | tail -n +2 |
+      sort -t';' +1n | cut -d';' -f1
+   b) cut -d';' -f2,3 ratp.csv | tail -n +2 |
+      sort -t';' +1n | tail | sort | cut -d';' -f1
+   c) cut -d';' -f2 ratp.csv | tail -n +2 |
+      sort -d | grep -v "(RER)"
+
+Exercice 3
+1) cut -d';' -f2 ratp.csv | tail -n +2 |
+   sort -d | grep "(RER)"
+2) cut -d';' -f2,6 ratp.csv | tail -n +2 |
+   grep '[0-9]$' | cut -d';' -f1
+3) cut -d';' -f2,4-6 ratp.csv | grep -v ';[A-Z];'
+   | grep -v ';;' | grep -v '[0-9]$' | grep '[;]$'
+   | cut -d';' -f1
+4) cut -d';' -f2,4-8,10 ratp.csv | grep ';7;' | grep
+   '[0-9]$' | sort -t';' +6n | cut -d';' -f7 | uniq -c
+   | sort -n | tail -n 1 | tr ' ' '\n' | tail -n 1
+5) cut -d';' -f4-8,10 ratp.csv | grep ';13$' |
+   cut -d';' -f1-5 | tr ';' '\n' | sort -n | uniq |
+   tr '\n' ' '
+
+
+Exercice 4
+1) a) find ~/ -name '?*.java'
+   d) find ~/ -path '*.*.*'
+2) find ~/ -name '*~' -delete
+3) find ~/ -name '*.sh' -exec chmod g-x,o-x '{}' ';'
+4) find ~/ -name '?*.java' -exec tar -cvf chemindelarchive
+    '{}' '+'
+
+
+Exercice 5
+3) find ~/ -type d -empty
+4) find ~/ -type f -size +10M
+7) find ~/ -inum x
+8) find ~/ -type f -perm 700
+9) find ~/ -nouser -exec ls -l '{}' ';'

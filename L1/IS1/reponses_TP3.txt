@@ -1,0 +1,63 @@
+DAI Anna - SAILLY Steven
+
+
+Exercice 1
+1) alias li="ls -1"
+
+2) alias la="ls -a"
+
+3) alias ls="ls -F"
+
+4) alias rm="rm -i"
+
+
+Exercice 3
+Questions 1) à 3) : On se place dans ~/IS1/TP3
+Questions 5) à 9) : On se place dans ~/IS1/TP3/Canards
+
+1) ls -i
+
+2) mv grosminet sylvestre
+Le numéro d'i-noeud n'a pas changé.
+
+3) cp sylvestre gatto_sylvestro
+Les numéros d'i-noeud sont différents.
+
+5) ln FiFi loulou
+
+6) cp RiRi hihihi
+Même contenu mais hihihi a un numéro d'i-noeud différent de celui des autres.
+
+7) cat "Tout est en ordre, Donald.">hihihi
+Le contenu change uniquement pour hihihi.
+
+8) Les fichiers ont tous été modifiés excepté hihihi : ceux qui ont été modifiés possèdent le même numéro d'i-noeud donc la modification de l'un les affecte tous.
+
+9) ln RiRi FiFi
+
+
+Exercice 4
+Déterminer ses propres groupes : id
+Groupe : Sc.Exactes_Autre
+
+Déterminer les groupes de root : id root
+Groupe : root
+
+
+Exercice 5
+1) tp3.pdf : 86266 octets
+
+2) Propriétaires et groupes propriétaires différents mais droits identiques
+
+3) 3 liens vers l'i-noeud du répertoire
+=> un pour entrer depuis le répertoire parent, un à l'intérieur qui renvoie vers lui-même (/.), un pour remonter depuis .sou_fetiche (/..)
+
+
+Exercice 6
+1) Droit de lecture ; modification avec emacs ou depuis le shell impossible ; le fichier ne peut qu'être lu
+
+2) Droit d'écriture ; ouverture avec emacs ou depuis le shell impossible mais modification avec le shell possible ; le fichier peut qu'être modifié sans toutefois être ouvert
+
+3) Droits de lecture et d'exécution ; même contenu que tata mais exécution différente : erreur pour tata, affichage de "Bonjour anndai44 !" pour toto ; conclusion : lecture=afficher le contenu, exécution=utiliser le contenu comme une commande
+
+4) Droit d'exécution ; l'exécution permet de déduire que le contenu du fichier sans pouvoir l'ouvrir

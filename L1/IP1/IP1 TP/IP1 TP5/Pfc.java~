@@ -1,0 +1,16 @@
+public class Pfc{
+
+    import java.util.Random;
+
+    public static String tirage (){
+	int k=rand.nextInt(3);
+	return k;
+
+    }
+
+
+
+    public static void main(String[] args) {
+	System.out.println(tirage());
+
+}

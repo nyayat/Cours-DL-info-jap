@@ -1,0 +1,15 @@
+public class TP7b{
+
+    public static void letters2word(char[]t){
+	for(int i=0; i<t.length; i++){
+	    System.out.print(t[i]);
+	}
+	System.out.println();
+    }
+
+    public static void main(String[]t){
+	char[] tab={'p','l','a','c','a','r','d'};
+	letters2word(tab);
+    }
+    
+}

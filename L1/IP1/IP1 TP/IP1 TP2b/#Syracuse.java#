@@ -1,0 +1,21 @@
+public class Syracuse {
+
+    /* Écrivez vos fonctions ici */
+    public static int syracuse (int a, int n) {
+	for (int i=0;i<n+1;i++) {
+	    if (a%2==0){
+		a=a/2;
+		    }
+	    else {
+		a=3*a+1;
+	    }
+	}
+	return (a);
+    }
+
+    public static void main(String[] args) {
+
+        /* Écrivez vos tests */
+
+    }
+}

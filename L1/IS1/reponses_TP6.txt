@@ -1,0 +1,127 @@
+DAI Anna
+SAILLY Steven
+
+Exercice 1:
+1) On ne voit que les processus lancés depuis le
+terminal.
+Voir tous les processus : ps -x
+Voir processus liés à un terminal : ps -t
+Informations :
+- PID : identifiant du processus
+- TTY : terminal auquel le processus est lié
+- STAT : état du processus
+- TIME : temps d'utilisation
+- COMMAND : commande bash qui lance le processus
+
+2) Même PPID (car lancés du même terminal), SZ
+différents ; STAT indépendants mais identiques
+("en attente")
+UID : identifiant de l'utilisateur qui l'a lancé
+PPID : identifiant du processus parent
+PRI : priorité
+TTY : identifiant du terminal qui l'a lancé
+SZ : mémoire utilisée
+STAT : état
+
+3) ps a
+
+4) ps -u machin
+Pour root : ps -u root
+
+5) ps -p n
+
+6) PPID de xclock et xcalc identiques : 2541
+2541 correspond à bash
+Ancêtres de xclock :
+- bash
+- xfce4-terminal
+- systemd
+
+Exercice 2
+1) PID : identifiant du processus
+UID : identifiant de l'utilisateur qui l'a lancé
+PR(I) : priorité
+SIZE : mémoire utilisée
+COMMAND : commande bash qui lance le processus
+Triés par utilisation décroissante de mémoire
+
+2) Trier selon durée d'exécution : F6 (SortBy)
+TIME
+Afficher arborescence : F5 (Tree)
+Processus qui nous appartiennent uniquement :
+F4 (Filter) puis entrer notre nom d'utilisateur
+
+Exercice 3
+1) Liste des signaux : kill -l
+SIGTERM : 15
+SIGKILL : 9
+SIGINT : 2
+SIGSTOP : 19
+SIGCONT : 18
+
+2) SIGTERM : "éteint"
+SIGKILL : arrête et éteint
+SIGINT : interrompt et éteint
+SIGSTOP : arrête provisoirement
+SIGCONT : redémarre processus arrêté
+avec SIGSTOP
+
+3) SIGTERM : ne fait rien
+SIGKILL : arrête et éteint le terminal
+seulement
+SIGINT : ne fait rien
+SIGSTOP : arrête provisoirement le terminal
+seulement
+SIGCONT : ne redémarre pas le terminal (1) arrêté
+précédemment si on le lance depuis le terminal (1)
+fonctionne depuis un autre terminal (2)
+
+4) Ancêtres : xterm - bash - xfce4-terminal
+
+5) Les trois arrêtent xterm et xcalc
+
+6) L'opération n'est pas permise : seul le
+propriétaire peut utiliser cette commande
+
+7) Sur htop : Se placer sur le processus, F9 (Kill),
+sélectionner le signal voulu, ENTREE
+
+8) killall xclock
+Ferme tous les processus s'appelant xclock
+
+Exercice 4
+1) Le processus n'existe plus.
+
+2) Il survit effectivement.
+
+3) Avant fermeture : PPID du terminal depuis
+lequel il a été lancé
+Après fermeture : PPID de systemd
+
+Exercice 5
+1) Il se trouve en arrière-plan.
+
+2) Après ctrl-Z, le processus est suspendu.
+
+3) Nom du signal : SIGSTOP
+
+4) kill -18 n
+avec n=PID du processus qu'on veut redémarrer
+
+Exercice 6
+1) jobs n'affiche rien alors que ps affiche les
+informations sur le bash et ps
+
+2) Numéro jobs != PID ; attribués à partir de 1
+suivant l'ordre selon lequel ils ont été ouverts
+Afficher PID correspondant à une tâche :
+jobs -p n (avec n=numéro de job)
+
+Exercice 7
+1) fg %n puis ctrl-Z puis bg %n
+(n=numéro de job de xclock)
+Un processus en avant-plan à la fois
+
+2) xcalc &
+
+3) ctrl-C <=> SIGKILL

@@ -1,0 +1,25 @@
+DAI Anna
+SAILLY Steven
+
+
+Exercice 1 :
+3) Terminal sans commandes : id affiche l'utilisateur connecté initialement sur la machine
+
+Terminal "su" : id affiche l'utilisateur connecté via la commande "su"
+
+Terminal "ssh" : id affiche l'utilisateur connecté initialement sur la machine et qui s'est connecté à distance sur une autre machine
+
+who affiche l'utilisateur connecté initialement sur la machine et ceux connectés à distance peu importe le terminal
+
+
+Exercice 2 :
+1) cal -m3 2048
+2) cal -y
+3) cal -m3
+4) ncal -M -m3 2048
+5) cal -m7 2048 -3
+6) ncal -e 2048
+
+
+Exercice 3 :
+/home/ssaill26/Tata/Toto/Turlu/Tutu

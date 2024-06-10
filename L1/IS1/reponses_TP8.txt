@@ -1,0 +1,43 @@
+DAI Anna
+SAILLY Steven
+
+Exercice 1
+1) ps -ax | less
+2) ps -ax | tail -n +2 | wc -l
+
+Exercice 2
+2) echo "tr 'a-z''b-za'" > crypte
+Test effectué avec echo "abc" | ./crypte
+3) echo "tr 'b-za' 'a-z'" > decrypte
+Test effectué selon la même méthode
+4) echo "azozo" | ./crypte | ./decrypte
+5) echo "azozo" | ./crypte | tee
+ message_secret | ./decrypte
+
+Exercice 3
+1) head -c 10000 /dev/zero > nul
+2) head -c 200 /dev/zero | tr '\0'
+'a' > grosfichier
+3) yes Répétez après moi - \"Après moi\"
+| head -1000 >> grosfichier
+
+Exercice 4
+1) cat -n grosfichier | tail -n 3
+2) cat -n grosfichier | head -n 7 |
+tail -n 1
+3) cat grosfichier | tr ' ' '\n' |
+head -n 579 | tail -n 1
+
+Exercice 5
+1) ps -ax | grep "/usr/sbin"
+2) ls -a -R ~ | grep ".java"
+3) ls -R ~ | grep -c "[^/]*"
+ls -R ~ | grep "[^/]*" | wc -l
+4) ls -R ~ | grep -v "[/]"
+5) a) ls -R /lib | grep -c "s..s"
+   b) ls -R /lib | grep -c "s[.+]s"
+   c) ls -R /lib | grep -c "^[^s]*s[^s]*s[^s]$"
+   d) ls -R /lib | grep -c -v "[0-9]"
+
+Exercice 6
+3) head -c 1 /dev/random | od -d -An

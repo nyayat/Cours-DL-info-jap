@@ -1,0 +1,61 @@
+DAI Anna
+SAILLY Steven
+
+On se place dans ~/Cours/2019/IS1/TP5
+
+Exercice 3
+3) cat Jokers/Boileau/* >> poeme_boileau
+
+4) cat Jokers/Ronsard/[!eij]* >> poeme_ronsard
+
+
+Exercice 4
+1) Profondeur : 5
+rm -R Vide/
+
+2) 5 fichiers ordinaires distincts
+
+
+Exercice 5
+mkdir Spirou
+touch Spirou/champignac
+mkdir Spirou/Fantasio
+mkdir Spirou/.1
+mkdir Spirou/.2
+touch Spirou/.3
+touch Spirou/.4
+touch Spirou/.5
+
+Exercice 6
+1) mkdir Poudlard Poudlard/SauleCogneur Poudlard/
+CabaneHurlante Poudlard/
+CabaneHurlante/Honeydukes
+echo "Voici un animal fantastique." > Poudlard/
+CabaneHurlante/fumseck
+
+3) Impossible de changer les droits
+
+4) Lien symbolique inaccessible car il pointe vers
+un chemin inaccessible
+Lien physique accessible car l'accès à l'i-noeud n'est
+pas bloqué
+
+5) Lien symbolique n'affiche rien : pointe toujours
+vers l'ancien chemin
+Lien physique fonctionne : l'i-noeud n'a pas
+changé
+
+6) Lien physique : affiche le contenu du fichier
+original grâce à l'i-noeud qui ne change pas
+Lien symbolique : affiche le contenu du nouveau
+fichier car il pointe vers le chemin de ce
+fichier
+
+7) Le chemin du lien symbolique est relatif :
+si il change d'emplacement, ce chemin n'est
+plus utilisable
+
+8) Affiche le contenu du fichier fumseck qui est
+dans SauleCogneur : la référence du lien correspond
+à ce fichier
+

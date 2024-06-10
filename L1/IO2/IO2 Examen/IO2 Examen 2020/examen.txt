@@ -1,0 +1,243 @@
+DAI Anna 21953144
+
+-----------------------------Question 1-----------------------------
+------------------------------login.php-----------------------------
+
+<?php
+function page_login($login){
+	if($login!=null) echo "login et mot de passe non reconnus";	
+	echo "<form action=\"home.php\" method=\"post\">
+		<div>
+			<label for=\"login\">Login </label>
+			<input type=\"text\" name=\"login\" value=\"".$login."\"/><br/>
+		</div>
+		<div>
+			<label for=\"mdp\">Mot de passe </label>
+			<input type=\"password\" name=\"mdp\"/> <br/>
+		</div>
+		<button type=\"submit\">Se connecter</button>
+	</form>";
+}
+?>
+
+-----------------------------Question 2-----------------------------
+--------------------------verification.php--------------------------
+
+<?php
+	include_once("login.php");
+	session_start();
+	
+	if(isset($_POST["login"])){
+		$login=$_POST["login"];
+	}
+	else{
+		$login=""; //par défaut, pour éviter de vérifier si la variable $login est définie ou non
+	}
+	
+	if(isset($_POST["mdp"])){
+		$mdp=$_POST["mdp"];
+	}
+	else{
+		$mdp=""; //idem qu'avec $login
+	}
+	
+	function verification($login, $mdp){
+		if($login=="user0" && $mdp="user0" && !isset($_SESSION["login"])){ 
+		//créer une nouvelle session si valide 
+		/*comme dit précédemment, on n'inclut pas isset($login) et isset($mdp) dans la condition
+		  car ces deux varibles sont définies par défaut*/
+			$_SESSION["login"]=$login;
+		}
+		if(!isset($_SESSION["login"])){
+		//retourne à la page de login si pas de session valide en cours
+			page_login($login);
+			exit;
+		}
+		//s'il y a déjà une session valide en cours, la fonction ne fait rien
+	}
+?>
+
+-----------------------------Question 2-----------------------------
+------------------------------home.php------------------------------
+
+<?php
+	include_once("verification.php");
+	verification($login, $mdp);
+?>
+
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<title>Home</title>
+	</head>
+	
+	<body>
+		<!-- Toutes les vérifications sont faites, la suite du code (donc la page) s'affiche -->
+		<h1>Choisissez un article</h1>
+		
+		<form action="lecture1.php" method="get">
+			<select name="article" size="1">
+				<option value="0">La Déchéance d'un homme</option>
+				<option value="1">Le vent se lève</option>
+				<option value="2">Je suis un Chat</option>
+				<option value="3">Rashomon</option>
+			</select>
+			<button type="submit">Lire</button>
+		</form>
+		
+		<footer>
+			<a href="deconnexion.php">Déconnexion</a>
+		</footer>
+    </body>
+</html>
+
+-------------------------Question 2 (bonus)-------------------------
+--------------------------deconnexion.php---------------------------
+
+<?php
+	session_start();
+	if(isset($_SESSION["login"])){
+		$_SESSION=array();
+		session_destroy();
+	}
+	header("Location: home.php");
+?>
+
+-----------------------------Question 3-----------------------------
+-----------------------------lecture.php----------------------------
+
+<?php
+	require_once("verification.php");
+	verification($login, $mdp);
+	
+	$tab[0]="Dazai Osamu";
+	$tab[1]="Hori Tatsuo";
+	$tab[2]="Natsume Soseki";
+	$tab[3]="Akutagawa Ryunosuke";
+	$article=$_GET["article"];
+?>
+
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<title>Lecture</title>
+	</head>
+	
+	<body>
+		<article><?php echo $tab[$article]; ?></article>
+		
+		<?php
+			if(!(isset($_SESSION["commentaires"][$article]))){
+				$_SESSION["commentaires"][$article][0]="";
+				//on ne tiendra pas compte de la case [0] pour l'affichage
+				//cette case ne nous servant qu'à l'initialisation
+			}
+			
+			for($j=1; $j<count($_SESSION["commentaires"][$article]); $j++){
+			//donc on démarre l'affichage à partir de la case [1]
+				echo "<p>".$_SESSION["commentaires"][$article][$j]."</p>";
+			}
+		?>
+		
+		<form action="commentaire.php" method="get">
+			<button type="submit" name="article" value=<?php echo '"'.$article.'"'; ?> >Ajouter un commentaire</button>
+		</form>
+    </body>
+</html>
+
+-----------------------------Question 4-----------------------------
+--------------------------commentaire.php---------------------------
+
+<?php
+	require_once("verification.php");
+	verification($login, $mdp);
+	
+	$article=$_REQUEST["article"];
+	
+	if(isset($_POST["text"])){
+		$text=$_POST["text"];
+		$position=array_key_last($_SESSION["commentaires"][$article])+1; 
+		//récupère la dernière clé dans le tableau de commentaires
+		//même si on unset la dernière clé, cela ne changera pas l'ordre de l'affichage des commentaires (question 5)
+		$_SESSION["commentaires"][$article][$position]=$text;
+		header("Location: lecture1.php?article=".$article);
+		//dans le lien du header, on intègre directement l'identifiant de l'article pour faire plus simple
+	}
+	
+?>
+
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<title>Commentaire</title>
+	</head>
+	
+	<body>
+		<form action="commentaire.php" method="post">
+		<!--on utilise la méthode post parce que get ne semble pas approprié dans ce genre de cas (texte long) -->
+			<textarea name="text" rows="10" cols="50">Saisissez votre commentaire.</textarea><br/>
+			<button type="submit" name="article" value=<?php echo '"'.$article.'"'; ?> >Enregistrer</button>
+		</form>
+    </body>
+</html>
+
+-----------------------------Question 5-----------------------------
+----------------------------lecture1.php----------------------------
+
+<?php
+	require_once("verification.php");
+	verification($login, $mdp);
+	
+	$tab[0]="Dazai Osamu";
+	$tab[1]="Hori Tatsuo";
+	$tab[2]="Natsume Soseki";
+	$tab[3]="Akutagawa Ryunosuke";
+	$article=$_GET["article"];
+	
+	if(isset($_GET["supprimer"])){
+		$supprimer=$_GET["supprimer"];
+		foreach($supprimer as $key){
+			unset($_SESSION["commentaires"][$article][$key]);
+		}
+	}
+?>
+
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8" />
+		<title>Lecture</title>
+	</head>
+	
+	<body>
+		<article><?php echo $tab[$article]; ?></article>
+		
+		<?php
+			if(!(isset($_SESSION["commentaires"][$article]))){
+				//on ne tiendra pas compte de la case [0] pour l'affichage
+				//cette case ne nous servant qu'à l'initialisation
+				$_SESSION["commentaires"][$article][0]="";
+			}
+		?>
+			
+		<form action="lecture1.php" method="get">
+			<?php			
+				$array=array_keys($_SESSION["commentaires"][$article]);
+				unset($array[0]);
+				foreach($array as $j){
+					if(isset($_SESSION["commentaires"][$article][$j])){
+						echo"<p><input type=\"checkbox\" name=\"supprimer[]\" value=".'"'.$j."\">";
+						echo $_SESSION["commentaires"][$article][$j]."</p>";
+					}
+				}
+			?>
+			<button type="submit" name="article" value= <?php echo '"'.$article.'"' ?> >Supprimer</button>
+		</form>
+		<form action="commentaire.php" method="get">
+			<button type="submit" name="article" value=<?php echo '"'.$article.'"'; ?> >Ajouter un commentaire</button>
+		</form>
+    </body>
+</html>

@@ -1,0 +1,85 @@
+DAI Anna
+SAILLY Steven
+
+TP\{Exercice 8} : On se place dans ~/Cours/2019/IS1
+Exercice 8 : On se place dans ~/Cours/2019/IS1/TP4/Test/Public
+
+Exercice 1
+2) a) chmod a+x TP4/A/titi
+b) chmod u-w,go-x TP4/A/titi
+c) chmod u-x TP4/A/titi
+d) chmod uo-r TP4/A/titi
+e) chmod g+x-r,u+w+x,o+r TP4/A/titi
+f) chmod u-x,o+x TP4/A/titi
+
+Exercice 2
+chmod 444 TP4/B/A/toto
+chmod 735 TP4/B/A/tutu
+chmod 561 TP4/B/B/toto
+chmod 215 TP4/B/B/tutu
+chmod 644 TP4/B/C/toto
+chmod 310 TP4/B/C/tutu
+
+Exercice 3
+1) chmod u+x TP4/B/A/toto
+2) chmod a-x TP4/B/A/tutu
+3) chmod 216 TP4/B/B/toto
+4) chmod a+r TP4/B/B/tutu
+5) chmod 254 TP4/B/C/*
+6) chmod a+x TP4/B/*/tutu
+7) chmod 640 TP4/B/*/toto
+
+Exercice 4
+1) Après suppression du droit de lecture, TP4/A/toto ne
+s'exécute plus contrairement à TP4/A/tutu.
+Explication : toto écrit en bash mais le fichier ne peut
+pas être lu donc la commande qui affiche du texte ne
+peut pas être exécutée
+2) touch TP4/youpi
+chmod u+x TP4/youpi
+
+Exercice 5
+1) Droit de lecture nécessaire pour lister, droit
+d'exécution nécessaire pour voir les droits concernant
+les fichiers à l'intérieur du dossier concerné
+2) Droit en écriture d'un répertoire concerne l'ajout
+ou la suppression d'i-noeuds, pas le contenu de ses fichiers
+3) a) echo "Lingots">TP4/Gringotts/coffre
+b) touch TP4/Gringotts/Caveaux/cav1 TP4/Gringotts/Caveaux/cav2
+d) ls TP4/Gringotts/ fonctionne encore
+Explication : plus de droit en exécution pour
+TP4/Gringotts ; voir 1)
+4) Droit en exécution permet de se déplacer dans le
+répertoire, voir les droits concernant son contenu
+et de modifier son contenu
+5) Droit en lecture : permet de consulter le contenu
+Droit en exécution : permet de voir les droits
+6) chmod u+x TP4/C
+7) chmod u+w TP4/B
+mv TP4/C/toutou TP4/B
+8) chmod u+r TP4/D
+ls -R TP4/D ne permet pas de tout lister
+chmod -R u+x TP4/D
+9) chmod -R u+w TP4/D
+rm -Rf TP4/D
+
+Exercice 6
+1) umask : droits non accordés en octal
+umask -S : droits accordés en symbolique
+2) Droits du répertoire : 755
+Droits du fichier : 644
+Les droits sont différents selon le type de l'objet créé
+3) umask a modifié les droits par défaut, d'où les
+différences
+6) umask 077
+7) umask 022
+8) umask 026
+9) Editer le fichier .bashrc
+
+Exercice 8
+2) Copie impossible : aucun droit sur fichier
+Renommer/supprimer possible : tous les droits sur répertoire
+3) Utilisateur courant : chmod 770 ./
+Voisin : touch voisin
+chmod 640 voisin
+Utilisateur courant : chmod 740 ./
