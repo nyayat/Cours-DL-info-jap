@@ -1,0 +1,26 @@
+ 1.1 egrep 'Odette' swann.txt
+ 1.2 egrep -c 'Odette' swann.txt (449 fois)
+ 1.3 egrep -c 'Gilberte' swann.txt (99 fois)
+ 1.4 egrep -o 'Gilberte' swann.txt | wc -l (100 fois)
+ 1.5 On peut avoir 'Gilberte' présent deux fois sur une même ligne
+     egrep -n 'Gilberte'.*'Gilberte' swann.txt (ligne 15397)
+ 1.6 egrep -c 'Gilberte|Odette' swann.txt (547 fois)
+ 1.7 Idem que 1.5
+     egrep -n 'Gilberte'.*'Odette' swann.txt | egrep -n 'Odette'.*'Gilberte' swann.txt
+ 1.8 egrep -c '\+' swann.txt (0 fois)
+     egrep -c '\(' swann.txt (185 fois)
+ 1.9 egrep -n '[0-9]' swann.txt 
+     ou egrep -n '[[:digit:]]' swann.txt
+1.10 egrep -n 'z[[:lower:]]' swann.txt
+1.11 egrep -n 'z[^[:lower:]]' swann.txt
+1.12 egrep -n '\.$' swann.txt
+1.13 egrep -c '\([^\)]*$' swann.txt (157 fois)
+1.14 egrep -n ',.*,.*,.*,.*,' swann.txt
+     ou egrep -c \(,.*\)\{5,\} swann.txt
+     ou egrep -c '([,]).*(\1.*){4,}' swann.txt
+1.15 egrep -n '[a-zA-Z]{15,}' swann.txt
+
+ 2.1 egrep -c '([aeiouy]).*(\1.*){14,}' swann.txt
+ 2.2 egrep -n '\<(\w{10,})\>.*\<\1\>' swann.txt
+ 2.3 egrep -c '^\<(\w*)\>.*\<\1\>$' swann.txt   ????
+ 2.4 egrep -c '\<(\w)(\w)(\w)\>.*\<\3\2\1\>' swann.txt

@@ -1,0 +1,42 @@
+public class TD1 {
+    /*On suppose que la taille des tableaux est impair 
+      et que les éléments du tableau sont tous distincts.*/
+    
+    //5.1
+    public static int compteInf(int[]t, int x){
+        int res=0;
+        for(int i=0; i<t.length; i++){
+            if(t[i]<x) res++;
+        }
+        return res;
+    }
+    
+    //5.2
+    public static int mediane(int[]t){
+        int infNec=t.length/2;  //pas besoin de faire (n-1)/2 puisque pour n impair, (n-1)/2=n/2 en java
+        int i=0;
+        while(compteInf(t,t[i])!=infNec){
+            i++;
+        }
+        return t[i];
+    }
+    
+    //5.3
+    /*Soit n la longueur du tableau.
+      La fonction compteInf effectue n comparaisons.
+      L'algorithme mediane appelle au plus n fois la fonction compteInf,
+        donc effectue au plus n^2 comparaisons.
+      Pour atteindre n^2 comparaisons, la médiane doit être en dernière position dans le tableau.
+      Exemple : t1={1} (évidemment) ou t2={1,3,2} (un peu plus sérieusement)*/
+    
+    public static void main(String[]a){
+        //5.1
+        int[]t1={1,5,6,4,-5,8,12};
+        /*System.out.println(compteInf(t1,7));  //réponse attendue : 5
+        System.out.println(compteInf(t1,-7));  //réponse attendue : 0
+        System.out.println(compteInf(t1,13));  //réponse attendue : 7*/
+        
+        //5.2
+        System.out.println(mediane(t1));  // réponse attendue : 5
+    }
+}

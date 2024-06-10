@@ -1,0 +1,23 @@
+public class TD6 {
+    //5.
+    public static boolean estPalindromeAux(char[]t, int n){
+        if(n==t.length/2) return true;
+        if(t[n]!=t[t.length-1-n]) return false;
+        return estPalindromeAux(t, n+1);
+    }            
+    
+    public static boolean estPalindrome(char[]t){
+        return estPalindromeAux(t, 0);
+    }
+            
+    public static void main(String[]a){
+        char[]t1={'a','b','a'};
+        char[]t2={'a','a'};
+        char[]t3={'a','b'};
+        char[]t4={'a','a','b'};
+        System.out.println(estPalindrome(t1));  //true
+        System.out.println(estPalindrome(t2));  //true
+        System.out.println(estPalindrome(t3));  //false
+        System.out.println(estPalindrome(t4));  //false
+    }
+}

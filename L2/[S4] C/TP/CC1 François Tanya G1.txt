@@ -1,0 +1,86 @@
+/******************************************************************************
+
+FRANCOIS Tanya
+Groupe 1 (Info-jap)
+21952540
+
+*******************************************************************************/
+
+#include <stdio.h>
+
+
+#define DEG 6
+typedef struct{
+    int degre;
+    int coef[DEG];
+}poly;
+
+void print_monome(int coeff, int degre );
+void print_poly(poly p);
+poly add(poly p, poly q);
+
+int main(int argc, char const *argv[])
+{
+    poly p = 
+    {
+        .degre = 4,
+        .coef[0] = 2,
+        .coef[2] = -3,
+        .coef[4] = 7
+    };
+    poly q;
+    q.degre = 4;
+    q.coef[0] = -3;
+    q.coef[1] = 1;
+    q.coef[3] = -6;
+    q.coef[4] = -7;
+
+    print_poly(p);
+    printf("\n");
+    print_poly(q);
+    printf("\n");
+    
+    /* //cas polynome 0
+    poly s;
+    s.degre = 0;
+    print_poly(s);
+    printf("\n");
+    */
+    
+    add(p,q);
+
+    return 0;
+}
+
+void print_monome(int coeff, int degre )
+{
+    printf("%+dx^%d", coeff, degre );
+}
+void print_poly(poly p){
+    if(p.degre == 0 & p.coef[0] == 0){
+        print_monome(0,0);
+    }
+    else{
+        for (int i = 0; i < DEG; i++)
+        {
+            if(p.coef[i] != 0){
+                print_monome(p.coef[i], i);
+            
+            }
+        }
+    }
+}
+
+poly add(poly p, poly q){
+    poly somme;
+    for (int i = 0; i < DEG; i++)
+    {
+        somme.coef[i]=p.coef[i]+q.coef[i];
+        if(somme.coef[i] != 0){
+            somme.degre = i;
+        }
+    }
+    // print_poly(somme); //vérification du polynome
+    // printf("degre : %d", somme.degre); //vérification du degré
+    return somme;
+}

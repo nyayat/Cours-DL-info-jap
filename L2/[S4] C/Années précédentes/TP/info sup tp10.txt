@@ -1,0 +1,17 @@
+date de remise  7 mai à 23h59.
+
+pers_linux : un fichier binaire pour tester votre programme. Compatible MacOS et Linux sur les machines architecture Intel 64 bits. Je n'ai pas testé sur Windows (je n'en ai pas).
+
+En général le fichier binaire donc pas de garantie de portabilité.
+
+Ceci dit si vous êtes sur une machine avec un processeur Intel probablement vous n'aurez pas de problème.   Le fichier a été créé avec ce fragment de code :
+
+
+header *h = openFile(argv[1], 6, "w+");
+ajouterIndividu( h, "1234567890123456", "Terrible", "Ivan");
+ajouterIndividu( h, "2345678901234561", "Kowalski", "Szczepan");
+ajouterIndividu( h, "3456789012345621", "Smith", "Carl");
+ajouterIndividu( h, "5678901234564321", "Dupond", "Marc");
+closeFile(h);
+
+Donc il y a de la place pour 6 personnes et le fichier contient déjà 4. On peut en ajouter encore 2 personnes.

@@ -1,0 +1,28 @@
+public class TD5 {
+    //4.1
+    //pré-points fixes : -1, 0, 1, 3, 4
+    //post-point fixe : 8, 3, 4
+    
+    //4.2
+    /*Dans un tableau trié:
+        - tous les éléments avant un point fixe sont des pré-points fixes
+            (un point fixe est aussi un pré-point fixe)
+        - tous les éléments après un point fixe sont des post-points fixes
+            (un point fixe est aussi un post-point fixe).
+    */
+    
+    //4.3
+    static boolean pointFixe(int[]t){
+        int deb=0;
+        int fin=t.length-1;
+        while(deb<=fin){
+            int mid=(deb+fin)/2;
+            if(t[mid]==mid) return true;
+            if(t[mid]<mid) deb=mid+1;
+            if(t[mid]>mid) fin=mid-1;
+        }
+        return false;
+    }
+    
+    //Dans le pire des cas il fait log2(t.length) comparaisons.
+}

@@ -1,0 +1,57 @@
+public class TD4 {
+    //3.1
+    public static int fibonacci(int n){
+        if(n==0 || n==1)return 1;
+        return fibonacci(n-1)+fibonacci(n-2);
+    }
+    
+    //3.2
+    /*                f(4)
+               f(3)    +     f(2)
+           f(2) + f(1)    f(1) + f(0)
+         f(1)+f(0)  1       1     1
+          1     1
+
+        --> 4 additions
+    */
+
+    //3.3
+    /*Le nombre d'addition est le résultat de fibonacci(n)-1=f(n-1)+f(n-2)-1.
+        Donc pour fibonacci(4)=5, on a 5-1=4 additions.
+        Les premiers termes de la suite sont : 0, 0, 1, 2, 4, 7, 12, 20,...           
+    */
+    
+    //3.4
+    public static int fibonacciIteratif(int n){
+        int f0=1;  //n pair
+        int f1=1;  //n impair
+        for(int i=2; i<=n; i++){
+            if(i%2==0) f0+=f1;
+            else f1+=f0;
+        }
+        if(n%2==0) return f0;
+        return f1;
+    }
+    
+    /*Pour calculer f(4), il fait 3 additions, pour f(n), il en fait n-1, 
+        et par défaut pour 0, il y en a 0.
+    */
+    
+    //3.5    
+    public static int fibonacciIntermediaire(int n, int f1, int f2){
+        if(n==1) return f2;
+        return fibonacciIntermediaire(n-1, f2, f1+f2);
+    }
+    
+    public static int fibonacciTerminal(int n){
+        if(n==0) return 1;
+        return fibonacciIntermediaire(n, 1, 1);
+    }
+    
+    /*Pour f(10)=89, l'algorithme //3.1 va faire 88 additions, alors que celui
+        de //3.5 n'en fera que 9, donc il est presque 10 fois plus rapide.
+      Pour f(11)=144, l'algorithme //3.1 va faire 143 additions, alors que celui
+        de //3.5 n'en fera que 10, donc il est 14,3 fois plus rapide.
+      Plus n est grand, plus l'algorithme //3.5 est rapide que //3.1.
+    */
+}

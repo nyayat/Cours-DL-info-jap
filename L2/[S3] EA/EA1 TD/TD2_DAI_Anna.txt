@@ -1,0 +1,83 @@
+public class TD2 {
+    //4.1
+    public static void triDrapeau(int[]t){
+        int p=0;
+        int m=0;
+        int g=t.length-1;
+        while(m<=g){
+            switch(t[m]){
+                case 0:
+                    int temp=t[m];
+                    t[m]=t[p];
+                    t[p]=temp;
+                    m++;
+                    p++;
+                    break;
+                case 1:
+                    m++;
+                    break;
+                case 2:
+                    int temp=t[m];
+                    t[m]=t[g];
+                    t[g]=temp;
+                    g--;
+                    break;
+            }
+        }
+    }
+    
+    //5
+    public static void triDrapeauBicolore(int[]t){
+        int p=0;
+        int g=t.length-1;
+        
+        //on cherche le minimum entre les deux éléments possibles :
+        int min=t[0];
+        int c=1;
+        while(c<t.length && t[0]==t[c]){
+            c++;
+        }
+        if(c<t.length && min>t[c]){
+            min=t[c];
+        }
+        
+        while(p<=g){
+            if(t[p]==min){
+                p++;
+            }
+            else{
+                int temp=t[p];
+                t[p]=t[g];
+                t[g]=temp;
+                g--;
+            }
+        }
+    }
+    
+    //annexe :
+    public static void afficheTableau(int[]t){
+        for(int i=0; i<t.length; i++){
+            System.out.print(t[i]+" ");
+        }
+        System.out.println();
+    }
+    
+    public static void main(String[]a){
+        //4.1
+        /*int[]t1={1,1,0,2,0,2};
+        int[]t2={2,2,0,0};
+        triDrapeau(t1);
+        triDrapeau(t2);
+        afficheTableau(t1);
+        afficheTableau(t2);*/
+        
+        //5
+        int[]t3={1,1,0,1,0};
+        triDrapeauBicolore(t3);
+        afficheTableau(t3);
+        
+        int[]t4={1,1,1};
+        triDrapeauBicolore(t4);
+        afficheTableau(t4);
+    }
+}

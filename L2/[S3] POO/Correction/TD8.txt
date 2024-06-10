@@ -1,0 +1,123 @@
+POO 
+
+I. 
+(1) RuntimeException => fille de Exception
+RuntimeE => exception unchecked : problème du programmeur
+Exception => condition extérieur : réseau, fichier, IO : doit throws/try-catch
+
+(2) RE : NullPointerException, ArrayIndexOut...
+Exception : IOException
+
+(3)Si B appelle A, alors la méthode doit soit :
+- méthode throws exception (lever l'exception)
+- try {...} catch {...}
+
+(4) Le code en 3 n'est exécuté que si l'exception levée en 1 est une instance du type exception spécifié en 2
+
+
+II.
+1. Catch f() | Catch g()
+2. Catch f() | Catch g()	Catch g() | Catch f()
+3. Catch h()			Catch h()
+4. Finally			Catch f() | catch g() ???| Finally
+5. Finally
+
+
+Correction 
+1. Catch f() 
+2. Catch f() 			Catch g()
+3. Problème de compilation	Catch h()
+4. Finally			Catch f() | Finally + Exception de type G
+5. Finally
+
+
+III.
+public classUniversite {
+	private int nbEtu ; // nombre d’étudiants inscrits à l’université
+	private int capALL ; // capacité en arts, lettres, langues
+	private int capSHS ; // capacité en sciences humaines et sociales
+	private int capSTS ; // capacité en sciences, technologies et santé
+
+	public Universite(int nbEtu, int capAll, int capSHS, int capSTS){
+		if(nbEtu > capAll + capSHS + capSTS || nbEtu < 0 || capALL < 0 || capSHS < 0 || capSTS < 0 ) {
+			throw new IllegalArgumentException("Mauvais arguments")
+		}
+		this.nbEtu = nbEtu;
+		this.capSHS = capSHS;
+		this.capALL = capALL;
+		this.capSTS = capSTS;
+	}
+
+	public static class TropDEtudiantException extends RuntimeException {}
+
+	public void restructuration throws  DirectiveMinisterielleException(int all, int shs, int sts){
+		if (nbEtu > all + shs + sts){
+			throw new TropDEtudiantException ();
+		}
+		if(all > shs + sts) throw new DirectiveMinisterielleException("Trop de all");
+		else if(shs > all + sts) throw new DirectiveMinisterielleException("Trop de sts");
+		else if(sts > all + shs) throw new DirectiveMinisterielleException("Trop de shs");
+		this.capSHS = shs;
+		this.capALL = all;
+		this.capSTS = sts;
+	}
+
+	public static class DirectiveMinisterielleException extends Exception {
+		public DirectiveMinisterielleException(String msg){
+			System.out.println(msg);
+		}
+	}
+	public void restrictionBudgetaire( ) throws DirectiveMinisterielleException {
+		Random sourceAlea = new Random ( ) ;
+		int nCapALL = sourcelea.nextInt((int)(0.9∗capALL ) ) ;
+		int nCapSHS = sourcelea.nextInt((int)(0.9∗capSHS ) ) ;
+		int nCapSTS = sourcelea.nextInt((int)(0.9∗capSTS ) ) ;
+		try {
+			this.restructuration (nCapALL, nCapSHS , nCapSTS ) ;
+		}
+		catch ( TropDEtudiantException ) {
+			this.nbEtu = nbEtu;
+		}
+		catch ( DirectiveMinisterielleException ) {
+			nCapALL = sourcelea.nextInt((int)(0.9∗capALL ) ) ;
+			nCapSHS = sourcelea.nextInt((int)(0.9∗capSHS ) ) ;
+			nCapSTS = sourcelea.nextInt((int)(0.9∗capSTS ) ) ;
+		}
+		finally { this.restructuration (nCapALL, nCapSHS , nCapSTS ) ; }
+
+	}
+
+	public void reduction (int nb){
+		nbEtu -= nb;
+	}
+
+}
+
+
+
+
+IV.
+1.
+int delay = 1000; //milliseconds
+ActionListener taskPerformer = new ActionListener() {
+	public void actionPerformed(ActionEvent evt) {
+	System.out.println(LocalTime.nom());
+};
+Timer t1 = new Timer(delay, taskPerformer).start();
+
+
+2.
+Time t1 - new Timer(delay, (evt) -> System.out.println(LocalTime.now()));
+t1.start();
+
+3.
+
+ActionListener compteMoutons = new ActionListener(){
+	private int count = 0;
+	public void actionPerformed(ActionEvent evt){
+		System.out.out.println(++count);
+	}
+};
+Timer t2=new Tomer (2000, compteMoutons);
+t2.start();
+V.

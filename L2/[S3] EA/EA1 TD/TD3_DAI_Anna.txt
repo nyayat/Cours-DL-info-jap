@@ -1,0 +1,51 @@
+public class TD3 {
+    //6.1
+    public static int[] triFusionTab(int[]t){
+        int front=0;
+        while(front<t.length-1 && t[front]<t[front+1]){
+            front++;
+        }
+        front++;
+        for(int i=front; i<t.length; i++){
+            int x=t[i];
+            int k=i;
+            while(k>0 && t[k-1]>x){
+                t[k]=t[k-1];
+                k--;
+            }
+            t[k]=x;
+        }
+        return t;
+    }
+    
+    //6.2
+    /*
+    Soit t1 le tableau à gauche avant fusion, et t2 le tableau à droite.
+    Soit front l'indice du premier élément de t2.
+    Le pire des cas : t1.length==t2.length pour n pair, t1.length==(t2.length+/-1) sinon,
+		      et t1 ne contient que des éléments plus grands que t2
+
+    Donc on a front comparaison(s) dans le while pour trouver la frontière.
+    Puis pour tout élément de t2, on doit opérer front+1 comparaison(s) pour le placer,
+	sauf pour t2[0] où il y aura une comparaison de moins à faire (donc front).
+    Finalement, on a 2front+(front+1)(n-(front+1)) comparaison(s), où n la taille du
+	tableau après fusion (donc n-(front+1) est le nombre d'élément après t2[0]).
+
+    Dans le pire des cas, on a dit que front==n/2 (+/-1 dans le cas impair mais on généralise).
+    Donc on se retrouve avec une complexité 2*n/2+(n/2+1)[n-(n/2+1)] = (n/2)^2+n-1, d'ordre n^2.
+    */
+    
+    //annexe :
+    public static void affiche(int[]t){
+        for(int i=0; i<t.length; i++){
+            System.out.print(t[i]+", ");
+        }
+        System.out.println();
+    }
+    
+    public static void main(String[]a){
+        //6.1
+        int[]t={2,9,4,6,7,10};
+        affiche(triFusionTab(t));
+    }
+}

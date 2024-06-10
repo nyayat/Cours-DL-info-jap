@@ -1,0 +1,75 @@
+import java.util.Stack;
+
+public class TD7 {
+    //5.5
+    static int calculRPN(Stack<String> p){
+        if(p.empty()) return erreur();
+        Stack<Integer> temp=new Stack();
+        while(!p.empty()){
+            String v=p.pop();
+            if(isDigit(v)) temp.push(Integer.parseInt(v));
+            else{
+                int v2=temp.pop();
+                int v1=temp.pop();
+                switch(v.charAt(0)){ //String de taille 1 pour les opérateurs
+                    case '+':
+                        temp.push(v1+v2); break;
+                    case '-':
+                        temp.push(v1-v2); break;
+                    case '*':
+                        temp.push(v1*v2); break;
+                    case '/':
+                        temp.push(v1/v2); break;
+                    default :
+                        return erreur();
+                }
+            }
+            if(temp.empty()) return erreur();
+        }
+        int res=temp.pop();
+        if(temp.empty()) return res;
+        return erreur();
+    }
+    
+    //Annexe
+    static boolean isDigit(String s){
+        try{
+            Integer.parseInt(s);
+        }catch(Exception e){
+            return false;
+        }
+        return true;
+    }
+    
+    static int erreur(){
+        System.out.println("Erreur dans l'expression.");
+        return 0;
+    }
+    
+    public static void main(String[]a){
+        Stack<String> p=new Stack(); //11 2 - 3 * 4 + 7 / <==> [(11-2)*3+4]/7
+        p.push("/");
+        p.push("7");
+        p.push("+");
+        p.push("4");
+        p.push("*");
+        p.push("3");
+        p.push("-");
+        p.push("2");
+        p.push("11");
+        System.out.println(calculRPN(p)); //affiche 4
+        System.out.println("-----------------");        
+        System.out.println(calculRPN(new Stack())); //pile vide, affiche erreur
+        System.out.println("-----------------");
+        p.push("7");
+        p.push("-");
+        p.push("2");
+        p.push("11");
+        System.out.println(calculRPN(p)); //11-2 avec un 7 de trop, affiche erreur
+        System.out.println("-----------------");
+        p.push("à");
+        p.push("2");
+        p.push("11");
+        System.out.println(calculRPN(p)); //11à2, affiche erreur
+    }
+}
