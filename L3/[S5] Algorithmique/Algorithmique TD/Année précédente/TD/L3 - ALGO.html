@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
+<!-- saved from url=(0042)https://www.irif.fr/~francoisl/l3algo.html -->
+<html lang="fr"><link type="text/css" rel="stylesheet" id="dark-mode-general-link"><link type="text/css" rel="stylesheet" id="dark-mode-custom-link"><style lang="en" type="text/css" id="dark-mode-custom-style"></style><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+<link href="./L3 - ALGO_files/flCSS.css" rel="stylesheet" type="text/css">
+
+<title>
+L3 - ALGO
+</title>
+
+</head>
+
+
+<body bgcolor="white" text="black" link="blue" alink="orange" vlink="green">
+<h1><font color="brown">Cours d'algorithmique -- L3 (2020--2021) </font></h1>
+
+
+
+
+<div id="standard">
+<h2> Equipe enseignante </h2>
+
+Pierre Charbit, François Laroussinie, Roberto Mantaci,
+Valia Mitsou, Dominique Poulalhon et Arnaud Sangnier.
+
+<ul>
+<li> <b>Séance de questions/réponses:  </b>  F. Laroussinie (mercredi 15h-16h, distanciel)
+</li><li> <b>Séance de questions/réponses: </b>  F. Laroussinie  (jeudi 14h-15h, distanciel)
+</li><li> <b> TD Groupe 1: </b> F. Laroussinie  (vendredi 10h45--12h45; 2001 SG)
+</li><li> <b> TD Groupe 2:   </b> D. Poulalhon et A. Sangnier   (vendredi   10h45--12h45; 2035 SG)
+</li><li> <b> TD Groupe 3:  </b> P. Charbit  (mardi 10h45--12h45; 2035 SG)
+</li><li> <b> TD Groupe 4:    </b> R. Mantaci (lundi   16h15--18h15; 2027 SG)
+</li><li> <b> TD Groupe 5 (math-info):  </b> V. Mitsou  (vendredi  16h--18h; 2035 SG)
+</li></ul>
+
+
+
+<!-- <h2> Questionnaire </h2> -->
+
+<!-- J'invite chaque étudiant-e du cours à remplir -->
+<!--  ce <b> <A HREF="http://enquetes.informatique.univ-paris-diderot.fr/public/survey.php?name=l3algo1011_eval"> -->
+<!--   questionnaire </A> anonyme (c'est inutile pour ceux et celles -->
+<!--  qui l'ont déjà fait lors du dernier cours).   -->
+
+<!--   Cela vous prendra trois minutes... et permettra d'adapter le cours -->
+<!-- pour l'an prochain. -->
+
+
+<h2> Actualités  </h2>  
+
+
+L'organisation des cours est modifiée en raison du covid. Le CM n'aura pas lieu en présentiel. 
+
+Des vidéos seront mises en ligne chaque semaine pour compléter la lecture du polycopié (remis à l'amphi de rentrée). Des séances de questions/réponses seront organisées chaque semaine en distanciel. Les TD seront faits  normalement (présentiel, avec masque).  
+
+ <br>    
+
+<br>
+
+<b> Les séances de questions/réponses commenceront jeudi 10 septembre (sur les 3 premières videos) à 14h. Le lien pour y participer sera envoyé à la mailing-list du L3. </b>
+
+<h2> Videos  </h2>
+
+C'est ici. 
+<a href="https://www.youtube.com/channel/UCKUnG2PmZZWu5ZqHz0WA3zg/">ICI.</a>
+
+<br>
+
+<ul>
+<li> Videos #1, #2 et #3: présentatin du cours, introduction aux graphes, rappels de complexité (mises en ligne le 8 septembre 2020).
+</li><li> Videos #4 et #5: parcours en largeur (mises en ligne le 15 septembre 2020).
+</li><li> Videos #6 et #7: parcours en profondeur (mises en ligne le 21 septembre 2020).
+</li><li> Videos #8 et #9: applications (tri topologique et recherche des CFC) du parcours en profondeur (mises en ligne le 28 septembre 2020).
+</li><li> Vidéos #10, #11, #12 et #13 sur la 2-connexité (mises en ligne jeudi 7 octobre 2020). Pour compléter, une petites notes <a href="https://www.irif.fr/~francoisl/DIVERS/l3algonoteBC.pdf">ICI.</a>
+</li><li> Videos #14 et #15: plus courts chemins et algorithme de Belmman-Ford (mis en ligne le 13 octobre).
+</li><li> Videos #16.a et #16.b sur les files de priorité et l'algorithme de Dijkstra (mises en ligne le 21 octobre).
+</li><li> Video 17 sur l'algorithme de Floyd-Warshall (mises en ligne le 2 novembre).
+</li><li> Video 18 sur la frontière entre problèmes difficiles et problèmes faciles (mise en ligne le 6 novembre).
+</li><li> Videos 19 et 20 sur les arbres couvrants minimaux (definitions + algo. de Prim).
+</li><li> Vidéo 21 sur l'algorithme de Kruskal. Vidéos 22 et 23 sur les structures Union-Find (mis enligne le 17 novembre).
+</li><li> Videos 24 et 25 sur les flots et l'algorithme de Ford-Fulkerson (en ligne le 24 novembre).
+</li><li> Videos 26 et 27 sur l'algorithme de Edmonds-Karp et l'algorithme "Delta" (en ligne depuis le 1er décembre).
+</li><li> Video 28: Bilan et perspectives... (en ligne depuis le 8 décembre). 
+</li></ul>
+<br>
+
+
+<!-- Consultation de copies pour le partiel: vendredi 8 décembre à 14h et à 15h30, Bureau 4004, bât. Sophie Germain. -->
+
+<!-- <ul> -->
+<!-- <li>  Les étudiants dont le nom commence par <span -->
+<!-- class=important> A, B,C , ... ou K </span> devront se rendre à <span -->
+<!-- class=important> l'amphi 9E</span>, et -->
+
+<!--   <li> ceux dont le nom commence -->
+<!-- par <span class=important> L, M, ... ou Z </span> iront dans <span -->
+<!-- class=important> l'amphi 5C</span>.  </ul> -->
+
+<!-- <br> -->
+
+<!-- <span class=important> -->
+<!-- Le programme du TD noté est: les arbres binaires de recherche  et le -->
+<!-- début des algorithmes dans les graphes (définitions et parcours). Cela -->
+<!-- correspond aux sujets vus en COURS  avant la recherche des -->
+<!-- composantes fortement connexes. -->
+<!-- </span> -->
+
+<!-- <br> -->
+
+
+
+
+
+
+<h2> Programme
+</h2>
+
+
+Au programme: l'algorithmique dans les graphe: parcours, composantes connexes, 2-connexité, plus courts chemins, arbres couvrants minimaux, flots...
+
+<br>
+
+<ul> 
+<!--  <LI> <B> </B> Introduction, notion de complexité des algorithmes     -->
+<!-- <br>    -->
+  
+<!-- <A HREF="DIVERS/l3algointro.pdf">Transparents du premier cours</A>  <br>     -->
+
+<!-- <LI> Cours 2: parcours en largeur. Pour compléter, lire le poly pages 14-19.  -->
+
+
+<!-- <LI> Cours 3: parcours en profondeur (poly, pages 20-26) -->
+<!-- <LI> Cours 4: application au tri topologique et à la recherche des CFC  (poly, pages 28-31) -->
+<!-- <LI> Cours 4-5: 2-connexité (hors poly). Une petite note sur le sujet  -->
+<!-- <A HREF="DIVERS/l3algonoteBC.pdf">ICI.</A>  -->
+
+<!-- <LI> Cours 6-7: algorithmes pour les PCC: Bellman-Ford, Dijkstra, Floyd-Warshall, A*. -->
+
+<!-- <\!-- <LI> Cours 3: parcours en profondeur. Pour compléter, lire le poly pages 17-24. <br>  -\-> -->
+
+<!-- <\!-- <LI> Cours 4: Application du parcours en profondeur (tri topologique, composantes fortement connexes). Pour compléter, lire le poly pages 25-27. <br>  -\-> -->
+
+<!-- <\!-- <A HREF="DIVERS/l3algo1819cfc.pdf">Algorithme pour les CFC (version pseudocode).</A> -\-> -->
+
+<!-- <\!-- <LI> Cours 5: Plus courts chemins. Algorithme de Bellman-Ford.  -\-> -->
+
+<!-- <LI> Une <a href="DIVERS/l3algo1819tasfiles.pdf"> note sur les tas et les files de priorité</a>.  -->
+
+<!-- <\!-- <LI> Cours 6: Plus courts chemins (algorithmes de Dijkstra et Floyd-Warshall; A*).  -\-> -->
+<!-- <br> -->
+<!-- L'algo A* est <a href="DIVERS/algoAstar.pdf"> ICI.</a>  -->
+
+<!-- <LI> Cours 8: Les arbres couvrants minimaux (algo de Prim et Kriskal).  -->
+
+<!-- <LI> Cours 9-10: Algorithmes sur les flots. Les slides pour l'algorithme par échelonnement: <a href="DIVERS/l3algo1920algodelta.pdf"> ICI</a>. -->
+
+<!-- <LI> Cours 11: Un bilan, des perspectives, un aperçu des algorithmes probabilistes. -->
+
+<!-- <LI> Cours 7: Algorithme pour la 2-connexité. Une  <a href="DIVERS/l3algo18192connexe.pdf">note</a> sur l'algo présenté en cours. -->
+
+<!-- <li> Cours 8: Arbres     couvrants minimaux.   -->
+<!-- <br> -->
+<!-- Une note sur les structures Union-Find pour l'algorithme de   Kruskal : <a href="DIVERS/Union-Find1819.pdf"> ICI.</a> .    -->
+
+</ul> 
+
+
+<br>
+
+<h2> TD
+</h2>
+
+
+<br>
+
+<ul>  
+
+<li> <a href="https://www.irif.fr/~francoisl/DIVERS/l3algo2021TD1.pdf"> TD1. </a>  <br>    
+</li><li> <a href="https://www.irif.fr/~francoisl/DIVERS/l3algo2021TD2.pdf"> TD2. </a>  <br>    
+</li><li> <a href="https://www.irif.fr/~francoisl/DIVERS/l3algo2021TD3.pdf"> TD3. </a>  <br>    
+</li><li> <a href="https://www.irif.fr/~francoisl/DIVERS/l3algo2021TD4.pdf"> TD4. </a>  <br>    
+</li><li> <a href="https://www.irif.fr/~francoisl/DIVERS/l3algo2021TD5.pdf"> TD5. </a>  <br>    
+</li><li> <a href="https://www.irif.fr/~francoisl/DIVERS/l3algo2021TD6.pdf"> TD6 (semaine du 2 novembre). </a>  <br>    
+</li><li> <a href="https://www.irif.fr/~francoisl/DIVERS/l3algo2021TD7.pdf"> TD7 (semaine du 9 novembre). </a>  <br>    
+</li><li> <a href="https://www.irif.fr/~francoisl/DIVERS/l3algo2021TD8.pdf"> TD8 (semaine du 16 novembre). </a>  <br>    
+</li><li> <a href="https://www.irif.fr/~francoisl/DIVERS/l3algo2021TD9.pdf"> TD9 (semaine du 23 novembre). </a>  <br>    
+</li><li> <a href="https://www.irif.fr/~francoisl/DIVERS/l3algo2021TD10.pdf"> TD10 (semaine du 30 novembre). </a>  <br>    
+</li><li> <a href="https://www.irif.fr/~francoisl/DIVERS/l3algo2021TD11.pdf"> TD11 (semaine du 7 décembre). </a>  <br>    
+
+</li></ul> 
+
+<br>
+
+
+
+
+<h2> Références bibliographiques </h2>
+
+<ul>
+<li> "Eléments d'algorithmique", D. Beauquier, J. Berstel,
+Ph. Chrétienne, Edition Masson. Ce livre est épuisé... mais disponible sur Internet <a href="http://www-igm.univ-mlv.fr/~berstel/Elements/Elements.html"> ICI </a>
+
+</li><li> "Introduction à l'analyse des algorithmes", R. Sedgewick, Ph. Flajolet,
+International Thomson Publishing.
+
+</li><li> "Introduction à l'Algorithmique", T.H. Cormen, C.E. Leiserson,
+R.L. Rivest, C. Stein, Dunod.
+
+
+</li><li> "Computers and intractability, a guide to the theory of NP-completeness", M.R. Garey, D.S. Johnson, Freeman and Company.
+</li></ul> 
+ 
+
+<h2>  </h2>
+
+<b> Email: </b> francois.laroussinie[at]univ-paris-diderot.fr <br>
+<br>
+
+
+</div>
+
+
+
+
+</body></html>

@@ -1,0 +1,187 @@
+/* Generic Selectors */
+
+body {
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	color: #333333;		
+	background-color: ivory;
+	/*margin: 0 0 0 0; top right bottom left*/	
+}
+
+p {
+	width: 80%;
+}
+
+
+/*
+.emph {
+    color : red;
+    font-weight : bold;
+    }
+
+.emph a:visited { 
+    color: plum;
+    text-decoration: underline;
+    font-weight: bold;
+*/
+
+/*.emph a:hover { 
+    color: red;
+    text-decoration: underline;
+    font-weight: bold;
+}*/
+
+
+
+.important {
+    text-decoration: blink;
+    font-weight: bold;
+    color: red; 
+}
+
+
+.importantsb {
+    font-weight: bold;
+    color: red; 
+}
+
+
+.rubrique {
+    font-family: Arial, sans-serif;
+    font-weight: normal;
+    color: seagreen;
+    }
+
+li {
+	list-style-type: square; /* disc, circle, square, none */
+	line-height: 150%;
+	
+}
+
+
+h1 {
+        color: brown;
+	font-family: Arial, sans-serif;
+	font-size: 24px;
+	font-weight: bold;
+}
+
+h2 {
+	font-family: Arial, sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+	color: #000000;
+	border-top: 1px solid #C6EC8C;
+}
+
+
+
+/*************************  ID's *************************/
+
+
+
+#entete {
+    	position: fixed;
+	background-color: seashell ;
+	width: 800px; 
+/*	height: 35%;	*/
+        height: 218px;
+	margin-top: -10px;
+        margin-left: -10px
+        padding: 0 0 0 0 : /* top right bottom left */
+	/* border-right: 1px solid #C6EC8C; */
+	border-right: 4px solid red;
+	border-bottom: 1px solid red;
+	font-weight: normal;
+    }
+
+
+#navigation {
+	position: fixed;
+	background-color: ivory ;
+	width: 150px;
+	height: 600px;	
+	margin-top: 219px;
+	/* border-right: 1px solid #C6EC8C; */
+	border-right: 1px solid red;
+	font-weight: normal;
+}
+
+#standard {
+	background-color: ivory ;
+	width: 800px;
+	margin-top: 30px;
+	/* border-top: 1px solid red; */
+        padding: 10 0 0 10 : /* top right bottom left */
+	font-weight: normal;
+    }
+
+div.scroll {
+  position: fixed;  
+  margin-top:230px;
+  margin-left: 190px;
+/*  margin-bottom: 0px; */
+  width: 620px; 
+  height: 65%;
+/* padding: 0 0 0 0 : /* top right bottom left */
+  overflow: auto;
+  border-width: 0px;
+  border: none;
+  vertical-align: bottom;
+}
+
+table.centerDoc {
+        position: relative;  
+/*	position: relative;*/	
+	NOpadding: 220 220 0 0; /*top right bottom left*/
+	margin: 20px 0px 0px 190px;
+/*       border-left: 2px solid blue; */
+}
+
+
+
+/*************************  Pseudo classes *************************/
+a:link {
+	color: teal;
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+a:visited { 
+color: forestgreen;
+text-decoration: underline;
+font-weight: bold;
+}
+
+a:hover {
+color: crimson;
+padding-bottom: 5px;
+font-weight: bold;
+text-decoration: underline;
+
+}  
+a:active { 
+color: grey;
+font-weight: bold; 
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
