@@ -1,0 +1,26 @@
+-- Quelques éléments de solution, sans garantie… à corriger ! ^^
+
+-- Ex 4
+-- 13
+SELECT COUNT(*)
+FROM notes
+GROUP BY num_etu
+HAVING AVG(note) >= 10;
+
+-- 14
+SELECT id_mat, COUNT(num_etu)
+FROM matieres NATURAL LEFT JOIN
+     (SELECT id_mat, num_etu
+     FROM notes NATURAL JOIN controles
+     GROUP BY id_mat, num_etu
+     HAVING AVG(note)>=12) as a
+GROUP BY id_mat;
+
+-- 15
+SELECT num_etu, COUNT(id_mat)
+FROM etudiants NATURAL LEFT JOIN
+     (SELECT id_mat, num_etu
+     FROM notes NATURAL JOIN controles
+     GROUP BY id_mat, num_etu
+     HAVING AVG(note)>=10) as a
+GROUP BY num_etu;
