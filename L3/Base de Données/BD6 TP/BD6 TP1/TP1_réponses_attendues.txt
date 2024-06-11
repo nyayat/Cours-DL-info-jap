@@ -1,0 +1,380 @@
+Question 1:
+              Table "projet_amelie.magasin"
+ Column  |  Type   | Collation | Nullable | Default 
+---------+---------+-----------+----------+---------
+ ref_mag | integer |           | not null | 
+ nom_mag | text    |           |          | 
+ ville   | text    |           | not null | 
+Indexes:
+    "magasin_pkey" PRIMARY KEY, btree (ref_mag)
+Referenced by:
+    TABLE "provenance" CONSTRAINT "provenance_ref_mag_fkey" FOREIGN KEY (ref_mag) REFERENCES magasin(ref_mag)
+
+                Table "projet_amelie.usine"
+  Column   |  Type   | Collation | Nullable | Default 
+-----------+---------+-----------+----------+---------
+ ref_usine | integer |           | not null | 
+ nom_usine | text    |           | not null | 
+ ville     | text    |           | not null | 
+Indexes:
+    "usine_pkey" PRIMARY KEY, btree (ref_usine)
+Referenced by:
+    TABLE "provenance" CONSTRAINT "provenance_ref_usine_fkey" FOREIGN KEY (ref_usine) REFERENCES usine(ref_usine)
+
+
+              Table "projet_amelie.produit"
+  Column  |  Type   | Collation | Nullable | Default 
+----------+---------+-----------+----------+---------
+ ref_prod | integer |           | not null | 
+ nom_prod | text    |           | not null | 
+ couleur  | text    |           |          | 
+ poids    | integer |           |          | 
+Indexes:
+    "produit_pkey" PRIMARY KEY, btree (ref_prod)
+Referenced by:
+    TABLE "provenance" CONSTRAINT "provenance_ref_prod_fkey" FOREIGN KEY (ref_prod) REFERENCES produit(ref_prod)
+
+
+Question 2:
+
++----------+-----------------+---------+-------+
+| ref_prod | nom_prod        | couleur | poids |
++----------+-----------------+---------+-------+
+|        1 | tabouret        | rouge   |     5 |
+|        2 | evier           | bleu    |    65 |
+|        3 | bureau          | jaune   |    45 |
+|        4 | lampe a petrole | vert    |    15 |
+|        5 | ordinateur      | rouge   |    10 |
+|        6 | telephone       | bleu    |     8 |
+|        7 | tabouret        | violet  |     1 |
+|        8 | evier           | bleu    |    65 |
+|        9 | tabouret        | orange  |     3 |
+|       10 | lampe halogene  | rose    |    11 |
+|       11 | lampe a souder  | noir    |     3 |
+|       12 | telephone       | bleu    |     2 |
+|       13 | casse-noix      | vert    |     1 |
+|       14 | casse-pied      | marron  |    55 |
+|       15 | casse-oreille   | violet  |    15 |
++----------+-----------------+---------+-------+
+15 rows in set (0.00 sec)
+
++-----------+-----------+-----------+
+| ref_usine | nom_usine | ville     |
++-----------+-----------+-----------+
+|       109 | martin    | Nantes    |
+|       189 | leroux    | Marseille |
+|       200 | peugeot   | Marseille |
+|       213 | dupont    | Bordeaux  |
+|       302 | rover     | Londres   |
+|       402 | peugeot   | Toulouse  |
++-----------+-----------+-----------+
+6 rows in set (0.00 sec)
+
++---------+------------+-----------+
+| ref_mag | nom_mag    | ville     |
++---------+------------+-----------+
+|      14 | Stock10    | Paris     |
+|      16 | JaiTout    | Marseille |
+|      18 | EnGros     | Bordeaux  |
+|      20 | PrixBas    | Toulouse  |
+|      22 | BasPrix    | Marseille |
+|      24 | DuBon      | Lyon      |
+|      26 | DuBeau     | Toulouse  |
+|      28 | BasDeGamme | Dublin    |
+|      30 | PasCher    | Lyon      |
++---------+------------+-----------+
+9 rows in set (0.01 sec)
+
++----------+-----------+---------+----------+
+| ref_prod | ref_usine | ref_mag | quantite |
++----------+-----------+---------+----------+
+|        1 |       109 |      14 |       80 |
+|        1 |       109 |      16 |      100 |
+|        1 |       302 |      16 |      213 |
+|        2 |       189 |      30 |      213 |
+|        3 |       402 |      14 |      315 |
+|        4 |       200 |      18 |      985 |
+|        5 |       302 |      20 |      858 |
+|        6 |       109 |      22 |      458 |
+|        6 |       213 |      16 |      315 |
+|        7 |       109 |      16 |      213 |
+|        8 |       302 |      16 |     2000 |
+|        9 |       189 |      30 |      175 |
+|       10 |       402 |      14 |      100 |
+|       11 |       109 |      16 |      750 |
+|       11 |       302 |      16 |      100 |
+|       12 |       189 |      22 |      213 |
+|       12 |       189 |      30 |      315 |
+|       12 |       200 |      16 |      589 |
+|       13 |       402 |      14 |      499 |
+|       14 |       109 |      18 |      213 |
+|       15 |       189 |      16 |      333 |
+|       15 |       189 |      20 |     1958 |
++----------+-----------+---------+----------+
+22 rows in set (0.00 sec)
+
+Question 3 2:
++-----------+
+| ville     |
++-----------+
+| Nantes    |
+| Marseille |
+| Marseille |
+| Bordeaux  |
+| Londres   |
+| Toulouse  |
++-----------+
+6 rows in set (0.00 sec)
+
+Question 3 sans doublons:
++-----------+
+| ville     |
++-----------+
+| Nantes    |
+| Marseille |
+| Bordeaux  |
+| Londres   |
+| Toulouse  |
++-----------+
+5 rows in set (0.01 sec)
+
+Question 4:
++-----------------+---------+
+| nom_prod        | couleur |
++-----------------+---------+
+| tabouret        | rouge   |
+| evier           | bleu    |
+| bureau          | jaune   |
+| lampe a petrole | vert    |
+| ordinateur      | rouge   |
+| telephone       | bleu    |
+| tabouret        | violet  |
+| evier           | bleu    |
+| tabouret        | orange  |
+| lampe halogene  | rose    |
+| lampe a souder  | noir    |
+| telephone       | bleu    |
+| casse-noix      | vert    |
+| casse-pied      | marron  |
+| casse-oreille   | violet  |
++-----------------+---------+
+15 rows in set (0.00 sec)
+
+Question 5:
++----------+----------+
+| ref_prod | quantite |
++----------+----------+
+|        1 |       80 |
+|        3 |      315 |
+|       10 |      100 |
+|       13 |      499 |
++----------+----------+
+4 rows in set (0.00 sec)
+
+Question 6:
++-----------+-----------+-----------+
+| ref_usine | nom_usine | ville     |
++-----------+-----------+-----------+
+|       189 | leroux    | Marseille |
+|       200 | peugeot   | Marseille |
++-----------+-----------+-----------+
+2 rows in set (0.00 sec)
+
+Question 7:
++---------+
+| ref_mag |
++---------+
+|      14 |
+|      16 |
++---------+
+2 rows in set (0.00 sec)
+
+Question 8:
++----------+------------+
+| ref_prod | nom_prod   |
++----------+------------+
+|        1 | tabouret   |
+|        5 | ordinateur |
++----------+------------+
+2 rows in set (0.00 sec)
+
+Question 9:
++---------+
+| nom_mag |
++---------+
+| DuBon   |
+| PasCher |
++---------+
+2 rows in set (0.00 sec)
+
+Question 10:
++----------+---------------+
+| ref_prod | nom_prod      |
++----------+---------------+
+|       13 | casse-noix    |
+|       14 | casse-pied    |
+|       15 | casse-oreille |
++----------+---------------+
+3 rows in set (0.00 sec)
+
+Question 11:
++---------+
+| ref_mag |
++---------+
+|      14 |
+|      16 |
+|      16 |
+|      30 |
+|      14 |
+|      18 |
+|      20 |
+|      22 |
+|      16 |
+|      16 |
+|      16 |
+|      30 |
+|      14 |
+|      16 |
+|      16 |
+|      22 |
+|      30 |
+|      16 |
+|      14 |
+|      18 |
+|      16 |
+|      20 |
++---------+
+22 rows in set (0.01 sec)
+
+Question 11 sans doublons:
++---------+
+| ref_mag |
++---------+
+|      14 |
+|      16 |
+|      30 |
+|      18 |
+|      20 |
+|      22 |
++---------+
+6 rows in set (0.00 sec)
+
+Question 12:
++-----------------+
+| nom_prod        |
++-----------------+
+| bureau          |
+| lampe a petrole |
+| casse-oreille   |
++-----------------+
+3 rows in set (0.00 sec)
+
+
+
+Question 13:
++-----------+
+| nom_prod  |
++-----------+
+| telephone |
+| telephone |
++-----------+
+2 rows in set (0.00 sec)
+
+Question 14:
++-----------+
+| nom_prod  |
++-----------+
+| bureau    |
+| telephone |
+| telephone |
++-----------+
+3 rows in set (0.00 sec)
+
+Question 15:
++-----------------+
+| nom_prod        |
++-----------------+
+| evier           |
+| bureau          |
+| lampe a petrole |
+| evier           |
+| lampe halogene  |
+| lampe a souder  |
+| casse-pied      |
++-----------------+
+7 rows in set (0.00 sec)
+
+
+Question 16:
+ ref_mag 
+---------
+      34
+(1 row)
+
+Question 17: 
+
+ ref_mag 
+---------
+      32
+(1 row)
+
+Question 18:
+
+ ref_prod 
+----------
+        1
+        1
+        6
+        7
+       11
+       14
+(6 rows)
+
+Question 19 :
+
+ nom_usine 
+-----------
+ martin
+ leroux
+ leroux
+ dupont
+ peugeot
+ peugeot
+ peugeot
+ peugeot
+(8 rows)
+
+Question 20:
+
+ ref_prod | quantite 
+----------+----------
+        2 |      213
+        5 |      858
+        9 |      175
+       12 |      315
+       15 |     1958
+(5 rows)
+
+Question 21:
+
+ nom_usine 
+-----------
+ rover
+(1 row)
+
+Question 22:
+    nom_prod     
+-----------------
+ tabouret
+ lampe a petrole
+ ordinateur
+ telephone
+ tabouret
+ tabouret
+ lampe halogene
+ lampe a souder
+ telephone
+ casse-noix
+ casse-oreille
+(11 rows)
+

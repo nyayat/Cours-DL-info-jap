@@ -1,0 +1,21 @@
+(ocamllex lexer)
+
+(menhir
+ (flags --explain --inspection --table)
+ (modules parser))
+
+(library
+ (name mycaml)
+ (ocamlopt_flags :standard -p)
+ (modules mycaml parser lexer AST \ mytop)
+ (libraries menhirLib)
+ (modes byte)
+)
+
+(executable
+  (name mytop)
+  (libraries mycaml)
+  (modules mytop)
+  (modes byte)
+)
+

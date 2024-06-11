@@ -1,0 +1,349 @@
+Requête 1.1:
+ tid |           nom           | annee |       pays       
+-----+-------------------------+-------+------------------
+   1 | Coupe du Monde          |  1987 | Nouvelle-Zélande
+   2 | Coupe du Monde          |  1991 | Angleterre
+   3 | Coupe du Monde          |  1995 | Afrique du Sud
+   4 | Coupe du Monde          |  1999 | Pays de Galles
+   5 | Coupe du Monde          |  2003 | Australie
+   6 | Coupe du Monde          |  2007 | France
+   7 | Coupe du Monde          |  2011 | Nouvelle-Zélande
+   8 | Championnat d'Allemagne |  2019 | Allemagne
+(8 rows)
+
+ mid | tournois | gagnant | perdant |    tour     
+-----+----------+---------+---------+-------------
+   1 |        1 |       1 |       2 | finale
+   2 |        2 |       7 |       5 | finale
+   3 |        3 |       6 |       1 | finale
+   4 |        4 |       7 |       2 | finale
+   5 |        5 |       5 |       7 | finale
+   6 |        6 |       6 |       5 | finale
+   7 |        1 |       2 |       7 | demi-finale
+   8 |        1 |       1 |       3 | demi-finale
+   9 |        2 |       5 |       8 | demi-finale
+  10 |        2 |       7 |       1 | demi-finale
+  11 |        3 |       6 |       2 | demi-finale
+  12 |        3 |       1 |       5 | demi-finale
+  13 |        4 |       7 |       6 | demi-finale
+  14 |        4 |       2 |       1 | demi-finale
+  15 |        5 |       7 |       1 | demi-finale
+  16 |        5 |       5 |       2 | demi-finale
+  17 |        6 |       5 |       2 | demi-finale
+  18 |        6 |       6 |       4 | demi-finale
+  19 |        7 |       1 |       7 | demi-finale
+(19 lignes)
+
+ eid |         nom          |       pays       
+-----+----------------------+------------------
+   1 | All Blacks           | Nouvelle-Zélande
+   2 | XV de France         | France
+   3 | XV du Poireau        | Pays de Galles
+   4 | Pumas                | Argentine
+   5 | XV de la Rose        | Angleterre
+   6 | Springboks           | Afrique du Sud
+   7 | Wallabies            | Australie
+   8 | XV du Chardon        | Écosse
+   9 | Les braves cerisiers | Japon
+  10 | Azzurri              | Italie
+  11 | St. Pauli            | Allemagne
+  12 | MFC 1871             | France
+(12 rows)
+
+ tid | eid 
+-----+-----
+   7 |   1
+   7 |   2
+   7 |   3
+   7 |   4
+   7 |   5
+   7 |   6
+   7 |   7
+   7 |   8
+   7 |   9
+   7 |  10
+   6 |   1
+   6 |   2
+   6 |   3
+   6 |   4
+   6 |   5
+   6 |   6
+   6 |   7
+   6 |   8
+   6 |   9
+   6 |  10
+   5 |   1
+   5 |   2
+   5 |   3
+   5 |   4
+   5 |   5
+   5 |   6
+   5 |   7
+   5 |   8
+   5 |   9
+   5 |  10
+   4 |   1
+   4 |   2
+   4 |   3
+   4 |   4
+   4 |   5
+   4 |   6
+   4 |   7
+   4 |   8
+   4 |   9
+   4 |  10
+   3 |   1
+   3 |   2
+   3 |   3
+   3 |   4
+   3 |   5
+   3 |   6
+   3 |   7
+   3 |   8
+   3 |   9
+   3 |  10
+   2 |   1
+   2 |   2
+   2 |   3
+   2 |   4
+   2 |   5
+   2 |   6
+   2 |   7
+   2 |   8
+   2 |   9
+   2 |  10
+   1 |   1
+   1 |   2
+   1 |   3
+   1 |   4
+   1 |   5
+   1 |   6
+   1 |   7
+   1 |   8
+   1 |   9
+   1 |  10
+(70 lignes)
+
+Requête 1.2:
+ annee 
+-------
+  1987
+  2011
+(2 lignes)
+
+Requête 1.3:
+  pays  
+--------
+ France
+(1 ligne)
+
+Requête 1.4:
+ gagnant 
+---------
+       1
+       5
+       6
+       2
+       7
+(5 lignes)
+
+Requête 2.1:
+      nom      
+---------------
+ XV de France
+ Springboks
+ All Blacks
+ XV de la Rose
+ Wallabies
+(5 lignes)
+
+Requête 2.2:
+      nom       | annee 
+----------------+-------
+ Coupe du Monde |  1987
+ Coupe du Monde |  2007
+ Coupe du Monde |  1999
+ Coupe du Monde |  1995
+ Coupe du Monde |  2003
+(5 lignes)
+
+Requête 2.3:
+ mid 
+-----
+   5
+  19
+   7
+(3 lignes)
+
+Requête 2.4:
+ mid 
+-----
+  14
+   8
+  12
+  19
+   1
+  15
+   3
+  10
+(8 lignes)
+
+Requête 2.5:
+ eid 
+-----
+   6
+   8
+   1
+   2
+   3
+  10
+   4
+   5
+   9
+   7
+(10 lignes)
+
+Requête 3.1:
+         nom          
+----------------------
+ XV du Poireau
+ XV de la Rose
+ All Blacks
+ XV de France
+ Pumas
+ Springboks
+ Wallabies
+ Azzurri
+ XV du Chardon
+ Les braves cerisiers
+(10 lignes)
+
+Requête 3.2:
+      nom       | annee 
+----------------+-------
+ Coupe du Monde |  1987
+ Coupe du Monde |  1999
+ Coupe du Monde |  1995
+ Coupe du Monde |  2003
+ Coupe du Monde |  2007
+(5 lignes)
+
+Requête 3.3:
+      nom      | annee 
+---------------+-------
+ All Blacks    |  1987
+ XV de la Rose |  2003
+ Springboks    |  2007
+ Springboks    |  1995
+ Wallabies     |  1999
+ Wallabies     |  1991
+(6 lignes)
+
+Requête 3.4:
+      nom      
+---------------
+ XV de France
+ All Blacks
+ Wallabies
+ XV de la Rose
+(4 lignes)
+
+
+Requête 3.5:
+      nom      
+---------------
+ XV de la Rose
+ Springboks
+ Wallabies
+ All Blacks
+ XV de France
+(5 rows)
+
+Requête 4.1:
+         nom          |   pays    
+----------------------+-----------
+ Pumas                | Argentine
+ XV du Chardon        | Écosse
+ Les braves cerisiers | Japon
+ Azzurri              | Italie
+(4 lignes)
+
+Requête 4.2:
+         nom          
+----------------------
+ XV du Poireau
+ Pumas
+ XV du Chardon
+ Les braves cerisiers
+ Azzurri
+ St. Pauli
+ MFC 1871
+(7 rows)
+Requête 4.3:
+           nom           | annee 
+-------------------------+-------
+ Coupe du Monde          |  1991
+ Coupe du Monde          |  1995
+ Coupe du Monde          |  2003
+ Coupe du Monde          |  2007
+ Coupe du Monde          |  2011
+ Championnat d'Allemagne |  2019
+(6 rows)
+
+
+Requête 4.4:
+         nom          
+----------------------
+ Les braves cerisiers
+ Azzurri
+ St. Pauli
+ MFC 1871
+(4 rows)
+
+
+Requête 4.5:
+    nom    
+-----------
+ St. Pauli
+ MFC 1871
+(2 rows)
+
+
+Requête 4.6:
+           nom           
+-------------------------
+ Championnat d'Allemagne
+(1 row)
+
+Requête 5.1:
+DELETE 1
+
+Requête 5.2:
+DELETE 2
+
+Requête 5.3:
+DELETE 2
+
+Requête 5.4:
+ tournois | mid 
+----------+-----
+        1 |   8
+        1 |   7
+        1 |   1
+        2 |  10
+        2 |   2
+        2 |   9
+        3 |   3
+        3 |  11
+        3 |  12
+        4 |  13
+        4 |   4
+        4 |  14
+        5 |   5
+        5 |  15
+        5 |  16
+        6 |   6
+        6 |  17
+        6 |  18
+        7 |  19
+(19 lignes)
