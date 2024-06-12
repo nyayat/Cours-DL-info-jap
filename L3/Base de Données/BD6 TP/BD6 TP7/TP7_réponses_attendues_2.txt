@@ -1,0 +1,131 @@
+(a)
+  prenom  |    nom     
+----------+------------
+ Karima   | BenHamida
+ Pauline  | Duval
+ Amelia   | Herrbrandt
+ Diego    | Truong
+ Laetitia | Dupond
+ Paul     | Duval
+(6 lignes)
+
+(b)
+  prenom   |    nom    
+-----------+-----------
+ Cecilia   | Sargasy
+ Diego     | Truong
+ Elise     | BenHamida
+ Elizabeth | Jones
+ Karima    | BenHamida
+ Karima    | Dupond
+(6 lignes)
+
+(c)
+  prenom   |    nom    
+-----------+-----------
+ Karima    | Dupond
+ Pauline   | Truong
+ Elizabeth | Jones
+ Elise     | BenHamida
+ Isadora   | Martin
+ Cecilia   | Sargasy
+ Julia     | Geyer
+ Brigita   | Macaron
+ Francois  | Trollant
+
+(d)
+ createur 
+----------
+(0 ligne)
+
+(e)
+DELETE 2
+
+(f)
+  ref  |  createur   |  type   | taille | stock | prix 
+-------+-------------+---------+--------+-------+------
+ 10038 | AgnesB      | jupe    |     38 |    10 |   50
+ 10040 | AgnesB      | jupe    |     38 |     2 |   50
+ 10140 | LaguerFeld  | robe    |     40 |   115 |  150
+ 10242 | SoniaRykiel | T-shirt |     42 |     1 |   35
+ 10736 | AgnesB      | jupe    |     36 |     0 |   60
+ 10738 | AgnesB      | jupe    |     38 |     0 |   60
+ 10740 | AgnesB      | jupe    |     40 |    10 |   65
+ 10846 | AgnesB      | robe    |     46 |    20 |   65
+ 11036 | AgnesB      | T-shirt |     36 |     2 |   39
+(9 lignes)
+
+(h)
+  createur   | count 
+-------------+-------
+ Prada       |     3
+ SoniaRykiel |     4
+ AgnesB      |     4
+ Lagerfeld   |     2
+
+(i)
+  createur   |  type   | taille 
+-------------+---------+--------
+ Prada       | jupe    |     40
+ Prada       | T-shirt |     40
+ SoniaRykiel | T-shirt |     44
+(3 lignes)
+
+(j)
+  ref  
+-------
+ 10244
+ 10344
+(2 lignes)
+
+(k)
+  createur   |   type   
+-------------+----------
+ Prada       | T-shirt
+ Lagerfeld   | pantalon
+ AgnesB      | pantalon
+ Lagerfeld   | robe
+ SoniaRykiel | T-shirt
+
+(l)
+  createur   |   type   
+-------------+----------
+ Prada       | T-shirt
+ Lagerfeld   | pantalon
+ AgnesB      | pantalon
+ Lagerfeld   | robe
+ SoniaRykiel | T-shirt
+
+(m)
+  createur   |  prenom   |    nom     
+-------------+-----------+------------
+ SoniaRykiel | Diego     | Truong
+ Prada       | Cecilia   | Sargasy
+ SoniaRykiel | Laetitia  | Dupond
+ Lagerfeld   | Karima    | BenHamida
+ SoniaRykiel | Amelia    | Herrbrandt
+ Prada       | Paul      | Duval
+ Prada       | Pauline   | Duval
+ AgnesB      | Elizabeth | Jones
+ SoniaRykiel | Pauline   | Duval
+ Lagerfeld   | Karima    | Dupond
+
+(n)
+  prenom   |    nom     | coalesce 
+-----------+------------+----------
+ Francois  | Trollant   |        0
+ Pauline   | Duval      |       75
+ Elise     | BenHamida  |        0
+ Paul      | Duval      |       40
+ Isadora   | Martin     |        0
+ Pauline   | Truong     |        0
+ Diego     | Truong     |       64
+ Julia     | Geyer      |        0
+ Brigita   | Macaron    |        0
+ Karima    | Dupond     |        0
+ Elizabeth | Jones      |        0
+ Amelia    | Herrbrandt |       74
+ Laetitia  | Dupond     |       74
+ Karima    | BenHamida  |       52
+(14 lignes)
+

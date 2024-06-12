@@ -1,0 +1,315 @@
+--Q1
+
+numerocoureur |   nomcoureur   | codeequipe | codepays | datenaiss  
+---------------+----------------+------------+----------+------------
+            19 | SANSPAYS Bruno | FDJ        |          | 1995-04-06
+(1 row)
+
+
+--Q2
+ coureurs | coureurs avec pays 
+----------+---------------------
+       11 |                  10
+(1 row)
+
+--Q3
+ numerocoureur |    nomcoureur    | numeroetape 
+---------------+------------------+-------------
+            13 | BIDOCHON Bernard |           1
+             8 | ULLRICH Jan      |           1
+           114 | CIPOLLINI Mario  |           1
+            31 | JALABERT Laurent |           1
+            18 | TALON Achille    |           1
+           151 | OLANO Abraham    |           1
+            91 | BOARDMAN Chris   |           1
+            61 | ROMINGER Tony    |           1
+            31 | JALABERT Laurent |           2
+            13 | BIDOCHON Bernard |           2
+            18 | TALON Achille    |           2
+             8 | ULLRICH Jan      |           2
+            61 | ROMINGER Tony    |           2
+            91 | BOARDMAN Chris   |           2
+           114 | CIPOLLINI Mario  |           2
+           151 | OLANO Abraham    |           2
+            91 | BOARDMAN Chris   |           3
+            31 | JALABERT Laurent |           3
+            18 | TALON Achille    |           3
+             8 | ULLRICH Jan      |           3
+            13 | BIDOCHON Bernard |           3
+           114 | CIPOLLINI Mario  |           3
+           151 | OLANO Abraham    |           3
+            31 | JALABERT Laurent |           4
+            13 | BIDOCHON Bernard |           4
+           151 | OLANO Abraham    |           4
+             8 | ULLRICH Jan      |           4
+            18 | TALON Achille    |           4
+(28 rows)
+
+--Q4
+ count 
+-------
+    11
+(1 row)
+
+
+--Q5
+ temps moyen | nombre kilomètres 
+-------------+-------------------
+ 04:18:47.5  |               730
+(1 row)
+
+--Q6
+ numeroetape | dateetape  |    villedepart    | villearrive | nbkm 
+-------------+------------+-------------------+-------------+------
+           2 | 1997-07-07 | ST-VALERY-EN-CAUX | VIRE        |  262
+(1 row)
+
+
+--Q7
+    nomcoureur    
+------------------
+ ULLRICH Jan
+ JALABERT Laurent
+ ROMINGER Tony
+ BOARDMAN Chris
+ CIPOLLINI Mario
+ OLANO Abraham
+(6 rows)
+
+--Q8
+    nomcoureur    | vitesse moyenne 
+------------------+-----------------
+ BIDOCHON Bernard |         16.9060
+ TALON Achille    |         25.0502
+ ULLRICH Jan      |         43.1436
+ OLANO Abraham    |         47.1180
+ JALABERT Laurent |         48.5855
+(5 rows)
+
+
+--Q9
+ age moyen 
+-----------
+     24.45
+(1 row)
+
+
+--Q10
+ count 
+-------
+     6
+(1 row)
+
+
+--Q11
+ count | codeequipe 
+-------+------------
+     2 | SAE
+     1 | BAN
+     1 | TEL
+     1 | ONC
+     1 | GAN
+     2 | COF
+     3 | FDJ
+(7 rows)
+
+
+--Q12
+ count | codeequipe |       nomequipe       
+-------+------------+-----------------------
+     2 | SAE        | SAECO
+     1 | TEL        | Telekom
+     3 | FDJ        | LA FRANCAISE DES JEUX
+     2 | COF        | Cofidis
+     1 | BAN        | BANESTO
+     1 | ONC        | O.N.C.E.
+     1 | GAN        | GAN
+(7 rows)
+
+--Q13
+ codeequipe |   min    
+------------+----------
+ BAN        | 06:27:47
+ COF        | 06:27:47
+ FDJ        | 06:34:33
+ GAN        | 06:27:47
+ ONC        | 06:27:47
+ SAE        | 06:27:47
+ TEL        | 06:27:47
+(7 rows)
+
+--Q14
+ codeequipe |   min    
+------------+----------
+ BAN        | 01:06:13
+ FDJ        | 02:04:33
+ ONC        | 01:04:13
+ TEL        | 01:12:19
+(4 rows)
+
+--Q15
+ numeroetape | codeequipe |   min    
+-------------+------------+----------
+           1 | BAN        | 04:48:29
+           1 | COF        | 04:48:24
+           1 | FDJ        | 04:54:33
+           1 | GAN        | 04:48:19
+           1 | ONC        | 04:48:37
+           1 | SAE        | 04:48:09
+           1 | TEL        | 04:48:21
+           2 | BAN        | 06:27:47
+           2 | COF        | 06:27:47
+           2 | FDJ        | 06:34:33
+           2 | GAN        | 06:27:47
+           2 | ONC        | 06:27:47
+           2 | SAE        | 06:27:47
+           2 | TEL        | 06:27:47
+           3 | BAN        | 04:54:33
+           3 | FDJ        | 04:59:33
+           3 | GAN        | 04:54:33
+           3 | ONC        | 04:54:33
+           3 | SAE        | 04:54:44
+           3 | TEL        | 04:54:33
+           4 | BAN        | 01:06:13
+           4 | FDJ        | 02:04:33
+           4 | ONC        | 01:04:13
+           4 | TEL        | 01:12:19
+(24 rows)
+
+--Q16
+ numeroetape | ?column? 
+-------------+----------
+           1 | 00:16:24
+           2 | 00:26:46
+           3 | 00:05:10
+           4 | 02:00:20
+(4 rows)
+
+
+--Q17
+ count | codeequipe 
+-------+------------
+     2 | SAE
+     2 | COF
+     3 | FDJ
+(3 rows)
+
+
+--Q18
+ numerocoureur 
+---------------
+           151
+            31
+            13
+            18
+             8
+(5 rows)
+
+
+--Q19
+ numerocoureur |    nomcoureur    |  vitesse moyenne   
+---------------+------------------+--------------------
+            18 | TALON Achille    | 38.989940951307084
+            31 | JALABERT Laurent |  42.31202704878441
+            91 | BOARDMAN Chris   | 41.910060268891975
+            13 | BIDOCHON Bernard | 36.708012068387525
+             8 | ULLRICH Jan      |  41.99424736337488
+           151 | OLANO Abraham    |  42.23586512808974
+           114 | CIPOLLINI Mario  | 41.909340659340664
+(7 rows)
+
+--Q20
+DROP VIEW
+CREATE VIEW
+
+--Q21
+
+ numerocoureur 
+---------------
+            31
+(1 row)
+
+--Q22
+
+ numerocoureur 
+---------------
+            31
+(1 row)
+
+--Q23
+ numerocoureur | numet |    t     
+---------------+-------+----------
+             8 |     1 | 04:48:21
+             8 |     2 | 11:16:08
+             8 |     3 | 16:10:41
+             8 |     4 | 17:23:00
+            13 |     1 | 04:54:33
+            13 |     2 | 11:49:06
+            13 |     3 | 16:48:39
+            13 |     4 | 19:53:12
+            18 |     1 | 05:04:33
+            18 |     2 | 11:39:06
+            18 |     3 | 16:38:49
+            18 |     4 | 18:43:22
+            31 |     1 | 04:48:37
+            31 |     2 | 11:16:24
+            31 |     3 | 16:10:57
+            31 |     4 | 17:15:10
+            61 |     1 | 04:48:24
+            61 |     2 | 11:16:11
+            91 |     1 | 04:48:19
+            91 |     2 | 11:16:06
+            91 |     3 | 16:10:39
+           114 |     1 | 04:48:09
+           114 |     2 | 11:15:56
+           114 |     3 | 16:10:40
+           151 |     1 | 04:48:29
+           151 |     2 | 11:16:16
+           151 |     3 | 16:10:49
+           151 |     4 | 17:17:02
+(28 rows)
+
+--Q24
+ numerocoureur |    nomcoureur    | numeroetape | tmpcumul 
+---------------+------------------+-------------+----------
+           114 | CIPOLLINI Mario  |           1 | 04:48:09
+           114 | CIPOLLINI Mario  |           2 | 11:15:56
+            91 | BOARDMAN Chris   |           3 | 16:10:39
+            31 | JALABERT Laurent |           4 | 17:15:10
+(4 rows)
+
+
+--Q25
+ numerocoureur |    nomcoureur    
+---------------+------------------
+             8 | ULLRICH Jan
+            31 | JALABERT Laurent
+            61 | ROMINGER Tony
+            91 | BOARDMAN Chris
+           114 | CIPOLLINI Mario
+           151 | OLANO Abraham
+(6 rows)
+
+--Q26
+ numerocoureur |    nomcoureur    | codeequipe 
+---------------+------------------+------------
+           151 | OLANO Abraham    | BAN
+            18 | TALON Achille    | FDJ
+            31 | JALABERT Laurent | ONC
+             8 | ULLRICH Jan      | TEL
+(4 rows)
+
+
+--Q27
+ codeequipe 
+------------
+ FDJ
+(1 row)
+
+--Q28
+ numerocoureur |    nomcoureur    
+---------------+------------------
+            31 | JALABERT Laurent
+            13 | BIDOCHON Bernard
+(2 rows)
+
