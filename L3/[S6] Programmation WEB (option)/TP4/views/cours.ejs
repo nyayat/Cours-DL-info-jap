@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <header> <img src="logo.jpg"> </header>
+        <div>
+        <h1>Cours : <%= nom %></h1>
+        <p>Description : <%= description %> <p>
+        </div>
+        <p>Professeur</p>
+        <ul>
+            <% let i;
+            for (i = 0; i < enseignant.length; i++) { %>
+            <li><%= enseignant[i] %></li>
+        <% } %>
+        </ul>
+        <footer> <%= responsable %> </footer>
+    </body>
+</html>

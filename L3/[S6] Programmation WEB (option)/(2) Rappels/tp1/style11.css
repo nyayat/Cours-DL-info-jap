@@ -1,0 +1,23 @@
+p {
+    font-family: sans-serif;
+    color:hsl(0, 0%, 30%);
+}
+
+
+main {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(201, 201, 201);
+}
+
+body {
+    background-color: rgb(144, 174, 212);
+}
+
+article {
+    background-color: white;
+    
+    padding: 2em;
+    border: 0.5px solid #333;
+}

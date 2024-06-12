@@ -1,0 +1,22 @@
+footer {
+    background-color: rgb(113, 142, 180);
+    position: fixed;
+    bottom: 0px;
+    width: 500px;
+
+}
+
+div {
+    position: absolute;
+    left: 0;
+    width: 100px;
+    height: 100px;
+}
+#div1 {
+    background-color: rgb(180, 113, 113);
+    z-index: 10;
+}
+
+#div2 {
+    background-color: rgb(113, 142, 180);
+}

@@ -1,0 +1,8 @@
+.navbar {
+    position: sticky-top;
+}
+
+article {
+    border: 1px solid gray ;
+    margin: 1em 1em 1em 1em;
+}

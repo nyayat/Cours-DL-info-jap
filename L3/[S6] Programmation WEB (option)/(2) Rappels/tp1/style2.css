@@ -1,0 +1,24 @@
+p {
+    font-family: sans-serif;
+    color:hsl(0, 0%, 30%);
+}
+
+article img {
+    width: 250px;
+    float: left;
+}
+
+table,
+td {
+    border: 0.5px solid #333;
+}
+
+thead,
+tfoot {
+    background-color: #333;
+    color: #fff;
+}
+
+article {
+    padding: 2em;
+}

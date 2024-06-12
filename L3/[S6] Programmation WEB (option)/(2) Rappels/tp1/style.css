@@ -1,0 +1,33 @@
+p {
+    font-family: sans-serif;
+    color:hsl(0, 0%, 30%);
+}
+
+
+
+h1, h2 {
+    border: 0.2em solid #8ccbf2;
+    padding: 0.1em;
+    background: #b6daf0;
+    text-align: center;
+}
+a:visited {
+    color: red;
+}
+a {
+    color: black;
+}
+a:hover {
+    font-style: italic;
+}
+
+article h1 {
+    font-size: 35px;
+}
+
+article footer {
+    text-align: right;
+    font-weight: bold;
+}
+
+

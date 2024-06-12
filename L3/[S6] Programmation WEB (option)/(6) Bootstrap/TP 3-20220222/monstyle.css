@@ -1,0 +1,20 @@
+@media screen and (max-width: 600px) {
+    div {
+        color:rgb(160, 22, 22);
+    }
+}
+
+@media screen and (min-width: 600px) {
+    div {
+        color:rgb(22, 116, 160);
+    }
+
+}
+@media screen and (min-width: 1000px) {
+    
+    div {
+        color:rgb(22, 160, 79);
+    }
+
+}
+    

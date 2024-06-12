@@ -1,0 +1,5 @@
+private static int dans le tas
+private int dans une pile
+--> 1 et 2 pareil mais 1 manipule dans le tas et 2 dans une pile,
+	donc synchronisation plus rapide dans tas
+3 attend la synchronisation des booléens avant de manipuler les entiers.

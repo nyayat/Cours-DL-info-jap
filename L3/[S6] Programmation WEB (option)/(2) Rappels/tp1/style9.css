@@ -1,0 +1,15 @@
+footer {
+    background-color: rgb(113, 142, 180);
+    position: fixed;
+    bottom: 0px;
+    width: 500px;
+
+}
+
+div {
+    width: 100px;
+    border: 5px solid #246c88;
+    
+    
+    float: left;
+}

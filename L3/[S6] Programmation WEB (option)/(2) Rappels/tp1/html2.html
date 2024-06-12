@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="courte description">
+        <title>Exo 2</title>
+        <!--
+        <link href="style.css" rel="stylesheet">
+        -->
+    </head>
+
+    <body>
+        <form method="post" action ="html2.html" ></form>
+            <fieldset>
+                <legend>Identifiants</legend> <!-- Titre du fieldset -->
+                <label for="nom">Quel est votre nom ?</label>
+                <input type="text" name="nom" id="nom" />
+                <label for="mdp">Quel est votre mot de passe ?</label>
+                <input type="password" name="mdp" id="mdp" />
+            </fieldset>
+
+            <fieldset>
+            <legend>Menu</legend> <!-- Titre du fieldset -->
+                <p>
+                    Choississez les entrées et accompagnements
+                    <br>
+                    <input type="checkbox" name="aliment" value="frites" id="frites" />
+                    <label for="frites">frites</label>
+                    <br>
+                    <input type="checkbox" name="aliment" value="pâtes" id="pâtes" />
+                    <label for="pâtes">pâtes</label>
+                    <br>
+                    <input type="checkbox" name="aliment" value="épinards" id="épinard" />
+                    <label for="épinards">épinards</label>
+                    <br>
+                    <input type="checkbox" name="aliment" value="huîtres" id="huîtres" />
+                    <label for="épinards">huîtres</label>
+                </p>
+                <p>
+                Choisissez la viande :
+                <select name="Viande">
+                    <option value="1">bavette</option>
+                    <option value="2">steak</option>
+                    <option value="3">poulet</option>
+                    <option value="4">canard</option>
+                </select>
+                
+
+                </p>
+            </fieldset>
+            <button name="envoyer" value="envoyer">envoyer</button>
+        </form>
+    </body>
+</html>

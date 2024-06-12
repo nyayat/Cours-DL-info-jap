@@ -1,0 +1,356 @@
+{
+  "D&D": {
+    "description": "Un robot pour jouer a D&D",
+    "etats":
+    {
+        "start": [
+            "Bonjour, quel type de personnage voulez-vous incarner?",
+            {"guerrier": "mat_gu", "magicien": "mat_mag","assassin": "mat_as"}
+        ],
+        "mat_gu": [
+            "Vous êtes un fier guerrier, un dragon s'approche, que faites vous?",
+            {"fuir": "choix_fuiteGu", "attaquer": "choix_attGu", "dialoguer": "choix_dialGu"}
+        ],
+        "mat_mag": [
+            "Vous êtes un magicien,  un dragon s'approche, que faites vous?",
+            {"fuir": "choix_fuiteMag", "attaquer": "choix_attMag", "dialoguer": "choix_dialMag"}
+        ],
+        "mat_as": [
+            "Vous êtes un assassin, un dragon s'approche, que faites vous?",
+            {"fuir": "choix_fuiteAs", "attaquer": "choix_attAs", "dialoguer": "choix_dialAs"}
+        ],
+        "choix_fuiteGu": [
+            "Vous êtes trop lent avec votre armure, le dragon ne fait qu'une bouchée de vous. Vous êtes mort. Voulez-vous recommencer?",
+            {"oui": "start", "non": "end"}
+        ],
+        "choix_attGu": [
+            "Vous attaquez le dragon. Votre entrainement acharné a payer et un seul coup suffit. Vous avez gagné! Voulez-vous recommencer ?",
+            {"oui": "start", "non": "end"}
+        ],
+        "choix_dialGu": [
+            "Vous supplier le dragon de vous épargner. Il ne comprend pas votre patoit et vous écrase sans ménagement. Vous êtes mort. Voulez-vous recommencer ?",
+            {"oui": "start", "non": "end"}
+        ],
+        "choix_fuiteMag": [
+            "Vous fuyez mais trébuchez sur votre barbe. Le dragon en profite pour vous griller sur place. Vous êtes mort. Voulez-vous recommencer ?",
+            {"oui": "start", "non": "end"}
+        ],
+        "choix_attMag": [
+            "Vous lancez un sort pour changer le dragon en lapin. Cela fonctionne mais il crache toujours du feu. Vous êtes mort carbonisé par un rongeur. Voulez-Vous recommencer?",
+            {"oui": "start", "non": "end"}
+        ],
+        "choix_dialMag": [
+            "Vous entamez une discussion avec le dragon dans sa langue maternelle. Après avoir partager un thé avec lui, vous ne le considérez plus comme une menace et dinerez avec lui la semaine prochaine. Vous avez gagné! Voulez-Vous recommencer?",
+            {"oui": "start", "non": "end"}
+        ],
+        "choix_fuiteAs": [
+            "Vous fuyez prestemment avec votre agilité hors pair. Une fois la nuit tombé vous l'assassinez dans son sommeil à l'aide d'une dague empoisonnée. Vous avez gagné! Voulez-Vous recommencer?",
+            {"oui": "start", "non": "end"}
+        ],"choix_attAs": [
+            "Vous attaquez le dragon mais votre couteau se brise sur ses écailles. Il rigole un bon coup avant de vous manger. Vous êtes mort. Voulez-Vous recommencer?",
+            {"oui": "start", "non": "end"}
+        ],"choix_dialAs": [
+            "Vous proposez de l'argent au dragon pour qu'il vous laisse passer. Il vous dépouille et tiens son engagement. Vous êtes en vie mais êtes désormais une honte pour votre ordre, que faites-vous?",
+            {"refaire sa vie sous une autre identité": "As-newID", "assumer sa lâcheté et rentrer à la guilde ": "As-guild"}
+        ],
+        "As-newID": [
+            "Vous refaite votre vie sous une fausse identité, devenez fermier, mariez une femme et avez 3 enfants. Vous mourrez de vieillesse. Vous avez... gagné? Voulez-vous recommencer?",
+            {"oui": "start", "non": "end"}
+        ],
+        "As-guild": [
+            "La guilde n'accepte pas votre déshonneur. Leur champion vous ôte la vie avant même que vous ayez franchis les portes de la ville.Vous êtes mort. Voulez-vous recommencer?",
+            {"oui": "start", "non": "end"}
+        ],
+        "end": ["Merci d'avoir jouer !"]
+    }
+},
+"aventure": {
+    "description": "Un jeu plein de sensations",
+    "etats":
+    {
+        "start": [
+            "Il y a une porte a gauche, une porte a droite et un baton.",
+            {"prendre porte gauche": "pg", "prendre porte droite": "pd", "se frapper avec le baton": "baton"}
+        ],
+        "baton": [
+            "En vous frappant avec le baton, vous realisez qu'il y a écrit dessus : toujours prendre la porte de droite.",
+            {"sortir": "start"}
+        ],
+        "pg": [
+            "Vous tombez dans un trou et mourrez",
+            {"restart": "start", "fin": "end"}
+        ],
+        "pd": [
+            "il y a encore deux portes",
+            {"prendre porte gauche": "pg", "prendre porte droite": "pd2"}
+        ],
+        "pd2": [
+            "Vous avez trouvé la princesse. Bien joué",
+            {"restart": "start", "fin": "end"}
+        ],
+        "end": ["Ciao !"]
+    }
+},
+"lavieetudiante": {
+    "description": "Un robot sur la vie etudiante",
+    "etats":
+    {
+        "start": [
+            "Bonjour, es-tu un.e etudiant.e ?",
+            {"oui": "etudiant", "non": "sur"}
+        ],
+        "sur": [
+            "Oh :( tu voudrais devenir etudiant ?",
+            {"oui": "start", "non": "end"}
+        ],
+        "etudiante": ["Wooo !"
+        ],
+        "end": ["Ciao !"]
+
+    }
+},
+"personalitytypes": {
+    "description": "A chatbot on personality types",
+    "etats":
+    {
+        "start": [
+            "Hello, how are you today?",
+            {"good": "gd", "could be better": "cbb", "not so good":"nsg", "awful":"awful"}
+        ],
+        "gd": [
+            "Great to hear!",
+            {"oui": "start", "non": "end"}
+        ],
+        "cbb": [
+            "Awww, what a shame! Will it affect tomorrow?",
+        {"yes": "cbb-yes", "no": "cbb-non"}
+        ],
+        "nsg": [
+            "Awww, no! Will it affect your tomorrow?",
+        {"yes": "nsg-yes", "no": "nsg-non"}
+        ],
+        "awful": [
+            "Awww, what a shame!"],
+        "end": ["Ciao !"]
+    },
+    "resume": {
+        "gd": "You are an optimist",
+        "cbb-yes": "You are a pessimist",
+        "cbb-non": "You are an optimist",
+        "nsg-yes": "You are a pessimist",
+        "nsg-non": "You are an optimist",
+        "awful": "You are a pessimist"
+    }
+},
+"cinema" : {
+    "description": "Choisir un film",
+    "etats" :{
+        "start":[
+               "Bonjour, je vais vous aider à choisir un film, quel est votre genre ?" ,
+               {"Action":"Action","Romantique":"Romantique","Horreur":"Horreur","Aventure":"Aventure","Comédie":"Comédie"} 
+        ],
+        "Action":[
+                "Vous préférez ? ",
+                {"Arts martiaux":"art_m","Policier":"policier"}
+        ] ,
+        "art_m" : [
+                "Voici quelques proposition : Jhon claud van dammme, Bruce Lee, Tony Jaa"
+        ],
+        "policier": [
+                   "Voici quelques classiques: L'arme fatale, Taken, Shooter" 
+        ]
+,
+        "Romantique" :[
+            "Voici quelques propositions: Titanic, La belle mère, Les trois visages, la femme parfaite"
+        ],
+
+        "Horreur" :[""],
+        "Aventure" :[],
+        "Comédie" :[],
+        "end":["Ciao !"]
+    }
+},
+"Cinema": {
+    "description": "Un robot pour parler du cinema",
+    "etats":
+    {
+        "start": [
+            "Bonjour, dites-moi aimez vous le cinema?",
+            {"oui": "cine", "non": "end"}
+        ],
+        "cine": [
+            "Vous êtes plutot film ou serie ?",
+            {"film": "films", "série": "series"}
+        ],
+        "films": [
+            "Vous aimez quel type de film : action, romance, ou Horreur?",
+            {"action": "actions", "romance": "romances","horreur":"horreurs"}
+        ],
+        "actions": [
+            "Vous aimez bien tous ce qui est fiction ?",
+            {"oui": "yes_fiction", "non": "no_fiction"}
+        ],
+        "yes_fiction": [
+            "Entendu, aimez vous de la violence ?",
+            {"oui": "yes_violence", "non": "end"}
+        ],
+        "yes_violence ": [
+            "Oh je vois!! Merci "
+        ],
+        "romances": [
+            "Vous croyez en l'amour ?",
+            {"oui": "yes_love", "non": "no_love"}
+        ],
+        "yes_love": [
+            "Entendu, aimez vous êtes en amoureux?",
+            {"oui": "yes_amour", "non": "end"}
+        ],
+        "yes_amour": [
+            "Oh je vois! c'est beau, Merci "
+        ],
+        "Horreurs": [
+            "Vous croyez qu'il existe les fantomes ?",
+            {"oui": "yes_fantomes", "non": "no_fantomes"}
+        ],
+        "yes_fantomes": [
+            "Entendu, vous n'avez pas peur ?",
+            {"oui": "yes_peur", "non": "end"}
+        ],
+        "yes_peur ": [
+            "Mais vous aimez visualisez quand même, ca prouve que vous aimez le risque cool! "
+        ],
+        "series":[
+            "Super Merci!!"
+        ],
+        "end": ["Merci et au revoir !"]
+    },
+    "resume": {
+        "start-mat_fr": "Vous parlez français",
+        "start-mat_en": "Vous parlez anglais",
+        "mat_fr-choix_en": "Vous vous intéressez à l'anglais",
+        "choix_en-end": "Vous avez terminé l'interaction",
+        "end": ""
+    }
+},
+    "produit_mac": {
+        "description": "Acheter un Mac",
+        "etats":
+        {
+            "start": [
+                "Bonjour, dites-moi vous voudriez acheter un Mac?",
+                {"oui": "choix_mac",
+                    "non": "end"}
+            ],
+            "choix_mac": [
+                "Vous intéressez-vous à un Mac mobile ou fixé? ",
+                {"mobile": "mobile_mac", "fixé": "fixe_mac"}
+            ],
+            "mobile_mac": [
+                "Notre MacBook family!",
+                {"MacBook": "macbook", "MacBook Air": "macbook_air", "MacBook Pro": "macbook_pro"}
+            ],
+            "fixe_mac": [
+                "Notre iMac family!",
+                {"iMac": "imac", "non": "imac_pro"}
+            ],
+            "macbook": [
+                "Couleur?",
+                {"Gris sidéral": "gris", "Or": "or","Argent": "argent"}
+            ],
+            "macbook_air": [
+                "Couleur?",
+                {"Gris sidéral": "gris", "Or": "or","Argent": "argent"}
+            ],
+            "macbook_pro": [
+                "Couleur?",
+                {"Gris sidéral": "gris", "Or": "or","Argent": "argent"}
+            ],
+            "imac": [
+                "Couleur?",
+                {"Gris sidéral": "gris", "Or": "or","Argent": "argent"}
+            ],
+            "imac_pro": [
+                "Couleur?",
+                {"Gris sidéral": "gris", "Or": "or","Argent": "argent"}
+            ],
+            "gris": [
+                "c'est fait! D'autre chose?",
+                {"oui": "choix_mac","non": "end"}
+            ],
+            "or": [
+                "c'est fait! D'autre chose?",
+                {"oui": "choix_mac","non": "end"}
+            ],
+            "agrent": [
+                "c'est fait! D'autre chose?",
+                {"oui": "choix_mac","non": "end"}
+            ],
+            "end": ["Merci et au revoir"]
+        }
+    },
+"orientation": {
+    "description": "Un robot pour choisir son orientation scolaire",
+    "etats":
+    {
+        "start": [
+            "Bonjour, dites-moi avez vous eu le bac ?",
+            {"non": "mineur", "oui": "majeur"}
+        ],
+        "mineur": [
+            "Avez vous moins de 13 ans ?",
+            {"oui": "fornite", "non": "plusDe13"}
+        ],
+        "fornite": [
+            "Vous êtes trop jeune pour vous préoccupe de cela allez joue a fornite",
+            {"end": "end"}
+        ],
+        "plusDe13": [
+            "Entendu, êtes vous un scientifique, litteraire ou economiste ",
+            {"scientifique": "scientifique", "litteraire" : "litteraire", "economiste" : "economiste"}
+        ],
+        "scientifique": [
+            "Vous devez prendre une orientation scientifique ",
+            {}
+        ],
+        "litteraire": [
+            "Vous devez prendre une orientation litteraire ",
+            {}
+        ],
+        "economiste": [
+            "Vous devez prendre une orientation economiste ",
+            {}
+        ],
+        "majeur": [
+            "Vous êtes majeur et vous ne savez toujours pas ce que vous voulez faire, content de vous avoir connu",
+            {"end": "end"}
+        ],
+        "end": ["Merci et au revoir !"]
+    },
+    "resume": {
+        "start-mat_fr": "Vous parlez français",
+        "start-mat_en": "Vous parlez anglais",
+        "mat_fr-choix_en": "Vous vous intéressez à l'anglais",
+        "choix_en-end": "Vous avez terminé l'interaction",
+        "end": ""
+    }
+},
+"sports": {
+    "description": "Un robot pour choisir son sport",
+    "etats":
+    {
+        "start": [
+            "Bonjour, es-tu une personne sportive ?",
+            {"oui": "type_sports", "non": "end"}
+        ],
+        "type_sports": [
+            "Préfères-tu des spoerts collectifs ou indivduels ?",
+            {"collectif": "type_collectif", "individuel": "type_individuel"}
+        ],
+        "type_collectif": [
+            "Avec ou sans balle ?",
+            {"avec balle": "balle", "sans balle": "pasballe"}
+        ],
+        "end": ["Ciao !"]
+    }
+}
+}

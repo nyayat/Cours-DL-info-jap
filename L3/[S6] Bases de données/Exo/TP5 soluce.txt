@@ -1,0 +1,327 @@
+--- Éléments de correction, sans garantie… ^^
+
+
+-- Question 1
+-- Il existe deux types d’étapes : les contre-la-montre où les coureurs sont seuls et qui font moins de 60 km et les étapes en ligne où tous les coureurs partent en même temps et qui font plus de 100 km. Quelles sont les étapes en ligne ?
+
+SELECT * 
+  FROM etapes 
+ WHERE nbKm >100;
+
+-- Quelles sont les étapes de contre-la-montre ?
+
+SELECT * FROM etapes WHERE nbKm <=60;
+
+-- Question 2
+-- Quels sont les coureurs sans pays ?
+
+SELECT * 
+  FROM coureurs 
+ WHERE codePays IS NULL;
+
+-- Question 3
+-- Affichez avec une requête le nombre de coureurs et le nombre de coureurs qui ont un pays.
+
+SELECT COUNT(numerocoureur)  , COUNT(codePays) 
+  FROM coureurs;
+
+-- Question 4
+-- Quels sont, pour chaque étape, les coureurs (numéros) ayant participé à l’étape.
+
+SELECT numerocoureur, numeroetape 
+  FROM temps 
+ ORDER BY numeroetape;
+
+-- Question 5
+-- Le temps moyen et le nombre total de kilomètres parcourus par le coureur numéro 31 sur l’ensemble du tour.
+
+SELECT AVG(tempsRealise), SUM(nbKm) 
+  FROM etapes NATURAL JOIN temps
+  WHERE numeroCoureur=31;
+
+
+-- Question 7 
+-- Le nombre de coureurs par équipe.
+
+SELECT COUNT(numerocoureur), codeequipe 
+  FROM coureurs 
+ GROUP BY codeequipe;
+
+-- Question 8
+-- Le meilleur temps réalisé par équipe pour l’étape numéro 2.
+
+SELECT codeequipe, MIN(tempsrealise) 
+  FROM temps NATURAL JOIN coureurs
+ WHERE numeroetape=2
+ GROUP BY codeequipe;
+
+-- Question 9
+-- Le meilleur temps réalisé par équipe par étape.
+
+SELECT numeroetape, codeequipe, MIN(tempsrealise)
+FROM temps NATURAL JOIN coureurs
+GROUP BY numeroetape, codeequipe
+ORDER BY numeroetape;
+
+-- Question 10
+-- Le temps moyen pour chaque équipe pour l’étape numéro 3.
+
+SELECT codeequipe, AVG(tempsrealise) 
+  FROM temps NATURAL JOIN coureurs
+ WHERE numeroetape=3
+ GROUP BY codeequipe;
+
+-- Question 11
+--  Le nombre de coureurs des équipes ayant au moins 2 coureurs.
+
+SELECT COUNT (numerocoureur), codeequipe 
+  FROM coureurs 
+ GROUP BY codeequipe
+ HAVING COUNT (*) >= 2;
+
+-- Question 12
+--Quelle est la vitesse moyenne en contre-la-montre pour chaque coureur ?
+
+-- Si tempsrealise est de type INTERVAL
+SELECT numerocoureur, 3600*SUM(nbkm)/SUM(EXTRACT(epoch FROM tempsrealise)) as vitessemoyenne 
+  FROM temps NATURAL JOIN etapes  
+ WHERE nbkm<60
+ GROUP BY numerocoureur;
+
+-- Question 13
+-- La vitesse moyenne sur l’ensemble du tour par coureur, pour chaque coureur ayant participé à au moins 3 étapes.
+
+SELECT numerocoureur, 3600 * SUM(nbKm) / SUM( EXTRACT(epoch FROM tempsrealise) )
+  FROM temps NATURAL JOIN etapes 
+ GROUP BY numerocoureur
+HAVING COUNT(numeroetape)>=3
+
+-- Question 14
+-- L’étape comportant le plus grand nombre de kilomètres.
+
+SELECT * 
+  FROM etapes 
+ WHERE nbKm IN (
+       SELECT MAX(nbKm) 
+         FROM etapes
+       );
+
+-- Question 15
+-- Le nom des coureurs ayant réalisé le meilleur temps pour l’étape numéro 4.
+
+SELECT numeroCoureur 
+  FROM temps 
+ WHERE numeroEtape=4 
+   AND tempsRealise IN (
+       SELECT MIN(tempsRealise) 
+         FROM temps 
+        WHERE numeroEtape=4
+       );
+
+
+
+-- Question 16
+-- Donner la liste des coureurs (numéros) ayant participé à toutes les étapes.
+
+SELECT numerocoureur 
+  FROM temps 
+ GROUP BY numerocoureur 
+HAVING COUNT(numeroetape)=(
+       SELECT COUNT(*) 
+         FROM etapes
+       );
+
+
+-- Question 17
+--Quels sont les Français ayant terminé le Tour de France ?
+
+WITH finissants 
+AS(
+     SELECT numerocoureur 
+       FROM temps 
+      GROUP BY numerocoureur 
+     HAVING COUNT(numeroetape)=  (
+            SELECT COUNT(*) 
+              FROM etapes
+            )
+)
+SELECT * 
+  FROM finissants NATURAL JOIN coureurs 
+ WHERE codepays='FRA';
+
+
+
+-- Question 18
+--Quelles équipes ont au moins 2 coureurs ayant participé à la dernière étape ?
+
+SELECT codeequipe 
+  FROM temps NATURAL JOIN coureurs 
+ WHERE numeroetape = (select max(numeroetape) from etape)
+ GROUP BY codeequipe 
+HAVING count(*)>=2;
+
+-- Question 19
+-- Donner le nom des coureurs ayant gagné chaque étape.
+
+SELECT nomcoureur, numeroetape, tempsrealise
+FROM temps natural join coureur
+where (tempsrealise, numeroetape) IN (
+       SELECT min(tempsrealise), numeroetape
+         FROM temps
+        GROUP BY numeroetape
+      );
+
+-- Question 20
+-- Donnez la liste des coureurs (noms et numéros) ayant gagné au moins une étape.
+
+WITH meilleurtemps AS(
+     SELECT min(tempsrealise) as t, numeroetape as numet
+       FROM temps
+      GROUP BY numeroetape
+),
+gagnants AS(
+     SELECT t.numerocoureur as numcou, t.tempsrealise as tempsrealise, t.numeroetape as numet
+       FROM temps as t, meilleurtemps
+      WHERE t.numeroetape=meilleurtemps.numet
+        AND t.tempsrealise=meilleurtemps.t
+)
+SELECT DISTINCT(numcou), nomcoureur
+  FROM coureurs c, gagnants g
+ WHERE c.numerocoureur=g.numcou;
+
+
+
+
+--- PLUS SIMPLE, BASE SUR LA 19
+
+SELECT distinct(nomcoureur)
+FROM temps natural join coureur
+where (tempsrealise, numeroetape) IN (
+       SELECT min(tempsrealise), numeroetape
+         FROM temps
+        GROUP BY numeroetape
+      )
+
+
+
+-- Question 21
+--Les mecs qui ont fini le tour et ont gagné une étape
+--(on va juste faire une intersection avec la requète qui trouve les mecs qui ont fait toutes les étapes)
+
+WITH meilleurtemps AS(
+     SELECT min(tempsrealise) as t, numeroetape as numet
+       FROM temps
+      GROUP BY numeroetape
+), 
+gagnants AS(
+     SELECT t.numerocoureur as numcou, t.tempsrealise as tempsrealise, t.numeroetape as numet
+       FROM temps as t, meilleurtemps
+      WHERE t.numeroetape=meilleurtemps.numet
+        AND t.tempsrealise=meilleurtemps.t
+) 
+SELECT DISTINCT(numcou), nomcoureur
+  FROM coureurs c, gagnants g
+ WHERE c.numerocoureur=g.numcou
+   AND c.numerocoureur IN (
+       SELECT numerocoureur 
+         FROM temps 
+        GROUP BY numerocoureur 
+       HAVING COUNT(numeroetape)=(
+              SELECT COUNT(*) 
+              FROM etapes)
+       );
+
+
+---- Plus simple!! Intersection de 16 et 20.
+
+
+
+(SELECT numerocoureur 
+  FROM temps 
+ GROUP BY numerocoureur 
+HAVING COUNT(numeroetape)=(
+       SELECT COUNT(*) 
+         FROM etapes
+       )
+) INTERSECT (
+SELECT distinct(numerocoureur)
+FROM temps natural join coureur
+where (tempsrealise, numeroetape) IN (
+       SELECT min(tempsrealise), numeroetape
+         FROM temps
+        GROUP BY numeroetape
+      )
+)
+-- Question 22
+-- Pour chaque équipe dont au moins un des coureurs a terminé le Tour de France, donner le numéro du coureur le mieux classé.
+
+--On calcule le temps total des coureurs qui ont fini comme dans la requête qui trouvait le maillot jaune à l'étape 4, on fait une jointure avec coureur pour avoir le code d'équipe, et on garde seulement le meilleur
+
+WITH tempstotal AS(
+     SELECT numerocoureur, SUM(tempsrealise) as t 
+       FROM temps 
+      GROUP BY numerocoureur 
+     HAVING count(*)=4
+),
+tempsplusequipe AS(
+     SELECT c.numerocoureur, c.codeequipe, t 
+       FROM tempstotal NATURAL JOIN coureurs c
+) 
+SELECT * 
+  FROM tempsplusequipe 
+ WHERE (t,codeequipe) IN (
+       SELECT min(t), codeequipe 
+         FROM tempsplusequipe 
+        GROUP BY codeequipe
+       );
+
+-- Questions 23-24-25
+--Tout le bordel sur le maillot jaune
+--%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+--Maillot jaune à la fin du tour
+
+--On va calculer le temps de tout le monde à l'étape 4, puis le meilleur temps parmi ceux-là, et ne garder que les coureurs qui ont fait le meilleur temps.
+
+WITH tempstotal AS(
+     SELECT numerocoureur, SUM(tempsrealise) as t 
+     FROM temps 
+     GROUP BY numerocoureur 
+     HAVING count(*) = (select max(numeroEtape) from etapes) ),
+
+meilleurtemps AS(
+	      SELECT min(t) as best FROM tempstotal)
+
+SELECT * FROM tempstotal, meilleurtemps WHERE t=best;
+
+--Maillot jaune étape par étape
+--C'est la même idée que la requête précédente
+
+WITH tempstotal AS(
+     SELECT t1.numerocoureur as numcou,t1.numeroetape as numet, SUM(t2.tempsrealise) as t
+     FROM temps t1, temps t2 
+     WHERE t1.numeroetape>=t2.numeroetape 
+     AND t1.numerocoureur=t2.numerocoureur
+     GROUP BY t1.numerocoureur, t1.numeroetape),
+
+meilleurtemps AS(
+	      SELECT min(t) as besttime, numet FROM tempstotal GROUP BY numet)
+
+SELECT * FROM tempstotal, meilleurtemps
+WHERE tempstotal.numet=meilleurtemps.numet
+AND tempstotal.t=meilleurtemps.besttime
+ORDER BY tempstotal.numet;
+
+--Qui a fini dernier du Tour de France ?
+--C'est comme le maillot jaune avec un max au lieu d'un min
+
+WITH tempstotal AS(
+     SELECT numerocoureur, SUM(tempsrealise) as t 
+     FROM temps 
+     GROUP BY numerocoureur 
+     HAVING count(*)=(select max(numeroEtape) from etapes)),
+
+meilleurtemps AS(
+	      SELECT max(t) as best FROM tempstotal)
+
+SELECT * FROM tempstotal, meilleurtemps WHERE t=best;

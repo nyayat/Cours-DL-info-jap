@@ -1,0 +1,15 @@
+#parent {
+    width: 300px;
+    border: 0.2em solid #882424;
+    margin-top: 50px;
+    margin-left: 50px;
+    position: relative;
+    
+}
+
+#enfant {
+    position: absolute;
+    margin-right: 30px;
+    margin-top:10px;
+    background: rgb(197, 88, 88);
+}
