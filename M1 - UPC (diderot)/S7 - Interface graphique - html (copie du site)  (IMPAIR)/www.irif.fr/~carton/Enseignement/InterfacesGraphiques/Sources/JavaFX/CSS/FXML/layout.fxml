@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Time-stamp: "layout.fxml   5 nov 2019 18:18:23" -->
+
+<!-- Fichier FXML avec du CSS 
+  + dans l'attribut 'style' de VBox
+  + dans un élément 'style' dans chaque Button
+-->
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" id="Pane"
+            style="-fx-border-width: 3; 
+                   -fx-border-color: black; 
+                   -fx-border-insets: 4;">
+  <children>
+    <Button text="Bouton _1" prefWidth="100.0" prefHeight="30.0" 
+            mnemonicParsing="true" >
+      <style>
+        -fx-border-width: 3;
+        -fx-border-color: red;
+        -fx-border-insets: 4;
+      </style>
+    </Button>
+    <Button text="Bouton _2" prefWidth="100.0" prefHeight="30.0" 
+            mnemonicParsing="true" >
+      <style>
+        -fx-border-width: 3;
+        -fx-border-color: green;
+        -fx-border-insets: 4;
+      </style>
+    </Button>
+    <Button text="Bouton _3" prefWidth="100.0" prefHeight="30.0" 
+            mnemonicParsing="true" >
+      <style>
+        -fx-border-width: 3;
+        -fx-border-color: blue;
+        -fx-border-insets: 4;
+      </style>
+    </Button>
+  </children>
+</VBox>

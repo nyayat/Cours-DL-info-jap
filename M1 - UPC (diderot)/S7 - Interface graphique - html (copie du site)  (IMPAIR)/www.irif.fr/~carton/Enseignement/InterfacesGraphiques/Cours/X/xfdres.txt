@@ -1,0 +1,7 @@
+/* Time-stamp: <xfdres.txt  10 Aug 2005 10:53:22> */
+
+xfd*Background:                  wheat
+xfd.pane.box.background:         black
+xfd.pane.box*Background:         yellow
+xfd.pane.box.Command.Background: blue
+xfd.pane.box.quit.Background:    red

@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- Time-stamp: "index.html  11 nov 2019 21:52:04" -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+  <title>Programmation JavaFX</title>
+  <link href="style.css" rel="stylesheet" type="text/css"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name="Author" content="Olivier Carton"/>
+  <style type="text/css"> <!--
+    body { background-color: white; }
+  --> </style>
+</head>
+
+<body>
+<h1>Programmation JavaFX</h1>
+
+<ul>
+<li>Premiers programmes
+  <ul>
+  <li>Premier programme
+      <a href="Simple/HelloWorld.java"><em>Hello world</em></a></li>
+  <li><a href="Simple/EmptyScene.java">Scène vide</a></li>
+  </ul>
+</li>
+<li>FXML
+  <ul> 
+  <li><a href="FXML/Simple/Simple.java">FXML simple</a> et le 
+      <a href="FXML/Simple/layout.fxml">fichier</a> de disposition</li>
+  <li>Avec contrôleur :
+    <a href="FXML/Controller/FXMLAppli.java">application</a>,
+    <a href="FXML/Controller/Controller.java">contrôleur</a>,
+    et le fichier
+    <a href="FXML/Controller/layout.fxml"><tt>FXML</tt></a> de disposition
+  </li>
+  <li>Avec définition :
+    <a href="FXML/Define/FXMLAppli.java">application</a>,
+    <a href="FXML/Define/Controller.java">contrôleur</a>,
+    et le fichier
+    <a href="FXML/Define/layout.fxml"><tt>FXML</tt></a> de disposition
+  </li>
+  <li>Avec deux fichiers FXML :
+    <a href="FXML/TwoScenes/TwoScenes.java">application</a>,
+    <a href="FXML/TwoScenes/Controller.java">contrôleur</a>,
+    et les fichiers
+    <a href="FXML/TwoScenes/layout1.fxml"><tt>FXML 1</tt></a> et
+    <a href="FXML/TwoScenes/layout2.fxml"><tt>FXML 2</tt></a> de disposition
+  </li>
+  </ul>
+</li>
+<li>CSS
+  <ul> 
+  <li>CSS directement dans le fichier
+    <a href="CSS/Simple/Source.java">source</a>
+  </li>
+  <li>CSS directement dans le fichier de
+    <a href="CSS/FXML/layout.fxml">disposition</a> utilisé par
+    le <a href="CSS/FXML/Source.java">source</a>
+  </li>
+  <li>CSS dans un fichier de <a href="CSS/File/style.css">style</a>
+    chargé par le fichier <a href="CSS/File/Source.java">source</a>
+  </li>
+  <li>CSS dans un fichier de <a href="CSS/FileFXML/style.css">style</a>
+    référencé par le fichier de
+    <a href="CSS/FileFXML/layout.fxml">disposition</a> utilisé par
+    le fichier <a href="CSS/FileFXML/Source.java">source</a>
+  </li>
+  </ul>
+</li>
+<li>Événements : menus et boutons
+  <ul> 
+  <li><a href="Events/BgdButtonNamed.java">Changement</a> 
+    de la couleur de fond avec trois boutons et les contrôleurs 
+    instances d'une classe
+  </li>
+  <li><a href="Events/BgdButtonAnon.java">Changement</a> 
+    de la couleur de fond avec trois boutons et les contrôleurs
+    instances de classes anonymes
+  </li>
+  <li><a href="Events/BgdMenu.java">Changement</a> de la couleur de
+    fond avec un menu
+  </li>
+  <li><a href="Events/BgdCombo.java">Changement</a> de la couleur de
+    fond avec un <tt>ComboBox</tt>
+  </li>
+  </ul>
+</li>
+<li>Conteneurs
+  <ul> 
+  <li><a href="Scenes/TwoScenes.java">Changement</a> de scène</li>
+  <li><a href="Layouts/BorderLayout.java">Utilisation</a> de
+    <tt>BorderPane</tt>
+  </li>
+  <li><a href="Layouts/FlowLayout.java">Utilisation</a> de
+    <tt>FlowPane</tt>
+  </li>
+  <li><a href="Layouts/HBoxLayout.java">Utilisation</a> de
+    <tt>HBox</tt>
+  </li>
+  <li><a href="Layouts/GridLayout.java">Utilisation</a> de
+    <tt>GridPane</tt>
+  </li>
+  <li><a href="Layouts/TileLayout.java">Utilisation</a> de
+    <tt>TilePane</tt>
+  </li>
+  </ul>
+</li>
+<li>Architecture <em>modèle/vue/contrôleur</em>
+  <ul> 
+  <li><a href="MVC/Simple.java">application</a> 
+    avec deux boutons pour incrémenter et décrémenter un entier affiché. 
+  </li>
+  <li><a href="MVC/View.java">Programmation</a> de la même
+    application en utilisant l'architecture modèle/vue/contrôleur.
+  </li>
+  <li>Classe <tt><a href="PlusOuMoins/IncrButton.java">IncrButton</a></tt>
+  </li>
+  </ul>
+</li>
+<li>Binding
+  <ul> 
+  <li><a href="Bindings/SliderCircle.java">Binding unidirectionel</a> 
+    entre un curseur et un cercle
+  </li>
+  <li><a href="Bindings/Slider3Circles.java">Binding unidirectionel</a> 
+    entre un curseur et trois cercles
+  </li>
+  <li><a href="Bindings/ColorBinding/ColorBinding.java">Binding
+      unidirectionel</a> entre trois curseurs et la
+    <a href="Bindings/ColorBinding/SlidersColor.java">couleur</a> d'un cercle
+  </li>
+  </ul>
+</li>
+<li>Déplacements
+  <ul> 
+  <li><a href="Move/MoveCircle.java">Déplacement</a> d'un cercle</li>
+  <li>Manipulation de
+    <a href="Move/Splines/SplineCurve.java">B-splines</a> avec
+    un <a href="Move/Splines/style.css">fichier de style</a></li>
+  <li>Manipulation de
+    <a href="Move/Splines/BezierCurve.java">courbes de Bézier</a> avec
+    un <a href="Move/Splines/style.css">fichier de style</a></li>
+  </ul>
+</li>
+<li>Animations
+  <ul> 
+  <li><a href="Animations/ScaleCircle.java">Rayon</a> d'un cercle</li>
+  <li><a href="Animations/RotateTriangle.java">Rotation</a> d'un triangle</li>
+  <li><a href="Animations/FillCircle.java">Couleur</a> d'un cercle</li>
+  <li><a href="Animations/PathCircle.java">Déplacement</a> d'un cercle</li>
+  <li><a href="Animations/FadeGroup.java">Opacité</a> d'un groupe</li>
+  <li><a href="Animations/TextAnimation.java">Animation</a> de texte</li>
+  <li><a href="Animations/ParallelCircle.java">Animation</a> multiple
+    d'un cercle avec <tt>ParallelTransition</tt></li>
+  <li><a href="Animations/TransEllipse.java">Animation</a> multiple
+    d'une ellipse avec <tt>Timeline</tt></li>
+  <li><a href="Animations/Interpolation/Interpol.java">Variations</a> sur 
+    l'interpolation avec <tt>SequentialTransition</tt></li>
+  </ul>
+</li>
+<li>Listes et combos
+  <ul> 
+  <li><tt><a href="Lists/TwoLists.java">ListView</a></tt></li>
+  <li><tt><a href="Lists/FontCombo.java">ComboBox</a></tt>
+    avec des fontes</li>
+  <li><tt><a href="Lists/ColorCombo.java">ComboBox</a></tt>
+    avec des rectangles de couleurs</li>
+  <li><tt><a href="Lists/EditCombo.java">ComboBox</a></tt> éditable</li>
+  </ul>
+</li>
+<li>Arbres
+  <ul> 
+  <li><a href="Trees/FileTree.java">Arborescence</a> de fichiers</li> 
+  </ul>
+</li>
+<li>Transformations
+  <ul> 
+  <li><a href="Transforms/TransRect.java">Transformations</a> d'un
+    rectangle avec un fichier de
+    <a href="Transforms/style.css">style</a></li> 
+  <li><a href="Transforms/TransGroup.java">Transformations</a> d'un
+    groupe de figures avec le même fichier de
+    <a href="Transforms/style.css">style</a></li> 
+  </ul>
+</li>
+<li>Graphiques
+  <ul> 
+  <li><a href="Graphics/Simple.java">Canvas</a></li>
+  </ul>
+</li>
+</ul>
+</body>
+</html>

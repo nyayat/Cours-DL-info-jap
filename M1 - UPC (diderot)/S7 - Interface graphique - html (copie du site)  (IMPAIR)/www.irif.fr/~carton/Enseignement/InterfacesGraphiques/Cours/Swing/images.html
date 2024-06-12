@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<!-- Time-stamp: "images.html  12 Aug 2005 19:40:39" -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+  <title>
+  Images en SWING
+  </title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta name="Author" content="Olivier Carton" />
+</head>
+
+<body>
+<h1>Images en SWING</h1>
+
+<ul>
+<li><a href="#Lecture">Lecture d'une image</a>
+  <ul>
+  <li><a href="#Async">Lecture asynchrone</a></li>
+  <li><a href="#Sync">Lecture synchrone</a></li>
+  <li><a href="#ImageIcon">Utilisation de <tt>ImageIcon</tt></a></li>    
+  </ul>
+</li>
+<li><a href="#Display">Affichage d'une image</a></li>
+<li><a href="#Observe">Suivi du chargement d'une image</a></li>
+<li><a href="#Modif">Images modifiables</a>
+  <ul>
+  <li><a href="#Colors">Modèles et espaces de couleurs</a></li>
+  <li><a href="#Raster">Raster</a></li>
+  </ul>
+</li>
+<li><a href="#Transform">Transformations d'images</a>
+  <ul>
+  <li><a href="#Prod">Producteur et consommateur d'images</a></li>
+  <li><a href="#Filters">Filtres</a></li>
+  <li><a href="#BufferOp">Opérations sur les images modifiables</a></li>
+  <li><a href="#FiltersMade">Fabrication des filtres</a></li>
+  </ul>
+</li>
+</ul>
+
+<h2>Généralités</h2>
+
+<p>La classe abstraite <tt>Image</tt> d'AWT est la super-classe de tous les
+objets qui représentent des images graphiques. Des classes spécifiques à
+chaque plate-forme, (<tt>sun.awt.motif.X11Image</tt> sous X), dérivent de
+cette classe.  Les méthodes principales de cette classe sont les
+suivantes.</p>
+
+<dl>
+<dt><tt>int getWidth(ImageObserver observer)</tt></dt>
+<dd>retourne la <em>largeur</em> en pixels de l'image.</dd>
+<dt><tt>int getHeight(ImageObserver observer)</tt></dt>
+<dd>retourne la <em>hauteur</em> en pixels de l'image.</dd>
+<dt><tt>ImageProducer getSource()</tt></dt>
+<dd>retourne le producteur d'image associé.</dd>
+</dl>
+
+<p>Il existe aussi une classe <tt>ImageIcon</tt> pour les icônes.
+L'utilisation de cette classe peut être détournée afin de charger
+facilement des images.</p>
+
+<h2><a name="Lecture" id="Lecture">Lecture d'une image</a></h2>
+
+<h3><a name="Async" id="Async">Lecture asynchrone</a></h3>
+
+<p>La lecture d'une image se fait par les méthodes <tt>getImage</tt> du
+toolkit.  Ces méthodes prennent en paramètre une chaîne de caractères pour
+un fichier local ou une URL pour un fichier distant.  Les formats
+classiques d'images GIG, JPEG et PNG sont supportés.</p>
+
+<pre>
+  Image image = Toolkit.getDefaultToolkit().getImage("image.jpg");
+</pre>
+
+<pre>
+  URL url = new URL("http://www.somewhere.fr/image.jpg");
+  Image image = Toolkit.getDefaultToolkit().getImage(url);
+</pre>
+
+<p>L'appel à une méthode <tt>getImage</tt> ne provoque par le chargement
+immédiat de l'image.  Celui-ci est différé jusqu'à l'affichage proprement
+dit de l'image par un appel à une méthode <tt>drawImage</tt>.  Le
+chargement de l'image est effectué par un thread de manière asynchrone.  De
+cette manière, le fonctionnement de l'application se poursuit pendant le
+chargement de l'image. Ce mécanisme permet une meilleure réactivité des
+applications.</p>
+
+<p>Ce chargement asynchrone des images provoque parfois des surprises.  Le
+morceau de code ci-dessous affiche la valeur -1 pour la hauteur (height) et
+la largeur (width) de l'image.  Au moment des appels aux méthodes
+<tt>getHeight</tt> et <tt>getWidth</tt>, l'image n'est pas encore chargée
+et ses dimensions sont pas conséquent inconnues.<p>
+
+<pre>
+  Image image = Toolkit.getDefaultToolkit().getImage("image.jpg");
+  System.out.println("Height = " + image.getHeight(null));
+  System.out.println("Width = " + image.getWidth(null));
+</pre>
+
+<h3><a name="Sync" id="Sync">Lecture synchrone</a></h3>
+
+<p>Il est aussi possible d'attendre la fin du chargement d'une image.  Ceci
+pénalise l'application qui reste bloquée pendant le chargement mais ceci
+simplifie la programmation.  L'attente d'une image est tout à fait
+acceptable lorsque le fichier est local et de taille raisonnable.</p>
+
+<p>L'attente du chargement d'une image se fait par l'intermédiaire d'un
+objet de classe <tt>MediaTracker</tt>.  L'image est d'abord enregistrée
+auprès du MediaTracker par la méthode <tt>addImage(Image, int id)</tt>.
+L'identificateur <tt>id</tt> associé à une image est en faite une priorité.
+Plusieurs images peuvent être associées à la même valeur.  Les images
+associées à une valeur supérieure sont chargées en priorité.  L'attente du
+chargement de l'image se fait par les méthodes <tt>waitForID(int)</tt> pour
+attendre toutes les images d'une priorité donnée ou <tt>waitForAll</tt>
+pour les attendre toutes.  Un exemple typique de l'utilisation d'un
+MediaTracker est donné ci-dessous.  Les méthodes <tt>waitForID</tt> et
+<tt>waitForAll</tt> lèvent une exception <tt>InterruptedException</tt>
+lorsque le chargement n'aboutit pas.  Il faut donc encapsuler les appels à
+ces méthodes dans une structure <tt>try catch</tt>.<p>
+
+<pre>
+  image = Toolkit.getDefaultToolkit().getImage("image.jpg");
+  // Création du MediaTracker et enregistrement de l'image
+  MediaTracker tracker = new MediaTracker(this);
+  tracker.addImage(image, 0);
+  // Attente proprement dite
+  try { tracker.waitForID(0); }
+  catch(InterruptedException e) {}
+</pre>
+
+<h3><a name="ImageIcon" id="ImageIcon">Utilisation de 
+  <tt>ImageIcon</tt></a></h3>    
+
+<p>La classe <tt>ImageIcon</tt> est une implémentation de l'interface
+<tt>Icon</tt> par des images.  Les constructeurs de cette classe utilisent
+un MediaTracker pour attendre que l'image soit chargée (car les icônes sont
+a priori de petites images).  L'image peut être récupérée par la méthode
+<tt>getImage()</tt>.  Une façon très simple d'attendre le chargement d'une
+image est la suivante.</p>
+
+<pre>
+  ImageIcon imageIcon = new ImageIcon("image.jpg");
+  Image image = imageIcon.getImage();
+</pre>
+
+<h2><a name="Display" id="Display">Affichage d'une image</a></h2>
+
+<p>De manière générale, l'affichage d'une image se fait par une des
+variantes de la méthode <tt>drawImage</tt> des classes <tt>Graphics</tt> et
+<tt>Graphics2D</tt> des contextes graphiques.</p>
+
+<p>L'appel à la méthode <tt>drawImage</tt> se fait généralement dans la
+redéfinition de la méthode <tt>paintComponent(Graphics g)</tt> en utilisant
+le contexte graphique reçu en paramètre comme dans le code ci-dessous.<p>
+
+<pre>
+  public void paintComponent(Graphics g) {
+      super.paintComponent(g);
+      g.drawImage(image, 0, 0, this);
+  }
+</pre>
+
+<p>Les variantes de la méthode <tt>drawImage</tt> prennent toujours en
+paramètre l'image, les coordonnées de positionnement du coin haut et gauche
+de l'image ainsi qu'un objet implémentant l'interface
+<tt>ImageObserver</tt>.  Certaines variantes prennent aussi une couleur de
+fond qui remplace les pixels transparents de l'image, ou des nouvelles
+dimensions pour l'image.<p>
+
+<h2><a name="Observe" id="Observe">Suivi du chargement d'une image</a></h2>
+
+<p>Dans le cas où les images sont chargées de manière asynchrone, il est
+possible de suivre le chargement au fur et à mesure qu'il s'effectue.  Les
+méthodes <tt>drawImage</tt> prennent en paramètre un objet implémentant
+l'interface <tt>ImageObserver</tt>.  Cette interface déclare une unique
+méthode <tt>imageUpdate</tt>.  L'objet <tt>ImageObserver</tt> en paramètre
+de <tt>drawImage</tt> voit sa méthode <tt>imageUpdate</tt> appelée à chaque
+progression du chargement de l'image.</p>
+
+<p>Dans la pratique, on peut passer <tt>null</tt> en paramètre ou plutôt
+<tt>this</tt>.  L'interface <tt>ImageObserver</tt> est en effet
+implémentée par la classe <tt>Component</tt> et par conséquent tous les
+composants graphiques ont une méthode  <tt>imageUpdate</tt>.  Par défaut,
+celle-ci force le dessin du composant lorsque l'image progresse.</p>
+
+<p>Il est possible de redéfinir la méthode <tt>imageUpdate</tt> pour suivre
+le chargement de l'image.  Cette-ci reçoit plusieurs paramètres dont le
+premier est l'image et le second <tt>infoflags</tt> est un entier qui
+indique (par certains bits) quelles informations sont maintenant
+disponibles.  La signification des autres paramètres dépend de la valeur de
+<tt>infoflags</tt>.</p>
+
+<pre>
+  public boolean imageUpdate(Image image, int flags, int x, int y,
+			     int width, int height) {
+      System.out.println("imageUpdate() : x = " + x + ", y = " + y +
+			 ", width = " + width + ", height = " + height);
+      // Affichage de l'image lorsque l'image est totalement chargée
+      if ((flags & ALLBITS) != 0)
+	  repaint();
+      return true;
+  }
+</pre>
+
+<h2><a name="Modif" id="Modif">Images modifiables</a></h2>
+
+<p>Les objets de classe <tt>Image</tt> ne sont pas modifiables.  Pour avoir
+une image modifiable, il faut utiliser un objet de classe
+<tt>BufferedImage</tt> qui étend la classe <tt>Image</tt>.  La situation
+est semblable à celle des classes <tt>String</tt> et <tt>StringBuffer</tt>
+à la différence près que <tt>StringBuffer</tt> n'étend pas la classe
+<tt>String</tt>.
+
+<p>Le constructeur le plus simple de <tt>BufferedImage</tt> prend en
+paramètre les dimensions de l'image (hauteur et largeur) ainsi que le
+<em>type</em> de l'image.  Le type de l'image détermine comment est codé
+chaque pixel de l'image.    Les types utilisables sont définis par des
+constantes de la classe <tt>BufferedImage</tt>. Ils sont les suivants.</p>
+
+<dl compact="compact">
+<dt><tt>TYPE_INT_RGB</tt></dt>
+<dd>Chaque pixel est codé par un entier avec 8 bits pour chacune des
+  composantes RGB (8 bits ne sont pas utilisés).</dd>
+<dt><tt>TYPE_INT_ARGB</tt></dt>
+<dd>Chaque pixel est codé par un entier avec 8 bits pour chacune des
+  composantes &alpha;RGB.</dd>
+<dt><tt>TYPE_INT_ARGB_PRE</tt></dt>
+<dd>Chaque pixel est codé par un entier avec 8 bits pour chacune des
+  composantes &alpha;RGB.  Les composantes RGB sont déjà pré-multipliées par
+  &alpha;.</dd>
+<dt><tt>TYPE_INT_BGR</tt></dt>
+<dd>Chaque pixel est codé par un entier avec 8 bits pour chacune des
+  composantes RGB dans l'ordre B, G et R (modèle standard Windows et
+  Solaris).</dd>
+<dt><tt>TYPE_3BYTE_BGR</tt></dt>
+<dd>Chaque pixel est codé par trois octets avec un octet pour chaque
+  composante RGB.</dd>
+<dt><tt>TYPE_4BYTE_ABGR</tt></dt>
+<dd>Chaque pixel est codé par quatre octets avec un octet pour chaque
+  composante &alpha;RGB</dd>
+<dt><tt>TYPE_4BYTE_ABGR_PRE</tt></dt>
+<dd>Chaque pixel est codé par quatre octets avec un octet pour chaque
+  composante &alpha;RGB. Les composantes RGB sont déjà pré-multipliées par
+  &alpha;.</dd>
+<dt><tt>TYPE_BYTE_GRAY</tt></dt>
+<dd>Chaque pixel est codé par un octet avec une seule composante.</dd>
+<dt><tt>TYPE_USHORT_GRAY</tt></dt>
+<dd>Chaque pixel est codé par un entier court avec une seule composante.</dd>
+<dt><tt>TYPE_BYTE_BINARY</tt></dt>
+<dd>Chaque pixel est codé par 1, 2 ou 4 bits.  Ceci dépend du modèle de
+  couleur (qui doit être de type <tt>IndexedColorModel</tt>) utilisé.</dd>
+<dt><tt>TYPE_BYTE_INDEXED</tt></dt>
+<dd>Chaque pixel est codé par un octet qui donne une entrée dans une
+  table de couleur (avec un modèle de couleur de classe
+  <tt>IndexedColorModel</tt></dd>
+<dt><tt>TYPE_USHORT_565_RGB</tt></dt>
+<dd>Chaque pixel est codé par un entier court avec respectivement 5, 6 et 
+  5 bits pour les composantes RGB (pas de composante &alpha;).</dd>
+<dt><tt>TYPE_USHORT_555_RGB</tt></dt>
+<dd>Chaque pixel est codé par un entier court avec 5 bits pour chaque
+  composante RGB (pas de composante &alpha;).</dd>
+</dl>
+
+<p>Une image comprend automatiquement un <em>modèle de couleur</em> et un
+<em>raster</em>.  Le modèle de couleur détermine le codage le la couleur de
+chaque pixel. Il fait référence à un <em>espace de couleur</em> qui
+détermine une façon de représenter les couleurs.  Le raster encapsule le
+tableau de pixels de l'image.  C'est par son intermédiaire qu'on accède en
+lecture et/ou en écriture à la couleur d'un pixel donné.</p>
+
+<h3><a name="Colors" id="Colors">Modèles et espaces de couleurs</a></h3>
+
+
+<p>Un <em>modèle de couleur</em> détermine le codage de la couleur de
+chaque pixel. Ceci comprend l'espace mémoire alloué à chaque pixel et la
+répartition entre les différentes composantes.  Cette notion est semblable
+à celle de <em>Visual</em> de X-Window.  Certains modèles de couleur
+utilisent une table (comme X-Window) alors que d'autres stockent
+directement les composantes.  Un modèle de couleur fait automatiquement
+référence à un <em>espace de couleur</em> qui est un <em>système de
+représentation</em> des couleurs.</p>
+
+<h4>Espaces de couleur</h4>
+
+<p>Un espace de couleur se matérialise en SWING par un objet de classe
+<tt>ColorSpace</tt>.  Il spécifie un système de coordonnées appelées
+<em>composantes</em> pour représenter les couleurs.  L'espace de couleur
+détermine le nombre de composantes et leurs significations.  L'espace de
+couleur par défaut de SWING est le système
+
+<a href="http://www.w3.org/pub/WWW/Graphics/Color/sRGB.html">sRGB</a> qui
+est une variante du système RGB.  Dans cet espace de couleur, chaque
+couleur est représentée par ses trois composantes RGB.  Il existe d'autres
+systèmes classiques pour représenter les couleurs comme HSV (Hue,
+Saturation, Value), HLS, CMY (Cyan, Magenta, Yellow), CMYK (Cyan, Magenta,
+Yellow, blacK) et le système absolu CIExyz.</p>
+
+<p>La notion de composante &alpha; pour la transparence est étrangère à un
+système de couleur.  Elle a uniquement un sens d'un point de vue
+informatique.  C'est le modèle de couleur qui détermine la présence d'une
+composante &alpha;.</p>
+
+<p>La classe <tt>ColorSpace</tt> a des méthodes <tt>fromRGB</tt>,
+<tt>toRGB</tt>, <tt>fromCIEXYZ</tt> et <tt>toCIEXYZ</tt> permettant de
+convertir une couleur de l'espace courant dans les espaces sRGB standard de
+SWING et à l'espace absolu CIExyz.</p>
+
+<h4>Modèles de couleur</h4>
+
+<p>Un modèle de couleur se matérialise en SWING par un objet de classe
+<tt>ColorModel</tt>.  Cette classe est abstraite et les modèles de couleurs
+se répartissent en trois catégories correspondant aux classes suivantes qui
+dérivent de <tt>ColorModel</tt>.</p>
+
+<dl compact="compact">
+<dt><tt>ComponentColorModel</tt></dt>
+<dd>Ce modèle est le seul à permettre d'utiliser un espace de couleur
+  de type autre que RGB.  Dans ce modèle, les composantes des couleurs
+  sont stockées de manière indépendante.  Le nombre de composantes dépend
+  de l'espace de couleurs.</dd>
+<dt><tt>IndexColorModel</tt></dt>
+<dd>Dans ce modèle, chaque couleur est représentée par une entrée dans
+  une table de couleurs représentées en sRGB.  Ce modèle correspond au
+  visual <tt>PseudoColor</tt> (non décomposé) de X-Window.</dd>
+<dt><tt>PackedColorMode</tt></dt>
+<dd>Dans ce modèle et la classe dérivée <tt>DirectColorModel</tt>, les
+  composantes &alpha;RGB sont stockées dans un unique entier éventuellement
+  court.  Les bits utilisés par chaque composante sont déterminés par des
+  masques.</dd>
+</dl>
+
+<p>La méthode <tt>getDataElements</tt> de la classe <tt>ColorModel</tt>
+permet la conversion d'une couleur du système standard sRGB dans le modèle
+courant.  Cette méthode retourne un objet qui peut ensuite être transmis au
+raster pour spécifier la couleur d'un pixel.  La méthode <tt>getRGB</tt>
+effectue la conversion inverse.  Elle retourne une couleur dans le modèle
+standard sRGB.</p>
+
+<h3><a name="Raster" id="Raster">Raster</a></h3>
+
+<p>Un objet de type <tt>Raster</tt> encapsule le tableau de pixels d'une
+image. Il fournit des méthodes pour accéder à la couleur d'un pixel.  Par
+défaut un raster de classe <tt>Raster</tt> permet uniquement de lire mais
+pas de changer la couleur d'un pixel.  Les raster permettant aussi de changer
+la couleur sont de classe <tt>WritableRaster</tt>.  Seules les images
+<tt>BufferedImage</tt> ont un raster de ce type.</p>
+
+<p>Un raster est composé d'un objet de classe <tt>DataBuffer</tt> qui
+contient dans un tableau les données brutes et d'un modèle
+d'échantillonnage de classe <tt>SampleModel</tt> qui interprète les données
+brutes.</p>
+
+<p>Les méthodes permettant de lire ou changer la couleur d'un pixel sont
+les méthodes <tt>getPixel</tt>, <tt>setPixel</tt>, <tt>getDataElements</tt>
+et <tt>setDataElements</tt>.  Les méthodes <tt>getPixel</tt> et
+<tt>setPixel</tt> utilisent des tableaux d'entiers ou flottants pour
+spécifier les composantes de la couleur.  Le nombre de composantes et leurs
+significations dépendent du modèle de couleur. L'utilisation de ces méthode
+est uniquement possible si on connaît précisément le modèle de couleur de
+l'image manipulée.  Sinon, il faut utiliser les méthodes
+<tt>getDataElements</tt> et <tt>setDataElements</tt> qui utilisent des
+objets convertis par le modèle de couleur.  Le morceau de code suivant
+illustre l'utilisation de ces méthodes.</p>
+
+<pre>
+  // Image 200x100 de type ARGB
+  Image image = new BufferedImage(200, 100, BufferedImage.TYPE_INT_ARGB);
+  WritableRaster raster = image.getRaster();
+  ColorModel model = image.getColorModel();
+  // Couleur 
+  Color color = new Color(&hellip;);
+  // Coordonnées sRGB de cette couleur
+  int argb = color.getRGB();
+  // Conversion de cette couleur dans le modèle de couleur
+  Object colorData = model.getDataElements(argb, null);
+  // Pixel (x,y) de couleur color
+  raster.setDataElements(x, y, colorData);
+</pre>
+
+<h2><a name="Transform" id="Transform">Transformations d'images</a></h2>
+
+<p>Swing autorise la manipulation d'images de manière assez aisée.
+Le mécanisme de traitement d'image est basé sur un principe de 
+<em>producteur/consommateur</em> d'images.</p>
+
+<h3><a name="Prod" id="Prod">Producteur et consommateur d'images</a></h3>
+
+<p>L'idée est que le producteur produit les pixels de l'image et les
+délivre au consommateur qui les utilise.  Le consommateur commence par
+s'enregistrer auprès du producteur puis lui envoie une demande d'images.
+Le producteur répond en envoyant l'image par l'intermédiaire d'une méthode
+<tt>setPixels</tt> du consommateur.  Le mécanisme est semblable à celui des
+événements avec les générateurs (producteurs) d'événements et les écouteurs
+(consommateurs d'événements).</p>
+
+<p>Les producteurs d'images implémentent l'interface <tt>ImageProducer</tt>
+et les consommateurs implémentent l'interface <tt>ImageConsumer</tt>.  La
+méthode <tt>getSource()</tt> de la classe <tt>Image</tt> retourne un objet
+de classe <tt>ImageProducer</tt> qui va pouvoir fournir cette image à des
+consommateurs.  Les méthodes principales de <tt>ImageProducer</tt> sont les
+suivantes.</p>
+
+<dl compact="compact">
+<dt><tt>addConsumer(ImageConsumer)</tt></dt>
+<dd>pour enregistrer un consommateur</dd>
+<dt><tt>startProduction(ImageConsumer)</tt></dt>
+<dd>pour enregistrer un consommateur et demander l'envoi immédiat de
+  l'image</dd> 
+<dt><tt>requestTopDownLeftRightResend(ImageConsumer)</tt></dt>
+<dd>pour demander l'envoi de l'image</dd>
+</dl>
+
+<p>Les méthodes principales de <tt>ImageConsumer</tt> sont les
+suivantes.</p>
+
+<dl compact="compact">
+<dt><tt>imageComplete(int status)</tt></dt>
+<dd>méthode appelée par le producteur pour avertir que l'envoi
+  de l'image est terminé</dd>
+<dt><tt>setColorModel(ColorModel)</tt></dt>
+<dd>donne le modèle de couleur de l'image</dd>
+<dt><tt>setDimensions(int width, int height) </tt></dt>
+<dd>donne les dimensions de l'image</dd>
+<dt><tt>setPixels</tt></dt>
+<dd>le producteur envoie les pixels en appelant cette méthode du
+  consommateur</dd> 
+</dl>
+
+<h3><a name="Filters" id="Filters">Filtres</a></h3>
+
+<p>En SWING, le traitement d'une image se fait par l'intermédiaire d'un
+filtre.  Celui-ci se place entre le producteur et le consommateur et
+modifie l'image lors de son transfert.  Un filtre se comporte simultanément
+comme un consommateur et un producteur. Le mécanisme est semblable à celui
+des flux <tt>InputStream</tt> et <tt>OutputStream</tt> des entrées/sorties
+Java.  Les filtres sont des objets de classe <tt>ImageFilter</tt>.  Cette
+classe implémente l'interface <tt>ImageConsumer</tt>.  Le producteur est
+construit en encapsulant le filtre dans un objet de classe
+<tt>FilteredImageSource</tt>.  Le morceau de code ci-dessous illustre
+l'utilisation typique de ces classes.</p>
+
+<pre>
+  // Image originale
+  Image original = getImage("image.gif");
+  // Filtre 
+  ImageFilter filter = &hellip;
+  // Producteur de l'image filtrée
+  ImageProducer source = new FilteredImageSource(original.getSource(), filter);
+  // Image résultat
+  Image result = createImage(source);
+</pre>
+
+<h3><a name="BufferOp" id="BufferOp">Opérations sur les images 
+  modifiables</a></h3>
+
+<p>Pour manipuler des images modifiables de classe <tt>BufferedImage</tt>,
+on peut aussi appliquer des <em>transformations</em>.  Celles-ci sont des
+objets de type <tt>BufferedImageOp</tt> qui possède une méthode
+<tt>filter</tt>.  Cette méthode prend en paramètre une image source et
+retourne une image modifiée par l'opération.</p>
+
+<p>La classe <tt>BufferedImageOp</tt> est en fait une interface qui est
+implémentée par des classes pour chacune des transformations classiques sur
+les images.  Ces classes sont les suivantes.</p>
+
+<dl compact="compact">
+<dt><tt>AffineTransformOp</tt></dt>
+<dd>transformation affine (translation, symétrie, rotation, &hellip;).
+  Cette classe utilise on objet de type <tt>AffineTransform</tt>.  Cette
+  classe possède des méthodes statiques <tt>getTranslateInstance</tt>,
+  <tt>getScaleInstance</tt>, <tt>getRotateInstance</tt> et
+  <tt>getShearInstance</tt> pour créer des transformations de base. Ces
+  transformations peuvent ensuite être composées par la méthode
+  <tt>concatenate</tt>. </dd>
+<dt><tt>ColorConvertOp</tt></dt>
+<dd>transformation des couleurs</dd>
+<dt><tt>ConvolveOp</tt></dt>
+<dd>convolution (application d'une moyenne pondérée des pixels adjacents)</dd>
+<dt><tt>LookupOp</tt></dt>
+<dd>manipulation des tables des couleurs</dd>
+<dt><tt>RescaleOp</tt></dt>
+<dd>intensités des couleurs</dd>
+</dl>
+
+<p>Un filtre peut être obtenu à partir d'une transformation en utilisant la
+classe <tt>BufferedImageFilter</tt> qui étend la classe
+<tt>ImageFilter</tt>. Le constructeur de cette classe prend en paramètre un
+objet de type <tt>BufferedImageOp</tt> à encapsuler.</p>
+
+<h3><a name="FiltersMade" id="FiltersMade">Fabrication des filtres</a></h3>
+
+<p>La classe <tt>ImageFilter</tt> et en fait une classe abstraite qui doit
+être étendue pour créer des filtres.  Il existe déjà plusieurs classes qui
+permettent d'implémenter les filtres classiques.</p>
+
+<dl compact="compact">
+<dt><tt>BufferedImageFilter</tt></dt>
+<dd>filtre à partir d'une transformation d'images</dd>
+<dt><tt>CropImageFilter</tt></dt>
+<dd>extraction d'une partie</dd>
+<dt><tt>ReplicateScaleFilter</tt></dt>
+<dd>copie et redimensionnement</dd>
+<dt><tt>RGBImageFilter</tt></dt>
+<dd>transformation des couleurs</dd>
+</dl>
+
+</body>
+</html>

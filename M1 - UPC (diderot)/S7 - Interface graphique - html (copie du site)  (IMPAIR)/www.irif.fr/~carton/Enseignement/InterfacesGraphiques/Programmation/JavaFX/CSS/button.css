@@ -1,0 +1,29 @@
+/* -*- coding: utf-8 -*- */
+/* Time-stamp: <button.css  18 sep 2019 09:48:44> */
+
+.root {
+    -fx-background-color:black;
+}
+
+.text {
+    -fx-fill: lime;
+    -fx-font-size: 20;
+}
+
+.button {
+    -fx-background-color:transparent ;
+    -fx-background-radius:0;
+    -fx-border-color:transparent;
+    -fx-border-width: 0 3 3 0;
+}
+
+.button:hover {
+    -fx-background-color:lime;
+    -fx-background-radius:0;
+    -fx-border-color:black;
+    -fx-border-width: 0 3 3 0;
+}
+
+.button:hover .text{
+    -fx-fill: black;
+}

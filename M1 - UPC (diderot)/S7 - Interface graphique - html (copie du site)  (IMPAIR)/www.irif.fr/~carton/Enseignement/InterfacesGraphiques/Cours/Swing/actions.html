@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<!-- Time-stamp: "actions.html  17 Mar 2005 09:58:48" -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+  <title>
+  Actions
+  </title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="Author" content="Olivier Carton">
+</head>
+
+<body>
+
+<h2>Actions</h2>
+
+<p>Un élément essentiel d'une bonne interface utilisateur est la
+<em>cohérence</em>. Ceci signifie que parmi toutes les actions
+potentielles, seules les actions vraiment possibles sont offertes à
+l'utilisateur.  Les autres apparaissent aussi dans les menus ou dans la
+barre d'outils mais elle ne sont pas activées.  Elle apparaissent alors
+grisées dans l'interface.</p>
+
+<p>Un autre élément d'une bonne interface est que les actions sont
+accessibles de plusieurs façons à l'utilisateur : entrée dans un menu,
+icône dans la barre d'outils et raccourci clavier.  Il est alors
+important que toutes ces façons d'accéder à une même action soient gérées
+de manière cohérente, c'est-à-dire activées et désactivées simultanément et
+qu'elles produisent bien la même action.</p>
+
+<p>Les <em>actions</em> Swing facilitent la tâche du programmeur en offrant
+une gestion centralisée d'une action.  Cet objet regroupe les différents
+aspects d'une action ainsi que la méthode appelée lorsque l'action est
+effectuée.</p>
+
+<ul>
+<li>L'action contient l'<em>étiquette</em> et l'icône de l'action qui la
+  font apparaître dans les menus et la barre d'outils (<tt>JToolbar</tt>).
+  Elle contient aussi deux chaînes de description pour les bulles
+  d'aide. </li>
+<li>L'action gère le fait d'être activée ou désactivée qui est pris en
+  compte par les menus où la barre d'outils.  Cette activation est
+  positionnée par l'appel de la méthode <tt>setEnabled(boolean b)</tt>.
+  </li> 
+<li>L'action contient une méthode  <tt>actionPerformed(ActionEvent
+  event)</tt> qui est appelée pour que l'action soit effectuée.  C'est la
+  partie <em>contrôleur</em>.  </li>
+</ul>
+
+<p>L'interface <tt>Action</tt> étend l'interface <tt>ActionListener</tt>
+qui définit la méthode <tt>actionPerformed(ActionEvent event)</tt> qui est
+appelée pour que l'action soit effectuée.  Pour faciliter le travail du
+programmeur, une classe abstraite <tt>AbstractAction</tt> implémente de
+manière triviale l'interface <tt>Action</tt>.  La méthode
+<tt>actionPerformed()</tt> est définie mais ne fait rien.  Une bonne façon
+de programmer une classe implémentant <tt>Action</tt> est de dériver la
+classe <tt>AbstractAction</tt> et de redéfinir les méthodes nécessaires.
+</p>
+
+<p>Pour la gestion de ces différents attributs, les actions utilisent le
+cadre des JavaBeans.  Les différents <em>getter</em> et <em>setter</em> des
+attributs sont regroupés en deux méthode <tt>getValue(String key)</tt> et
+<tt>setValue(String key, Object value)</tt>.  Pour chacun des différents
+attributs, est définie une chaîne constante qui est passée en premier
+paramètre aux méthodes <tt>getValue()</tt> et <tt>setValue()</tt>.  Par
+exemple, pour changer le nom de l'action dans les menus, il faut passer
+la chaîne <tt>"NAME"</tt> en paramètre.</p>
+
+</body>
+</html>

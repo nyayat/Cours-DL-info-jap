@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- Time-stamp: "index.html  12 sep 2019 16:43:37" -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+  <title></title>
+  <link href="style.css" rel="stylesheet" type="text/css"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name="Author" content="Olivier Carton"/>
+  <style type="text/css"> <!--
+    body { background-color: white; }
+  --> </style>
+</head>
+
+<body>
+<h1>JavaFX</h1>
+
+<p>Caractéristiques :</p>
+<ul>
+<li>remplace Swing</li>
+<li>fait partie de Java 8</li>
+<li>grand choix de composants</li>
+<li>composant web</li>
+<li>les moteurs graphiques et media (son, video, images)</li>
+<li>possède l'infrastructure pour faire les animations</li>
+<li>Java 3D inclus</li>
+<li>FXML pour décrire la vue en xml, CSS pour uniformiser la présentation</li>
+<li>gestion de DnD (drag and drop)</li>
+</ul>
+
+<h2>Scene graph</h2>
+
+<ul>
+<li>un arbre hiérarchique des éléments qui forment l'interface
+  graphique (des nœuds)</li>
+<li> peut être rendu sur l'écran</li>
+</ul>
+<p>Un nœud :</p>
+<ul>
+<li>un élément de l'interface graphique (un widget)</li>
+<li>possède ID et le style</li>
+<li>nous pouvons appliquer à un nœud des transformations, des effets
+  visuels, définir la transparence (ou opacité), définir event handlers
+  (event handlers ou gestionnaires d'événements sont les classes qui
+  interceptent et réagissent aux événements)</li>
+</ul>
+
+<h2>Stage et Scene</h2>
+
+<dl>
+  <dt>Stage</dt>
+  <dd>la fenêtre principale, javaFx nous donne la référence vers un seul
+    objet Stage (le paramètre de la méthode <tt>start()</tt>).</dd>
+  <dt>Scene</dt>
+  <dd>nous pouvons construire dans notre programme autant d'objets de la
+    classe Scene qu'on veut. Comme dans un théâtre Stage reste toujours le
+    même mais un objet Scene qui représente ce qui est visible (affiché)
+    sur Stage peut être remplacé à tout moment par un autre objet Scene.
+    Scene est un conteneur de base qui peut comporter un ou plusieurs
+    nœuds, la propriété <tt>root</tt> de Scene doit référencer la racine
+    de l'arbre de nœuds qui sont affichés sur la scène.</dd>
+  <dl>
+</ul>
+
+  <img src="stage.png" width="500px"/>
+
+</body>
+
+</html>

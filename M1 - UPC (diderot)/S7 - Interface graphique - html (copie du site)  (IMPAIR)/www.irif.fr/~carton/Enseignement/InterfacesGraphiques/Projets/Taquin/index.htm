@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<!-- Time-stamp: "index.html   4 Mar 2005 09:28:20" -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+  <title>
+  Projet de taquin
+  </title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="Author" content="Olivier Carton">
+</head>
+
+<body>
+<h1 align="center">Projet de Taquin</h1>
+<h2 align="center">Projet d'interfaces graphiques</h2>
+
+<h2>Modalités</h2> 
+
+<p>Le projet sera écrit en Java en utilisant SWING.  Il sera réalisé par
+binômes (2 personnes).  Un dossier comportant le rapport et un listing
+commenté des programmes écrits sera rendu au secrétariat de la licence
+avant le <b>lundi 17 mai 2004</b>.</p>
+
+<p>L'objectif du projet est de mettre en &oelig;uvre les techniques de la
+programmation orientée objet afin de réaliser avec SWING une interface
+utilisateur.  L'évaluation prendra très largement en compte l'architecture
+globale du programme, l'utilisation appropriée des objets SWING ainsi que
+la qualité de l'interface offerte à l'utilisateur.  Ce dernier point
+comprend en particulier la lisibilité, l'ergonomie et la cohérence de
+l'interface.</p>
+
+<h2>Objectif</h2> 
+
+<p>L'objectif du projet est de réaliser une interface permettant de jouer
+au taquin.</p>
+
+<h2>Description</h2>
+
+<p>Le <em>taquin</em> se joue seul sur une grille rectangulaire. Un jeton
+remplit chacun des cases de la grille sauf une.  La case restante de la
+grille est vide.  Les jetons sont numérotés à partir de 1.  L'objectif est
+que les jetons soient disposés en ordre et que la case libre soit celle en
+bas et à droite.</p>
+
+<p>Si la grille est par exemple de taille 4&times;4, il y a donc 15 jetons
+numérotés de 1 à 15.  Une remplissage de la grille possible est montré
+ci-dessous.  À droite se trouve le remplissage à obtenir.</p>
+
+<pre>
+  Configuration quelconque    Configuration à obtenir
+      12   3  11   8              1   2   3   4
+       2  15   5  12              5   6   7   8
+       1       6   9              9  10  11  12
+      10   4   7  14             13  14  15 
+</pre>
+
+<p>Le seul mouvement possible est de déplacer dans la case vide un des
+quatre jetons qui se trouve dans une case adjacente à la case vide.  Par
+<em>adjacente</em>, on entend, au dessus, en dessous, à gauche ou à droite.
+La case où se trouvait le jeton devient vide.</p>
+
+<p>Si dans la configuration ci-dessus, le jeton 6 se déplace, on 
+obtient le coup suivant.</p>
+
+<pre>
+               Déplacement du jeton 6
+      12   3  11   8	         12   3  11   8
+       2  15   5  12   	          2  15   5  12
+       1       6   9	          1   6       9
+      10   4   7  14	         10   4   7  14
+</pre>
+
+
+<h2>Réalisation</h2>
+
+<p>Rien n'est vraiment imposé dans l'interface.  Celle-ci pourra comporter
+des menus, des boutons, des menus contextuels (popup menu) et tout ce que
+SWING fournit.  Lorsque l'AWT et SWING offrent des fonctionnalités
+similaires, les objets SWING doivent être utilisés en priorité.
+L'interface doit proposer au joueur une configuration initiale et gérer une
+notion de score.  Ce score pourra prendre en compte la taille de la grille
+et le temps écoulé pour atteindre la solution.</p>
+
+<p>L'interface devra aussi offrir à l'utilisateur la possibilité de sauver
+une partie en cours et de reprendre une partie sauvée au préalable.  Ceci
+pourra se faire grâce à la sérialisation d'objets mais une meilleure
+solution consiste à utiliser XML.</p>
+
+<p>L'interface devra aussi permettre à l'utilisateur de revenir en arrière
+dans la partie en annulant un certain nombre des derniers mouvements.  Il
+sera alors possible de repartir en avant en effectuant à nouveau les
+mouvements annulés.</p>
+
+<p>Les extensions possibles de ce projet sont nombreuses.  Libre à vous
+d'ajouter des fonctionnalités.  Il est cependant conseillé de ne pas
+sacrifier la qualité à la quantité.  Un programme minimal (c'est-à-dire
+correspondant à ce qui est demandé) mais bien conçu est nettement
+préférable à un projet plus large mais moins abouti.</p>
+
+</body>
+</html>

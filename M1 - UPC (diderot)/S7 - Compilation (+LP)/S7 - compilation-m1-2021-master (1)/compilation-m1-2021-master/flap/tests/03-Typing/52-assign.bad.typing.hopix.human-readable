@@ -1,0 +1,4 @@
+et x : mut<int> = 0
+
+let main : unit =
+    x := 1

@@ -1,0 +1,10 @@
+external printf
+
+globals (x)
+  lx : x <- copy "The universe is big, it's vast and complicated, and ridiculous and sometimes, very rarely, impossible things just happen and we call them miracles.";
+  l00: %rdi <- copy "%s\n";
+  l01: %rsi <- copy x;
+  l02: %rax <- copy 0;
+  l03: printf();
+  l04: exit;
+end

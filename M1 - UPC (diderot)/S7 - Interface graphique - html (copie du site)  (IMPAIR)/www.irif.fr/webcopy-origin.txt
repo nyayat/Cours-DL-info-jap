@@ -1,0 +1,1572 @@
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\index.htm
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/biblio.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\biblio.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/DesignPattern/
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\DesignPattern\index.htm
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/introduction.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\introduction.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/JavaFX/
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\JavaFX\index.htm
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/JavaFX/containers.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\JavaFX\containers.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/JavaFX/mvc.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\JavaFX\mvc.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/JavaFX/mvc.png
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\JavaFX\mvc.png
+Content Type: image/png
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/JavaFX/stage.png
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\JavaFX\stage.png
+Content Type: image/png
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/JavaFX/style.css
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\JavaFX\style.css
+Content Type: text/css
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/presentation.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\presentation.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/style.css
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\style.css
+Content Type: text/css
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/Swing/actions.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\Swing\actions.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/Swing/applettes.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\Swing\applettes.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/Swing/arborescence.png
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\Swing\arborescence.png
+Content Type: image/png
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/Swing/arbres.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\Swing\arbres.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/Swing/bezier.png
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\Swing\bezier.png
+Content Type: image/png
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/Swing/cap.png
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\Swing\cap.png
+Content Type: image/png
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/Swing/casteljau.png
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\Swing\casteljau.png
+Content Type: image/png
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/Swing/conteneurs.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\Swing\conteneurs.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/Swing/evenements.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\Swing\evenements.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/Swing/graphiques.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\Swing\graphiques.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/Swing/images.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\Swing\images.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/Swing/introduction.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\Swing\introduction.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/Swing/join.png
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\Swing\join.png
+Content Type: image/png
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/Swing/layouts.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\Swing\layouts.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/Swing/listes.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\Swing\listes.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/Swing/mvc.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\Swing\mvc.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/Swing/mvc.png
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\Swing\mvc.png
+Content Type: image/png
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/Swing/shapes.png
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\Swing\shapes.png
+Content Type: image/png
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/Swing/splines.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\Swing\splines.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/Swing/style.css
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\Swing\style.css
+Content Type: text/css
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/Swing/tables.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\Swing\tables.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/urls.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\urls.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/X/.fvwmrc
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\X\.fvwmrc
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/X/.mwmrc
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\X\.mwmrc
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/X/.Xsession
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\X\.Xsession
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/X/caracteristiques.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\X\caracteristiques.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/X/clients.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\X\clients.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/X/communication.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\X\communication.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/X/couleurs.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\X\couleurs.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/X/decomposee.png
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\X\decomposee.png
+Content Type: image/png
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/X/docs.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\X\docs.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/X/editres.png
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\X\editres.png
+Content Type: image/png
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/X/fontes.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\X\fontes.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/X/fonts.alias
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\X\fonts.alias
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/X/fonts.dir
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\X\fonts.dir
+Content Type: application/x-director
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/X/historique.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\X\historique.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/X/keysymdef.h
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\X\keysymdef.h
+Content Type: text/x-c
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/X/nondecompo.png
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\X\nondecompo.png
+Content Type: image/png
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/X/options.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\X\options.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/X/ressources.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\X\ressources.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/X/securite.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\X\securite.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/X/style.css
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\X\style.css
+Content Type: text/css
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/X/xdm.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\X\xdm.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/X/xfd.png
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\X\xfd.png
+Content Type: image/png
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/X/xfdres.txt
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\X\xfdres.txt
+Content Type: text/plain
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/X/xmodmap.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\X\xmodmap.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/X/xset.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\X\xset.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Cours/X/xsetroot.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Cours\X\xsetroot.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/index-0203.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\index-0203.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/index-0304.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\index-0304.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/index-0405.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\index-0405.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/index-0506.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\index-0506.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/index-1920.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\index-1920.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/index-2021.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\index-2021.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\index.htm
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Awt/
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Awt\index.htm
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Awt/SimpleFrame.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Awt\SimpleFrame.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/JavaFX/
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\JavaFX\index.htm
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/JavaFX/Bindings/Slider3Circles.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\JavaFX\Bindings\Slider3Circles.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/JavaFX/Bindings/SliderCircle.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\JavaFX\Bindings\SliderCircle.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/JavaFX/CSS/button.css
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\JavaFX\CSS\button.css
+Content Type: text/css
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/JavaFX/CSS/CSSButton.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\JavaFX\CSS\CSSButton.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/JavaFX/Events/BgdButtonAnon.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\JavaFX\Events\BgdButtonAnon.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/JavaFX/Events/BgdButtonNamed.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\JavaFX\Events\BgdButtonNamed.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/JavaFX/Events/BgdCombo.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\JavaFX\Events\BgdCombo.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/JavaFX/Events/BgdMenu.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\JavaFX\Events\BgdMenu.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/JavaFX/FXML/buttons.fxml
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\JavaFX\FXML\buttons.fxml
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/JavaFX/FXML/Buttons.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\JavaFX\FXML\Buttons.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/JavaFX/Layouts/BorderLayout.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\JavaFX\Layouts\BorderLayout.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/JavaFX/Layouts/FlowLayout.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\JavaFX\Layouts\FlowLayout.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/JavaFX/Layouts/GridLayout.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\JavaFX\Layouts\GridLayout.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/JavaFX/Layouts/HBoxLayout.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\JavaFX\Layouts\HBoxLayout.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/JavaFX/Layouts/TileLayout.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\JavaFX\Layouts\TileLayout.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/JavaFX/MVC/Simple.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\JavaFX\MVC\Simple.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/JavaFX/MVC/View.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\JavaFX\MVC\View.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/JavaFX/Simple/EmptyScene.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\JavaFX\Simple\EmptyScene.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/JavaFX/Simple/HelloWorld.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\JavaFX\Simple\HelloWorld.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Qt/
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Qt\index.htm
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Qt/Hello/helloQt.cpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Qt\Hello\helloQt.cpp
+Content Type: text/x-c
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Qt/LcdClock/clock.cpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Qt\LcdClock\clock.cpp
+Content Type: text/x-c
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Qt/LcdClock/clock.h
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Qt\LcdClock\clock.h
+Content Type: text/x-c
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Qt/LcdClock/main.cpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Qt\LcdClock\main.cpp
+Content Type: text/x-c
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Qt/LcdClock/makefile
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Qt\LcdClock\makefile
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\index.htm
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/Applets/imageapplet.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\Applets\imageapplet.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/Applets/ImageApplet.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\Applets\ImageApplet.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/Applets/index.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\Applets\index.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/Applets/monitor.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\Applets\monitor.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/Applets/MonitorApplet.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\Applets\MonitorApplet.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/Applets/simpleapplet.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\Applets\simpleapplet.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/Applets/SimpleApplet.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\Applets\SimpleApplet.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/Backgrounds/BackgrdButton.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\Backgrounds\BackgrdButton.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/Backgrounds/BackgrdMenu.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\Backgrounds\BackgrdMenu.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/Bases/Bases.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\Bases\Bases.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/Editor/editor.jar
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\Editor\editor.jar
+Content Type: application/java-archive
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/Frames/Bonjour.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\Frames\Bonjour.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/Frames/MinimalFrame.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\Frames\MinimalFrame.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/Frames/SimpleFrame.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\Frames\SimpleFrame.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/Frames/SimpleLine.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\Frames\SimpleLine.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/Gaz/gaz.jar
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\Gaz\gaz.jar
+Content Type: application/java-archive
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/ImageView/images/9personnes.jpg
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\ImageView\images\9personnes.jpg
+Content Type: image/jpeg
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/ImageView/ImageTrack.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\ImageView\ImageTrack.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/ImageView/ImageView.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\ImageView\ImageView.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/ImageView/ImageWait.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\ImageView\ImageWait.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/ImageView/transform.jar
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\ImageView\transform.jar
+Content Type: application/java-archive
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/jar.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\jar.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/Labyrinth/Simple/labyrinth.jar
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\Labyrinth\Simple\labyrinth.jar
+Content Type: application/java-archive
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/Layouts/GBLDemo1.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\Layouts\GBLDemo1.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/Layouts/GBLDemo2.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\Layouts\GBLDemo2.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/Layouts/GBLDemo3.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\Layouts\GBLDemo3.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/Layouts/GBLDemo4.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\Layouts\GBLDemo4.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/Layouts/Layouts.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\Layouts\Layouts.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/Layouts/Target.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\Layouts\Target.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/Lists/OneList.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\Lists\OneList.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/Lists/SelectionMode.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\Lists\SelectionMode.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/Lists/TwoLists.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\Lists\TwoLists.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/Locals/LocalDate.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\Locals\LocalDate.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/Locals/Locals.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\Locals\Locals.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/Mandelbrot/Mandelbrot.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\Mandelbrot\Mandelbrot.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/Minical/minical.jar
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\Minical\minical.jar
+Content Type: application/java-archive
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/PlusOuMoins/Base/Base.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\PlusOuMoins\Base\Base.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/PlusOuMoins/Extended/Extended.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\PlusOuMoins\Extended\Extended.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/PlusOuMoins/Mvc/Mvc.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\PlusOuMoins\Mvc\Mvc.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/PlusOuMoins/Simple/PlusOuMoins.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\PlusOuMoins\Simple\PlusOuMoins.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/Tables/Binomials.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\Tables\Binomials.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/Tables/FixedPlanetes.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\Tables\FixedPlanetes.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/Tables/Planetes.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\Tables\Planetes.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/Tables/SortedPlanetes.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\Tables\SortedPlanetes.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/Trees/ClassTree.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\Trees\ClassTree.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/Trees/FileTree.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\Trees\FileTree.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/Trees/simpletree.jar
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\Trees\simpletree.jar
+Content Type: application/java-archive
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/Trees/XMLTree.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\Trees\XMLTree.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/Undo/Multiple/multundo.jar
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\Undo\Multiple\multundo.jar
+Content Type: application/java-archive
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/Undo/Simple/simpleundo.jar
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\Undo\Simple\simpleundo.jar
+Content Type: application/java-archive
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/Swing/Undo/Text/TextEdit.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\Swing\Undo\Text\TextEdit.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/X/
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\X\index.htm
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/X/makefile
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\X\makefile
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Programmation/X/window.c
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Programmation\X\window.c
+Content Type: text/x-c
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Projets/Demineur/
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Projets\Demineur\index.htm
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Projets/Sable/
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Projets\Sable\index.htm
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Projets/Solitaire/
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Projets\Solitaire\index.htm
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Projets/Taquin/
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Projets\Taquin\index.htm
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\index.htm
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Awt/
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Awt\index.htm
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Awt/SimpleFrame.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Awt\SimpleFrame.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\index.htm
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Adapter/
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Adapter\index.htm
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Adapter/adapter.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Adapter\adapter.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Adapter/adapter.tgz
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Adapter\adapter.tgz
+Content Type: application/x-gzip
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Adapter/adapter.zip
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Adapter\adapter.zip
+Content Type: application/zip
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Adapter/aggregation-adapter.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Adapter\aggregation-adapter.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Adapter/builder.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Adapter\builder.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Adapter/delegation-adapter.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Adapter\delegation-adapter.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Adapter/inheritance-adapter.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Adapter\inheritance-adapter.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Adapter/legacy.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Adapter\legacy.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Adapter/main.cpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Adapter\main.cpp
+Content Type: text/x-c
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Adapter/makefile
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Adapter\makefile
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Bridge/
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Bridge\index.htm
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Bridge/arraylist.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Bridge\arraylist.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Bridge/bridge.tgz
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Bridge\bridge.tgz
+Content Type: application/x-gzip
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Bridge/bridge.zip
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Bridge\bridge.zip
+Content Type: application/zip
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Bridge/container.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Bridge\container.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Bridge/fifoqueue.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Bridge\fifoqueue.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Bridge/lifoqueue.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Bridge\lifoqueue.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Bridge/linkedlist.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Bridge\linkedlist.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Bridge/main.cpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Bridge\main.cpp
+Content Type: text/x-c
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Bridge/makefile
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Bridge\makefile
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Bridge/queue.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Bridge\queue.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Composite/
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Composite\index.htm
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Composite/composite.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Composite\composite.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Composite/composite.tgz
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Composite\composite.tgz
+Content Type: application/x-gzip
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Composite/composite.zip
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Composite\composite.zip
+Content Type: application/zip
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Composite/disk.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Composite\disk.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Composite/main.cpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Composite\main.cpp
+Content Type: text/x-c
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Composite/makefile
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Composite\makefile
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Composite/rectangle.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Composite\rectangle.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Composite/shape.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Composite\shape.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Decorator/
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Decorator\index.htm
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Decorator/base.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Decorator\base.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Decorator/decorator.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Decorator\decorator.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Decorator/decorator.tgz
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Decorator\decorator.tgz
+Content Type: application/x-gzip
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Decorator/decorator.zip
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Decorator\decorator.zip
+Content Type: application/zip
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Decorator/decoratorA.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Decorator\decoratorA.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Decorator/decoratorB.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Decorator\decoratorB.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Decorator/decoratorC.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Decorator\decoratorC.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Decorator/factory.cpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Decorator\factory.cpp
+Content Type: text/x-c
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Decorator/factory.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Decorator\factory.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Decorator/interface.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Decorator\interface.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Decorator/main.cpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Decorator\main.cpp
+Content Type: text/x-c
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Decorator/makefile
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Decorator\makefile
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Iterator/
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Iterator\index.htm
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Iterator/date.cpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Iterator\date.cpp
+Content Type: text/x-c
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Iterator/date.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Iterator\date.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Iterator/generic.cpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Iterator\generic.cpp
+Content Type: text/x-c
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Iterator/iterator.tgz
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Iterator\iterator.tgz
+Content Type: application/x-gzip
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Iterator/iterator.zip
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Iterator\iterator.zip
+Content Type: application/zip
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Iterator/makefile
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Iterator\makefile
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Iterator/range.cpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Iterator\range.cpp
+Content Type: text/x-c
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Observer/
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Observer\index.htm
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Observer/main.cpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Observer\main.cpp
+Content Type: text/x-c
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Observer/makefile
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Observer\makefile
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Observer/observer.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Observer\observer.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Observer/observer.tgz
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Observer\observer.tgz
+Content Type: application/x-gzip
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Observer/observer.zip
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Observer\observer.zip
+Content Type: application/zip
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Observer/source.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Observer\source.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Observer/target.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Observer\target.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Pool/
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Pool\index.htm
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Pool/limited-pool.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Pool\limited-pool.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Pool/main.cpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Pool\main.cpp
+Content Type: text/x-c
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Pool/makefile
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Pool\makefile
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Pool/pool.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Pool\pool.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Pool/pool.tgz
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Pool\pool.tgz
+Content Type: application/x-gzip
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Pool/pool.zip
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Pool\pool.zip
+Content Type: application/zip
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Pool/tracker.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Pool\tracker.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Proxy/
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Proxy\index.htm
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Proxy/main.cpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Proxy\main.cpp
+Content Type: text/x-c
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Proxy/makefile
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Proxy\makefile
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Proxy/proxy.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Proxy\proxy.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Proxy/proxy.tgz
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Proxy\proxy.tgz
+Content Type: application/x-gzip
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Proxy/proxy.zip
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Proxy\proxy.zip
+Content Type: application/zip
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Responsability/
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Responsability\index.htm
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Responsability/factory.cpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Responsability\factory.cpp
+Content Type: text/x-c
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Responsability/factory.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Responsability\factory.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Responsability/global.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Responsability\global.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Responsability/handler.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Responsability\handler.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Responsability/handlermod.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Responsability\handlermod.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Responsability/main.cpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Responsability\main.cpp
+Content Type: text/x-c
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Responsability/makefile
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Responsability\makefile
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Responsability/partial.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Responsability\partial.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Responsability/responsability.tgz
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Responsability\responsability.tgz
+Content Type: application/x-gzip
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Responsability/responsability.zip
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Responsability\responsability.zip
+Content Type: application/zip
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Singleton/
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Singleton\index.htm
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Singleton/composed.cpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Singleton\composed.cpp
+Content Type: text/x-c
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Singleton/inherited.cpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Singleton\inherited.cpp
+Content Type: text/x-c
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Singleton/makefile
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Singleton\makefile
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Singleton/pointer.cpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Singleton\pointer.cpp
+Content Type: text/x-c
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Singleton/singleton.tgz
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Singleton\singleton.tgz
+Content Type: application/x-gzip
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Singleton/singleton.zip
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Singleton\singleton.zip
+Content Type: application/zip
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Strategy/
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Strategy\index.htm
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Strategy/insertion.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Strategy\insertion.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Strategy/main.cpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Strategy\main.cpp
+Content Type: text/x-c
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Strategy/makefile
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Strategy\makefile
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Strategy/quicksort.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Strategy\quicksort.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Strategy/selection.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Strategy\selection.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Strategy/sorter.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Strategy\sorter.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Strategy/strategy.tgz
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Strategy\strategy.tgz
+Content Type: application/x-gzip
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Strategy/strategy.zip
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Strategy\strategy.zip
+Content Type: application/zip
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Visitor/
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Visitor\index.htm
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Visitor/builder.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Visitor\builder.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Visitor/copy.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Visitor\copy.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Visitor/iterator.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Visitor\iterator.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Visitor/main.cpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Visitor\main.cpp
+Content Type: text/x-c
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Visitor/makefile
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Visitor\makefile
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Visitor/tree.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Visitor\tree.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Visitor/visitor.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Visitor\visitor.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Visitor/visitor.tgz
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Visitor\visitor.tgz
+Content Type: application/x-gzip
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Visitor/visitor.zip
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Visitor\visitor.zip
+Content Type: application/zip
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/DesignPattern/Visitor/void.hpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\DesignPattern\Visitor\void.hpp
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\index.htm
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/Animations/FadeGroup.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\Animations\FadeGroup.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/Animations/FillCircle.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\Animations\FillCircle.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/Animations/Interpolation/Interpol.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\Animations\Interpolation\Interpol.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/Animations/ParallelCircle.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\Animations\ParallelCircle.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/Animations/PathCircle.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\Animations\PathCircle.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/Animations/RotateTriangle.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\Animations\RotateTriangle.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/Animations/ScaleCircle.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\Animations\ScaleCircle.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/Animations/TextAnimation.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\Animations\TextAnimation.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/Animations/TransEllipse.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\Animations\TransEllipse.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/Bindings/ColorBinding/ColorBinding.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\Bindings\ColorBinding\ColorBinding.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/Bindings/ColorBinding/SlidersColor.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\Bindings\ColorBinding\SlidersColor.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/Bindings/Slider3Circles.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\Bindings\Slider3Circles.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/Bindings/SliderCircle.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\Bindings\SliderCircle.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/CSS/File/Source.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\CSS\File\Source.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/CSS/File/style.css
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\CSS\File\style.css
+Content Type: text/css
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/CSS/FileFXML/layout.fxml
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\CSS\FileFXML\layout.fxml
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/CSS/FileFXML/Source.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\CSS\FileFXML\Source.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/CSS/FileFXML/style.css
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\CSS\FileFXML\style.css
+Content Type: text/css
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/CSS/FXML/layout.fxml
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\CSS\FXML\layout.fxml
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/CSS/FXML/Source.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\CSS\FXML\Source.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/CSS/Simple/Source.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\CSS\Simple\Source.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/Events/BgdButtonAnon.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\Events\BgdButtonAnon.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/Events/BgdButtonNamed.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\Events\BgdButtonNamed.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/Events/BgdCombo.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\Events\BgdCombo.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/Events/BgdMenu.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\Events\BgdMenu.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/FXML/Controller/Controller.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\FXML\Controller\Controller.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/FXML/Controller/FXMLAppli.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\FXML\Controller\FXMLAppli.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/FXML/Controller/layout.fxml
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\FXML\Controller\layout.fxml
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/FXML/Define/Controller.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\FXML\Define\Controller.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/FXML/Define/FXMLAppli.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\FXML\Define\FXMLAppli.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/FXML/Define/layout.fxml
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\FXML\Define\layout.fxml
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/FXML/Simple/layout.fxml
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\FXML\Simple\layout.fxml
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/FXML/Simple/Simple.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\FXML\Simple\Simple.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/FXML/TwoScenes/Controller.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\FXML\TwoScenes\Controller.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/FXML/TwoScenes/layout1.fxml
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\FXML\TwoScenes\layout1.fxml
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/FXML/TwoScenes/layout2.fxml
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\FXML\TwoScenes\layout2.fxml
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/FXML/TwoScenes/TwoScenes.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\FXML\TwoScenes\TwoScenes.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/Graphics/Simple.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\Graphics\Simple.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/Layouts/BorderLayout.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\Layouts\BorderLayout.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/Layouts/FlowLayout.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\Layouts\FlowLayout.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/Layouts/GridLayout.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\Layouts\GridLayout.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/Layouts/HBoxLayout.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\Layouts\HBoxLayout.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/Layouts/TileLayout.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\Layouts\TileLayout.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/Lists/ColorCombo.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\Lists\ColorCombo.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/Lists/EditCombo.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\Lists\EditCombo.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/Lists/FontCombo.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\Lists\FontCombo.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/Lists/TwoLists.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\Lists\TwoLists.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/Move/MoveCircle.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\Move\MoveCircle.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/Move/Splines/BezierCurve.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\Move\Splines\BezierCurve.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/Move/Splines/SplineCurve.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\Move\Splines\SplineCurve.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/Move/Splines/style.css
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\Move\Splines\style.css
+Content Type: text/css
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/MVC/Simple.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\MVC\Simple.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/MVC/View.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\MVC\View.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/Scenes/TwoScenes.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\Scenes\TwoScenes.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/Simple/EmptyScene.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\Simple\EmptyScene.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/Simple/HelloWorld.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\Simple\HelloWorld.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/Transforms/style.css
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\Transforms\style.css
+Content Type: text/css
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/Transforms/TransGroup.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\Transforms\TransGroup.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/Transforms/TransRect.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\Transforms\TransRect.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/JavaFX/Trees/FileTree.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\JavaFX\Trees\FileTree.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Qt/
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Qt\index.htm
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Qt/Hello/helloQt.cpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Qt\Hello\helloQt.cpp
+Content Type: text/x-c
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Qt/LcdClock/clock.cpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Qt\LcdClock\clock.cpp
+Content Type: text/x-c
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Qt/LcdClock/clock.h
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Qt\LcdClock\clock.h
+Content Type: text/x-c
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Qt/LcdClock/main.cpp
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Qt\LcdClock\main.cpp
+Content Type: text/x-c
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Qt/LcdClock/makefile
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Qt\LcdClock\makefile
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\index.htm
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/Applets/ImageApplet.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\Applets\ImageApplet.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/Backgrounds/BackgrdButton.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\Backgrounds\BackgrdButton.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/Backgrounds/BackgrdMenu.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\Backgrounds\BackgrdMenu.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/Bases/Bases.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\Bases\Bases.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/DragNDrop/Icon/IconDnD.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\DragNDrop\Icon\IconDnD.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/DragNDrop/List/ListDnD.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\DragNDrop\List\ListDnD.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/DragNDrop/Simple/FieldToButton.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\DragNDrop\Simple\FieldToButton.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/DragNDrop/Simple/FieldToField.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\DragNDrop\Simple\FieldToField.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/DragNDrop/Simple/LabelToLabel.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\DragNDrop\Simple\LabelToLabel.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/Editor/editor.jar
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\Editor\editor.jar
+Content Type: application/java-archive
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/Frames/Bonjour.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\Frames\Bonjour.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/Frames/MinimalFrame.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\Frames\MinimalFrame.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/Frames/SimpleFrame.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\Frames\SimpleFrame.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/Frames/SimpleLine.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\Frames\SimpleLine.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/Gaz/gaz.jar
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\Gaz\gaz.jar
+Content Type: application/java-archive
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/Graphics/Splines.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\Graphics\Splines.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/ImageFilter/filtering.jar
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\ImageFilter\filtering.jar
+Content Type: application/java-archive
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/ImageView/images/9personnes.jpg
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\ImageView\images\9personnes.jpg
+Content Type: image/jpeg
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/ImageView/ImageTrack.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\ImageView\ImageTrack.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/ImageView/ImageView.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\ImageView\ImageView.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/ImageView/ImageWait.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\ImageView\ImageWait.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/jar.html
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\jar.html
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/Labyrinth/Simple/labyrinth.jar
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\Labyrinth\Simple\labyrinth.jar
+Content Type: application/java-archive
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/Layouts/GBLDemo1.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\Layouts\GBLDemo1.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/Layouts/GBLDemo2.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\Layouts\GBLDemo2.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/Layouts/GBLDemo3.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\Layouts\GBLDemo3.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/Layouts/GBLDemo4.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\Layouts\GBLDemo4.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/Layouts/Layouts.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\Layouts\Layouts.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/Layouts/Target.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\Layouts\Target.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/Lists/OneList.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\Lists\OneList.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/Lists/SelectionMode.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\Lists\SelectionMode.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/Lists/TwoLists.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\Lists\TwoLists.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/Locals/LocalDate.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\Locals\LocalDate.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/Locals/Locals.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\Locals\Locals.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/Mandelbrot/Mandelbrot.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\Mandelbrot\Mandelbrot.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/Minical/minical.jar
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\Minical\minical.jar
+Content Type: application/java-archive
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/PlusOuMoins/Base/Base.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\PlusOuMoins\Base\Base.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/PlusOuMoins/Extended/Extended.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\PlusOuMoins\Extended\Extended.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/PlusOuMoins/Mvc/Mvc.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\PlusOuMoins\Mvc\Mvc.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/PlusOuMoins/Simple/PlusOuMoins.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\PlusOuMoins\Simple\PlusOuMoins.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/Tables/Binomials.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\Tables\Binomials.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/Tables/FixedPlanetes.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\Tables\FixedPlanetes.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/Tables/Planetes.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\Tables\Planetes.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/Tables/SortedPlanetes.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\Tables\SortedPlanetes.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/Trees/ClassTree.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\Trees\ClassTree.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/Trees/FileTree.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\Trees\FileTree.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/Trees/simpletree.jar
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\Trees\simpletree.jar
+Content Type: application/java-archive
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/Trees/XMLTree.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\Trees\XMLTree.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/Undo/Multiple/multundo.jar
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\Undo\Multiple\multundo.jar
+Content Type: application/java-archive
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/Undo/Simple/simpleundo.jar
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\Undo\Simple\simpleundo.jar
+Content Type: application/java-archive
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/Swing/Undo/Text/TextEdit.java
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\Swing\Undo\Text\TextEdit.java
+Content Type: text/x-java-source
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/X/
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\X\index.htm
+Content Type: text/html
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/X/makefile
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\X\makefile
+Content Type: 
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/Sources/X/window.c
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\Sources\X\window.c
+Content Type: text/x-c
+
+Uri: https://www.irif.fr/~carton/Enseignement/InterfacesGraphiques/style.css
+File Name: C:\Users\frtan\Desktop\DWS\www.irif.fr\~carton\Enseignement\InterfacesGraphiques\style.css
+Content Type: text/css
+

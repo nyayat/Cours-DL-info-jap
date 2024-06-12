@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<!-- Time-stamp: "index.html  26 Apr 2006 10:55:41" -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+  <title>
+  Projet de tas de sable
+  </title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="Author" content="Olivier Carton">
+</head>
+
+<body>
+<h1 align="center">Projet de tas de sable</h1>
+<h2 align="center">Projet d'interfaces graphiques</h2>
+
+<h2>Modalités</h2> 
+
+<p>Le projet sera écrit en Java en utilisant SWING.  Il sera réalisé par
+binômes (2 personnes).  Un dossier comportant le rapport et un listing
+commenté des programmes écrits sera rendu au secrétariat de la licence
+avant le <b>mardi 9 mai 2006</b>.</p>
+
+<p>L'objectif du projet est de mettre en &oelig;uvre les techniques de la
+programmation orientée objet afin de réaliser avec SWING une interface
+utilisateur.  L'évaluation prendra très largement en compte l'architecture
+globale du programme, l'utilisation appropriée des objets SWING ainsi que
+la qualité de l'interface offerte à l'utilisateur.  Ce dernier point
+comprend en particulier la lisibilité, l'ergonomie et la cohérence de
+l'interface.</p>
+
+<h2>Objectif</h2> 
+
+<p>L'objectif du projet est de réaliser une interface permettant de jouer
+au jeu des tas de sable.</p>
+
+<h2>Description</h2>
+
+<p>Le <em>jeu des tas de sable</em> se joue à deux sur une grille
+rectangulaire.  Les deux joueurs jouent à tour de rôle.  À chaque tour,
+chacun des joueurs pose un grain de sable sur une des cases de la grille
+qui lui appartient ou qui est neutre.  Ceci provoque éventuellement des
+éboulements qui étendent son territoire.  Le jeu se termine dès qu'un des
+deux joueurs possède toutes les cases de la grille.  Il est alors le
+vainqueur de la partie.</p>
+
+<p>Chaque case de la grille est soit neutre soit dans le territoire d'un
+des deux joueurs.  Au départ, toutes les cases sont neutres. Quand un
+joueur pose un grain de sable sur une case neutre, celle-ci devient une
+case de son territoire.  Les cases peuvent changer de territoire au cours
+d'un éboulement.</p>
+
+<p>Un éboulement se produit lorsqu'une case contient trop de grains de
+sable.  On appelle <em>degré</em> d'une case, le nombre de cases
+voisines. Par cases <em>voisines</em>, on entend les cases qui touchent
+la case par un côté.  Une case au centre de la grille est donc de degré 4,
+Les cases le long du bord sont de degré 3 et celles des coins de degré
+2. Lorsque le nombre de grains contenus dans une case dépasse strictement
+son degré, un éboulement se produit.  La case transmet un grain à chacune
+de ses voisines.  Elle perd donc un nombre de grain égal à son degré et
+chacune des voisines voit son nombre de grains augmenter d'une unité.</p>
+
+<p>Si au cours de la partie, la configuration d'une partie de la grille
+est la suivante</p>
+<table align="center" cellpadding="4">
+  <tr><td>2</td><td>3</td><td>4</td></tr>
+  <tr><td>1</td><td><b>4</b></td><td>2</td></tr>
+  <tr><td>3</td><td>1</td><td>1</td></tr>
+</table>
+<p>et si un joueur pose un grain sur la case du centre (en gras), celle-ci
+s'éboule et la configuration devient la suivante (les cases modifiées sont
+en gras).</p>
+<table align="center" cellpadding="4">
+  <tr><td>2</td><td><b>4</b></td><td>4</td></tr>
+  <tr><td><b>2</b></td><td><b>1</b></td><td><b>3</b></td></tr>
+  <tr><td>3</td><td><b>2</b></td><td>1</td></tr>
+</table>
+
+<p>Les éboulements peuvent s'enchaîner.  Une ou plusieurs cases voisines
+peuvent voir leur nombre de grains dépasser leur degré parce qu'elles
+reçoivent un grain d'un éboulement. Ces cases s'éboulent à leur tour et ces
+éboulements peuvent à nouveau provoquer d'autres éboulements.  Le processus
+s'arrête lorsque la configuration est stable, c'est-à-dire lorsque toutes
+les cases contiennent un nombre de grains inférieur ou égal à leur degré.
+Toutes les cases qui participent aux éboulements en chaîne en recevant au
+moins un grain deviennent une case du territoire du joueur qui a lancé les
+éboulements en posant un grain.</p>
+
+<p>Si au cours de la partie, la configuration d'une partie de la grille
+est la suivante</p>
+<table align="center" cellpadding="4">
+  <tr><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td></tr>
+  <tr><td>3</td><td>3</td><td>4</td><td>4</td><td>2</td></tr>
+  <tr><td>3</td><td>4</td><td><b>4</b></td><td>2</td><td>2</td></tr>
+  <tr><td>2</td><td>3</td><td>1</td><td>1</td><td>2</td></tr>
+  <tr><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td></tr>
+</table>
+<p>et si un joueur pose un grain sur la case du centre (en gras), des
+éboulements en chaîne se produisent et on obtient la configuration suivante
+(les cases ayant participé sont en gras).  Il faut remarquer que la
+configuration atteinte ne dépend pas de l'ordre dans lequel sont effectués
+les éboulements.</p>
+<table align="center" cellpadding="4">
+  <tr><td>2</td><td><b>3</b></td><td><b>3</b></td><td><b>3</b></td><td>2</td></tr>
+  <tr><td><b>4</b></td><td><b>1</b></td><td><b>3</b></td><td><b>1</b></td><td><b>3</b></td></tr>
+  <tr><td><b>4</b></td><td><b>2</b></td><td><b>3</b></td><td><b>4</b></td><td>2</td></tr>
+  <tr><td>2</td><td><b>4</b></td><td><b>2</b></td><td>1</td><td>2</td></tr>
+  <tr><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td></tr>
+</table>
+
+<p>Au départ, toutes les cases de la grille sont vides.  On peut aussi
+supposer qu'elle contiennent toutes un grain pour que la partie accède
+plus rapidement au moment où se produisent les éboulements.</p>
+
+<h2>Réalisation</h2>
+
+<p>Rien n'est vraiment imposé dans l'interface.  Celle-ci pourra comporter
+des menus, des boutons, des menus contextuels (popup menu) et tout ce que
+SWING fournit.  Lorsque l'AWT et SWING offrent des fonctionnalités
+similaires, les objets SWING doivent être utilisés en priorité.
+L'interface doit proposer au joueur une configuration initiale</p>
+
+<p>L'interface devra aussi offrir à l'utilisateur la possibilité de sauver
+une partie en cours et de reprendre une partie sauvée au préalable.  Ceci
+pourra se faire grâce à la sérialisation d'objets mais une meilleure
+solution consiste à utiliser 
+<a href="http://www.liafa.jussieu.fr/~carton/Enseignement/XML/">XML</a>.</p>
+
+<p>L'interface devra aussi permettre à l'utilisateur de revenir en arrière
+dans la partie en annulant un certain nombre des derniers mouvements.  Il
+sera alors possible de repartir en avant en effectuant à nouveau les
+mouvements annulés.</p>
+
+<p>Les extensions possibles de ce projet sont nombreuses.  Libre à vous
+d'ajouter des fonctionnalités.  Il est cependant conseillé de ne pas
+sacrifier la qualité à la quantité.  Un programme minimal (c'est-à-dire
+correspondant à ce qui est demandé) mais bien conçu est nettement
+préférable à un projet plus large mais moins abouti.</p>
+
+</body>
+</html>

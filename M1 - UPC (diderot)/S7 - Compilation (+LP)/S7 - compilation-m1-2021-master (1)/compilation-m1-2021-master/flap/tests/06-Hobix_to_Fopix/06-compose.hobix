@@ -1,0 +1,12 @@
+fun compose (f, g) =
+    \(x) => f (g (x))
+
+fun id (x) = x
+
+fun twice (x) = 2 * x
+
+val main =
+    print_int (twice (21));
+    print_int (compose (id, twice) (21));
+    print_int (compose (twice, id) (21));
+    print_int (compose (twice, twice) (10))

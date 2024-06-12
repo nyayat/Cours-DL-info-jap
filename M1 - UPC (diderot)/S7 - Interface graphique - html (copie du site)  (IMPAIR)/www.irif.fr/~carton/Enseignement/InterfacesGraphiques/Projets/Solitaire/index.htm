@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<!-- Time-stamp: "index.html   4 Mar 2005 09:27:13" -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+  <title>
+  Projet de solitaire
+  </title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="Author" content="Olivier Carton">
+</head>
+
+<body>
+<h1 align="center">Projet de Solitaire</h1>
+<h2 align="center">Projet d'interfaces graphiques</h2>
+
+<h2>Modalités</h2> 
+
+<p>Le projet sera écrit en Java en utilisant SWING.  Il sera réalisé par
+binômes (2 personnes).  Un dossier comportant le rapport et un listing
+commenté des programmes écrits sera rendu au secrétariat de la licence
+avant le <b>lundi 5 mai 2003</b>.</p>
+
+<p>L'objectif du projet est de mettre en &oelig;uvre les techniques de la
+programmation orientée objet afin de réaliser avec SWING une interface
+utilisateur.  L'évaluation prendra très largement en compte l'architecture
+globale du programme, l'utilisation appropriée des objets SWING ainsi que
+la qualité de l'interface offerte à l'utilisateur.  Ce dernier point
+comprend en particulier la lisibilité, l'ergonomie et la cohérence de
+l'interface.</p>
+
+<h2>Objectif</h2> 
+
+<p>L'objectif du projet est de réaliser une interface permettant de jouer
+au solitaire.</p>
+
+<h2>Description</h2>
+
+<p>Le <em>solitaire</em> se joue sur un plateau sur lequel sont placées
+des billes.  Les billes sont mises dans 33 trous disposés en croix comme
+sur la figure ci-dessous.</p>
+<pre>
+  ...
+  ...
+.......
+.......
+.......
+  ...
+  ...
+</pre>
+<p>L'objectif du jeu est de retirer les billes du plateau en effectuant
+des mouvements autorisés.  Les règles qui régissent les mouvements des
+billes sont les suivants.</p>
+
+<ul>
+<li>A chaque mouvement, une bille se déplace horizontalement ou
+  verticalement mais pas en diagonal.</li>
+
+<li>Un mouvement est très semblable à une prise du jeu de Dame.  La bille
+  doit sauter par dessus une autre bille, vers un trou vide du plateau.
+  La bille qui effectue le mouvement se déplace dont de deux trous
+  horizontalement ou verticalement.  La bille au dessus de laquelle
+  s'effectue le saut est retirée du plateau.</li>
+
+<li>L'objectif est de retirer du plateau un maximum de billes jusqu'à
+  arriver à une situation de blocage où plus aucun mouvement n'est
+  possible.  La partie s'arrête alors à ce moment.</li> 
+</ul>
+
+<p>Si au cours du jeu, une partie du plateau contient par exemple la
+configuration de billes suivantes.</p>
+<pre>
+.12
+345
+678
+</pre>
+<p>où la place libre est marquée par un <tt>.</tt> et les billes par des
+chiffres, deux mouvements sont alors possibles.  La bille <tt>2</tt> peut
+sauter la bille <tt>1</tt> pour effectuer un mouvement horizontal ou la
+bille <tt>6</tt> peut sauter la bille <tt>3</tt> pour effectuer un
+mouvement vertical.  On se retrouve alors dans une des deux configurations
+suivantes.</p>
+<pre>
+2..      612
+345      .45
+678      .78
+</pre>
+
+<p>Au départ tous les trous sont remplis par des billes à l'exception de
+quelques uns.  Le jeu est d'autant plus facile que le nombre de trous vides
+est grand.  Il faut bien sûr au moins un trou pour que le jeu puisse
+commencer.  Le nombre de trous vides au départ est généralement de 1, 2 ou
+3.  Le jeu est plus facile lorsque les trous vides se trouvent au bord
+plutôt qu'au centre.  On pourra utiliser les configurations classiques de
+départ de la figure ci-dessous.</p>
+
+<pre>
+      .oo           .oo           ooo
+      ooo           ooo           ooo
+    ooooooo       ooooooo       ooooooo 
+    ooo.ooo       ooooooo       ooo.ooo
+    ooooooo       ooooooo       ooooooo
+      ooo           ooo           ooo
+      ooo           ooo           ooo
+</pre>
+
+<h2>Réalisation</h2>
+
+<p>Rien n'est vraiment imposé dans l'interface.  Celle-ci pourra comporter
+des menus, des boutons, des menus contextuels (popup menu) et tout ce que
+SWING fournit.  Lorsque l'AWT et SWING offrent des fonctionnalités
+similaires, les objets SWING doivent être utilisés en priorité.
+L'interface doit proposer au joueur une configuration initiale et gérer une
+notion de score.  Ce score pourra prendre en compte le nombre de billes
+restant sur le plateau à la fin de la partie mais aussi le temps écoulé
+pendant la partie.</p>
+
+<p>L'interface devra aussi offrir à l'utilisateur la possibilité de sauver
+une partie en cours et de reprendre une partie sauvée au préalable.  Ceci
+pourra se faire grâce à la sérialisation d'objets mais une meilleure
+solution consiste à utiliser XML.</p>
+
+<p>L'interface devra aussi permettre à l'utilisateur de revenir en arrière
+dans la partie en annulant un certain nombre des derniers mouvements.  Il
+sera alors possible de repartir en avant en effectuant à nouveau les
+mouvements annulés.</p>
+
+<p>Les extensions possibles de ce projet sont nombreuses.  Libre à vous
+d'ajouter des fonctionnalités.  Il est cependant conseillé de ne pas
+sacrifier la qualité à la quantité.  Un programme minimal (c'est-à-dire
+correspondant à ce qui est demandé) mais bien conçu est nettement
+préférable à un projet plus large mais moins abouti.</p>
+
+</body>
+</html>

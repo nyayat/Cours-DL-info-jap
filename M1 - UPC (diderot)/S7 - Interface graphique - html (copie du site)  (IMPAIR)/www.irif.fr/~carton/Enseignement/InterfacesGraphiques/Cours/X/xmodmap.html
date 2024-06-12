@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- Time-stamp: "xmodmap.html  29 mai 2012 10:23:50" -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+  <title>Client xmodmap</title>
+  <link href="style.css" rel="stylesheet" type="text/css"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="Author" content="Olivier Carton">
+</head>
+
+<body>
+
+<h2>Client <tt>xmodmap</tt></h2>
+
+<p>Le client <tt>xmodmap</tt> permet de modifier les associations entre
+les touches physiques et les touches logiques.  Il permet aussi de modifier
+les associations des boutons de la souris.</p>
+
+<h3>Touches physiques et touches symboliques</h3>
+
+<p>Sous X, les touches physiques du clavier sont codées par des entiers
+appelés <em>keycode</em> qui ne peuvent pas être changés.  À ces touches
+physiques sont associées des touches symboliques qui représentent des actions.
+Ces touches symboliques sont des noms appelés <em>keysym</em> ou
+<em>keysymname</em>.  Le client <tt>xmodmap</tt> permet justement de gérer
+ces associations, c'est-à-dire de les afficher et de les modifier.</p>
+
+<p>Les noms symboliques des touches logiques sont définis dans le fichier
+<tt><a href="keysymdef.h">keysymdef.h</a></tt> qui se trouve habituellement
+dans le répertoire <tt>/usr/X11R6/include/X11/</tt>.  Dans ce fichier, les
+noms symboliques commencent par un préfixe <tt>XK_</tt> qu'il faut
+supprimer.</p>
+
+<p>Sous X, on distingue des touches particulières appelées
+<em>modificateurs</em> (<em>modifiers</em> en anglais) qui peuvent être
+enfoncées en même temps qu'une autre touche pour modifier son action.  Ces
+modificateurs sont au nombre de huit et portent les noms suivants
+<tt>Shift</tt>, <tt>Lock</tt>, <tt>Control</tt>, <tt>Mod1</tt>,
+<tt>Mod2</tt>, <tt>Mod3</tt>, <tt>Mod4</tt> et <tt>Mod5</tt>.  Le
+modificateur <tt>Lock</tt> correspond à la touche Caps Lock.  Le
+modificateur <tt>Mod1</tt> est généralement associé aux touchent Meta ou
+Alt.</p>
+
+<h3>Événements X</h3>
+
+<p>Le fait d'enfoncer ou de relâcher une touche provoque l'envoi d'un
+événement à l'application qui possède le focus.  Cet événement contient en
+autre, le keycode de la touche, le keysym associé et les modificateurs
+enfoncés en même temps (sous forme d'un octet avec un bit par
+modificateur).  Les touches des modificateurs provoquent également l'envoi
+d'événements.  Ainsi, si on appuie sur les touches <tt>Shift</tt> et
+<tt>z</tt> dans une fenêtre du client <tt>xev</tt>, on obtient les
+affichage suivants.  Le champ <tt>state</tt> représente les modificateurs.
+On remarque que le modificateurs <tt>Shift</tt> est codé par le bit de
+poids faible de ce champ.  Si on avait utilisé le modificateur
+<tt>Control</tt>, le champ <tt>state</tt> aurait eu la valeur 4.</p>
+
+<pre>
+    KeyPress event, serial 24, synthetic NO, window 0x2400001,
+	root 0xae, subw 0x2400002, time 2701669, (31,37), root:(35,651),
+	state 0x0, keycode 50 (keysym 0xffe1, Shift_L), same_screen YES,
+	XLookupString gives 0 bytes:  ""
+
+    KeyPress event, serial 24, synthetic NO, window 0x2400001,
+	root 0xae, subw 0x2400002, time 2702141, (31,37), root:(35,651),
+	state 0x1, keycode 52 (keysym 0x5a, Z), same_screen YES,
+	XLookupString gives 1 bytes:  "Z"
+
+    KeyRelease event, serial 24, synthetic NO, window 0x2400001,
+	root 0xae, subw 0x2400002, time 2702221, (31,37), root:(35,651),
+	state 0x1, keycode 52 (keysym 0x5a, Z), same_screen YES,
+	XLookupString gives 1 bytes:  "Z"
+
+    KeyRelease event, serial 24, synthetic NO, window 0x2400001,
+	root 0xae, subw 0x2400002, time 2702501, (31,37), root:(35,651),
+	state 0x1, keycode 50 (keysym 0xffe1, Shift_L), same_screen YES,
+	XLookupString gives 0 bytes:  ""
+</pre>
+
+<h3>Tables d'associations</h3>
+
+<p>Pour le clavier, un client X gère deux tables, une pour les
+associations entre keycode et keysym et une autre pour les modificateurs.
+</p>
+
+<h4>Table des associations touches physiques/touches symboliques</h4>
+
+<p>La première table donne pour chaque keycode d'une touche, keysym qui
+lui sont associés.  Au plus huit keysym peuvent être associés mais seul les
+quatre premiers sont généralement utilisés.  Le premier keysym est la
+signification de la touche lorsqu'aucun modificateur n'est enfoncé, le
+second lorsque le modificateur <tt>Shift</tt> est enfoncé, le troisième
+lorsque la touche <tt>Mode_Switch</tt> est enfoncé et le quatrième lorsque
+<tt>Shift</tt> et <tt>Mode_Switch</tt> sont enfoncés.  Il faut remarquer
+que <tt>Shift</tt> est le nom d'un modificateur alors que
+<tt>Mode_Switch</tt> est le nom symbolique d'une touche.</p>
+
+<p>Cette table peut être affichée par le client <tt>xmodmap</tt> avec
+l'option <tt>-pk</tt>.  Une partie de cette table ressemble par exemple à
+l'affichage suivant.  Chaque keysym est donné par son code et son nom
+symbolique entre parenthèses.</p>
+
+<pre>
+  ...
+  48  0x0027 (apostrophe)  0x0022 (quotedbl)   0xfe51 (dead_acute)  0xfe57 (dead_diaeresis)
+  49  0x0060 (grave)       0x007e (asciitilde) 0xfe50 (dead_grave)  0xfe53 (dead_tilde)
+  50  0xffe1 (Shift_L)
+  51  0x005c (backslash)   0x007c (bar)
+  52  0x007a (z)           0x005a (Z)
+  53  0x0078 (x)           0x0058 (X)
+  54  0x0063 (c)           0x0043 (C)
+  55  0x0076 (v)           0x0056 (V)
+  56  0x0062 (b)           0x0042 (B)
+  57  0x006e (n)           0x004e (N)
+  58  0x006d (m)           0x004d (M)
+  59  0x002c (comma)       0x003c (less)
+  60  0x002e (period)      0x003e (greater)
+  61  0x002f (slash)       0x003f (question)
+  62  0xffe2 (Shift_R)
+  ...
+</pre>
+
+<p>On retrouve que le la touche de keycode 52 est associé aux deux keysym
+<tt>z</tt> et <tt>Z</tt>.  On remarque aussi que les deux touches shift
+gauche et droite ont les keycode 50 et 62.</p>
+
+<p>Les associations de cette table peuvent être modifiées par les
+commandes <tt>keycode</tt> et <tt>keysym</tt>.  La première permet de
+changer les touches symboliques associées à une touche donnée par son
+keycode.  La seconde permet de changer les touches symboliques associées à
+plusieurs touches données par un keysym associé.</p>
+
+<p>La commande <tt>keycode</tt> a la syntaxe <tt>keycode <i>code</i> =
+<i>sym1</i> <i>sym2</i> &hellip; </tt> où <tt><i>code</i></tt> est le code
+de la touche et <tt><i>sym1</i></tt>, <tt><i>sym2</i></tt> sont les touches
+symboliques qui lui seront associées dans la table.</p>
+
+<p>La commande <tt>keysym</tt> a la syntaxe <tt>keysym <i>sym0</i> =
+<i>sym1</i> <i>sym2</i> &hellip; </tt> où <tt><i>sym0</i></tt> désigne tous
+les keycode des touches auxquelles ce nom est associé et
+<tt><i>sym1</i></tt>, <tt><i>sym2</i></tt> sont les touches symboliques qui
+leur seront associées dans la table.  Une commande <tt>keysym</tt> est en
+faite équivalente à plusieurs commandes <tt>keycode</tt>, une pour chacune
+des touches à qui est associé le nom <tt><i>sym0</i></tt>.</p>
+
+<h4>Table d'associations des modificateurs</h4>
+
+<p>Cette table donne pour chacun des huit modificateurs la liste des
+touches symboliques qui jouent le rôle de ce modificateur.</p>
+
+<p>Cette table peut être affichée par le client <tt>xmodmap</tt> avec
+l'option <tt>-pm</tt>.  Cette table ressemble par exemple à
+l'affichage suivant.</p>
+  
+<pre>
+shift       Shift_L (0x32),  Shift_R (0x3e)
+lock
+control     Control_L (0x25),  Control_R (0x6d)
+mod1        Alt_L (0x40),  Alt_R (0x71)
+mod2        Num_Lock (0x4d)
+mod3        Mode_switch (0x73),  Mode_switch (0x74)
+mod4
+mod5        Scroll_Lock (0x4e)
+</pre>
+
+<p>On retrouve que les deux touches shift gauche et droite (noms
+symboliques <tt>Shift_L</tt> et <tt>Shift_R</tt>) jouent le rôle du
+modificateur <tt>Shift</tt>.  De même, les deux touches control (noms
+symboliques <tt>Control_L</tt> et <tt>Control_R</tt>) jouent le rôle du
+modificateur <tt>Control</tt>.  Par contre, aucune touche n'est affectée
+au modificateur <tt>Lock</tt>.  Ceci signifie que la touche Caps lock est
+ineffective.  On remarque finalement que la touche symbolique
+<tt>Mode_Switch</tt> est affectée au modificateur <tt>Mod3</tt>.  C'est
+nécessaire pour qu'elle soit prise en compte comme modificateur.</p>
+
+<p>Les commandes <tt>add</tt>, <tt>remove</tt> et <tt>clear</tt> permettent
+respectivement d'ajouter une touche symbolique associée à un modificateur, de
+supprimer une touche symbolique associée à un modificateur et de supprimer
+toutes les touches symboliques associées à un modificateur.  <p>
+
+<p>La commande <tt>add</tt> a la syntaxe <tt>add <i>mod</i> =
+<i>sym1</i> <i>sym2</i> &hellip; </tt> où <tt><i>mod</i></tt> est le
+modificateur et <tt><i>sym1</i></tt>, <tt><i>sym2</i></tt> sont les touches
+symboliques qui lui seront ajoutées dans la table.</p>
+
+<p>La commande <tt>remove</tt> a la syntaxe <tt>remove <i>mod</i> =
+<i>sym1</i> <i>sym2</i> &hellip; </tt> où <tt><i>mod</i></tt> est le
+modificateur et <tt><i>sym1</i></tt>, <tt><i>sym2</i></tt> sont les touches
+symboliques qui lui seront supprimées de la table.</p>
+
+<p>La commande <tt>clear</tt> a la syntaxe <tt>clear <i>mod</i></tt> où
+<tt><i>mod</i></tt> est le modificateur.</p>
+
+<h3>Boutons de la souris</h3>
+
+<p>Le client X gère aussi une table d'associations entre les boutons
+physiques de la souris et des boutons logiques.  Cette table peut être
+affichée par le client <tt>xmodmap</tt> avec l'option <tt>-pp</tt>.  Cette
+table ressemble par exemple à l'affichage suivant qui est la table par
+défaut.</p>
+
+<pre>
+There are 5 pointer buttons defined.
+
+    Physical        Button
+     Button          Code
+        1              1
+        2              2
+        3              3
+        4              4
+        5              5
+</pre>
+
+<p>Chaque bouton physique ou logique est repéré par un entier.  Le premier
+bouton a le numéro 1.  Dans la table par défaut, chaque bouton physique 
+n° i est associé au bouton logique n° i.</p>
+
+<p>La table des associations entre les boutons physiques de la souris et
+les événements envoyés aux application peut être modifiée avec le client
+<tt>xmodmap</tt>.  Ceci peut par exemple être utile aux gauchers qui
+veulent inverser l'ordre des boutons.</p>
+
+<p>La commande <tt>pointer</tt> permet de changer les associations des
+boutons de la souris.  Elle a la syntaxe <tt>pointer = <i>num1</i>,
+<i>num2</i> &hellip; </tt> où <tt><i>num1</i></tt>, <tt><i>num2</i></tt>,
+&hellip; sont les numéros des boutons symboliques associés aux boutons
+physiques 1, 2, &hellip; de la souris.  La commande suivante permet par
+exemple d'inverser l'ordre des trois premiers boutons.</p>
+
+<pre>
+  xmodmap -e "pointer = 3 2 1"
+</pre>
+
+<p>On peut aussi utiliser la commande <tt>pointer = default</tt> pour
+restaurer la table d'associations par défaut.</p>
+
+<h3>Syntaxe du client <tt>xmodmap</tt></h3>
+
+<p>Le client exécute des commandes qu'il lit dans un fichier passé en
+paramètre sur la ligne de commande.  Une commande peut être mise
+directement sur la ligne de commande.  Elle doit alors être précédée de
+l'option <tt>-e</tt> et elle doit former un seule paramètre de la ligne de
+commandes. Elle doit donc être délimitée par des quotes.  C'est cette
+dernière solution qui est utilisée dans les exemples ci-dessous car elle
+évite d'utiliser des fichiers extérieurs.</p>
+
+<h3>Exemples d'utilisation</h3>
+
+<p>Voici quelques exemples d'utilisation de ce client.</p>
+
+<p>Dans certaines configurations, le clavier possèdent deux touches Alt
+(appelées aussi Meta) à gauche et à droite du clavier.  Il arrive que seule
+celle de gauche est active et que celle de droite n'ait aucune action.  Les
+commandes suivantes permettent de faire en sorte que les touches aient la
+même action. On suppose dans cet exemple que le keycode de la seconde
+touche Alt est 113, ce qui peut être vérifié à l'aide du client
+<tt>xev</tt>.</p>
+
+<pre>
+# Touche Alt droite de keycode 113
+xmodmap -e "keycode 113 = Alt_R"
+xmodmap -e "add Mod1 = Alt_R"
+</pre>
+
+<p>La première commande est seulement utile si aucune touche logique n'est
+associée à la touche Alt de droite qui a généralement le code 113.</p>
+
+<p>Le commandes suivantes sont utiles lorsqu'on désire saisir des
+caractères accentués sur un clavier QWERTY qui possède une touche
+inutilisée comme par exemple une touche Windows sous Linux.  Les commandes
+suivantes permettent de saisir des accents en utilisant les touches
+d'accents comme des touches <em>mortes</em> (<em>dead key</em> en anglais).
+La touche inutilisée devient un <em>modificateur</em> et les touches
+d'accents deviennent des touches mortes lorsqu'elles sont enfoncées en même
+temps que ce modificateur.</p>
+
+<pre>
+# Touche windows de code 115
+xmodmap -e "keycode 115 = Mode_switch"
+# Cette touche comme un modificateur 
+xmodmap -e "add mod3 = Mode_switch"
+# Ajout des autres associations aux touches d'accents
+xmodmap -e "keysym apostrophe = apostrophe quotedbl dead_acute dead_diaeresis"
+xmodmap -e "keysym grave = grave asciitilde dead_grave dead_tilde"
+xmodmap -e "keysym 6 = 6 asciicircum 6 dead_circumflex"
+</pre>
+
+</body>
+</html>

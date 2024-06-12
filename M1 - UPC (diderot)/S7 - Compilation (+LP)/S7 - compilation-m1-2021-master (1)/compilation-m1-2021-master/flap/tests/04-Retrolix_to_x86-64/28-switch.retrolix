@@ -1,0 +1,35 @@
+external printf
+
+def check ()
+  c01: switch %rdi -> c02, c04, c06, c06 orelse c08;
+  c02: %rdi <- copy "rdi = 0\n";
+  c03: jump c10;
+  c04: %rdi <- copy "rdi = 1\n";
+  c05: jump c10;
+  c06: %rdi <- copy "rdi = 2 or 3\n";
+  c07: jump c10;
+  c08: %rdi <- copy "rdi <> 0, 1, 2, 3\n";
+  c09: jump c10;
+  c10: %rax <- copy 0;
+  c11: printf ();
+  c12: ret;
+end
+
+globals (x)
+  l00: %rdi <- copy 0;
+  l01: check ();
+  l02: %rdi <- copy 1;
+  l03: check ();
+  l04: %rdi <- copy 2;
+  l05: check ();
+  l06: %rdi <- copy 3;
+  l07: check ();
+  l08: %rdi <- copy 4;
+  l09: check ();
+  l10: %rdi <- copy 5;
+  l11: check ();
+  l12: %rdi <- copy 73;
+  l13: check ();
+  l14: %rdi <- copy 0;
+  l15: exit;
+end

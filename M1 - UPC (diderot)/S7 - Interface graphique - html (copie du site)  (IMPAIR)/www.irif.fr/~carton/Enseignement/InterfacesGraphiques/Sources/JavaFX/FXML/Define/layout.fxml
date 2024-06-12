@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Time-stamp: "layout.fxml  24 oct 2019 22:57:25" -->
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.collections.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="Controller"
+            prefHeight="250" prefWidth="150">
+  <center>
+    <VBox fx:id="vbox" alignment="center" spacing="10">
+      <children>
+        <ListView fx:id="list">
+          <items>
+            <FXCollections fx:factory="observableArrayList">
+              <String fx:value="Rouge"/>
+              <String fx:value="Blanc"/>
+              <String fx:value="Noir"/>
+              <String fx:value="Bleu"/>
+              <String fx:value="Jaune"/>
+              <String fx:value="Violet"/>
+              <String fx:value="Brun"/>
+              <String fx:value="Vert"/>
+            </FXCollections>
+          </items>
+        </ListView>
+        <RadioButton fx:id="lrb"  text="à gauche"/>
+        <RadioButton fx:id="rrb" text="à droite"/>
+        <Button text="click"></Button>
+      </children>
+    </VBox>
+    <fx:define>
+      <ToggleGroup fx:id="toggle">
+        <toggles>
+          <fx:reference source="lrb"/>
+          <fx:reference source="rrb"/>
+        </toggles>
+        </ToggleGroup> 
+      </fx:define>
+    </center>
+</BorderPane>

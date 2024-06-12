@@ -1,0 +1,2 @@
+let main =
+  for x from (0 to 100) { y := x * 2 + !y }

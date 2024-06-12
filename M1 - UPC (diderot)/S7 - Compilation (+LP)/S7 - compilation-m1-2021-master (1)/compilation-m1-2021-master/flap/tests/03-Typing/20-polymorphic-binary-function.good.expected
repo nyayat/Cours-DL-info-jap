@@ -1,0 +1,5 @@
+apply : [ `a `b] (`a -> `b) * `a -> `b
+curry : [ `a `b `c] (`a -> (`b -> `c)) -> (`a * `b -> `c)
+uncurry : [ `a `b `c] (`a * `b -> `c) -> (`a -> (`b -> `c))
+id_int : int -> int
+main : int

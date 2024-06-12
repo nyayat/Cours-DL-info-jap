@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<!-- Time-stamp: "conteneurs.html  24 Mar 2005 10:24:13" -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+  <title>
+  Conteneurs Swing
+  </title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="Author" content="Olivier Carton">
+</head>
+
+<body>
+
+
+<h1>Conteneurs</h1>
+
+<p>Voila la liste des principaux conteneurs SWING.</p>
+<ul>
+<li><a href="#generaux">Conteneurs généraux</a>
+  <ul>
+  <li><a href="#JPanel">JPanel</a></li> 
+  <li><a href="#Box">Box</a></li>
+  <li><a href="#JDesktopPane">JDesktopPane</a></li>
+  </ul>
+</li>
+<li><a href="#specialises">Conteneurs spécialisés</a>
+  <ul>
+  <li><a href="#JRootPane">JRootPane</a></li>
+  <li><a href="#JLayeredPane">JLayeredPane</a></li>
+  <li><a href="#JScrollPane">JScrollPane</a></li>
+  <li><a href="#JTabbedPane">JTabbedPane</a></li>
+  <li><a href="#JSplitPane">JSplitPane</a></li>
+  </ul>
+</li>
+<li><a href="#menus">Menus et barre d'outils</a>
+  <ul>
+  <li><a href="#JMenu">JMenu</a></li>
+  <li><a href="#JPopupMenu">JPopupMenu</a></li>
+  <li><a href="#JMenuBar">JMenuBar</a></li>
+  <li><a href="#JToolBar">JToolBar</a></li>
+  </ul>
+</li>
+</ul>
+
+<h2><a name="generaux">Conteneurs généraux</a></h2>
+
+<h4><a name="JPanel">JPanel</a></h4>
+
+<p>C'est le conteneur le plus général.  Il dérive directement de
+<tt>JComponent</tt>.  Son gestionnaire de disposition par défaut est
+<tt>FlowLayout</tt>.  Il est opaque, ce qui importe pour les dessins.  
+</p>
+
+<h4><a name="Box">Box</a></h4>
+
+<p>C'est un composant AWT qui ne dérive donc pas de <tt>JComponent</tt>.
+Pour cette raison, il ne peut pas avoir de bordure.  Il utilise
+nécessairement un <tt>BoxLayout</tt> comme gestionnaire de
+disposition.</p>
+
+<h4><a name="JDesktopPane">JDesktopPane</a></h4>
+
+<p>Ce conteneur est fait pour gérer les <tt>JInternalFrame</tt>.  Ces
+composants peuvent être déplacés, redimensionnés, minimisés, etc.  Il
+dérive de <tt>JLayeredPane</tt> et il n'utilise pas de gestionnaire de
+disposition. </p>
+
+<h2><a name="specialises">Conteneurs spécialisés</a></h2>
+
+<h4><a name="JRootPane">JRootPane</a></h4>
+
+<p>Ce conteneur a un rôle très précis.  Il est seul fils possible de
+<tt>JWindow</tt>, <tt>JDialog</tt>, <tt>JFrame</tt> et
+<tt>JInternalFrame</tt>.  Il est fait de deux parties nommées
+<tt>glassPane</tt> et un <tt>layeredPane</tt>.  Le composant
+<tt>glassPane</tt> gère les événements de la souris.  Le composant
+<tt>layeredPane</tt> qui est de la classe <tt>JLayeredPane</tt> contient la
+barre de menus de nom <tt>menuBar</tt> et le panneau principal de nom
+<tt>contentPane</tt>.  Au départ, la barre de menus n'existe pas et
+<tt>menuBar</tt> est égal à <tt>null</tt>.  Elle peut être ajoutée par la
+méthode <tt>setJMenuBar()</tt>.  Le panneau principal est un
+<tt>JPanel</tt> avec un gestionnaire de disposition <tt>BorderLayout</tt>.
+Il peut être obtenu par la méthode <tt>getContentPane()</tt> et changé par
+la méthode <tt>setContentPane()</tt>.</p>
+
+<p>Cette organisation est propre à SWING et diffère de celle de l'AWT.  En
+AWT, les composants sont ajoutés directement à une fenêtre <tt>Frame</tt> en
+appelant la méthode <tt>add()</tt> de la fenêtre.  En Swing, il faut
+ajouter les composants au panneau <tt>contentPane</tt> de la fenêtre
+<tt>JFrame</tt> par un appel du style <tt>getContentPane().add()</tt>.
+</p>
+
+<h4><a name="JLayeredPane">JLayeredPane</a></h4>
+
+<p>Ce conteneur permet de gérer des composants disposés sur plusieurs
+couches.  À chaque composant de ce conteneur sont associés deux entiers
+appelés <em>niveau</em> (<tt>layer</tt>) et <em>position</em>
+(<tt>position</tt>).  Ces deux entiers définissent l'<em>ordre
+d'empilement</em> des composants (<em>stacking order</em> en anglais)
+contenus dans le panneau.  Le niveau a priorité sur la position qui sert
+uniquement à départager les éléments d'un même niveau.  Les composants sont
+d'abord disposés par niveaux.  Ceux d'un niveau donné sont affichés par
+dessus ceux d'un niveau inférieur.  Le niveau est un entier quelconque.
+Ensuite, la position définit l'ordre d'affichage parmi ceux d'un même
+niveau.  La position est un entier entre 0 et n-1 où n est le nombre de
+composants du niveau.  Les composants de position inférieure sont affichés
+par dessus.
+<b>Attention</b>, c'est l'ordre inverse des niveaux.  Le niveau peut être
+changé par les méthodes <tt>setLayer()</tt> et la position peut être
+changée par les méthodes <tt>setPosition()</tt>, <tt>moveToBack()</tt> et
+<tt>moveToFront()</tt>.
+</p>
+
+<p>Ce conteneur n'utilise pas de gestionnaire de disposition.  Il ne vaut
+d'ailleurs pas en mettre car il ne tiendrait pas compte des niveaux.  Six
+profondeurs sont prédéfinies.  Elles correspondent aux principaux éléments
+d'une interface graphique.</p>
+
+<ul>
+<li><tt>FRAME_CONTENT_LAYER</tt> (-30000) :  le <tt>contentPane</tt>
+  d'un <tt>JRootPane</tt> est à ce niveau.  </li>
+<li><tt>DEFAULT_LAYER</tt> (0) : niveau par défaut. </li>
+<li><tt>PALETTE_LAYER</tt> (100) : niveau pour les palettes, boîtes à
+  outils déplaçables, </li>
+<li><tt>MODAL_LAYER</tt> (200) : niveau pour les dialogues modaux </li>
+<li><tt>POPUP_LAYER</tt> (200) : niveau pour les menus glissants et
+  tooltips </li>
+<li><tt>DRAG_LAYER</tt> (200) : niveau pour les glisser-déposer </li>
+</ul>
+
+<h4><a name="JScrollPane">JScrollPane</a></h4>
+
+<p>Ce composant ajoute des ascenseurs à son unique fils.  Les ascenseurs
+sont uniquement ajoutés s'ils sont rendus nécessaire par la taille du fils
+qui ne peut être affiché dans son intégralité.  Ce fils doit implémenter
+l'interface <tt>Scrollable</tt>.  Les principales classes implémentant
+cette interface sont les suivantes. </p>
+<ul>
+<li><tt>JList</tt> pour les listes </li>
+<li><tt>JTree</tt> pour les arbres </li>
+<li><tt>JTable</tt> pour les tables </li>
+<li><tt>JTextArea</tt> pour les zones de textes </li>
+</ul>
+
+<h4><a name="JTabbedPane">JTabbedPane</a></h4>
+
+<p>Ce composant est un conteneur à navigation par onglet.  Il rend
+obsolète le gestionnaire de disposition <tt>CardLayout</tt> d'AWT.  Pour
+ajouter des panneaux, il faut utiliser les méthodes <tt>addTab</tt> qui
+prennent en paramètre, le titre et l'icône de l'onglet, le composant à
+mettre dans le panneau et éventuellement une chaîne d'indication
+(<em>tip</em>).</p>
+
+<h4><a name="JSplitPane">JSplitPane</a></h4>
+
+<p>Ce composant permet de répartir l'espace entre deux composants.  La
+répartition de l'espace entre les deux fils peut être modifiée par
+l'utilisateur.  La séparation entre les deux fils peut être horizontale ou
+verticale.  Le contrôleur prend un premier paramètre qui indique si la
+séparation est horizontale (<tt>HORIZONTAL_SPLIT</tt>) ou verticale
+(<tt>VERTICAL_SPLIT</tt>) puis les deux composants.</p>
+
+<h2><a name="menus">Menus et barre d'outils</a></h2>
+
+<p>Ces composants sont aussi des conteneurs spécialisé.  En particulier,
+ce n'est pas le menu mais chacune de ses entrées qui est <em>écoutée</em>
+par un contrôleur.  Les événements (<tt>ActionEvent</tt>) sont émis par
+chacune des entrées lorsqu'elle est sélectionnée.  Le menu est seulement
+responsable de la disposition et de l'affichage de ses entrées.  La
+disposition des entrées peut être particularisée en changeant le
+gestionnaire de disposition. </p>
+
+<h4><a name="JMenu">JMenu</a></h4>
+
+<p>Un menu a des entrées qui peuvent être les composants suivants. </p>
+<ul>
+<li><tt>JMenu</tt> : un menu peut être bien sûr une entrée d'un autre
+  menu.  On obtient ainsi un sous-menu. </li>  
+<li><tt>JMenuItem</tt> : c'est l'entrée classique d'un menu.  Elle peut
+  être créée à partir d'une chaîne de caractère, d'un icône ou d'une action
+  (<tt>Action</tt>).  </li>
+<li><tt>JCheckBoxMenuItem</tt> : bouton à cocher comme entrée d'un menu.</li>
+<li><tt>JRadioButtonMenuItem</tt> : bouton radio comme entrée d'un menu.</li>
+<li><tt>JSeparator</tt> : cet objet ajoute une barre de séparation
+  entre les entrées d'un menu.</li>
+</ul>
+
+
+<h4><a name="JPopupMenu">JPopupMenu</a></h4>
+
+<p>Ce composant sert pour les menus dynamique.  Il accepte les mêmes
+entrées qu'un menu de la classe <tt>JMenu</tt>.  Pour être précis, un menu
+<tt>JMenu</tt> utilise un menu <tt>JPopupMenu</tt> pour afficher ses
+entrées.  En effet un menu normal est un menu dynamique qui apparaît en
+plus dans la barre de menus.</p>
+
+
+<h4><a name="JMenuBar">JMenuBar</a></h4>
+
+<p>Ce conteneur utilise un <tt>BoxLayout</tt> comme gestionnaire de
+disposition.  Les menus qu'il contient peuvent être espacés par de la
+<em>glue</em> ou des <em>struts</em>.  C'est de cette façon qu'un menu
+<em>help</em> peut est placé à droite alors que tous les autres sont placés
+à gauche.  Une glue est insérée entre l'avant-dernier menu et le
+dernier.</p>
+
+<h4><a name="JToolBar">JToolBar</a></h4>
+
+<p>Ce conteneur permet de réaliser une barre d'outils contenant les 
+actions les plus utilisées d'une application.  L'utilisateur peut déplacer
+ce composant dans une fenêtre séparée.  Cette possibilité est contrôlée par
+la méthode <tt>setFloatable(boolean)</tt>.</p>.
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<!-- Time-stamp: "xdm.html  25 Jan 2006 13:42:07" -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<!-- Time-stamp: "xdm.html  17 Feb 2004 14:52:33" -->
+<head>
+  <title>
+  Client xdm et protocole XDMCP
+  </title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="Author" content="Olivier Carton">
+</head>
+
+<body>
+
+<h2>Client xdm</h2>
+
+<p>Le client <tt>xdm</tt> est un gestionnaire de connexion.  C'est un
+démon (daemon) lancé sur chaque machine où peuvent se connecter les
+utilisateur.</p>
+
+<p>Les échanges entre ces clients particuliers et les serveurs X sont
+régis par le protocole XDMCP.</p>
+
+<p>Pour certains environnements graphiques comme KDE, le client
+<tt>xdm</tt> est remplacé par un client spécifique comme 
+<tt><a
+href="http://docs.kde.org/stable/fr/kdebase/kdm/index.html">kdm</a></tt>
+pour KDE.</p>
+
+<h2>Protocole XDMCP</h2>
+
+<p>L'essentiel de ce protocole est présenté ici sans s'attarder sur les
+détails.  Le début des échanges est initié par le serveur X qui envoie une
+requête <b>Query</b> ou <b>BroadcastQuery</b>.  Les rôles client/serveur
+sont ici inversés puisque c'est le serveur qui adresse une requête au client
+<tt>xdm</tt>.</p>
+
+<p>Le premier type de requête s'adresse à un client <tt>xdm</tt> particulier
+alors que le second sollicite une réponse de tous les clients  <tt>xdm</tt>
+qui sont actifs sur le réseau.  Le premier cas est typique d'un serveur X
+sur un ordinateur qui s'adresse au client X de la même machine.  Le second
+cas concerne plutôt les terminaux X qui recherchent toutes les machines du
+réseau sur lesquelles les utilisateurs peuvent se connecter. </p>
+
+<p>Le serveur répond par un message <b>Willing</b> pour dire qu'il accepte
+une connexion ou par un message <b>Unwilling</b> pour dire qu'il
+refuse.</p>
+
+<p>Dans le cas d'une requête <b>BroadcastQuery</b>, le serveur X collecte
+tous les réponses reçues et les propose à l'utilisateur par l'intermédiaire
+d'un menu.  Lorsque l'utilisateur effectue son choix, le serveur X
+recontacte le client <tt>xdm</tt> de la machine choisie avec une requête
+<b>Query</b> pour s'assurer qu'il est encore actif.</p>
+
+<p>C'est dans une requête <b>Query</b> qu'un serveur précise les modes
+d'authentification qu'il supporte.  Le client <tt>xdm</tt> répond dans la
+réponse <b>Willing</b> le mode qui va être utilisé.</p>
+
+<p>Après une réponse <b>Willing</b>, le serveur envoie une requête
+<b>Request</b> qui initie vraiment la connexion.  Le client <tt>xdm</tt>
+répond par un message <b>Accept</b> pour accepter ou par un message
+<b>Decline</b> pour refuser.</p>
+
+<p>Le serveur envoie finalement un message <b>Manage</b> contenant
+l'identifiant 32 bits de la session. </p>
+
+<p>Le client <tt>xdm</tt> affiche alors la fenêtre qui permet à
+l'utilisateur de saisir son <em>login</em> et son mot de passe.  Ceci fait,
+le client <tt>xdm</tt> exécute le shell-script <a
+href=".Xsession"><tt>.Xsession</tt></a>.  Ce ficher contient des commandes
+de configuration et des lancements d'application.  Des applications comme
+<tt>xbiff</tt> et <tt>xclock</tt> sont typiquement lancées dans ce fichier
+mais d'autres applications comme des fenêtres de terminaux ou un éditeur
+peuvent aussi être lancées au démarrage.  Le gestionnaire de fenêtre est
+aussi lancé au démarrage par ce shell-script.  Le chargement de la base de
+données des <a href="ressources.html">ressources</a> avec <tt>xrdb</tt> est
+aussi souvent fait le script <tt>.Xsession</tt></p>.
+
+</body>
+</html>

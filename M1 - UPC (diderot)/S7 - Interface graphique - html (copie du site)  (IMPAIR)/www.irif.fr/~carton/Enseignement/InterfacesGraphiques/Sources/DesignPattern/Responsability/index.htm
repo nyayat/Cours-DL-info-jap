@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- Time-stamp: "index.html  26 nov 2020 11:34:19" -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+  <title>Design Pattern Chain of Responsability</title>
+  <link href="style.css" rel="stylesheet" type="text/css"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name="Author" content="Olivier Carton"/>
+  <style type="text/css"> <!--
+    body { background-color: white; }
+  --> </style>
+</head>
+
+<body>
+  <h1>Design Pattern Chain of Responsability</h1>
+
+  <dl>
+    <dt><tt><a href="handler.hpp">Handler</a></tt></dt>
+    <dd>Interface pour tous les handler.</dd>
+    <dt><tt><a href="global.hpp">Global</a></tt></dt>
+    <dd>Gestionnaire de toutes les requêtes.</dd>
+    <dt><tt><a href="partial.hpp">Partial</a></tt></dt>
+    <dd>Classe de base pour les gestionnaires partiels.</dd>
+    <dt><tt><a href="handlermod.hpp">HandlerMod</a></tt></dt>
+    <dd>Gestionnaires des requêtes congrues à <em>val</em> modulo 
+        <em>mod</em> pour des entiers <em>val</em> et <em>mod</em>.</dd>
+    <dt><tt><a href="factory.hpp">factory.hpp</a></tt>  et
+        <tt><a href="factory.cpp">factory.cpp</a></tt></dt>
+    <dd>Fabrique d'objects avec les fonctionnalités requises.</dd>
+    <dt><a href="main.cpp">Programme principal</a></dt>
+    <dd></dd>
+    <dt><tt><a href="makefile">Makefile</a></tt></dt>
+    <dd></dd>
+    <dt><a href="responsability.tgz">Archive tar compressée par Gzip</a></dt>
+    <dd></dd>
+    <dt><a href="responsability.zip">Archive zip</a></dt>
+    <dd></dd>
+  </dl>
+</body>
+</html>

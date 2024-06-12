@@ -1,0 +1,7 @@
+fun apply (f, x) = f (x)
+fun apply2 (f, x, y) = f (x, y)
+
+val main =
+    apply (print_int, 42);
+    apply (print_int, (apply2 (`+`, 31, 2)))
+

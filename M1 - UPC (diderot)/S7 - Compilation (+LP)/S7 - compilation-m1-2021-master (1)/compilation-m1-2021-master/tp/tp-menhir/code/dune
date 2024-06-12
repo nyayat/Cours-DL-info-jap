@@ -1,0 +1,11 @@
+(ocamllex lexer)
+
+(menhir
+ (flags --explain --inspection --table)
+ (modules parser))
+
+(executable
+ (name marthe)
+ (ocamlopt_flags :standard)
+ (libraries menhirLib)
+)

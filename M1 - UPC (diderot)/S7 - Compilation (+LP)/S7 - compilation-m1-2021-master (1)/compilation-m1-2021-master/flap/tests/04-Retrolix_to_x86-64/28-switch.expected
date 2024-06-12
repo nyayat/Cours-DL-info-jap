@@ -1,0 +1,14 @@
+Process exited with status exited(0).
+STDOUT:
+rdi = 0
+rdi = 1
+rdi = 2 or 3
+rdi = 2 or 3
+rdi <> 0, 1, 2, 3
+rdi <> 0, 1, 2, 3
+rdi <> 0, 1, 2, 3
+
+STDERR:
+
+
+

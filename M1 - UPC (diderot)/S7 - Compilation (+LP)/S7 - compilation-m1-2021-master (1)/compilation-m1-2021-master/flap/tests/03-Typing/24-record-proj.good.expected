@@ -1,0 +1,3 @@
+p : p
+px : int
+py : string

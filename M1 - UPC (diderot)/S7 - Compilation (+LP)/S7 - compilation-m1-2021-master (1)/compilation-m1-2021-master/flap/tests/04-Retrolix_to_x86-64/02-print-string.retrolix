@@ -1,0 +1,8 @@
+external printf
+
+globals ()
+  l00: %rdi <- copy "Hello world!\n";
+  l01: %rax <- copy 0;
+  l02: printf();
+  l03: exit;
+end

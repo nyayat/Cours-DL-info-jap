@@ -1,0 +1,7 @@
+Line 6, characters 12-28: Error (typechecking)
+  Type error:
+Expected:
+  t
+Given:
+  t -> t
+

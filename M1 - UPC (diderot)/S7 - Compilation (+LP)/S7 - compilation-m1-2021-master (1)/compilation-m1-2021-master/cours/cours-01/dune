@@ -1,0 +1,4 @@
+(executable
+        (name marthe)
+        (libraries unix)
+        )

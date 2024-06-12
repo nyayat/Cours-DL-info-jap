@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<!-- Time-stamp: "graphiques.html  20 Sep 2005 12:46:55" -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+  <title>
+  Graphiques en SWING
+  </title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta name="Author" content="Olivier Carton" />
+</head>
+
+<body>
+<h1>Graphiques en SWING</h1>
+
+<ul>
+<li><a href="#context">Contexte graphique</a></li>
+<li><a href="#paint">Méthodes <tt>paintComponent</tt> et 
+  <tt>repaint</tt></a></li>
+<li><a href="#dessin">Méthodes de dessin</a></li>
+<li><a href="#chaine">Chaîne de traitement</a></li>
+<li><a href="#formes">Formes</a></li>
+</ul>
+
+<h2>Généralités</h2>
+
+<p>La première version du graphisme en java était assez pauvre.  Les outils
+de dessins étaient rudimentaires.  Ils offraient des méthodes <tt>draw</tt>
+et <tt>fill</tt> pour les lignes, rectangles, ovales et polygones, deux
+modes de dessin (<em>direct</em> ou <em>xor</em>) et une zone de découpe
+(clipping).  Le graphisme de Java 2 propose des possibilités plus
+sophistiquées :</p>
+
+<ul>
+<li>construction de formes (Shape) complexes par composition</li>
+<li>méthodes <tt>draw(Shape)</tt> et <tt>fill(Shape)</tt></li>
+<li>paramétrage fin du trait</li>
+<li>huit modes de dessin</li>
+<li>zones de découpe arbitraire</li>
+<li>textures et dégradés</li>
+<li>transformations géométriques complexes</li>
+</ul>
+
+<p>En Swing, le <em>double buffering</em> est automatique.</p>
+
+<h2><a name="context">Contexte graphique</a></h2>
+
+<p>L'outil de dessin est le <em>contexte graphique</em>.  C'est un objet de
+la classe <tt>Graphics</tt> ou de sa classe dérivée <tt>Graphics2D</tt>
+pour Java 2.  Cet objet encapsule toute l'information nécessaire au dessin
+sous forme d'un état graphique qui comporte en autres les propriétés
+suivantes.</p>
+
+<ul>
+<li>zone de dessin, c'est-à-dire le composant où s'effectue le dessin,</li>
+<li>une transformation affine des coordonnées,</li>
+<li>une zone de découpe (clipping),</li>
+<li>le trait (Stroke),</li>
+<li>la couleur courante et la texture,</li>
+<li>la fonte courante,</li>
+<li>le mode de dessin.</li>
+</ul>
+
+<p>Un contexte graphique peut être obtenu soit</p>
+<ul>
+<li>explicitement par un appel à la méthode <tt>getGraphics()</tt> des
+  classes <tt>JComponent</tt> et <tt>Image</tt>,</li>
+<li>explicitement par copie d'un objet <tt>Graphics</tt> existant,</li>
+<li>implicitement comme paramètre de la méthode
+  <tt>paintComponent(Graphics)</tt>.</li>
+</ul>
+
+<p>La dernière méthode est à préférer.  L'acquisition explicite d'un
+contexte graphique est souvent le signe d'une mauvaise programmation.  Un
+contexte graphique utilise des ressources système.  L'acquisition explicite
+d'un contexte graphique doit être accompagnée d'une libération explicite
+par la méthode <tt>dispose()</tt>.</p>
+
+<p>L'acquisition explicite est cependant nécessaire pour dessiner dans une
+<a href="images.html#Modif">image <tt>BufferedImage</tt></a>.  Un exemple
+typique d'une telle utilisation est la suivante.</p>
+
+<pre>
+  // Création d'une image
+  Image image = new BufferedImage(100, 100, BufferedImage.TYPE_INT_ARGB);
+  // Contexte graphique de l'image
+  // Méthode identique à getGraphics mais de type Graphics2D
+  // Graphics2D g2 = (graphics2D) image.getGraphics();
+  Graphics2D g2 = image.createGraphics();
+  // Utilisation de g2
+  ...
+  // Libération
+  g2.dispose();
+</pre>
+
+<h2><a name="paint">Méthodes <tt>paintComponent</tt> et 
+   <tt>repaint</tt></a></h2>
+
+<p>En Swing, c'est dans cette méthode que doit être fait les dessins d'un
+composant.  Cette méthode est définie dans la classe <tt>JComponent</tt>.
+C'est en redéfinissant cette méthode que l'on peut ajouter des
+instructions de dessin</p>
+
+<p>En AWT, la méthode <tt>paintComponent</tt> n'existe pas et c'est la
+méthode <tt>paint</tt> qui doit être redéfinie pour ajouter du dessin.  En
+Swing, la méthode <tt>paint</tt> existe encore mais elle ne doit pas être
+redéfinie.</p>
+
+<p>Par défaut, la méthode <tt>paintComponent</tt> appelle la méthode
+<tt>ComponentUI.update()</tt> qui efface et redessine le fond si le
+composant est opaque (comme <tt>JPanel</tt> par défaut).  Lorsque la
+méthode <tt>paintComponent</tt> est redéfinie, la méthode de la classe mère
+doit être appelée par <tt>super.paintComponent</tt> pour conserver 
+l'appel à <tt>ComponentUI.update()</tt>.</p>
+
+<p>la méthode <tt>paintComponent</tt> reçoit en paramètre un objet
+de type <tt>Graphics</tt> mais la classe réelle de ce contexte graphique
+est toujours <tt>Graphics2D</tt>.  Afin de pouvoir utiliser toutes les
+possibilités du graphisme de Java 2, il faut le convertir en un objet 
+de type <tt>Graphics2D</tt>.</p>
+
+<p>En tenant compte des dernières remarques, une redéfinition de la
+méthode <tt>paintComponent</tt> prend la forme classique suivante.</p>
+
+<pre>
+public void paintComponent(Graphics g) {
+    // Appel de la méthode paintComponent de la classe mère
+    super.paintComponent(g);
+    // Conversion en un contexte 2D
+    Graphics2D g2 = (Graphics2D) g;
+    // Utilisation de g2
+    ...
+</pre>
+
+<p>Le code de la méthode <tt>paintComponent</tt> ne doit pas modifier
+de façon permanente le contexte graphique passé en paramètre.  Si 
+c'est nécessaire de le modifier, il faut soit le cloner et modifier
+le clone soit restituer l'état initial après utilisation.</p>
+
+<p>La méthode <tt>paintComponent</tt> est appelée à chaque fois que
+le composant nécessite d'être redessiné, par exemple s'il a été masqué.
+Pour forcer le dessin d'un composant, il faut appeler la méthode
+<tt>repaint()</tt>.  Le principe de fonctionnement est le suivant.</p>
+
+<ul>
+<li>La méthode <tt>repaint</tt> poste un appel à la méthode
+  <tt>update</tt> mais cet appel est différé.  Il est traité après
+  le traitement des évènement en cours.  Plusieurs appel à <tt>update</tt>
+  peuvent être regroupés.</li>
+<li>La méthode <tt>update</tt> appelle la méthode <tt>paint</tt></li>
+<li>La méthode <tt>paint</tt> appelle successivement les méthodes 
+  <ul>
+  <li><tt>paintComponent,</tt></li>
+  <li><tt>paintBorder,</tt></li>
+  <li><tt>paintChildren.</tt></li>
+  </ul>
+</li>
+<li>Par défaut, la méthode <tt>paintComponent</tt> appelle la méthode
+  <tt>ComponentUI.update</tt> pour le dessin du fond.</li>
+</ul>
+
+<p>Puisque plusieurs appels à <tt>update</tt> peuvent être regrouper, il ne
+faut pas hésiter à appeler <tt>repaint</tt> dès que nécessaire.  Ceci ne ne
+ralentit pas l'application par des dessins intempestifs.</p>
+
+<h2><a name="dessin">Méthodes de dessin</a></h2>
+
+<p>La classe <tt>Graphics</tt> définit des méthodes pour dessiner et
+remplir des lignes, des rectangles, des ovales et des polygones.  Ces
+méthodes peuvent être remplacées par les deux méthodes générales
+<tt>draw(Shape)</tt> et <tt>fill(Shape)</tt> définies par la classe
+<tt>Graphics2D</tt>.  Elle demeurent cependant utiles pour des dessins
+élémentaires.  Un exemple typique d'utilisation est le suivant qui dessine
+une ligne en diagonale d'un panneau de classe <tt>JPanel</tt>.</p>
+
+<pre>
+public void paintComponent(Graphics g) {
+    // Appel de la méthode de la classe JPanel
+    super.paintComponent(g);
+    // Largeur et hauteur du panneau
+    int width = getWidth();	
+    int height = getHeight(); 
+    // Dessin d'une ligne en diagonal
+    g.drawLine(width/4, height/4, 3*width/4, 3*height/4);
+}
+</pre>
+
+<p>Certaines de ces méthodes sont surchargées pour prendre en paramètre un
+objet ou des coordonnées.  La liste de ces méthodes est la suivante.</p>
+
+<ul>
+<li><tt>drawLine</tt></li>
+<li><tt>drawRect</tt></li>
+<li><tt>drawRoundRect</tt></li>
+<li><tt>drawOval</tt></li>
+<li><tt>drawArc</tt></li>
+<li><tt>drawPolyline</tt></li>
+<li><tt>drawPolygon</tt></li>
+<li><tt>fillRect</tt></li>
+<li><tt>fillRoundRect</tt></li>
+<li><tt>fillOval</tt></li>
+<li><tt>fillArc</tt></li>
+<li><tt>fillPolygon</tt></li>
+</ul>
+
+<h2><a name="chaine">Chaîne de traitement</a></h2>
+
+<p>La chaîne de traitement est la suite des opérations qui sont effectuées
+pour aboutir à l'affichage d'un objet graphique.  On distingue trois
+grandes étapes qui chacune regroupe plusieurs opérations élémentaires.
+Ces trois grandes étapes sont les suivantes.</p>
+
+<ol>
+<li>Création des primitives graphiques 
+  <ul>
+  <li>formes</li>
+  <li>textes</li>
+  <li>images</li>
+  </ul>
+</li>
+<li>Configuration du rendu
+  <ul>
+  <li>contexte graphique (qualité, vitesse, antialiasing, &hellip;),</li>
+  <li>trait (épaisseur, terminaisons, raccordements, pointillés),</li>
+  <li>remplissage (couleur, dégradé, motif),</li>
+  <li>zone de découpe,</li>
+  <li>transformation des coordonnées,</li>
+  <li>composition,</li>
+  </ul>
+</li>
+<li>Dessin proprement dit
+  <ul>
+  <li>écran</li>
+  <li>imprimante</li>
+  </ul>
+</ol>
+
+<p>Cette chaîne de traitement se traduit en Swing par le squelette de
+code suivant.</p>
+
+<pre>
+public void paintComponent(Graphics g) {
+  // Appel de la méthode paintComponent de la classe mère
+  super.paintComponent(g);
+  // Conversion en un contexte 2D
+  Graphics2D g2 = (Graphics2D) g;
+  // Contexte graphique
+  RenderingHints hints = ...
+  g2.setRenderingHint(hints);
+  // Trait
+  Stroke stroke = ...
+  g2.setStroke(stroke);
+  // Remplissage
+  Paint paint = ...
+  g2.setPaint(paint);
+  // Composition
+  Composite composite = ...
+  g2.setComposite(composite);
+  // Zone de découpe
+  Shape clip = ...
+  g2.setClip(clip);
+  // Transformation des coordonnées
+  AffineTransform at = ...
+  get.transform(at);
+  // Définition de la forme 
+  Shape shape = ...
+  // Affichage 
+  g2.draw(shape);     // Contour
+  g2.fill(shape);     // Remplissage
+</pre>
+
+<h3>Configuration du contexte graphique</h3>
+
+<p>Le rendu réalisé par le contexte graphique peut être influencé par des
+indications.  Ces indications sont des associations entre des clés et des
+valeurs.  Par exemple, la clé <tt>KEY_RENDERING</tt> peut être associée aux
+valeurs <tt>VALUE_RENDER_DEFAULT</tt>, <tt>VALUE_RENDER_QUALITY</tt> ou
+<tt>VALUE_RENDER_SPEED</tt> pour indiquer que le rendu doit favoriser la
+qualité ou la vitesse.  Les noms des clés et des valeurs sont définis dans
+la classe <tt>RenderingHints</tt>. La méthode <tt>setRenderingHint</tt> de
+<tt>Graphics2D</tt> permet de changer la valeur associée à une clé.  Un
+exemple typique d'utilisation est le suivant.</p>
+
+<pre>
+  g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, 
+                      RenderingHints.VALUE_ANTIALIAS_ON);
+  g2.setRenderingHint(RenderingHints.KEY_RENDERING, 
+                      RenderingHints.VALUE_RENDER_QUALITY);
+</pre>
+
+
+<p>La liste des clés et des valeurs qui peuvent leur être associées est la
+suivante.</p>
+
+<table align="center" border="1" cellpadding="5">
+  <tr>
+    <th>Clé</th>
+    <th>Valeurs</th>
+  </tr>
+  <tr>
+    <td>KEY_RENDERING</td>
+    <td>VALUE_RENDER_DEFAULT<br />
+        VALUE_RENDER_QUALITY<br />
+	VALUE_RENDER_SPEED</br />
+    </td>
+  </tr>
+  <tr>
+    <td>KEY_COLOR_RENDERING</td>
+    <td>VALUE_COLOR_RENDER_DEFAULT<br />
+        VALUE_COLOR_RENDER_QUALITY<br />
+	VALUE_COLOR_RENDER_SPEED</br />
+    </td>
+  </tr>
+  <tr>
+    <td>KEY_DITHERING</td>
+    <td>VALUE_DITHER_DEFAULT<br />
+        VALUE_DITHER_DISABLE<br />
+	VALUE_DITHER_ENABLE</br />
+    </td>
+  </tr>
+  <tr>
+    <td>KEY_ANTIALIASING</td>
+    <td>VALUE_ANTIALIAS_DEFAULT<br />
+        VALUE_ANTIALIAS_OFF<br />
+	VALUE_ANTIALIAS_ON</br />
+    </td>
+  </tr>
+  <tr>
+    <td>KEY_TEXT_ANTIALIASING</td>
+    <td>VALUE_TEXT_ANTIALIAS_DEFAULT<br />
+        VALUE_TEXT_ANTIALIAS_OFF<br />
+	VALUE_TEXT_ANTIALIAS_ON</br />
+    </td>
+  </tr>
+  <tr>
+    <td>KEY_INTERPOLATION</td>
+    <td>VALUE_INTERPOLATION_BICUBIC<br />
+        VALUE_INTERPOLATION_BILINEAR<br />
+	VALUE_INTERPOLATION_NEAREST_NEIGHBOR</br />
+    </td>
+  </tr>
+  <tr>
+    <td>KEY_ALPHA_INTERPOLATION</td>
+    <td>VALUE_ALPHA_INTERPOLATION_DEFAULT<br />
+        VALUE_ALPHA_INTERPOLATION_QUALITY<br />
+	VALUE_ALPHA_INTERPOLATION_SPEED</br />
+    </td>
+  </tr>
+  <tr>
+    <td>KEY_FRACTIONALMETRICS</td>
+    <td>VALUE_FRACTIONALMETRICS_DEFAULT<br />
+        VALUE_FRACTIONALMETRICS_OFF<br />
+	VALUE_FRACTIONALMETRICS_ON</br />
+    </td>
+  </tr>
+  <tr>
+    <td>KEY_STROKE_CONTROL</td>
+    <td>VALUE_STROKE_DEFAULT<br />
+        VALUE_STROKE_NORMALIZE<br />
+	VALUE_STROKE_PURE</br />
+    </td>
+  </tr>
+</table>
+
+<h3>Trait</h3>
+
+<p>L'interface <tt>Stroke</tt> est implémentée par les objets qui
+encapsulent les propriétés du trait.  Seule la classe <tt>BasicStroke</tt>
+implémente cette interface.  Elle permet de spécifier l'épaisseur du trait,
+le type des terminaisons et le type des raccordements.</p>
+
+<p>Les trois types de terminaison pour les segments sont les suivants.  La
+croix marque l'extrémité du segment avant l'ajout de la terminaison.</p>
+
+
+<p class="figure">
+    <a name="fig:cap"><img src="cap.png"></a> 
+    <br /><br />
+    Fig. 1 : Types de terminaison
+</p>
+
+
+<p>Les trois types de raccordement entre les segments sont les suivants.
+La croix marque le point de raccordement des deux segments.  Le
+raccordement de type <tt>JOIN_MITER</tt> dépend en outre du paramètre
+<tt>miterlimit</tt> qui spécifie la taille maximale de la pointe.</p>
+
+<p class="figure">
+    <a name="fig:join"><img src="join.png"></a>
+    <br /><br />
+    Fig. 2 : Types de raccordement
+</p>
+
+<p>Un exemple typique d'utilisation est le suivant qui spécifie une
+épaisseur de 1,5 unités, des terminaisons de type <tt>CAP_SQUARE</tt>,
+des raccordements de type <tt>JOIN_MITER</tt> et une limite
+<tt>miterlimit</tt> de 10 unités.</p>
+
+<pre>
+  Stroke stroke = new BasicStroke(1.5f, BasicStroke.CAP_SQUARE,
+                                  BasicStroke.JOIN_MITER, 10.0f); 
+</pre>
+
+<h3>Remplissage</h3>
+
+<p>L'interface <tt>Paint</tt> est implémentée par les objets qui spécifient
+un type de remplissage.  Elle est implémentée par les classes
+<tt>Color</tt>, <tt>GradientPaint</tt>, <tt>TexturePaint</tt>.</p>
+
+<p>La classe <tt>Color</tt> définit des constantes <tt>black</tt>,
+<tt>blue</tt>, <tt>cyan</tt>, &hellip; pour les principales couleurs.
+Une couleur peut aussi être créée en donnant les composantes RGB et
+éventuellement une composante &alpha; de transparence.</p>
+
+<p>La classe <tt>GradientPaint</tt> permet de définir un dégradé. Celui-ci
+est donné par le point et la couleur de départ ainsi que le point et la
+couleur d'arrivée.<p>
+
+<p>La classe <tt>TexturePaint</tt> permet de remplir une zone en la pavant
+avec une <a href="images.html#Modif">image <tt>BufferedImage</tt></a>.</p>
+
+<h3>Composition</h3>
+
+<p>La composition permet de préciser comment la couleur mise sur un point
+se mélange avec la couleur déjà présente sur le point.  Le comportement
+classique est que la nouvelle couleur recouvre et cache l'ancienne couleur
+comme avec la peinture à l'huile.  Il est aussi possible que la nouvelle se
+mélange avec l'ancienne pour donner une nouvelle couleur comme avec
+l'aquarelle.</p>
+
+<p>L'interface <tt>Composite</tt> est implémentée par les objets qui
+définissent ce comportement.  Elle est seulement implémentée par la classe
+<tt>AlphaComposite</tt>.  Cette classe propose onze modes de
+composition des couleurs qui sont définis par des constantes.</p>
+
+<p>L'applette ci-dessous permet d'expérimenter les différents modes de
+composition proposés par la classe <tt>AlphaComposite</tt>.</p>
+
+<p class="figure">
+  <applet codebase="Applets/" code="Composition.class" 
+          name="Composition des couleurs" width="400" height="230">
+  </applet> 
+</p>
+
+<h3>Transformations des coordonnées</h3>
+
+<p>Le contexte graphique contient une transformation affine qui transforme
+les coordonnées de l'espace utilisateur (programmeur) en les coordonnées du
+système d'affichage (écran, imprimante).  Ceci est indispensable car les
+écrans et les imprimantes n'ont pas les mêmes résolutions.  Cette
+transformation peut être modifiée, par exemple pour centrer le repère au
+milieu de la zone.  La transformation à appliquer doit être composée avec
+la transformation déjà présente plutôt que la remplacer.  Un exemple
+typique d'utilisation des méthodes <tt>transform</tt>,
+<tt>getTransform</tt> et <tt>setTransform</tt> est le suivant.</p>
+
+<pre>
+  // Sauvegarde de la transformation
+  AffineTransform save = g2.getTransform();
+  // Translation de l'origine au milieu de la fenêtre
+  g2.translate(getWidth()/2, getHeight()/2);
+  // Application d'une autre transformation 
+  g2.transform(...);
+  // Dessin
+  ...
+  // Restitution de la transformation initiale
+  g2.setTransform(save);
+</pre>
+
+<p>Les transformations directement disponibles sont les suivantes.  Il
+est possible d'utiliser n'importe quelle transformation affine en donnant
+une matrice au constructeur de <tt>AffineTransform</tt>.</p>
+
+<ul>
+<li>translations,</li>
+<li>dilatations,</li>
+<li>rotations,</li>
+<li>cisaillements (shear en anglais).</li>
+</ul>
+
+<p>L'applette ci-dessous permet d'expérimenter les différentes
+transformations et de les combiner.</p>
+
+<p class="figure">
+  <applet codebase="Applets/" code="Transform.class" 
+          name="Transformation des coordonnées" width="520" height="400">
+  </applet> 
+</p>
+
+<h2><a name="formes">Formes</a></h2>
+
+<p>L'interface <tt>Shape</tt> est implémentée par toutes le classes 
+qui définissent les formes géométriques.  Les principales méthodes
+déclarées sont les suivantes.</p>
+
+<dl>
+<dt><tt>contains</tt></dt>
+<dd>teste si un point ou un rectangle est contenu dans la forme</dd>
+<dt><tt>getBounds</tt> et <tt>getBounds2D</tt></dt>
+<dd>retourne un rectangle contenant la forme</dd>
+<dt><tt>getPathIterator</tt></dt>
+<dd>retourne un itérateur</dd>
+</dl>
+
+<p>L'itérateur retourné par la méthode <tt>getPathIterator</tt> est un
+objet de la classe <tt>PathIterator</tt>.  Il permet de décomposer la
+contour de la figure en segments élémentaires qui peuvent être des
+déplacements sans tracé, des lignes et des splines.  Sa méthode
+<tt>currentSegment</tt> retourne le segment courant et sa méthode
+<tt>next</tt> passe au suivant.</p>
+
+<p>La hiérarchie des classes des formes géométriques est la suivante.  La
+classe <tt>Point2D</tt> des points de dérive pas de la classe
+<tt>Shape</tt> car un point n'est pas une forme.  En Java 2, les
+coordonnées des points sont des flottants de type <tt>float</tt> ou
+<tt>double</tt>.  La plupart des classes comme <tt>Point2D</tt> ont deux
+classes dérivées comme <tt>Point2D.Float</tt> et <tt>Point2D.Double</tt>
+pour les objets avec coordonnées de type <tt>float</tt> et <tt>double</tt>.
+Dans ce cas, la classe principale comme <tt>Point2D</tt> ne peut pas être
+instanciée (soit parce qu'elle est abstraite soit parce que le constructeur
+n'est pas public).</p>
+
+<p class="figure">
+    <a name="fig:shapes"><img src="shapes.png"></a> 
+    <br /><br />
+    Fig. 3 : Hiérarchie des classes de formes
+</p>
+
+<p>Les classes <tt>QuadCurve2D</tt> et <tt>CubicCurve2D</tt> sont pour les
+<a href="splines.html">Splines (quadratiques et de Bézier)</a>.
+Contrairement aux autres classes, les coordonnées de la classe
+<tt>Polygon</tt> sont de type <tt>int</tt>.  La classe <tt>GeneralPath</tt>
+est à utiliser pour un chemin constitué de lignes et de splines.  La classe
+<tt>Area</tt> est pour manipuler des zones quelconques contruites par
+combinaison (union, intersection, &hellip;) de zones élémentaires
+(rectangles, ellipses, &hellip;).</p>
+
+</body>
+</html>

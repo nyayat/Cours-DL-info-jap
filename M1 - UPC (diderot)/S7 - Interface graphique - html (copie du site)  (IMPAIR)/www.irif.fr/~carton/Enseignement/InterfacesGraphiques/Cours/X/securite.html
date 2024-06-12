@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<!-- Time-stamp: "securite.html  16 Feb 2005 18:03:15" -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+  <title>
+  Sécurité
+  </title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="Author" content="Olivier Carton">
+</head>
+
+<body>
+
+<h2>Sécurité</h2>
+
+<p>Il y a deux façons de restreindre l'accès à un serveur X.  La première
+ne concerne que les machines sur lesquelles tournent les clients.  Elle ne
+distingue pas plusieurs utilisateurs d'une même machine.  Elle est a donc
+très rudimentaire et elle est mise en &oelig;uvre par le client
+<tt>xhost</tt>.  La seconde concerne vraiment les utilisateurs et offre
+plusieurs niveaux de sécurité.  Elle utilise le fichier
+<tt>.Xauthority</tt> qui est manipulé par la commande <tt>xauth</tt>.</p>
+
+<h3>Autorisation basée sur les machines</h3>
+
+<p>Le serveur X gère une liste de machines à partir desquelles les clients
+sont autorisés à se connecter au serveur X.  Cette liste est manipulée par
+le client <tt>xhost</tt> qui admet les options suivantes.</p>
+
+<ul>
+<li><tt>xhost</tt> : affiche la liste des machines.</li>
+<li><tt>xhost +</tt> : le mécanisme d'autorisation est désactivé et tous
+  les clients sont autorisés à se connecter.</li>
+<li><tt>xhost -</tt> : le mécanisme d'autorisation est activé et seuls
+  les clients dans la liste sont autorisés à se connecter.</li>
+<li><tt>xhost +<i>machine</i></tt> : ajoute la machine à la liste.</li>
+<li><tt>xhost -<i>machine</i></tt> : supprime la machine de la liste.</li>
+</ul>
+
+<p>Cette méthode offre une sécurité très sommaire car toute personne qui 
+est connectée sur une machine autorisée peut se connecter.</p>
+
+<h3>Autorisation basée sur de l'authentification</h3>
+
+<p>Cette méthode est basée sur l'authentification des clients qui doivent
+s'identifier en se connectant au serveur X.  Elle offre quatre modes de
+fonctionnement, dont certains donnent un niveau de sécurité élevé même
+s'ils sont lourds à mettre en &oelig;uvre.  Les certificats d'authorisation
+sont stockés dans le fichier <tt>.Xauthority</tt> qui est manipulé par la
+commande <tt>xauth</tt>.  Pour que la sécurité soit effective, ce fichier
+doit être protégé avec des droits de lecture restreints au
+propriétaire.</p>
+
+<p>Le fichier <tt>.Xauthority</tt> contient des clés permettant de se
+connecter à des serveurs X.  Ils peut contenir simultanément des clés
+permettant de se connecter à différents serveurs ou à un même serveur.  Il
+ne doit pas être édité à la main.  Le client <tt>xauth</tt> permet
+d'afficher son contenu, d'en extraire des clés et d'en ajouter.  Il admet
+les options principales suivantes. </p>
+
+<ul>
+<li><tt>xauth list</tt> : liste le contenu du fichier
+  <tt>.Xauthority</tt> de manière compréhensible.</li> 
+<li><tt>xauth [n]extract <i>file</i> <i>display</i></tt> : extrait du
+  fichier <tt>.Xauthority</tt> et place dans le fichier
+  <tt><i>file</i></tt> les clés correspondantes au serveur
+  <tt><i>display</i></tt>.</li>
+<li><tt>xauth [n]merge <i>file</i></tt> : ajoute au fichier
+  <tt>.Xauthority</tt> les clés contenues dans le fichier
+  <tt><i>file</i></tt>.</li>
+</ul>
+
+<p>Voici un exemple typique d'utilisation de <tt>xauth</tt> pour
+transférer des clés sur une autre machine.</p>
+
+<pre>
+%  xauth extract - $DISPLAY | rsh otherhost xauth merge -
+</pre>
+
+<h4>Les modes d'authentification</h4>
+
+<p>Il y a les quatre modes d'identifications suivants.</p>
+
+<dl>
+<dt>MIT-MAGIC-COOKIE-1</dt>
+<dd>Dans ce mode d'identification, le client <tt>xdm</tt> génère une clé
+  d'identification pour chaque session.  Cette clé est transmise par
+  <tt>xdm</tt> au serveur X et stockée dans le fichier <tt>.Xauthority</tt>
+  de l'utilisateur.  Afin d'être autorisé à se connecter, un client doit
+  fournir cette clé.  La clé circule en clair sur le réseau et ce mode
+  d'authentification est donc vulnérable à l'écoute du réseau.</dd>
+<dt>XDM-AUTHORIZATION-1</dt>
+<dd>Dans ce mode d'identification la clé contenue dans le fichier
+  <tt>.Xauthority</tt> est formée d'une clé de session et d'une clé DES
+  partagée avec le serveur X.  Ces deux clés sont générées par <tt>xdm</tt>
+  à l'établissement de la session.  Pour se connecter, un client envoie au
+  serveur X un identifiant formée de la date, de l'adresse et du port
+  TCP/IP et encryptée avec la clé DES.  Le serveur X peut alors décrypter
+  l'identifiant avec la clé DES et vérifier que le client est autorisé à
+  se connecter.  Le système DES n'est normalement pas exportable en dehors
+  des États-Unis.</dd>
+<dt>SUN-DES-1</dt>
+<dd>Ce mode d'authentification utilise les RPC sécurisé et il donc plus sûr
+  même s'il est plus lourd à mettre en &oelig;uvre.</dd>
+<dt>MIT-KERBEROS-5</dt>
+<dd>Ce mode d'authentification est basé sur Kerberos V qui est très lourd à mettre en
+  &oelig;uvre.</dd>
+</dl>
+</body>
+</html>

@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<!-- Time-stamp: "index.html  12 sep 2019 17:19:40" -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+  <title>Programmation Swing</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="Author" content="Olivier Carton">
+  <style> <!--
+    /* Fond blanc */
+    body { background-color: white; }
+  --> </style>
+</head>
+
+<body>
+
+<h2>Programmation Swing</h2>
+
+<ul>
+<li>Premiers programmes
+  <ul> 
+  <li>Un premier <a href="Frames/Bonjour.java">programme <em>Hello
+  World</em></a> qui utilise la méthode statique <tt>showMessageDialog</tt>
+  de la classe <tt>JOptionPane</tt> pour afficher un message dans une
+  fenêtre. 
+  </li>
+  <li>Un <a href="Frames/MinimalFrame.java">programme minimal</a> qui se
+  contente d'ouvrir une fenêtre. 
+  </li>
+  <li>Un <a href="Frames/SimpleFrame.java">programme</a> qui ouvre une
+  simple fenêtre sans rien afficher dedans. 
+  </li>
+  <li>Un <a href="Frames/SimpleLine.java">programme</a> qui dessine une
+  ligne en diagonal.
+  </li>
+  </ul>
+</li>
+<li>Interactions : menus et boutons
+  <ul> 
+  <li>Une <a href="Backgrounds/BackgrdButton.java">application</a> 
+  avec trois boutons pour changer la couleur du fond. 
+  </li>
+  <li>Une <a href="Backgrounds/BackgrdMenu.java">application</a> 
+  avec un menu dans la barre de menu pour changer la couleur du fond. 
+  </li>
+  </ul>
+</li>
+<li>Illustration de l'architecture <em>modèle/vue/contrôleur</em>
+  <ul> 
+  <li>Une <a href="PlusOuMoins/Simple/PlusOuMoins.java">application</a> 
+  avec deux boutons pour incrémenter et décrémenter un entier affiché. 
+  </li>
+  <li><a href="PlusOuMoins/Mvc/Mvc.java">Programmation</a> de la même
+  application en utilisant l'architecture modèle/vue/contrôleur.
+  </li>
+  <li><a href="PlusOuMoins/Base/Base.java">Programmation</a> de la même
+  application avec en plus un choix de la base d'affichage.
+  </li>
+  <li><a href="PlusOuMoins/Extended/Extended.java">Programmation</a> 
+  de la même application en utilisant l'architecture modèle/vue/contrôleur
+  et les <em>ActionCommand</em> des boutons.
+  </li>
+  <li>Une <a href="Bases/Bases.java">convertisseur</a> entre bases
+  pour illustrer la notion de <em>vue partielle</em>.
+  </li>
+  </ul>
+</li>
+<li>Gestionnaires de disposition 
+  <ul>
+  <li>Une <a href="Layouts/Layouts.java">application</a> pour jouer avec
+  les gestionnaires de disposition. 
+  </li>
+  <li>Programmes <a href="Layouts/GBLDemo1.java">Demo1</a>,  
+    <a href="Layouts/GBLDemo2.java">Demo2</a>,  
+    <a href="Layouts/GBLDemo3.java">Demo3</a> et 
+    <a href="Layouts/GBLDemo4.java">Demo4</a> de démontration du gestionnaire
+    <tt>GridBaglayout</tt>.
+  </li>
+  <li>Utilisation du gestionnaire <tt>GridBaglayout</tt> pour une
+    <a href="Layouts/Target.java">cible</a>
+  </li>
+  </ul>
+</li>
+<li>Actions
+  <ul>
+  <li>Une <a href="Labyrinth/Simple/labyrinth.jar">ébauche de
+  labyrinthe</a> (<em>archive <a href="jar.html"><tt>jar</tt></a>
+  exécutable</em>) pour illustrer l'utilisation des <em>Actions</em>.
+  </li>
+  </ul>
+</li>
+<li>Conteneurs 
+  <ul>
+  <li>Une <a href="Gaz/gaz.jar">expérience</a> (<em>archive <A
+  href="jar.html"><tt>jar</tt></a> exécutable</em>) chimique avec deux
+  récipients remplis de gaz.  Les récipients sont des <tt>JPanel</tt>.  La
+  paroi verticale qui les sépare et leurs parois inférieures peuvent être
+  déplacées grâce à trois <tt>JSplitPane</tt> imbriqués.
+  </li>
+  </ul>
+</li>
+<li>Listes et conteneurs <br />
+  Les deux applications ci-dessous utilisent un <tt>JList</tt> pour la
+  sélection et un <tt>JTextArea</tt> pour l'affichage.  Pour disposer de
+  barres de défilement, chacun de ces deux composants est inclus dans
+  <tt>JScrollPane</tt>.  Les deux <tt>JScrollPane</tt> sont finalement
+  regroupés dans un <tt>JSplitPane</tt>.
+  <ul>
+  <li>Une <a href="Lists/SelectionMode.java">application</a> pour essayer
+  les différents modes de sélection d'une liste.
+  </li>
+  <li>Une <a href="Lists/OneList.java">application</a> pour ajouter
+   et supprimer des éléments dans une liste.  
+  </li>
+  <li>Une <a href="Lists/TwoLists.java">application</a> pour échanger des
+   des éléments entre deux listes.  
+  </li>
+  </ul>
+</li>
+<li>Tables
+  <ul>
+  <li>Utilisation directe de la classe <tt>JTable</tt> pour une table des 
+    <a href="Tables/Planetes.java">planètes</a> du système solaire.  
+  </li>
+  <li>La même table des <a href="Tables/FixedPlanetes.java">planètes</a>
+    du système solaire avec des cellules <em>non éditables</em>.  Pour
+    cela, on définit le modèle en dérivant une classe de la classe
+    <tt>DefaultTableModel</tt>.
+  </li>
+  <li>La même table des <a href="Tables/SortedPlanetes.java">planètes</a>
+    du système solaire.  La sélection d'une colonne trie les lignes suivant
+    les entrées de la colonne.  On utilise un modèle <em>filtre</em> qui
+    fait l'interface entre la vue et le modèle qui contient les données.
+  </li>
+  <li>Une table des <a href="Tables/Binomials.java">coefficients
+    binômiaux</a>.  Pour cela, on définit un modèle en dérivant une classe
+    de la classe <tt>AbstractTableModel</tt>.
+  </li>
+  </ul>
+</li>
+<li>Arbres
+  <ul>
+  <li>Petit <a href="Trees/simpletree.jar">arbre</a> (<em>archive <A
+    href="jar.html"><tt>jar</tt></a> exécutable</em>) construit à la main
+    pour utiliser les classes <tt>JTree</tt> et 
+    <tt>DefaultMutableTreeNode</tt>.
+  </li>
+  <li>Visualisation d'une <a href="Trees/ClassTree.java">hiérarchie de
+    classes</a> sous forme d'arbre.
+  </li>
+  <li>Visualisation d'une <a href="Trees/FileTree.java">hiérarchie de
+    fichiers</a> sous forme d'arbre.
+  </li>
+  <li>Visualisation d'un <a href="Trees/XMLTree.java">document XML</a> sous
+    forme d'arbre. 
+  </li>
+  </ul>
+</li>
+<li>Undo/Redo
+  <ul>
+  <li>Ajout au <a href="Undo/Simple/simpleundo.jar">labyrinthe</a> 
+    (<em>archive <a href="jar.html"><tt>jar</tt></a> exécutable</em>) 
+    d'une fonctionnalité de <em>Undo/Redo</em> sur un seul coup.
+  </li>
+  <li>Ajout au <a href="Undo/Multiple/multundo.jar">labyrinthe</a> 
+    (<em>archive <a href="jar.html"><tt>jar</tt></a> exécutable</em>) 
+    d'une fonctionnalité de <em>Undo/Redo</em> sur plusieurs coups.
+  </li>
+  <li>Ajout d'une fonctionnalité de <em>Undo/Redo</em> à une 
+    <a href="Undo/Text/TextEdit.java">zône de texte</a> 
+  </li>
+  </ul>
+</li>
+<li>Images
+  <ul>
+  <li><a href="ImageView/ImageView.java">Visualisation simple</a> d'une
+    image.  L'image utilisée dans le programme doit être dans un fichier nommé
+    <a href="ImageView/images/9personnes.jpg"><tt>9personnes.jpg</tt></a> et
+    placé dans un sous-répertoire <tt>images</tt>.
+  </li>
+  <li>La même chose sous forme d'une 
+    <a href="Applets/ImageApplet.java">Applette</a>
+  </li>
+  <li><a href="ImageView/ImageWait.java">Visualisation simple</a>
+    d'une image avec attente du chargement complet de l'image.  Cette
+    attente est réalisée en redéfinissant la méthode <tt>imageUpdate</tt>
+    dont les appels sont affichés.  Ceci met en évidence le
+    caractère asynchrone du chargement des images. 
+  </li>
+  <li><a href="ImageView/ImageTrack.java">Visualisation simple</a>
+    d'une image avec attente du chargement complet de l'image.  Cette
+    attente est réalisée en utilisant un objet <tt>MediaTracker</tt>.
+  </li>
+  <li><a href="ImageView/transform.jar">Application de filtres</a>
+    (<em>archive <a href="jar.html"><tt>jar</tt></a> exécutable</em>) 
+    à une image.
+  </li>
+  <li>Dessin de la 
+    <a href="Mandelbrot/Mandelbrot.java">fractale de Mandelbrot</a>
+    avec possibilité de zoom sur une zône.
+  </li>
+  </ul>
+</li>
+<li>Document de texte
+  <ul>
+  <li>Un <a href="Editor/editor.jar">micro éditeur de texte</a>
+    (<em>archive <a href="jar.html"><tt>jar</tt></a> exécutable</em>) 
+  </li>
+  </ul>
+</li>
+<li>Internationalisation
+  <ul>
+  <li><a href="Locals/Locals.java">Affichage</a> 
+    des <em>Locales</em> installées 
+  </li>
+  <li><a href="Locals/LocalDate.java">Affichage multilingue de la date</a>
+  <li>Un <a href="Minical/minical.jar">mini calendrier</a>
+    (<em>archive <a href="jar.html"><tt>jar</tt></a> exécutable</em>)   </li>
+  </li>
+  </ul>
+</li>
+</ul>
+
+</body>
+</html>

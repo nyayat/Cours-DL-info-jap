@@ -1,0 +1,26 @@
+/* -*- coding: utf-8 -*- */
+/* Time-stamp: <style.css   5 nov 2019 18:25:34> */
+
+/* Fichier de style CSS référencé par le fichier FXML */
+
+/* Panneau VBox et chacun des boutons */
+VBox, Button {
+    -fx-border-width: 3;
+    -fx-border-color: black;
+    -fx-border-insets: 4;
+}
+
+/* Bouton 1 */
+Button#button1 {
+        -fx-border-color: red;
+}
+
+/* Bouton 2 */
+Button#button2 {
+        -fx-border-color: green;
+}
+
+/* Bouton 3 */
+Button#button3 {
+        -fx-border-color: blue;
+}

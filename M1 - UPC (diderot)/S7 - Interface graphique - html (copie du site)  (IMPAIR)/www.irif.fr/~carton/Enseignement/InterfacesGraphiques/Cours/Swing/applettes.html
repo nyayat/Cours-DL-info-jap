@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<!-- Time-stamp: "applettes.html  28 Dec 2005 16:01:17" -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+  <title>
+  Applettes
+  </title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="Author" content="Olivier Carton">
+</head>
+
+<body>
+
+<h1>Applettes</h1>
+
+<p>Une <em>applette</em> est un panneau spécialisé qui est incorporé dans
+un conteneur pour son exécution.  Les classes des applettes sont
+<tt>Applet</tt> qui dérive de <tt>Panel</tt> en AWT et <tt>JApplet</tt> qui
+dérive de <tt>JPanel</tt> en Swing.  Une applette n'est donc pas une
+application autonome.</p>
+
+<p>À Une applette est associé un <em>applet context</em> qui contient des
+information sur l'environnement dans lequel s'exécute l'applette.  Une
+applette est soit <em>active</em> soit <em>inactive</em>.  Au chargement,
+elle est inactive et elle devient active au premier affichage.  Ensuite,
+elle peut redevenir inactive si elle sort de la partie visible du conteneur
+ou si une autre page est activée.</p>
+
+<p>Les méthodes pour la gestion d'une applette sont les suivantes.</p>
+<ul>
+<li><tt>init()</tt> appelée à la création.</li>
+<li><tt>start()</tt> appelée lorsque l'applette est activée.</li>
+<li><tt>stop()</tt> appelée lorsque l'applette devient inactive.</li>
+<li><tt>destroy()</tt> quand on quitte le programme.</li>
+</ul>
+
+<p>Des <a href="../../Programmation/Swing/Applets/index.html">exemples</a>
+d'applette</p> 
+ 
+<h2>Balises HTML</h2>
+
+<p>Les applettes sont incluses dans les pages HTML grâce aux balises 
+<tt>&lt;applet&gt;</tt> et <tt>&lt;param&gt;</tt>.  Les attributs de la
+balise <tt>&lt;applet&gt;</tt> sont les suivants.</p>
+
+<ul>
+<li><tt>name</tt> donne un nom à l'applette.  Il permet de distinguer
+  deux occurrences d'une même applette.</li>
+<li><tt>code</tt> spécifie la classe de l'applette.  C'est le nom du fichier
+  <tt>.class</tt> contenant le binaire (bytecode) de l'applette.</li>
+<li><tt>codebase</tt> donne l'adresse URL où se trouve le binaire.  C'est par
+  défaut ".", c'est-à-dire le répertoire où se trouve le fichier HTML qui
+  inclut l'applette.</li>
+<li><tt>width</tt> et <tt>height</tt> donnent les dimensions de
+  l'applette.</li>
+</ul>
+
+<p>L'inclusion d'une applette dans une page HTML prend donc la forme
+classique.</p>
+<pre>
+  &lt;applet code="SimpleApplet.class" width="200" height="100"&gt;&lt;/applet&gt; 
+</pre>
+
+<p>La balise <tt>&lt;param&gt;</tt> permet de spécifier des paramètres
+supplémentaires.  Il admet les deux attributs suivants.</p>
+<ul>
+<li><tt>name</tt> : nom du paramètre,</li>
+<li><tt>value</tt> : valeur associée au paramètre.</li>
+</ul>
+
+<p>L'inclusion d'une applette avec des paramètres prend donc la forme
+suivante.</p>
+
+<pre>
+  &lt;applet code="MonitorApplet.class" name="Moniteur" width="200" height="100"&gt;
+     &lt;param name="Param1" value="Valeur1"&gt;&lt;/param&gt; 
+     &lt;param name="Param2" value="Valeur2"&gt;&lt;/param&gt; 
+  &lt;/applet&gt; 
+</pre>
+
+<p>Les chaînes <code>Valeur1</code> et <code>Valeur2</code> seront
+respectivement retournées par les appels
+<code>getParameter("Param1")</code> et
+<code>getParameter("Param2")</code>.</p>
+
+<h2>Méthodes</h2>
+
+<p>Les applettes implémentent les méthodes suivantes qui permettent de
+retrouver les valeur des paramètres.</p>
+<ul>
+<li><tt>URL getCodeBase()</tt> retourne la valeur du paramètre
+  <tt>codebase</tt>, c'est-à-dire le répertoire contenant le fichier
+  binaire.</li> 
+<li><tt>URL getDocumentBase()</tt> retourne l'adresse du répertoire
+  contenant le fichier HTML qui inclut l'applette.</li>
+<li><tt>String getParameter(String)</tt> : valeur associée au paramètre.</li>
+</ul>
+
+<h2>Images</h2>
+
+<p>Les images sont obtenues avec la méthode <tt>getImage</tt> qui prend en
+premier paramètre une URL et en second paramètre le nom du fichier.  Si nom
+du fichier est relatif au binaire, on passe l'URL retournée par la méthode
+<tt>getCodeBase()</tt>.</p>
+
+<p>L'image est dessinée par la méthode <tt>paint</tt> en utilisant un
+appel à la méthode <tt>drawImage</tt> de la classes <tt>Graphics</tt>.
+Voici ci-dessous le code d'une applette qui affiche une image contenue dans
+un fichier <tt>9personnes.jpg</tt> qui se trouve dans un répertoire
+<tt>images</tt>.</p>
+
+<pre>
+public class ImageApplet extends JApplet {
+    private Image image;
+    public void init() {
+	image = getImage(getCodeBase(), "images/" + "9personnes.jpg");
+    }
+    public void paint(Graphics g) {
+	g.drawImage(image, 0, 0, this);
+    }
+}
+</pre>
+
+</body>
+</html>

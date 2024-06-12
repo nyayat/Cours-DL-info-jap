@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<!-- Time-stamp: "introduction.html  28 aoû 2020 14:20:07" -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+  <title>Swing</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="Author" content="Olivier Carton">
+</head>
+
+<body>
+
+<h2>Introduction à Swing</h2>
+
+<p>Les programmes à interfaces graphiques (GUI en anglais pour <em>Graphic
+User Interface</em>) font usage des classes de l'AWT (<em>Abstract
+Windowing Toolkit</em>) et/ou de Swing.  L'AWT est en fait l'ancêtre de
+Swing qui a été introduit par la suite.  Par contre, Swing ne remplace
+l'AWT puisqu'il est basé dessus.  Il y a une certaine redondance entre AWT
+et Swing.  Il y a par exemple une classe <tt>Button</tt> en AWT et une
+classe <tt>JButton</tt> en Swing.  De manière générale, les noms des
+classes Swing commencent par la lettre 'J'.</p>
+
+<p>Les caractérisitiques principales de Swing sont les suivantes.</p>
+<ul>
+<li>Interface de haut niveau</li>
+<li>Librairie d'objets très fournie.</li>
+<li>Facilité de mise en &oelig;uvre.</li>
+<li>Programmation par événements.</li>
+<li>Conception orientée objet</li>
+<li>Multi plateforme (X Window, MacOS, Windows).</li>
+<li>Distinction entre objets et modèles.</li>
+</ul>
+
+<p>La classe de base de tous les objets est <tt>Component</tt> en AWT 
+et <tt>JComponent</tt> en Swing.  La classe <tt>JComponent</tt> dérive de 
+la classe <tt>Component</tt>.  Ce sont deux classes abstraites.</p>
+
+<p>Parmi les objets, on distingue trois catégories.</p>
+<ul>
+<li>Les classes d'interactions, c'est-à-dire les <em>composants</em>,</li>
+<li>Les <em>conteneurs</em>,</li>
+<li>Les classes de liaisons (événements, gestionnaire de disposition,
+  &hellip; )</li>
+</ul>
+
+<h3>Arborescence des composants et des conteneurs</h3>
+
+<p>L'interfacce visible d'une application est constitué par un ensemble de
+composants et des conteneurs.  Ces objets sont organisés en une
+<em>arborescence</em> semblable à celle des fichiers et des répertoires.
+Les composants jouent le rôle des fichiers et les conteneurs jouent le rôle
+des répertoire.  Il y a un arbre pour chaque fenêtre.  La racine de chaque
+arbre est un conteneur spécial qui réalise la liaison avec les système de
+fenêtrage sous-jacent.</p>
+
+<p>Sur la figure ci-dessous est dessinée une partie de l'arbrorescence de
+l'application <tt>Totale</tt> utilisée pour illustrer les composants de
+Swing.  Chaque rectangle représente un objet avec le nom de la variable
+dans le programme et le type de cette variable.  Le conteneur à la racine
+de l'arbrorescence est une fenêtre <tt>JFrame</tt> qui contient d'une part
+une barre de menus (<tt>JMenuBar</tt>) et un panneau (<tt>JPanel</tt>) qui
+contient tout le reste.  Ce dernier panneau contient lui-même d'autres
+panneaux dans lesquels sont regroupés les composnants proprement dits.  La
+barre de menus contient trois menus (<tt>Jmenu</tt>) qui contiennnent
+eux-mêmes des composants pour les entrées des menus
+(<tt>JMenuItem</tt>).</p>
+
+<p class="figure">
+    <a name="#fig:arborescence"><img src="arborescence.png"></a> 
+    <br /><br />
+    Fig. 1 : Arborescence (partielle) de l'application Totale
+</p>
+
+<p>Ils ne faut pas confondre l'arborescence des objets dans une interface
+avec la hiérarchie des classes liée à la dérivation en programmation
+orientée objets.</p>
+
+<h3>Conteneurs</h3>
+
+<p>Les conteneurs contiennent d'autre objets qui peuvent être eux-mêmes des
+conteneurs.  Ils sont responsables de la disposition des objets qu'ils
+délèguent à un gestionnaire de disposition (LayoutManager en anglais).  La
+classe de base des conteneurs est <tt>Container</tt> qui dérive de
+<tt>Component</tt>.  Il n'y a pas de classe <tt>JContainer</tt> en Swing.
+Les conteneurs principaux sont les suivants.</p>
+
+<ul>
+<li><tt>Window</tt> et <tt>JWindow</tt> pour l'interaction avec le
+  système</li>
+<li><tt>Frame</tt> et <tt>JFrame</tt> pour une fenêtre principale
+  d'application</li> 
+<li><tt>Panel</tt> et <tt>JPanel</tt> pour contenir des composants</li>
+<li><tt>Applet</tt> et <tt>JApplet</tt> pour les applettes</li>
+</ul>
+
+<p>Les conteneurs <tt>Window</tt>, <tt>JWindow</tt>, <tt>Frame</tt>,
+<tt>JFrame</tt>, <tt>Applet</tt> et <tt>JApplet</tt> se trouvent
+nécessairement à la racine d'une arborescence.  Ils ne peuvent pas être
+contenus dans un autre conteneur.  Ces classes dérivent toutes de la
+classe <tt>Container</tt>.  Au contraire, les conteneurs doivent être
+contenus dans un autre conteneur.  Les classes <tt>Panel</tt> et
+<tt>JPanel</tt> dérivent respectivement de <tt>Component</tt> et
+<tt>JComponent</tt>.</p>
+
+<p>Les classes <tt>Frame</tt> ou <tt>JFrame</tt> sont utilisées pour la
+fenêtre principale d'une application autonome (comme pour l'application
+<tt>Totale</tt>).  Elles sont le conteneurs à la racine de la fenêtre
+pricipale.  Les classes <tt>Window</tt> ou <tt>JWindow</tt> sont utilisées
+lorsque l'interface d'une application est répartie entre plusieurs
+fenêtres.  Les fenêtres auxiliares sont les conteneurs à la racines des
+fenêtres auxiliaires.  Les classes <tt>Applet</tt> et <tt>JApplet</tt> sont
+les conteneurs à la racine de l'arbrorescence des applettes.</p>
+
+<p>Les conteneurs <tt>Panel</tt> et <tt>JPanel</tt> sont utilisés pour
+regrouper les composants en blocs.  C'est en quelque sorte le conteneur
+universel.</p>
+
+<h3>Hiérarchie des classes Swing</h3>
+
+<h4>Hiérarchie des conteneurs</h4>
+
+<p>Voici la hiérarchie des conteneurs principaux de SWING.<p>
+<ul>
+<li>Object 
+  <ul>
+  <li>Component 
+     <ul>
+     <li>Container 
+       <ul>
+       <li>JComponent 
+         <ul>
+         <li>JPanel
+	 </li>
+	 </ul>
+       </li>
+       <li>Panel
+         <ul>
+         <li>Applet
+	   <ul>
+	   <li>JApplet </li> 
+	   </ul>
+	 </li>
+	 </ul>
+       </li>
+       <li>Window
+         <ul>
+         <li>JWindow
+	 </li>
+         <li>Frame
+	   <ul>
+	   <li>JFrame </li> 
+	   </ul>
+	 </li>
+         <li>Dialog
+	   <ul>
+	   <li>JDialog</li>
+	   </ul>
+	 </li> 
+	 </ul>
+       </li>
+       </ul>
+     </li>
+     </ul>
+  </li>
+  </ul>
+</li>
+</ul>
+
+<p>Il peut paraître surprenant que <tt>Container</tt> dérive de
+<tt>Component</tt> et non pas l'inverse.  Un composant quelconque n'est pas
+conteneur puisqu'il ne peut pas contenir d'autres composants.  Au
+contraire, un conteneur peut être vu comme un composant lorsqu'il est
+inclus dans un autre conteneur.</p>
+
+<p>Une JFrame contient une fille unique de classe <tt>JRootPane</tt> qui
+elle-même contient un <tt>glassPane</tt> de classe <tt>JPanel</tt> et un
+<tt>layeredPane</tt> de classe <tt>JLayeredPane</tt>.  Ce
+<tt>layeredPane</tt> contient un <tt>contentPane</tt> de classe
+<tt>JPanel</tt> et un <tt>menuBar</tt> de classe <tt>JMenuBar</tt>.</p>
+
+<h4>Hiérarchie des composants</h4>
+
+<p>Voici une (très petite) partie de la hiérarchie des classes des
+composants SWING.</p>
+
+<ul>
+<li>Container
+  <ul>
+  <li>JComponent
+     <ul>
+     <li>AbstractButton 
+       <ul>
+       <li>JToggleButton
+         <ul>
+         <li>JCheckButton</li>
+         <li>JRadioButton</li>
+	 </ul>
+       </li>
+       <li>JButton
+         <ul>
+         <li>Applet
+	   <ul>
+	   <li>JApplet</li> 
+	   </ul>
+	 </li>
+	 </ul>
+       </li>
+       <li>JMenuButton
+         <ul>
+         <li>JMenu
+	 </li>
+         <li>JRadioButtonMenuItem</li>
+         <li>JCheckButtonMenuItem</li> 
+	 </ul>
+       </li>
+       </ul>
+     </li>
+     <li>JColorChooser</li>
+     <li>JComboBox</li>
+     <li>JInternalFrame</li>
+     <li>JLabel</li>
+     <li>Jlist</li>
+     <li>JPopupMenu</li>
+     <li>&hellip;</li>
+     </ul>
+  </li>
+  </ul>
+</li>
+</ul>
+
+<p>SWING utilise intensément la programmation orientée objet.  Il y a par
+exemple sept niveaux de dérivation entre la classe <tt>Object</tt> et la
+classe <tt>JRadioButton</tt>. On a en effet les dérivations</p>
+
+<p class="equation">
+  Object &rarr; Component &rarr; Container &rarr; JComponent &rarr;
+  AbstractButton &rarr; JToggleButton &rarr; JRadioButton
+</p>
+</body>
+</html>

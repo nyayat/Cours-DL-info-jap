@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Time-stamp: "layout.fxml  24 oct 2019 22:54:49" -->
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" id="AnchorPane"
+            prefHeight="120.0" prefWidth="100.0">
+  <children>
+    <Button layoutX="14.0" layoutY="14.0"
+            mnemonicParsing="false" text="Bouton 1"/>
+    <Button layoutX="14.0" layoutY="46.0"
+            mnemonicParsing="false" text="Bouton 2"/>
+    <Button layoutX="14.0" layoutY="77.0"
+            mnemonicParsing="false" text="Bouton 3"/>
+  </children>
+</AnchorPane>

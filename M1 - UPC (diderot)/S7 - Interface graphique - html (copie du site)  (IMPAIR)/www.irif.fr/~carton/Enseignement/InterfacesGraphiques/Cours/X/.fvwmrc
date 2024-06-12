@@ -1,0 +1,479 @@
+# Time-stamp: <.fvwmrc  17 Feb 2004 14:21:35>
+
+# Unfortunately, order does matter in this file
+# The correct order for inserting configurations is:
+# 1. Colors
+# 2. Assorted configuration paramters such as ClickToFocus, or MWMBorders
+# 3. Path setup (ModulePath, PixmapPath, IconPath)
+# 4. Style settings, including the default style Style "*" ...
+# 5. InitFunction and ResetFunction definitions.
+# 6. Other Functions. Functions cannot be forward referenced from
+#       other functions, but they can be backward referenced.
+# 7. Menus definitions. Same caveats about forward referencing
+# 8. Key and Mouse Bindings.
+# 9. Module options.
+
+# The order of steps 5, 6, and 7 is not critical, as long as there are
+# no forward references to functions or menus.
+
+# If you get it wrong, the most common problem is that color or font settings
+# are ignored
+
+###########################################################################
+# set up the colors
+#
+# OK some people like bright clear colors on their window decorations.
+# These people, I guess would mostly be from nice sunny/good weather places
+# line California.
+#
+
+# Me, I'm from Upstate New York, and live in New Hampshire, so I prefer
+# these dark muddy colors...
+
+# this is used for non-selected windows, menus, and the panner
+StdForeColor            black
+StdBackColor            wheat
+
+# this is used for the selected window
+HiForeColor             black
+HiBackColor             sienna
+
+PagerForeColor          black
+PagerBackColor          beige
+
+StickyForeColor         black
+StickyBackColor         RoyalBlue1
+
+# Menu colors
+MenuForeColor           black
+MenuBackColor           RoyalBlue1
+MenuStippleColor        tomato
+
+############################################################################
+# Now the fonts - one for menus, another for window titles, another for icons
+Font                    -adobe-helvetica-medium-r-*-*-14-*-*-*-*-*-*-*
+#Font                   -*-times-medium-i-*-*-*-120-*-*-*-*-*-*
+WindowFont              -adobe-helvetica-bold-r-*-*-12-*-*-*-*-*-*-*
+IconFont                -adobe-helvetica-medium-r-*-*-11-*-*-*-*-*-*-*
+#IconFont               fixed
+#
+# PagerFont is used to mark windows in the Pager with their icon names.
+# This is really only useful for DeskTopScale < 20 or so
+PagerFont               5x8
+
+###########################################################################
+# Set up the major operating modes
+#
+########################      FOCUS STUFF     ##############################
+# Set windows to auto-raise after 750 milliseconds if you like it.
+# Autoraise can sometimes obscure pop-up windows. Performance is now
+# similar to olvwm's auto-raise feature.
+AutoRaise 100
+
+# Normally, we'll be in focus-follows mouse mode, but uncomment this 
+# for mwm-style click-to-focus
+#ClickToFocus
+
+########################      ICON STUFF     ##############################
+# Auto Place Icons is a nice feature....
+# This creates two icon boxes, one on the left side, then one on the
+# bottom. Leaves room in the upper left for my clock and xbiff,
+# room on the bottom for the Pager.
+IconBox -20 5 -5 -5
+
+# If you uncomment this, and make sure that the WindowList is bound to
+# something, it works pretty much like an icon manager.
+#SuppressIcons
+
+# StubbornIcons makes icons de-iconify into their original position on the
+# desktop, instead of on the current page.
+StubbornIcons
+
+# With AutoPlacement, icons will normally place themselves underneath active
+# windows. This option changes that.
+StubbornIconPlacement
+
+# If you want ALL you icons to follow you around the desktop (Sticky), try
+# this
+StickyIcons
+
+########################      MWM EMULATION     #######################
+#
+# My feeling is that everyone should use MWMDecorHints and MWMFunctionHints,
+# since some applications depend on having the window manager respect them
+
+# MWMFunction hints parses the function information in the MOTIF_WM_HINTS
+# property, and prohibits use of these functions on the window. Appropriate
+# portions of the window decorations are removed.
+MWMFunctionHints
+
+# MWM is kinda picky about what can be done to transients, and it was keeping
+# me from iconifying some windows that I like to iconify, so here's an
+# over-ride that will allow me to do the operation, even tough the menu
+# item is shaded out.
+MWMHintOverride
+
+# MWMDecor hints parses the decoration information in the MOTIF_WM_HINTS
+# property, and removes these decoratons from the window. This does not affect
+# the functions that can be performed via the menus.
+MWMDecorHints
+
+# These are affect minor aspects for the look-and-feel.
+# Sub-menus placement mwm-style?
+# MWMMenus
+# mwm-style border reliefs (less deep than default fvwm) ?
+# MWMBorders
+# Maximize button does mwm-inversion thingy
+# MWMButtons
+########################      MISCELLANEOUS STUFF     #######################
+# If you don't like the default 150 msec click delay for the complex functions
+# change this and uncomment it.
+#ClickTime 150
+
+# OpaqueMove has a number (N) attached to it (default 5).
+# if the window occupies less than N% of the screen, 
+# then opaque move is used. 0 <= N <= 100
+OpaqueMove 80
+
+# flip by whole pages on the edge of the screen.
+EdgeScroll 100 100
+
+# A modest delay before flipping pages seems to be nice...
+# I thresh in a 50 pixel Move-resistance too, just so people
+# can try it out.
+EdgeResistance 300 10
+
+
+########################      WINDOW PLACEMENT     #######################
+# RandomPlacement prevents user interaction while placing windows:
+#RandomPlacement
+
+# SmartPlacement makes new windows pop-up in blank regions of screen 
+# if possible, or falls back to random or interactive placement.
+SmartPlacement
+
+# With SmartPlacement, windows will normally place themselves over icons. 
+# Uncomment this to change that.
+StubbornPlacement
+
+# NoPPosition instructs fvwm to ignore the PPosition field in window 
+# geometry hints. Emacs annoyingly sets PPosition to (0,0)!
+NoPPosition
+
+
+########################      DECORATIONS     #######################
+# If you want decorated transient windows, uncomment this:
+#DecorateTransients
+
+
+###########################################################################
+# Set up the virtual desktop and pager
+
+#set the desk top size in units of physical screen size
+DeskTopSize 2x2
+
+# and the reduction scale used for the panner/pager
+DeskTopScale 32
+
+# Use the Fvwm Pager
+# Pager -1 -1
+ 
+##########################################################################
+# Module path and paths to the icons
+# ModulePath is a colon-separated list, just like regular unix PATH
+ModulePath      /usr/local/bin/
+PixmapPath      /usr/local/X11R5/include/pixmap/
+IconPath        /usr/local/X11R5/include/pixmap/
+
+############################################################################
+# Set the decoration styles and window options
+# Order is important!!!!
+# If compatible styles are set for a single window in multiple Style
+# commands, then the styles are ORed together. If conflicting styles
+# are set, the last one specified is used.
+
+# These commands should command before any menus or functions are defined,
+# and before the internal pager is started.
+
+# change the default width.
+Style "*" BorderWidth 5, HandleWidth 5, Icon /usr/local/X11R5/include/pixmap/u/unknown1.xpm
+
+Style "Fvwm*"      NoTitle, NoHandles, Sticky, WindowListSkip,BorderWidth 0
+Style "FvwmPager"  StaysOnTop, BorderWidth 5, NoTitle
+Style "*lock"      NoTitle, NoHandles, Sticky, WindowListSkip
+Style "*biff"      NoTitle, NoHandles, Sticky, WindowListSkip
+Style "xcal"       NoTitle, NoHandles, Sticky, WindowListSkip
+Style "xwatch"     NoTitle, NoHandles, Sticky, WindowListSkip, BorderWidth 1
+Style "xeyes"      NoTitle, NoHandles, Sticky, WindowListSkip
+Style "xdvi"       NoTitle, NoHandles
+
+# Icons
+Style "xterm"      Icon /usr/local/X11R5/include/pixmap/x/xterm.xpm
+Style "xcalc"      Icon /usr/local/X11R5/include/pixmap/x/xcalc.xpm
+Style "xman"       Icon /usr/local/X11R5/include/pixmap/x/xman.xpm
+Style "xhpcalc"    Icon /usr/local/X11R5/include/pixmap/x/xhpcalc.xpm
+Style "xcal"       Icon /usr/local/X11R5/include/pixmap/c/calend.xpm
+Style "datebook"   Icon /usr/local/X11R5/include/pixmap/d/datebook.xpm
+Style "emacs"      Icon emacs.xpm
+
+
+#############################################################################
+# Stuff to do at start-up
+
+Function "InitFunction"
+        Module  "I"     /usr/local/lib/fvwm/FvwmPager 0 0
+EndFunction
+
+Function "RestartFunction"
+        Module  "I"     /usr/local/lib/fvwm/FvwmPager 0 0
+EndFunction
+
+############################################################################
+# Now define some handy complex functions
+
+# This one moves and then raises the window if you drag the mouse,
+# only raises the window if you click,  or does a RaiseLower if you double 
+# click
+Function "Move-or-Raise"
+        Move            "Motion"
+        Raise           "Motion"
+        Raise           "Click"
+        RaiseLower      "DoubleClick"
+EndFunction
+
+##############################################################################
+# Now define the menus - defer bindings until later
+
+# This menu is invoked as a sub-menu - it allows you to quit,
+# restart, or switch to another WM.
+Popup "Quit-Verify"
+        Title   "Really Quit Fvwm?"
+        Quit    "Yes, Really Quit"
+        Restart "Restart Fvwm"  fvwm
+        Restart "Start twm"     twm
+        Restart "Start tvtwm"   tvtwm
+        Restart "Start Mwm"     mwm
+        Restart "Start olwm"    /usr/openwin/bin/olwm
+        Nop     ""
+        Nop     "No, Don't Quit"
+EndPopup
+
+# Change the active desktop
+Popup "Desktops"
+        Desk    "Next"  1 1
+        Desk    "Prev"  1 -1
+        Desk    "Main"  0 0
+        Desk    "Desk1" 0 1
+EndPopup
+
+
+Popup "Visual"
+        Exec    "Netscape"              exec netscape -geometry 801x871+160+900  &
+        Exec    "Netscape 4.5"          exec netscape-4.05 -geometry 801x871+160+900  &
+        Exec    "Arena"                 exec arena &
+        Exec    "Mosaic"                exec Mosaic &
+        Exec    "Ghostview"             exec ghostview &
+        Exec    "Xv"                    exec xv &
+EndPopup
+
+
+# Clocks Menu
+Popup "Clocks"
+        Exec    "XClock"                exec xclock -fn timB18 -digital -update 1 &
+        Exec    "Oclock"                exec oclock -geometry -3+3 &
+EndPopup
+
+Popup "Tools"
+        Title   "Utilitaires"
+        Exec    "Xdir"                  exec xdir &
+        Exec    "Xarchie"               exec xarchie &
+        Exec    "Calculatrices"         exec xcalc &
+        Exec    "Presse-papier"         exec xclipboard &
+        Exec    "Agenda"                exec datebook &
+        Exec    "Calendrier"            exec xcal &
+        Popup   "Horloges"              Clocks
+        Exec    "Charge Machine"        exec xload &
+EndPopup
+
+
+# This menu will fire up some very common utilities
+Popup "Main"
+        Title   "Main"
+        Exec    "Emacs"                 emacs &
+        Exec    "Xfig"                  xfig &
+        Popup   "Visualiseurs"          Visual
+        Popup   "Manuels"               Manual  
+        Popup   "News"                  News
+        Nop     ""
+        Popup   "Utilitaires"           Tools
+        Nop     ""
+        Popup   "Desktops"              Desktops
+        Nop     ""
+        Popup   "Exit"                  Quit-Verify
+EndPopup
+
+# This defines the most common window operations
+Popup "Window Ops"
+        Title           "Window Ops"
+        Move            "Move"
+        Resize          "Resize"
+        Raise           "Raise"
+        Lower           "Lower"
+        Iconify         "(De)Iconify" 
+        Stick           "(Un)Stick"
+        Maximize        "(Un)Maximize"  
+        Maximize        "(Un)Maximize Vertical" 0 100
+        Maximize        "(Un)Maximize Horizontal"       100 0
+        Nop             ""
+        Destroy         "Destroy"
+#       Close           "Close"
+        Nop             ""
+        Refresh         "Refresh Screen"
+        Nop             ""
+        Popup           "Exit"  Quit-Verify
+EndPopup
+
+# A trimmed down version of "Window Ops", good for binding to decorations
+Popup "Window Ops2"
+        Move            "Move"
+        Resize          "Resize"
+        Raise           "Raise"
+        Lower           "Lower"
+        Iconify         "Iconify"
+        Stick           "(Un)Stick"
+        Maximize        "(Un)Maximize"
+        Maximize        "(Un)Maximize Vertical" 0 100
+        Maximize        "(Un)Maximize Horizontal" 100 0
+        Nop             ""
+        Delete          "Delete"
+        Destroy         "Destroy"
+EndPopup
+
+#############################################################################
+# One more complex function - couldn't be defined earlier because it used 
+# pop-up menus
+#
+# This creates a motif-ish sticky menu for the title-bar window-ops
+# pop-up
+# Menu acts like normal twm menu if you just hold the button down,
+# but if you click instead, the menu stays up, motif style
+Function "window_ops_func"
+        PopUp   "Click"         Window Ops2
+        PopUp   "Motion"        Window Ops2
+# Motif would add:
+# I'll add it too, it can be mighty handy.
+#       Close  "DoubleClick"  
+EndFunction
+
+
+##############################################################################
+# This defines the mouse bindings
+
+# First, for the mouse in the root window
+# Button 1 gives the Utilities menu
+# Button 2 gives the Window Ops menu
+# Button 3 gives the WindowList (like TwmWindows)
+# I use the AnyModifier (A) option for the modifier field, so you can hold down
+# any shift-control-whatever combination you want!
+
+#     Button    Context Modifi  Function
+Mouse 1         R       A       PopUp "Main"
+Mouse 2         R       A       WindowList
+Mouse 3         R       A       PopUp "Window Ops"
+
+# Windows
+Mouse 1         T       A       Function "Move-or-Raise"
+Mouse 1         FS      A       Resize
+# Mouse 1       W       M       RaiseLower
+# Mouse 2       TSIF    A       RaiseLower
+
+# Icons
+Mouse 1         I       N       Iconify
+Mouse 2         I       N       Move
+
+
+# Now the title bar buttons
+#     Button    Context Modifi  Function
+Mouse 0         1       A       Function "window_ops_func"
+Mouse 0         3       A       Iconify
+Mouse 0         8       A       Iconify
+Mouse 0         6       A       Maximize 100 0
+Mouse 0         4       A       Maximize 0 100
+Mouse 0         2       A       Maximize
+
+
+############################################################################
+# Now some keyboard shortcuts.
+
+# Arrow Keys
+
+# in the root window,
+# press arrow and scroll by 1 page
+Key Left        R       N       Scroll -100 0
+Key Right       R       N       Scroll +100 +0
+Key Up          R       N       Scroll +0   -100
+Key Down        R       N       Scroll +0   +100
+
+# press arrow + meta key, and scroll by 1/10 of a page
+Key Left        A       M       Scroll -100  +0
+Key Right       A       M       Scroll +100  +0
+Key Up          A       M       Scroll +0   -100
+Key Down        A       M       Scroll +0   +100
+
+# Keyboard accelerators
+Key F1          A       M       Iconify
+Key F2          A       M       RaiseLower
+Key F3          A       M       Move 
+Key F4          A       M       Resize
+Key F5          A       M       Maximize
+
+#Page Up/Dapge Down keys are used to scroll by one desktop page
+# in any context, press page up/down + control
+# in root context, just pressing page up/down is OK
+# 
+# I prefer the non-wrapping scroll. These are for example purposes only
+#Key Next       A       C       Scroll 100000 0
+#Key Next       R       N       Scroll 100000 0  
+#Key Prior      A       C       Scroll -100000 0
+#Key Prior      R       N       Scroll -100000 0
+
+# As teclas Next, Prior, Home, End parecem nao ser entendidas
+# pelo X-terminal.  Os nomes Ri funcionam pelo menos com teclado Sun
+# Up, Down, Left, Right tudo bem, mas assim e' mais legivel
+#Key R7         A       C       GotoPage 0 0
+#Key R8         A       C       GotoPage 1 0
+#Key Up         A       C       GotoPage 1 0
+#Key R9         A       C       GotoPage 2 0
+#Key R10                A       C       GotoPage 0 1
+#Key Left       A       C       GotoPage 0 1
+#Key R11                A       C       GotoPage 1 1
+#Key R12                A       C       GotoPage 2 1
+#Key Right      A       C       GotoPage 2 1
+#Key R13                A       C       GotoPage 0 2
+#Key R14                A       C       GotoPage 1 2
+#Key Down       A       C       GotoPage 1 2
+#Key R15                A       C       GotoPage 2 2
+
+# Key Next      A       C       GotoPage 1 1
+# Key Home      A       C       GotoPage 0 0
+# Key Prior     A       C       GotoPage 1 0
+# Key End               A       C       GotoPage 0 1
+
+# Key R15               A       C       GotoPage 1 1
+# Key R7                A       C       GotoPage 0 0
+# Key R9                A       C       GotoPage 1 0
+# Key R13               A       C       GotoPage 0 1
+
+############################################################################
+############################################################################
+# Definitions used by the modules
+
+########################### Pager #########################################
+# Pas de nom au Dsktop
+*FvwmPagerFont none
+#*FvwmPagerLabel 0 HOME
+#*FvwmPagerLabel 1 DIVERS
+*FvwmPagerHilight #cab3ca
+# En bas a  droite
+*FvwmPagerGeometry -1-1
+*FvwmPagerSmallFont 5x8

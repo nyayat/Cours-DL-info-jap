@@ -1,0 +1,2 @@
+Line 5, characters 13-32: Error (typechecking)
+  There is no type definition for the label `u'.

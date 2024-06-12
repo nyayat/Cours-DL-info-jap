@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<!-- Time-stamp: "caracteristiques.html  18 Jan 2006 18:23:24" -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+  <title>
+  Caractéristiques principales de X-Window
+  </title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="Author" content="Olivier Carton">
+</head>
+
+<body>
+
+<h2>Caractéristiques principales de X-Window</h2>
+
+<ul>
+<li>X-Window est un système de fenêtrage orienté réseau</li>
+<li>Il n'impose aucune interface particulière</li>
+<li>Il fournit des mécanismes (couche de base)</li>
+<li>Il ne fournit pas de composants graphiques tels boutons et menus
+  (bibliothèque construite au dessus de X)</li>
+<li>Il est indépendant du matériel</li>
+</ul>
+
+<h2>Rôle du serveur</h2>
+
+<p>Il gère tous les périphériques d'entrée ou de sortie.</p>
+<ul>
+<li>Contrôles des périphériques d'entrée : souris et clavier</li>
+<li>Gestion de l'affichage sur l'écran 
+   <ul>
+   <li>création et manipulation des fenêtres</li>
+   <li>affichage du texte et des graphiques</li>
+   </ul>
+</li>
+</ul>
+
+<h2>Rôle du client</h2>
+
+<ul>
+<li>Il est indépendant et distinct du serveur.</li>
+<li>Il peut se trouver sur une autre machine que le serveur.</li>
+<li>Il communique avec celui-ci en émettant des <em>requêtes</em> et
+  en recevant des <em>événements</em>.</li>
+</ul>
+
+<h2>Communication client/serveur</h2>
+
+<ul>
+<li>Clients et serveur sont logiquement et physiquement séparés.</li>
+<lI> La communication est basée sur une communication asynchrone.  Elle
+  utilise le protocole X qui peut utiliser comme couche basse de nombreux
+  protocoles réseaux : TCP/IP, DECnet.</li>
+<li>N'importe quel client peut communiquer avec n'importe quel serveur 
+  s'il respecte le protocole X.</li>
+<li>Le fonctionnement de X est transparent au réseau.</li>
+</ul>
+
+<h2>Avantages du système X-Window</h2>
+
+<ul>
+<li>Ceux d'un système de fenêtrage par rapport à un langage de commande
+ </li>
+<li>Plusieurs applications exécutables simultanément sur une même machine
+  ou sur des machines différentes.</li>
+<li>Communication entre applications</li>
+<li>Applications indépendantes du matériel</li>
+<li>Accès au serveur indépendant du matériel</li>
+<li>Pas de réglementation</li>
+<li>Gratuité de X-Window</li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,440 @@
+globals (m1)
+
+l1: m1 <- copy 10;
+l2: ret;
+end
+
+globals (n2)
+
+l3: n2 <- copy 10;
+l4: ret;
+end
+
+def ref ()
+local X1, X12, X13, X14, X25, _5, b4, v3 :
+ l5: v3 <- copy %rdi;
+l37: X25 <- copy 1;
+l38: %rdi <- copy X25;
+l40: allocate_block () ;
+l39: b4 <- copy %rax;
+l19: X12 <- copy b4;
+l20: X13 <- copy 0;
+l21: X14 <- copy v3;
+l22: %rdi <- copy X12;
+l23: %rsi <- copy X13;
+l24: %rdx <- copy X14;
+l26: write_block () ;
+l25: _5 <- copy %rax;
+ l8: X1 <- copy b4;
+ l7: %rax <- copy X1;
+ l6: ret;
+end
+
+def read ()
+local X26, X37, X38, r6 :
+l41: r6 <- copy %rdi;
+l54: X37 <- copy r6;
+l55: X38 <- copy 0;
+l56: %rdi <- copy X37;
+l57: %rsi <- copy X38;
+l59: read_block () ;
+l58: X26 <- copy %rax;
+l43: %rax <- copy X26;
+l42: ret;
+end
+
+def write ()
+local X39, X50, X51, X52, r7, v8 :
+l60: r7 <- copy %rdi;
+l61: v8 <- copy %rsi;
+l74: X50 <- copy r7;
+l75: X51 <- copy 0;
+l76: X52 <- copy v8;
+l77: %rdi <- copy X50;
+l78: %rsi <- copy X51;
+l79: %rdx <- copy X52;
+l81: write_block () ;
+l80: X39 <- copy %rax;
+l63: %rax <- copy X39;
+l62: ret;
+end
+
+def make_matrix ()
+local
+X102, X103, X114, X125, X126, X137, X138, X149, X150, X151, X162, X163, X174, X175, X186, X187, X198, X199, X200, X211, X212, X223, X224, X235, X236, X247, X248, X259, X260, X261, X272, X53, X64, X65, X66, X77, X78, X89, X90, X91, _13, _14, _16, _17, count12, i15, m9, n10, rows11
+:
+ l82: m9 <- copy %rdi;
+ l83: n10 <- copy %rsi;
+l358: X272 <- copy m9;
+l359: %rdi <- copy X272;
+l361: allocate_block () ;
+l360: rows11 <- copy %rax;
+l342: X260 <- copy m9;
+l343: X261 <- copy 1;
+l344: X259 <- sub X260, X261;
+l345: %rdi <- copy X259;
+l347: ref () ;
+l346: count12 <- copy %rax;
+l325: X247 <- copy count12;
+l326: %rdi <- copy X247;
+l328: read () ;
+l327: X236 <- copy %rax;
+l329: X248 <- copy 0;
+l330: jumpif gte X236, X248 -> l280,  l314;
+l280: X211 <- copy rows11;
+l291: X223 <- copy count12;
+l292: %rdi <- copy X223;
+l294: read () ;
+l293: X212 <- copy %rax;
+l305: X235 <- copy n10;
+l306: %rdi <- copy X235;
+l308: allocate_block () ;
+l307: X224 <- copy %rax;
+l309: %rdi <- copy X211;
+l310: %rsi <- copy X212;
+l311: %rdx <- copy X224;
+l313: write_block () ;
+l312: _14 <- copy %rax;
+l264: X199 <- copy n10;
+l265: X200 <- copy 1;
+l266: X198 <- sub X199, X200;
+l267: %rdi <- copy X198;
+l269: ref () ;
+l268: i15 <- copy %rax;
+l247: X186 <- copy i15;
+l248: %rdi <- copy X186;
+l250: read () ;
+l249: X175 <- copy %rax;
+l251: X187 <- copy 0;
+l252: jumpif gte X175, X187 -> l169,  l236;
+l169: X125 <- copy rows11;
+l180: X137 <- copy count12;
+l181: %rdi <- copy X137;
+l183: read () ;
+l182: X126 <- copy %rax;
+l184: %rdi <- copy X125;
+l185: %rsi <- copy X126;
+l187: read_block () ;
+l186: X114 <- copy %rax;
+l198: X149 <- copy i15;
+l199: %rdi <- copy X149;
+l201: read () ;
+l200: X138 <- copy %rax;
+l212: X162 <- copy i15;
+l213: %rdi <- copy X162;
+l215: read () ;
+l214: X151 <- copy %rax;
+l226: X174 <- copy count12;
+l227: %rdi <- copy X174;
+l229: read () ;
+l228: X163 <- copy %rax;
+l230: X150 <- add X151, X163;
+l231: %rdi <- copy X114;
+l232: %rsi <- copy X138;
+l233: %rdx <- copy X150;
+l235: write_block () ;
+l234: _17 <- copy %rax;
+l128: X89 <- copy i15;
+l139: X102 <- copy i15;
+l140: %rdi <- copy X102;
+l142: read () ;
+l141: X91 <- copy %rax;
+l143: X103 <- copy 1;
+l144: X90 <- sub X91, X103;
+l145: %rdi <- copy X89;
+l146: %rsi <- copy X90;
+l148: write () ;
+l147: _16 <- copy %rax;
+l253: jump l247;
+l236: ;; Exit of while loop;
+ l97: X64 <- copy count12;
+l108: X77 <- copy count12;
+l109: %rdi <- copy X77;
+l111: read () ;
+l110: X66 <- copy %rax;
+l112: X78 <- copy 1;
+l113: X65 <- sub X66, X78;
+l114: %rdi <- copy X64;
+l115: %rsi <- copy X65;
+l117: write () ;
+l116: _13 <- copy %rax;
+l331: jump l325;
+l314: ;; Exit of while loop;
+ l86: X53 <- copy rows11;
+ l85: %rax <- copy X53;
+ l84: ret;
+end
+
+def transpose ()
+local
+X273, X284, X285, X286, X297, X298, X309, X310, X311, X322, X323, X334, X345, X346, X357, X358, X369, X370, X381, X392, X393, X404, X405, X416, X417, X428, X429, X440, X441, X442, X443, X454, X455, X466, X467, X468, X479, X480, _23, _25, _26, c24, m19, matrix18, n20, out21, r22
+:
+l362: matrix18 <- copy %rdi;
+l363: m19 <- copy %rsi;
+l364: n20 <- copy %rdx;
+l623: X479 <- copy n20;
+l624: X480 <- copy m19;
+l625: %rdi <- copy X479;
+l626: %rsi <- copy X480;
+l628: make_matrix () ;
+l627: out21 <- copy %rax;
+l607: X467 <- copy n20;
+l608: X468 <- copy 1;
+l609: X466 <- sub X467, X468;
+l610: %rdi <- copy X466;
+l612: ref () ;
+l611: r22 <- copy %rax;
+l590: X454 <- copy r22;
+l591: %rdi <- copy X454;
+l593: read () ;
+l592: X443 <- copy %rax;
+l594: X455 <- copy 0;
+l595: jumpif gte X443, X455 -> l573,  l579;
+l573: X441 <- copy m19;
+l574: X442 <- copy 1;
+l575: X440 <- sub X441, X442;
+l576: %rdi <- copy X440;
+l578: ref () ;
+l577: c24 <- copy %rax;
+l556: X428 <- copy c24;
+l557: %rdi <- copy X428;
+l559: read () ;
+l558: X417 <- copy %rax;
+l560: X429 <- copy 0;
+l561: jumpif gte X417, X429 -> l450,  l545;
+l450: X345 <- copy out21;
+l461: X357 <- copy r22;
+l462: %rdi <- copy X357;
+l464: read () ;
+l463: X346 <- copy %rax;
+l465: %rdi <- copy X345;
+l466: %rsi <- copy X346;
+l468: read_block () ;
+l467: X334 <- copy %rax;
+l479: X369 <- copy c24;
+l480: %rdi <- copy X369;
+l482: read () ;
+l481: X358 <- copy %rax;
+l503: X392 <- copy matrix18;
+l514: X404 <- copy c24;
+l515: %rdi <- copy X404;
+l517: read () ;
+l516: X393 <- copy %rax;
+l518: %rdi <- copy X392;
+l519: %rsi <- copy X393;
+l521: read_block () ;
+l520: X381 <- copy %rax;
+l532: X416 <- copy r22;
+l533: %rdi <- copy X416;
+l535: read () ;
+l534: X405 <- copy %rax;
+l536: %rdi <- copy X381;
+l537: %rsi <- copy X405;
+l539: read_block () ;
+l538: X370 <- copy %rax;
+l540: %rdi <- copy X334;
+l541: %rsi <- copy X358;
+l542: %rdx <- copy X370;
+l544: write_block () ;
+l543: _26 <- copy %rax;
+l409: X309 <- copy c24;
+l420: X322 <- copy c24;
+l421: %rdi <- copy X322;
+l423: read () ;
+l422: X311 <- copy %rax;
+l424: X323 <- copy 1;
+l425: X310 <- sub X311, X323;
+l426: %rdi <- copy X309;
+l427: %rsi <- copy X310;
+l429: write () ;
+l428: _25 <- copy %rax;
+l562: jump l556;
+l545: ;; Exit of while loop;
+l378: X284 <- copy r22;
+l389: X297 <- copy r22;
+l390: %rdi <- copy X297;
+l392: read () ;
+l391: X286 <- copy %rax;
+l393: X298 <- copy 1;
+l394: X285 <- sub X286, X298;
+l395: %rdi <- copy X284;
+l396: %rsi <- copy X285;
+l398: write () ;
+l397: _23 <- copy %rax;
+l596: jump l590;
+l579: ;; Exit of while loop;
+l367: X273 <- copy out21;
+l366: %rax <- copy X273;
+l365: ret;
+end
+
+def check ()
+local
+X481, X492, X503, X514, X515, X516, X527, X528, X539, X540, X541, X552, X553, X564, X565, X566, X577, X578, X589, X600, X601, X612, X623, X624, X635, X636, X647, X648, X659, X670, X671, X682, X683, X694, X695, X706, X707, X718, X719, X720, X721, X732, X733, X744, X745, X746, X757, _33, _35, _36, c34, count31, m127, m228, m29, n30, r32
+:
+l629: m127 <- copy %rdi;
+l630: m228 <- copy %rsi;
+l631: m29 <- copy %rdx;
+l632: n30 <- copy %rcx;
+l977: X757 <- copy 0;
+l978: %rdi <- copy X757;
+l980: ref () ;
+l979: count31 <- copy %rax;
+l961: X745 <- copy m29;
+l962: X746 <- copy 1;
+l963: X744 <- sub X745, X746;
+l964: %rdi <- copy X744;
+l966: ref () ;
+l965: r32 <- copy %rax;
+l944: X732 <- copy r32;
+l945: %rdi <- copy X732;
+l947: read () ;
+l946: X721 <- copy %rax;
+l948: X733 <- copy 0;
+l949: jumpif gte X721, X733 -> l927,  l933;
+l927: X719 <- copy n30;
+l928: X720 <- copy 1;
+l929: X718 <- sub X719, X720;
+l930: %rdi <- copy X718;
+l932: ref () ;
+l931: c34 <- copy %rax;
+l910: X706 <- copy c34;
+l911: %rdi <- copy X706;
+l913: read () ;
+l912: X695 <- copy %rax;
+l914: X707 <- copy 0;
+l915: jumpif gte X695, X707 -> l804,  l899;
+l804: X623 <- copy m127;
+l815: X635 <- copy r32;
+l816: %rdi <- copy X635;
+l818: read () ;
+l817: X624 <- copy %rax;
+l819: %rdi <- copy X623;
+l820: %rsi <- copy X624;
+l822: read_block () ;
+l821: X612 <- copy %rax;
+l833: X647 <- copy c34;
+l834: %rdi <- copy X647;
+l836: read () ;
+l835: X636 <- copy %rax;
+l837: %rdi <- copy X612;
+l838: %rsi <- copy X636;
+l840: read_block () ;
+l839: X601 <- copy %rax;
+l861: X670 <- copy m228;
+l872: X682 <- copy r32;
+l873: %rdi <- copy X682;
+l875: read () ;
+l874: X671 <- copy %rax;
+l876: %rdi <- copy X670;
+l877: %rsi <- copy X671;
+l879: read_block () ;
+l878: X659 <- copy %rax;
+l890: X694 <- copy c34;
+l891: %rdi <- copy X694;
+l893: read () ;
+l892: X683 <- copy %rax;
+l894: %rdi <- copy X659;
+l895: %rsi <- copy X683;
+l897: read_block () ;
+l896: X648 <- copy %rax;
+l898: jumpif eq X601, X648 -> l734,  l775;
+l734: X564 <- copy count31;
+l745: X577 <- copy count31;
+l746: %rdi <- copy X577;
+l748: read () ;
+l747: X566 <- copy %rax;
+l749: X578 <- copy 1;
+l750: X565 <- add X566, X578;
+l751: %rdi <- copy X564;
+l752: %rsi <- copy X565;
+l754: write () ;
+l753: _36 <- copy %rax;
+l783: jump l782;
+l775: X600 <- copy count31;
+l776: %rdi <- copy X600;
+l778: read () ;
+l777: X589 <- copy %rax;
+l779: %rdi <- copy X589;
+l781: print_int () ;
+l780: _36 <- copy %rax;
+l782: ;; Join control point;
+l703: X539 <- copy c34;
+l714: X552 <- copy c34;
+l715: %rdi <- copy X552;
+l717: read () ;
+l716: X541 <- copy %rax;
+l718: X553 <- copy 1;
+l719: X540 <- sub X541, X553;
+l720: %rdi <- copy X539;
+l721: %rsi <- copy X540;
+l723: write () ;
+l722: _35 <- copy %rax;
+l916: jump l910;
+l899: ;; Exit of while loop;
+l672: X514 <- copy r32;
+l683: X527 <- copy r32;
+l684: %rdi <- copy X527;
+l686: read () ;
+l685: X516 <- copy %rax;
+l687: X528 <- copy 1;
+l688: X515 <- sub X516, X528;
+l689: %rdi <- copy X514;
+l690: %rsi <- copy X515;
+l692: write () ;
+l691: _33 <- copy %rax;
+l950: jump l944;
+l933: ;; Exit of while loop;
+l655: X503 <- copy count31;
+l656: %rdi <- copy X503;
+l658: read () ;
+l657: X492 <- copy %rax;
+l659: %rdi <- copy X492;
+l661: print_int () ;
+l660: X481 <- copy %rax;
+l634: %rax <- copy X481;
+l633: ret;
+end
+
+globals (main37)
+local
+X768, X779, X780, X781, X782, X793, X794, X795, X806, X807, X808, X819, X820, _41, m138, m239, m340
+:
+l1061: X819 <- copy m1;
+l1062: X820 <- copy n2;
+l1063: %rdi <- copy X819;
+l1064: %rsi <- copy X820;
+l1066: make_matrix () ;
+l1065: m138 <- copy %rax;
+l1043: X806 <- copy m138;
+l1044: X807 <- copy m1;
+l1045: X808 <- copy n2;
+l1046: %rdi <- copy X806;
+l1047: %rsi <- copy X807;
+l1048: %rdx <- copy X808;
+l1050: transpose () ;
+l1049: m239 <- copy %rax;
+l1025: X793 <- copy m239;
+l1026: X794 <- copy n2;
+l1027: X795 <- copy m1;
+l1028: %rdi <- copy X793;
+l1029: %rsi <- copy X794;
+l1030: %rdx <- copy X795;
+l1032: transpose () ;
+l1031: m340 <- copy %rax;
+l1005: X779 <- copy m138;
+l1006: X780 <- copy m340;
+l1007: X781 <- copy m1;
+l1008: X782 <- copy n2;
+l1009: %rdi <- copy X779;
+l1010: %rsi <- copy X780;
+l1011: %rdx <- copy X781;
+l1012: %rcx <- copy X782;
+l1014: check () ;
+l1013: _41 <- copy %rax;
+ l991: X768 <- copy 0;
+ l992: %rdi <- copy X768;
+ l994: print_int () ;
+ l993: main37 <- copy %rax;
+l1067: ret;
+end

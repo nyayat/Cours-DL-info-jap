@@ -1,0 +1,2 @@
+Line 3, characters 26-66: Error (typechecking)
+  The field `x` as type `int' while it should have type `string'.

@@ -1,0 +1,14 @@
+fun h (x, y, z) =
+  fun f (x) =
+      if x =? 0 then z
+      else g (x - 1)
+      fi
+  and g (x) =
+      if x =? 0 then y
+      else f (x - 1)
+      fi;
+  g (x)
+
+val main =
+    print_int (h (2, 20, 42));
+    print_int (h (3, 20, 42))

@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<!-- Time-stamp: "ressources.html  20 Jan 2006 16:30:42" -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+  <title>
+  Ressources
+  </title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="Author" content="Olivier Carton">
+</head>
+
+<body>
+
+<h2>Ressources</h2>
+
+<h3>Intérêt</h3>
+
+<p>Les <em>ressources</em> permettent de spécifier les préférences
+de l'utilisateur pour certaines applications X.</p>
+
+<p>Les ressources ne sont plus utilisées par les environnements intégrés
+comme KDE ou Gnome puisqu'ils intègrent d'autres mécanismes de préférences
+gérés par des interfaces plus conviviales.  Elles peuvent néanmoins encore
+être utiles pour des applications étrangères à ces environnements comme
+<tt>emacs</tt>, <tt>xfig</tt>, <tt>gv</tt> ou <tt>xdvi</tt>.</p>
+
+<h3>Exemples</h3>
+
+<p>Voici quelques exemples de ressources qui peuvent se trouver dans 
+le fichier <tt>.Xdefaults</tt>.</p>
+<pre>
+xterm*scrollbar:                true
+
+emacs*Background:		wheat
+emacs.Background:		FloralWhite
+emacs.Foreground: 		Black
+emacs*Foreground: 		Black
+emacs.Geometry:			80x100+0+0
+emacs.BitmapIcon:		on
+emacs.font: -adobe-courier-medium-r-normal--*-120-*-*-m-*-iso8859-1
+
+gv.reverseScrolling:  true
+</pre>
+
+<h3>Syntaxe</h3>
+
+<p>Les valeurs données aux ressources dans les fichiers ou avec l'option
+<tt>-xrm</tt> sont écrites avec la syntaxe <tt><i>name : value</i></tt> où
+<tt><i>name</i></tt> et <tt>value</i></tt> sont respectivement le nom de la
+ressource et sa nouvelle valeur.</p>
+
+<p>Le nom de la ressource est décrit par une suite de composants (Widget)
+séparés par le caractère <tt>'.'</tt> (point).  Le premier composant est par
+convention le nom de l'application.  Chaque composant est donné par un nom
+de classe commençant par une majuscule comme <tt>Button</tt> ou par son nom
+comme <tt>help</tt>.  Cette suite de noms de composants doit correspondre à
+la hiérarchie de composants utilisée par l'application.  Celle-ci est en
+général décrite dans le manuel (man) de l'application comme pour
+<tt>xterm</tt>.<p>
+
+<p>Un seul nom de composant peut être remplacé par le caractère
+<tt>'?'</tt> et plusieurs ou zéro noms de composants peuvent être remplacés
+par le caractère <tt>'*'</tt>.  Dans le cas ou plusieurs couples
+<tt>name:value</tt> correspondent à une ressource, c'est toujours le nom le
+plus précis qui a priorité.  Le principe est qu'un nom de composant a
+priorité sur un nom de classe, qui a priorité sur un nom donné par
+<tt>'?'</tt> et qui a encore priorité sur nom donné par <tt>'*'</tt>.</p>
+
+<p>Par exemple, la ressource <tt>xfd.pane.?.background: red</tt> est
+équivalente aux ressources suivantes (pour la hiérarchie de Widgets de
+l'application <tt>xfd</tt>, cf. le paragraphe <a
+href="#Experiment">Expérimentations</a>).</p>
+
+<pre>
+  xfd.pane.fontname.background:         red
+  xfd.pane.box.background:              red
+  xfd.pane.metrics.background:          red
+  xfd.pane.range.background:            red
+  xfd.pane.start.background:            red
+  xfd.pane.form.background:             red
+</pre>
+
+<p>La ressource <tt>xfd.pane.*.background: red</tt> comprend toutes les
+ressources précédentes mais aussi les ressources suivantes.</p>
+
+<pre>
+  xfd.pane.background:                  red
+  xfd.pane.box.quit.background:         red
+  xfd.pane.box.prev16.background:       red
+  xfd.pane.box.prev.background:         red
+  xfd.pane.box.next.background:         red
+  xfd.pane.box.next16.background:       red
+  xfd.pane.form.grid.background:        red
+</pre>
+
+<h3>Localisation</h3>
+
+<p>Les ressources peuvent être spécifiées à ces différents endroits 
+par ordre croissant de priorité.</p>
+
+<ul>
+<li>Dans la base de données du serveur</li>
+<li>Dans des fichiers propres à chaque application</li>
+<li>Dans un fichier global</li>
+<li>Sur la ligne de commande</li>
+</ul>
+
+<p>Il faut mettre dans le serveur les ressources qui doivent être
+utilisées par tous les clients quelque soit la machine sur laquelle il
+tourne.  Ceci peut être fait par une commande <tt>xrdb -load
+.Xresources</tt> placée dans le fichier de démarrage <tt>.Xsession</tt>.
+
+<h4>Base de données du serveur</h4>
+
+<p>Le serveur X contient une petite base de données de ressources qui est
+répartie entre deux propriétés.  Les ressources communes à tous les écrans
+sont stockées dans la propriété <tt>RESOURCE_MANAGER</tt> de la fenêtre
+racine du premier écran.  Les ressources spécifiques à chaque écran sont
+stockées dans la propriété <tt>SCREEN_RESOURCES</tt> de la fenêtre racine
+de chaque écran.</p>
+
+<p>Cette base de données est manipulée par le client <tt>xrdb</tt> qui
+a les principales options suivantes</p>
+<ul>
+<li><tt>xrdb -query</tt> :  interrogation du serveur et affichage des
+  ressources contenues dans le serveur</li>
+<li><tt>xrdb -load <i>file</i></tt> : chargement dans le serveur des
+  ressources contenues dans le fichier  <tt><i>file</i></tt></li>
+<li><tt>xrdb -merge <i>file</i></tt> : fusion des
+  ressources contenues dans le fichier  <tt><i>file</i></tt> avec celles
+  déjà présentes dans le serveur</li>
+<li><tt>xrdb -remove</tt> : suppressions des ressources spécifiées</li>
+</ul>
+
+<h4>Fichiers spécifiques</h4>
+
+<p>Des fichiers propres à chaque application peuvent contenir des
+ressources.  Ces fichiers doivent se trouver dans le répertoire donné par
+la variable <tt>XAPPLRESDIR</tt> ou dans des répertoires contenus dans les
+chemins (paths en anglais) des variables <tt>XUSERFILESEARCHPATH</tt> et
+<tt>XFILESEARCHPATH</tt>.  Le répertoire par défaut est souvent
+<tt>/usr/X11R6/lib/X11/app-defaults/</tt></p>
+
+<h4>Fichier global</h4>
+
+<p>Un fichier contenant des ressources destinées à toutes les applications
+peut être donné par la variable <tt>XENVIRONMENT</tt>.  Si cette variable
+n'est pas définie, ce sont des fichiers de nom
+<tt>$HOME/.Xdefaults-<i>hostname</i></tt> où <tt><i>hostname</i></tt> est
+le nom de la machine ou éventuellement un fichier de nom
+<tt>$HOME/.Xdefaults</tt> qui sont lus par les applications pour trouver
+des ressources.</p>
+
+<h4><a href="options.html">Ligne de commande</a></h4>
+
+<p>Les ressources peuvent être données sur la ligne de commande en
+utilisant des options spécifiques lorsque elles existent ou l'option
+générale <tt>-xrm</tt> suivie d'une chaîne décrivant la valeur d'une
+ressource.  L'option <tt>-xrm</tt> peut être utilisée plusieurs fois
+pour donner plusieurs ressources.</p>
+
+<pre>
+  xterm -fn fixed -bg black -fg white &amp;
+  xterm -xrm "XTerm*scrollBar:on" &amp;
+</pre>
+
+<h4><a name="Experiment">Expérimentations</a></h4>
+
+<p>Lancer un client <tt>xfd</tt> qui permet de visualiser les caractères 
+d'une fonte.  Lancer ensuite un client <tt>editres</tt> qui permet entre 
+autres d'afficher les Widgets d'un client X qui accepte le protocole 
+d'édition de ressources.</p>
+
+<pre>
+  xfd -fn fixed &amp;
+  editres &amp;
+</pre>
+
+<p>Utiliser ensuite la commande <tt>Get Tree</tt> de <tt>editres</tt> pour
+récupérer l'arborescence de Widgets du client <tt>xfd</tt> en cliquant
+dessus.  
+
+<p class="figure">
+    <img src="xfd.png">
+    &nbsp;
+    <img src="editres.png">
+</p>
+
+<p>On comprend alors les effets des commandes suivantes.</p>
+
+<pre>
+  xfd -xrm "xfd.pane.box*Background:red" -fn fixed &amp;
+  xfd -xrm "xfd.pane.box.quit.background:red" -fn fixed &amp;
+</pre>
+
+<p>Mettre les ressources suivantes dans un fichier <tt><a
+href="xfdres.txt">xfdres.txt</a></tt> puis les charger dans le serveur X
+avec la commande <tt>xrdb -merge xfdres.txt</tt>.  Lancer ensuite un client
+<tt>xfd</tt> pour constater les changements d'affichage.</p>
+
+<pre>
+  xfd*Background:                  wheat
+  xfd.pane.box.background:         black
+  xfd.pane.box*Background:         yellow
+  xfd.pane.box.Command.Background: blue
+  xfd.pane.box.quit.Background:    red
+</pre>
+
+</body>
+</html>

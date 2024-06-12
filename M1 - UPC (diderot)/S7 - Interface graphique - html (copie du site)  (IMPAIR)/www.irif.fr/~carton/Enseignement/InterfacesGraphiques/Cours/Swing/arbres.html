@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<!-- Time-stamp: "arbres.html   9 Feb 2005 15:46:48" -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+  <title>
+  Arbres
+  </title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="Author" content="Olivier Carton">
+</head>
+
+<body>
+
+<h1>Arbres</h1>
+
+<p>Les arbres permettent de visualiser des données organisées de manière
+hiérarchique comme les fichiers et les répertoires ou comme les classes
+d'un langage orienté objet (comme Java par exemple).  Ils sont manipulés en
+Swing avec la classe <tt>JTree</tt>.  Les arbres offent les fonctionnalités
+suivantes.</p>
+
+<ul>
+<li>Les arbres Swing utilisent l'architecture Modèle/Vue/Contrôleur.  La
+  gestion proprement dite est confiée à un objet qui implémente
+  l'interface <tt>TreeModel</tt>.  L'affichage proprement dit des objets
+  est confié à un objet qui implémente l'interface <tt>TreeCellRenderer</tt>.
+</li>
+<li>La gestion des éléments selectionnés est déléguée à un objet qui
+  implémente l'interface <tt>TreeSelectionModel</tt>.
+</li>
+<li>Les arbres implémentent l'interface <tt>Scrollable</tt> et peuvent
+  donc être placées dans un conteneur <tt>JScrollPane</tt> avec des
+  ascenseurs.
+</li>
+</ul>
+
+<p>Les n&oelig;uds de l'arbre implémentent l'interface <tt>TreeNode</tt>.
+</p>
+
+</body>
+</html>

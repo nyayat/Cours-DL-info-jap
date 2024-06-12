@@ -1,0 +1,20 @@
+/* -*- coding: utf-8 -*- */
+/* Time-stamp: <style.css  11 nov 2019 19:02:48> */
+
+.root {
+    -fx-background-color:grey;
+}
+
+Circle {
+    -fx-fill: blue;
+}
+
+Line {
+    -fx-stroke: yellow;
+}
+
+CubicCurve {
+    -fx-stroke: red;
+    -fx-stroke-width: 2;
+    -fx-fill: transparent;
+}

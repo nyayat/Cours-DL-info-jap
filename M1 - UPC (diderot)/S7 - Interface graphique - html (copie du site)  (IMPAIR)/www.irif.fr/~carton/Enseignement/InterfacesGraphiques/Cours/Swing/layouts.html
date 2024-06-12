@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<!-- Time-stamp: "layouts.html  10 Mar 2005 10:20:24" -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+  <title>
+  Gestionnaires de disposition
+  </title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="Author" content="Olivier Carton">
+</head>
+
+<body>
+
+<h1>Gestionnaires de disposition</h1>
+
+<p>Les <em>gestionnaires de disposition</em> (<em>layout manager</em> en
+anglais) sont des objets responsables du positionnement des composants dans
+un conteneur.  Ils permettent de décrire les positions relatives des
+composants dans un panneau sans donner les positions absolues.  Ils offrent
+une grande souplesse de programmation.  Le seul changement du gestionnaire
+de disposition peut complètement repositionner les composants.</p>
+
+<p>Swing founit en standard plusieurs gestionnaires de disposition qui
+répondent à la très grande majorité des situations.  Même si c'est une
+tâche très ardue, il est toujours possible d'écrire un autre gestionnaire
+de disposition spéficique à un problème particulier.</p>
+
+<p>Les gestionnaires de disposition principaux en Java sont les suivants.
+</p>
+
+<ul>
+<li><tt>FlowLayout</tt></li>
+<li><tt>BorderLayout</tt></li>
+<li><tt>BoxLayout</tt></li>
+<li><tt>GridLayout</tt></li>
+<li><tt>GridBagLayout</tt></li>
+</ul>
+
+<p>Tous ces gestionnaires implémentent l'interface <tt>LayoutManager</tt>
+et les gestionnaires <tt>BorderLayout</tt>, <tt>BoxLayout</tt> et
+<tt>GridBagLayout</tt> implémentent aussi l'interface
+<tt>LayoutManager2</tt> qui étend l'interface <tt>LayoutManager</tt>.  Ils
+existent aussi d'autres gestionnaires spécifiques comme
+<tt>ScrollPaneLayout</tt> qui ne sont pas utilisés directement par le
+programmeur.  Le gestionnaire <tt>CardLayout</tt> est obsolète et il faut
+mieux utiliser un conteneur <tt>JTabbedPane</tt>.</p>
+
+<p>Les gestionnaires par défaut sont <tt>BorderLayout</tt> pour
+<ul>
+<li><tt>JWindow</tt></li>
+<li><tt>JFrame</tt> (<tt>contentPane</tt>)</li>
+<li><tt>JApplet</tt></li>
+<li><tt>JDialog</tt></li>
+</ul>
+et <tt>FlowLayout</tt> pour
+<ul>
+<li><tt>JPanel</tt></li>
+<li><tt>Applet</tt></li>
+</ul>
+
+<p>Le gestionnaire de disposition d'un conteneur peut être changé grâce à
+la méthode <tt>setLayout(LayoutManager)</tt>.  Si le gestionnaire est
+changé alors que le conteneur contient déjà des composants, il faut forcer
+la disposition en invoquant les méthodes <tt>doLayout()</tt> et
+<tt>revalidate()</tt>. 
+
+<h2>Géométrie</h2>
+
+<p>Tout composant a un <em>placement</em> dans son conteneur qui est donné
+par son origine et ses dimensions qui détermine un rectangle.  La classe
+<tt>JComponent</tt> possède les méthodes suivantes.</p>
+
+<ul>
+<li><tt>Rectangle getBounds()</tt> et <tt>setBounds(Rectangle)</tt>
+  manipulent le rectangle.</li>
+<li><tt>Point getLocation()</tt> et <tt>setLocation(Point)</tt> manipulent 
+  l'origine du rectangle.</li>
+<li><tt>Dimension getSize()</tt> et <tt>setSize(Dimension)</tt> manipulent 
+  les dimensions du rectangle.</li>
+<li><tt>Dimension getPreferredSize()</tt> et
+  <tt>setPreferredSize(Dimension)</tt> manipulent les dimensions préférées
+  du composant.</li> 
+<li><tt>Dimension getMaximalSize()</tt> et
+  <tt>setMaximalSize(Dimension)</tt> manipulent les dimensions maximales
+  du composant.</li> 
+<li><tt>Dimension getMinimalSize()</tt> et
+  <tt>setMinimalSize(Dimension)</tt> manipulent les dimensions minimales
+  du composant.</li> 
+</ul>
+
+<p>Les gestionnaires de disposition utilisent ces dimensions pour
+positionner <em>au mieux</em> les composants dans le conteneur.</p>
+
+<h2>Marges</h2>
+
+<p>Les conteneurs possèdes des marges entre leurs bords et les composants
+qu'ils contiennent.  Ces marges sont de la classe <tt>Insets</tt> qui
+contient quatre champs de type <tt>int</tt> appelés <tt>top</tt>,
+<tt>left</tt>, <tt>bottom</tt> et <tt>right</tt>.  Ces quatre champs
+donnent les tailles en pixels des quatre marges.  La classe <tt>Insets</tt>
+possède un constructeur qui prend en paramètre les quatre marges.</p>
+
+<p>Les conteneurs n'ont pas de méthode <tt>setInsets</tt>.  Pour changer
+les marges, il faut redéfinir la méthode <tt>getInsets</tt>.</p>
+
+<h2>Validation</h2>
+
+<p>Tout composant est dit <em>valide</em> lorsqu'il est correctement
+dimensionné et positionné dans son conteneur et que ses fils sont aussi
+valides.  La méthode <tt>isValid</tt> retourne si un composant est valide
+ou non.  Les méthodes <tt>validate</tt> et <tt>invalidate</tt> rendent le
+composant respectivement valide et non valide.</p>
+
+<p>La validation d'un composant consiste d'abord à dimensionner et
+positionner récursivement tous ses fils puis à valider ses ascendants
+jusqu'à trouver un conteneur de type <em>validateRoot</em>.  En SWING,
+cette validation est différée tant qu'il y a des événements à délivrer.
+Pour forcer la validation d'un composant, il faut appeler la méthode
+<tt>revalidate</tt>.  Cette méthode retrouve le premier ascendant de type
+<em>validateRoot</em> et le rend invalide.  La validation s'effectuera sur
+tous les descendants de ce conteneur.  La plupart du temps, la méthode
+<tt>revalidate</tt> est appelée automatiquement par SWING contrairement à
+AWT où il faut souvent appeler la méthode <tt>validate</tt>.<p>
+
+<p>La méthode <tt>isValidateRoot</tt> retourne si un composant est de type
+<em>validateRoot</em>. Les éléments <tt>JRootPane</tt>,
+<tt>JScrollPane</tt> et <tt>JTextField</tt> sont de type
+<em>validateRoot</em>.</p>
+
+<h2>Revue des gestionnaires de disposition</h2>
+
+<h3>FlowLayout</h3>
+
+<p>C'est le gestionnaire le plus simple.  Il affiche ses composants de la
+gauche vers la droite et passe à la ligne lorsqu'une ligne est pleine.
+Les constructeurs principaux sont les suivants.</p>
+
+<ul>
+<li><tt>FlowLayout()</tt></li>
+<li><tt>FlowLayout(int align)</tt> spécifie l'alignement qui est centré
+  par défaut.</li>
+<li><tt>FlowLayout(int align, int hgap, int vgap)</tt> spécifie en outre
+  l'espacement entre les composants qui est de 5 points par défaut.</li>
+</ul>
+
+<h3>BorderLayout</h3>
+
+<p>Ce gestionnaire est assez spécifique mais il convient à de très
+nombreuse occasions.  Il permet de contenir au plus cinq composants.
+Les cinq positions possibles d'un composants sont appelées NOTH, SOUTH,
+EAST, WEST et CENTER.  Ce second paramètre est passé en plus à la méthode
+<tt>add</tt> lorsque un composant est ajouté au conteneur.  Lorsque toutes
+les positions ne sont pas occupées, les composants se répartissent la place
+disponible.</p>
+
+<h3>GridLayout</h3>
+
+<p>Ce gestionnaire permet de disposer les composants sur une grille où
+chaque composant occupe la même place.  Les contructeurs sont les
+suivants.</p>
+
+<ul>
+<li><tt>GridLayout(int lin, int col)</tt> spécifie le nombre de lignes et
+  de colonnes.</li> 
+<li><tt>GridLayout(int lin, int col, int hgap, int vgap)</tt>  spécifie en
+  outre l'espacement entre les composants qui est de 5 points par défaut. 
+  </li> 
+</ul>
+
+<p>Un des deux nombres donnant le nombre de lignes et de colonnes
+peut être égal à zéro.  Auquel cas,  il n'est pas pris en compte et le nombre
+de lignes ou de colonnes s'adapte au nombre de composants.</p>
+
+<h3>BoxLayout</h3>
+
+<p>Ce gestionnaire permet de disposer des composants sur une seule ligne
+ou sur une seule colonne.  Chacun des composants utilise une place variable
+en fonction de ses dimensions <tt>PreferredSize</tt> et
+<tt>MaximalSize</tt>.  L'unique constructeur est le suivant.</p>
+
+<ul>
+<li><tt>BoxLayout(Container target, int axis)</tt> spécifie si
+  les composants doivent être mis sur une ligne (paramètre <tt>X_AXIS</tt>)
+  ou sur une colonne paramètre <tt>Y_AXIS</tt>).</li>
+</ul>
+
+
+<p>Dans l'autre sens (que celui choisi pour mettre les composants), les
+composants sont alignés en fonction de leur paramètre <tt>aligmentX</tt> et
+<tt>alignmentY</tt>.</p>
+
+<p>Ce gestionnaire est automatiquement utilisé par le conteneur
+<tt>Box</tt> qui permet en outre d'ajouter des espacements (<tt>strut</tt>)
+et de la glue (<tt>glue</tt>) extensible entre les composants.  Les
+méthodes à utiliser sont les suivantes.</p>
+
+<ul>
+<li><tt>createHorizontalStrut(int width)</tt> et
+  <tt>createVerticalStrut(int height)</tt> pour créer un espacement
+  horizontal ou vertical qu'il faut ajouter au conteneur.</li>
+<li><tt>createGlue()</tt>,  <tt>createHorizontalGlue()</tt> et 
+ <tt>createVerticalGlue()</tt>  pour créer de la glue
+  horizontale ou verticale qu'il faut ajouter au conteneur.</li>
+</ul>
+
+<h3>GridBagLayout</h3>
+
+<p>Ce gestionnaire permet de disposer les composants sur une grille où
+chaque composant occupe un nombre de lignes et de colonne variables.  Il
+est d'une utilisation relativement compliquée.  Son utilisation est basée
+sur la classe <tt>GridBagConstraints</tt> qui spéficie les différents
+paramètres.  Un objet de cette classe est passé en second paramètre à la
+méthode <tt>add</tt> lorsque un composant est ajouté au conteneur.</p>
+
+<h2>Composition</h2>
+
+<p>Les dispositions complexes des interfaces complètes ne sont presque
+jamais obtenues par l'utilisation d'un seul gestionnaire de disposition
+dans un panneau.  Elles le sont généralement par l'agencement de plusieurs
+gestionnaires associés à des panneaux imbriqués les uns dans les autres.
+</p>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+(copy_files# common/*.{ml,mli})
+(copy_files# elf/*.{ml,mli})
+(copy_files# fopix/*.{ml,mli})
+(copy_files# hopix/*.{ml,mli})
+(copy_files# hobix/*.{ml,mli})
+(copy_files# retrolix/*.{ml,mli})
+(copy_files# utilities/*.{ml,mli})
+(copy_files# x86-64/*.{ml,mli})
+(copy_files fopix/*.{mll,mly})
+(copy_files hopix/*.{mll,mly})
+(copy_files hobix/*.{mll,mly})
+(copy_files retrolix/*.{mll,mly})
+(copy_files# ../runtime/runtime.c)
+
+(executable
+  (name flap)
+  (libraries str pprint menhirLib sexplib)
+  (modules_without_implementation architecture hopixSyntacticSugar)
+  (preprocess (pps ppx_sexp_conv))
+)
+
+(ocamllex fopixLexer hopixLexer hobixLexer retrolixLexer)
+(menhir
+  (modules fopixParser hopixParser hobixParser retrolixParser)
+  (infer true)
+  (flags --explain --table))
+
+(env (dev (flags (:standard -warn-error -A -w -9 -w -32))))

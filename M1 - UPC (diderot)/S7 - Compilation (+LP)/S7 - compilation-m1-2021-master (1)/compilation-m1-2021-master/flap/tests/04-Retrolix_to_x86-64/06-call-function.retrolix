@@ -1,0 +1,15 @@
+external printf
+
+def print_one_int ()
+  rax: %rsi <- copy %rdi;
+  l10: %rdi <- copy "%d\n";
+  l11: %rax <- copy 0;
+  l12: printf();
+  l13: ret;
+end
+
+globals (x)
+  l01: %rdi <- copy 37;
+  l02: print_one_int();
+  l03: exit;
+end

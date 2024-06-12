@@ -1,0 +1,7 @@
+apply : (int -> int) -> (int -> int)
+succ : int -> int
+apply2 : (int -> (int -> int)) -> (int -> (int -> int))
+addmul : int -> (int -> int)
+apply3 : (int -> (int -> (int -> int))) -> (int -> (int -> (int -> int)))
+conj : int -> (int -> (int -> int))
+main : int

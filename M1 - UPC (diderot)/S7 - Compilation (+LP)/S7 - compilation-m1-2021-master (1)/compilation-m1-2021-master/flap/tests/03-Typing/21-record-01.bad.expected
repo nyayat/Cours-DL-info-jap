@@ -1,0 +1,2 @@
+Line 3, characters 12-34: Error (typechecking)
+  The field `y` as type `string' while it should have type `int'.

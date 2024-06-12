@@ -1,0 +1,7 @@
+Line 2, characters 17-20: Error (typechecking)
+  Type error:
+Expected:
+  string
+Given:
+  int
+

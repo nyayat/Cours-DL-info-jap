@@ -1,0 +1,18 @@
+def double_int ( )
+  d0: %rax <- add %rdi, %rdi;
+  d1: ret;
+end
+
+globals (x)
+  l00: x <- copy 1;
+  l01: %rbx <- copy 4;
+  l02: jumpif gte %rbx, 1 -> l03, l08;
+  l03: %rdi <- copy x;
+  l04: %rbx <- sub %rbx, 1;
+  l05: double_int();
+  l06: x <- copy %rax;
+  l07: jump l02;
+  l08: %rdi <- copy x;
+  l09: observe_int();
+  l10: exit;
+end

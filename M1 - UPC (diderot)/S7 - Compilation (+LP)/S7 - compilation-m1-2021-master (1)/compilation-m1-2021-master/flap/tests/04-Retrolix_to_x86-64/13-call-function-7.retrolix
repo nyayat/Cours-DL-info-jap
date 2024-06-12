@@ -1,0 +1,31 @@
+external printf
+
+def print_six_int_for_real ()
+local a1, a2, a3, a4, a5, a6:
+  a1: a1 <- copy %rdi;
+  a2: a2 <- copy %rsi;
+  a3: a3 <- copy %rdx;
+  a4: a4 <- copy %rcx;
+  a5: a5 <- copy %r8;
+  a6: a6 <- copy %r9;
+  l10: %rdi <- copy "%d %d %d %d %d %d\n";
+  l11: %rsi <- copy a1;
+  l12: %rdx <- copy a2;
+  l13: %rcx <- copy a3;
+  l14: %r8 <- copy a4;
+  l15: %r9 <- copy a5;
+  l16: %rax <- copy 0;
+  l17: printf(a6);
+  l18: ret;
+end
+
+globals (x)
+  l01: %rdi <- copy 37;
+  l02: %rsi <- copy 73;
+  l03: %rdx <- copy 31;
+  l04: %rcx <- copy 13;
+  l05: %r8  <- copy 00;
+  l06: %r9  <- copy 99;
+  l07: print_six_int_for_real();
+  l08: exit;
+end

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- Time-stamp: "index.html   1 avr 2020 13:30:09" -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+  <title>Design Pattern Observer</title>
+  <link href="style.css" rel="stylesheet" type="text/css"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name="Author" content="Olivier Carton"/>
+  <style type="text/css"> <!--
+    body { background-color: white; }
+  --> </style>
+</head>
+
+<body>
+  <h1>Design Pattern Observer</h1>
+
+  <dl>
+    <dt><tt><a href="source.hpp">Source</a></tt></dt>
+    <dd>Classe des objets qui émettent des événements.  Ils implémentent
+      eux-même l'interface <tt>observer</tt> pour revevoir des événements
+      qu'il retransmettent aux observateurs enregistrés.
+    </dd>
+    <dt><tt><a href="observer.hpp">Observer</a></tt></dt>
+    <dd>Interface qui déclare la méthode <tt>update</tt> pour recevoir
+      les événements.
+    </dd>
+    <dt><tt><a href="target.hpp">Target</a></tt></dt>
+    <dd>Classe des objets qui implémentent l'interface <tt>Observer</tt>
+      et implémentent la méthode <tt>update</tt>.
+    </dd>
+    <dt><a href="main.cpp">Programme principal</a></dt>
+    <dd></dd>
+    <dt><tt><a href="makefile">Makefile</a></tt></dt>
+    <dd></dd>
+    <dt><a href="observer.tgz">Archive tar compressée par Gzip</a></dt>
+    <dd></dd>
+    <dt><a href="observer.zip">Archive zip</a></dt>
+    <dd></dd>
+  </dl>
+</body>
+</html>

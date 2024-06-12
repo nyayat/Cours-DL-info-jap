@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<!-- Time-stamp: "index.html  24 Feb 2005 09:32:01" -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+  <title>
+  Programmation X
+  </title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="Author" content="Olivier Carton">
+  <style> <!--
+    /* Fond blanc */
+    body { background-color: white; }
+  --> </style>
+</head>
+
+<body>
+
+<h2>Programmation X</h2>
+
+<h3>Principes</h3>
+
+<p>Un programme X comporte trois parties essentielles.</p>
+
+<ul>
+<li>Établissement de la connexion au serveur.</li>
+<li>Création de la hiérarchie des fenêtres (Widgets).</li>
+<li>Gestion de la boucle d'événements : 
+  <ul>
+  <li>Lire un événement.</li>
+  <li>En fonction de la nature de l'événement et de la fenêtre où il a eu
+    lieu, entreprendre l'action appropriée.</li>
+  <li>Envoyer des requêtes correspondantes au serveur.</li>
+  </ul>
+</li>
+</ul>
+
+<p> La gestion des événements est particulière parce que</p>
+<ul>
+<li>L'ordre des événements n'est pas séquentiel</li>
+<li>Il y a interaction avec d'autres clients, notamment le gestionnaire
+  de fenêtres.</li>
+</ul>
+
+<p>X est structuré en trois niveaux</p>
+<ul>
+<li>Le niveau <em>Xlib</em> : niveau de base, très flexible et 
+  nécessaire pour la gestion graphique.</li>
+<li>Le niveau <em>Xt</em> ou <em>Intrinsics</em> : founit le concept
+  de widget et les outils pour l'emploi d'ensembles de widgets.  Il ne 
+  contient que quelques Widgets de base.</li>
+<li>Le niveau <em>Widgets sets</em> : n'est pas fourni par le consortium X
+  (sauf le Athena Widget Set).</li>
+</ul>
+
+<p><em>X toolkit</em> est le nom collectif pour les deux derniers niveaux
+: les Intrinsics + un ensemble de widgets.  Il existe des ensembles de
+widgets qui ne sont pas basés sur les Intrinsics (<em>XView</em> par
+exemple).</p>
+
+<h3>Exemple</h3>
+
+<p>Le programme donné ci-dessous se contente d'ouvrir une fenêtre et
+d'afficher un message lorsqu'on clique dans la fenêtre.  Le programme
+affiche aussi les événements qu'il reçoit.  Les commentaires dans le
+sources suffisent à expliquer le fonctionnement du programme.</p>
+
+<p>Un point important à noter est que si la fenêtre est iconifiée ou
+masquée par une autre fenêtre, le message disparaît.  Ceci illustre que le
+serveur X ne se charge pas du rafraîchissement des fenêtres.  C'est à
+l'application qu'il incombe de redessiner la fenêtre quand elle reçoit un
+événement <em>Expose</em>.</p>
+
+<p>Il faut aussi remarquer que la fenêtre qui s'ouvre au lancement du
+programme possède une barre de titre avec les boutons pour l'iconifier et
+la fermer.  Cette barre de titre est mise par le gestionnaire de fenêtres
+et l'application n'a pas à s'en occuper.</p>
+
+<ul>
+<li><a href="window.c">Source du programme</a></li>
+<li><a href="makefile">makefile</a></li>
+</ul>
+
+</body>
+</html>

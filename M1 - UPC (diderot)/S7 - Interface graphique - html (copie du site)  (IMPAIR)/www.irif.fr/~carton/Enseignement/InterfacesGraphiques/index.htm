@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- Time-stamp: "index.html  10 jan 2022 13:34:41" -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+  <title>Interfaces graphiques en Master d'informatique</title>
+  <link href="style.css" rel="stylesheet" type="text/css">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="Author" content="Olivier Carton">
+</head>
+
+<body>
+<h2>Interfaces graphiques en Master d'informatique</h2>
+
+<ul>
+  <!--<li><font color="red">Changement de salles pour l'examen</font></li>-->
+  <li>Cours le mercredi en 2036 (SG) de 16h15 à 18h15</li>
+  <li>Travaux dirigés le vendredi de 14h à 16h en salles 2031 (SG)
+    par <a href="https://www.irif.fr/~padovani/">Vincent Padovani</a>
+  </li>
+  <li><a href="Cours/biblio.html">Bibliographie</a></li>
+  <li><a href="Cours/urls.html">Quelques URLs</a></li>
+  <li><a href="Sources/index.htm">Sources des programmes</a></li>
+  <li>Années <a href="index-0203.html">2002/2003</a>,
+    <a href="index-0304.html">2003/2004</a>,
+    <a href="index-0405.html">2004/2005</a>,
+    <a href="index-0506.html">2005/2006</a>,
+    <a href="index-1920.html">2019/2020</a> et
+    <a href="index-2021.html">2020/2021</a></li>
+</ul>
+
+<ul>
+<li><a href="Cours/presentation.html">Présentation du cours</a></li>
+<li>Cours n° 1: introduction
+  <ul>
+  <li><a href="Cours/introduction.html">Interfaces</a></li>  
+  <li>Premiers éléments de <a href="Cours/Swing/introduction.html">Swing</a></li>
+  <li><a href="Cours/Swing/evenements.html">Événements en Swing</a></li>
+  <li>Exemples
+     <ul>
+     <li><a href="Programmation/Swing/index.htm">Changement de la couleur de fond
+          par bouton</a></li>
+     <li><a href="Programmation/Swing/index.htm">Changement de la couleur de fond
+          par menu</a></li>
+     </ul>
+  </li>
+  </ul>
+</li>
+<li>Cours n° 2 : Événements et l'architecture Modèle/Vue/Contrôleur
+  <ul>
+  <li>Architecture 
+    <a href="Cours/Swing/mvc.html">Modèle/Vue/Contrôleur</a> (MVC)</li> 
+  <li>Exemples
+     <ul>
+     <li><a href="Programmation/Swing/index.htm">Programme <em>Plus ou Moins</em></a>
+       sans l'architecture MVC</li>
+     <li><a href="Programmation/Swing/index.htm">Programme <em>Plus ou Moins</em></a> 
+       avec l'architecture MVC</li>
+     <li><a href="Programmation/Swing/index.htm">Programme <em>Plus ou Moins</em></a> 
+       avec un bouton reset et une zone de saisie en plus</li>
+     <li><a href="Programmation/Swing/index.htm">Convertisseur</a> de bases</li>
+     </ul>
+  </li>
+  </ul>
+</li>
+<li>Cours n° 3 : <a href="Cours/Swing/actions.html">actions</a>
+  <ul>
+  <li>Actions 
+     <ul>
+     <li>Interface <tt>Action</tt> et classe abstraite
+       <tt>AbstractAction</tt></li>
+     <li>Utilisation dans les menus et boutons</li>
+     <li>Application à un programme de 
+       <a href="Programmation/Swing/index.htm">Labyrinthe</a></li>
+     </ul>
+  </li>
+  <li>Utilisation d'un popup menu</li>
+  <li>Utilisation d'un <tt>MouseAdapter</tt> pour implémenter un
+     <tt>MouseListener</tt></li>
+  </ul>
+</li>
+<li>Cours n° 4 : undo/redo
+  <ul>
+  <li>Interface <tt>UndoableEdit</tt> et classe
+    <tt>AbtsractUndoableEdit</tt> pour implémenter les
+    <em>modifications</em> (ou opérations) qui peuvent être annulées et
+    refaites. Les méthodes sont les suivantes.
+    <ul>
+    <li><tt>boolean canUndo()</tt> indique que la modification peut être
+      annulée</li>
+    <li><tt>boolean canRedo()</tt> indique que la modification peut être
+      refaite</li>
+    <li><tt>void die()</tt> la modification devient inactive.  Elle ne peut
+     plus être ni annulée ni refaite</li>
+    <li><tt>void undo()</tt> annule la modification</li>
+    <li><tt>void redo()</tt> refait la modification</li>
+    </ul> 
+ </li>
+  <li>Classes <tt>CompoundEdit</tt> et <tt>UndoManager</tt> pour gérer
+    les séquences de modifications.  Cette dernière classe facilite
+    grandement l'implémentation d'un undo/redo multiple.
+ </li>
+  <li>La classe <tt>UndoableEditSupport</tt> facilite l'implémentation
+    d'une classe qui génère des événements <tt>UndoableEditEvent</tt>.
+    Elle gère l'enregistrement des écouteurs <tt>UndoableEditListener</tt> 
+    et l'envoi des événements.  Elle possède les méthodes.
+    <ul>
+    <li><tt>void addUndoableEditListener(UndoableEditListener listener)</tt>
+       pour enregistrer un écouteur d'événements</li>
+    <li><tt>void removeUndoableEditListener(UndoableEditListener 
+       listener)</tt> pour désenregistrer un écouteur d'événements</li>
+    <li><tt>postEdit(UndoableEditEvent e)</tt> pour envoyer un
+      événement</li>
+    </ul> 
+  </li>
+  </ul>
+</li>
+<li>Cours n° 5 : <a href="Cours/Swing/layouts.html">gestionnaires de
+     disposition</a>
+  <ul>
+  <li>Revue des principaux gestionnaires disposition disponibles en SWING
+     <ul>
+     <li>FlowLayout</li>
+     <li>BorderLayout</li>
+     <li>GridLayout</li>
+     <li>BoxLayout (glue et strut)</li>
+     <li>GridBagLayout</li>
+     </ul>
+  </li>
+  <li>Combinaisons des gestionnaires de disposition
+     <ul>
+     <li>Centrage d'un objet</li>
+     <li>Alignement d'étiquettes et de champs</li>
+     </ul>
+  </li>
+  <li>Utilisation d'une ComboBox</li>
+  </ul>
+</li>
+<li>Cours n° 6 : dessins et images
+  <ul>
+  <li><a href="Cours/Swing/graphiques.html">Graphisme en Swing</a></li>
+  <li>images
+    <ul>
+      <li>Chargement simple d'une image 
+      </li>
+      <li>Caractère asynchrone du chargement des images.  Interface 
+	<tt>ImageObserver</tt> et la méthode <tt>imageUpdate</tt>.</li>
+      <li>Utilisation d'un objet <tt>MediaTracker</tt> pour attendre la fin
+	du chargement d'une image.</li>
+      <li>Utilisation des filtres <tt>ImageFilter</tt>.</li>
+    </ul>
+  </li>
+ </ul>
+</li>
+<li>Cours n° 7 : drag &amp; drop
+  <ul>
+    <li>textes</li>
+    <li>images</li>
+  </ul>
+</li>
+<li>Cours n° 8 : Intervention extérieure
+</li>
+<li>Cours n° 9 : <a href="Cours/DesignPattern/index.htm">Design Pattern</a>
+  <ul>
+    <li>Introduction</li>
+    <li>Exemples simples</li>
+      <ul>
+	<li><a href="Sources/DesignPattern/Pool/index.htm">Pool</a></li>
+	<li><a href="Sources/DesignPattern/Singleton/index.htm">Singleton</a></li>
+      </ul>
+  </ul>
+</li>
+<li>Cours n° 10 : <a href="Cours/DesignPattern/index.htm">Design Pattern</a> (suite)
+  <ul>
+    <li><a href="Sources/DesignPattern/Adapter/index.htm">Adapter</a></li>
+    <li><a href="Sources/DesignPattern/Bridge/index.htm">Bridge</a></li>
+    <li><a href="Sources/DesignPattern/Responsability/index.htm">Chain of responsability</a></li>
+    <li><a href="Sources/DesignPattern/Composite/index.htm">Composite</a></li>
+    <li><a href="Sources/DesignPattern/Decorator/index.htm">Decorator</a></li>
+  </ul>
+</li>
+<li>Cours n° 11 : <a href="Cours/DesignPattern/index.htm">Design Pattern</a> (suite)
+  <ul>
+    <li><a href="Sources/DesignPattern/Visitor/index.htm">Visitor</a></li>
+    <li><a href="Sources/DesignPattern/Observer/index.htm">Observer</a></li>
+    <li><a href="Sources/DesignPattern/Iterator/index.htm">Iterator</a></li>
+    <li><a href="Sources/DesignPattern/Strategy/index.htm">Strategy</a></li>
+    <li><a href="Sources/DesignPattern/Proxy/index.htm">Proxy</a></li>
+  </ul>
+</li>
+<li>Examen : le seul document autorisé est une feuille de memento.
+</li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3c.org/TR/xhtml1/DTD/transitional.dtd" >
+<!-- Time-stamp: "couleurs.html  10 Aug 2005 14:39:20" -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+  <title>
+  Couleurs, profondeur et visuals
+  </title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="Author" content="Olivier Carton">
+</head>
+
+<body>
+
+<h2>Couleurs</h2>
+
+<p>X Window utilise deux systèmes pour représenter les couleurs.  Le
+premier système utilisé est le format RGB qui est non portable dans la
+mesure où la même couleur peut être rendue de manière assez différente par
+deux écrans.  Pour combler cette lacune, le système Xcms (X Colors
+Management System) a été introduit depuis la version X11R5.  Ce dernier
+système utilise plusieurs modèles de couleurs qui sont indépendants des
+écrans.</p>
+
+<p>Dans le format RGB, une couleur est représentée par ses trois
+composantes en rouge (Red), vert (Green) et bleu (Blue).  Une couleur peut
+être utilisée en donnant ses trois composantes ou donnant un nom qui lui
+est attribué dans le fichier <tt>rgb.txt</tt> qui se trouve généralement
+dans le répertoire </tt>/usr/X11R6/lib/X11/</tt>.  Ce fichier contient une
+correspondance entre des noms de couleurs et des triplets de composantes
+RGB en décimal.  Les premières lignes de ce fichier sont les suivantes.</p>
+
+<pre>
+! $Xorg: rgb.txt,v 1.3 2000/08/17 19:54:00 cpqbld Exp $
+255 250 250		snow
+248 248 255		ghost white
+248 248 255		GhostWhite
+245 245 245		white smoke
+245 245 245		WhiteSmoke
+220 220 220		gainsboro
+255 250 240		floral white
+255 250 240		FloralWhite
+...
+</pre>
+
+<p>Dans donner une couleur dans une ressource, on peut utiliser un des
+noms définis dans le fichier <tt>rgb.txt</tt> ou donner directement les
+trois composantes de la couleurs.  Celles-ci sont écrites en hexadécimal
+(alors qu'elles sont en décimal dans le fichier <tt>rgb.txt</tt>) et
+précédées du caractère <tt>#</tt>.  La couleur <em>FloralWhite</em> serait
+par exemple donnée par la chaîne <tt>#fffaf0</tt>.  Les deux lignes de
+commandes suivantes sont donc équivalentes.</p>
+
+<pre>
+  xterm -bg FloralWhite &
+  xterm -bg #fffaf0 &
+</pre>
+
+<p>Le système Xcms est beaucoup plus compliqué.  Une couleur peut être
+exprimée dans plusieurs modèles parmi lesquels TeKHVC, CIEXYZ, CIEuvY et le
+modèle RGB.  Une couleur est alors écrite en mettant le modèle en préfixe,
+le caractère <tt>':'</tt> puis les valeurs séparées par le caractère
+<tt>'/'</tt> comme dans <tt>CIEuvY:0.152/0.405/0.443</tt>,
+<tt>TeKHVC:223.93/72.45/29.67</tt> ou <tt>RGB:6a/bb/d8</tt>.</p>
+
+<h2>Visuals et Colormaps</h2>
+
+<p>Dans la mémoire serveur X, la couleur de chaque point (pixel) de l'écran
+est représentée par un entier.  Le nombre de bits alloués à cet entier est
+appelé la <em>profondeur</em> (depth).  Celle-ci est souvent exprimée en
+nombre de plans (plane).  Elle détermine le nombre de couleurs possibles à
+l'écran.  L'entier associé à un point ne représente pas la couleur
+directement.  Il est plutôt utilisé comme une ou plusieurs entrée dans une
+<em>table des couleurs</em> (colormap).  Cette indirection est utilisée
+pour augmenter le nombre de couleurs sans faire exploser la taille de la
+mémoire nécessaire pour tous les points de l'écran.  Un même serveur X a
+souvent plusieurs façons pour interpréter l'entier représentant une
+couleur.  Chacune de ses façons est appelée un <em>visual</em>.  Les
+visuals disponibles sur un serveur X peuvent être affichés grâce au client
+<tt>xdpyinfo</tt>.  Un affichage (partiel) typique de ce client est</p>
+
+<pre>
+default screen number:    0
+number of screens:    1
+
+screen #0:
+  dimensions:    1280x800 pixels (332x212 millimeters)
+  resolution:    98x96 dots per inch
+  depths (7):    24, 1, 4, 8, 15, 16, 32
+  root window id:    0xae
+  depth of root window:    24 planes
+  number of colormaps:    minimum 1, maximum 1
+  default colormap:    0x20
+  default number of colormap cells:    256
+  preallocated pixels:    black 0, white 16777215
+  options:    backing-store NO, save-unders NO
+  largest cursor:    64x64
+  current input event mask:    0xd84031
+    KeyPressMask             EnterWindowMask          LeaveWindowMask
+    KeymapStateMask          SubstructureNotifyMask   SubstructureRedirectMask
+    PropertyChangeMask       ColormapChangeMask
+  number of visuals:    40
+  default visual id:  0x21
+  visual:
+    visual id:    0x21
+    class:    TrueColor
+    depth:    24 planes
+    available colormap entries:    256 per subfield
+    red, green, blue masks:    0xff0000, 0xff00, 0xff
+    significant bits in color specification:    8 bits
+  visual:
+    visual id:    0x22
+    class:    DirectColor
+    depth:    24 planes
+    available colormap entries:    256 per subfield
+    red, green, blue masks:    0xff0000, 0xff00, 0xff
+    significant bits in color specification:    8 bits
+...
+</pre>
+
+<p>On constate que ce serveur X gère des visuals avec des profondeurs
+allant jusqu'à 24 plans.  Chacun des visuals est caractérisé par sa
+profondeur et sa classe.  Les classes possibles sont <tt>StaticGray</tt> et
+<tt>GrayScale</tt> pour les écrans noir et blanc et <tt>StaticColor</tt>,
+<tt>TrueColor</tt>, <tt>PseudoColor</tt> et <tt>DirectColor</tt> pour les
+écrans couleur.  Ces différentes classes se distinguent par le fait d'être
+en lecture seulement ou en lecture/écriture et par le fait que la table des
+couleurs soit décomposée ou non.  Le tableau ci-dessous résume la
+situation.</p>
+
+<p class="equation">
+<table border="1" cellpadding="4">
+  <tr align="center">
+    <th></th>
+    <th colspan=2>Couleur</th>
+    <th colspan=2>Noir et Blanc</th>
+  </tr>
+  <tr align="center">
+  <tr align="center">
+    <th></th>
+    <th>Lecture</th>
+    <th>Lect. &amp; Écrit.</th>
+    <th>Lecture</th>
+    <th>Lect. &amp; Écrit.</th>
+  </tr>
+    <td align="center">Non décomposée</td>
+    <td align="center">StaticColor</td>
+    <td align="center">PseudoColor</td>
+    <td align="center">StaticGray</td>
+    <td align="center">GrayScale</td>
+  </tr>
+  </tr>
+    <td align="center">Décomposée</td>
+    <td align="center">TrueColor</td>
+    <td align="center">DirectColor</td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+</p>
+
+<p>A chaque pixel de l'écran est associé une zone mémoire où est mémorisée
+la couleur ou le niveau de gris du pixel.  Le nombre de plans donne le
+nombre de bits consacrés à chaque pixel.  Il détermine le nombre maximal de
+couleurs qui peuvent être présentes simultanément à l'écran.  Si le nombre
+de plan est 1, la couleur d'un pixel ne peut prendre que deux couleurs.
+C'est le cas d'un écran noir et blanc sans niveau de gris.  Si au contraire
+le nombre de plans est 24, le nombre de couleurs possibles pour un pixel
+est 2<sup>24</sup> = 16777216.</p>
+
+<p>Ce n'est pas directement la couleur qui est mémorisée dans la zone
+mémoire associée à chaque pixel.  C'est un point d'entrée dans une table
+des couleurs où sont vraiment mémorisées les coordonnées (valeurs RGB) de
+la couleur.  Cette indirection est nécessaire pour gagner de l'espace
+mémoire. Cette indirection est faite de façon différente suivant que la
+table est décomposée ou non.</p>
+
+<p>Lorsque la table des couleurs n'est pas décomposée, l'entier en mémoire
+écran donne directement le numéro de l'entrée dans la table des couleurs
+appelée <em>cellule</em>.  La cellule donne alors les valeurs des trois
+composantes RGB de la couleur (cf. figure 1).  Lorsque la table des
+couleurs est décomposée, l'entier en mémoire écran se décompose en trois
+entiers définis par trois champs de bits.  Chacun de ces trois entiers
+donne le numéro d'une entrée dans une des tables des trois composantes
+(cf. figure 2).</p>
+
+<p class="figure">
+    <a name="#fig:nondecompo"><img src="nondecompo.png"></a> 
+    <br /><br />
+    Fig. 1 : table non décomposée avec 4 plans
+</p>
+
+<p class="figure">
+    <a name="#fig:decomposee"><img src="decomposee.png"></a> 
+    <br /><br />
+    Fig. 2 : table décomposée avec 12 plans
+</p>
+
+<p>Dans une table (décomposée ou non) les coordonnées des couleurs sont
+mémorisées avec un nombre de bits plus importants, généralement 12 ou 16.
+Lorsque la table est décomposée et que les coordonnées sont mémorisées avec
+12 bits, on obtient 2<sup>36</sup> = 68719476736 couleurs possibles mêmes
+si toutes ces couleurs ne peuvent pas être à l'écran en même temps.</p>
+
+</body>
+</html>

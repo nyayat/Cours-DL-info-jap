@@ -1,0 +1,200 @@
+#
+# menu pane descriptions
+#
+
+# Application Menu
+Menu Applications
+{
+    "Applications"      f.title
+    "Editeurs"          f.menu Editeur
+    "Dessins"           f.menu Dessin
+    "Visualiseurs"      f.menu Visual
+    "Archives"          f.exec xarchie
+}
+
+
+Menu Editeur
+{
+    "Emacs"             f.exec "emacs &"
+    "Editeur HP"        f.exec "ved &"
+}
+
+Menu Dessin
+{
+    "Xfig"              f.exec "xfig &"
+}
+
+Menu Visual
+{
+    "Xlatex"            f.exec "xlatex &"
+    "Netscape"          f.exec "netscape &"
+    "Mosaic"            f.exec "Mosaic &"
+    "Ghostview"         f.exec "ghostview &"
+    "Xv"                f.exec "xv &"
+    "News"              f.exec "xrn &"
+}
+
+Menu Operations
+{
+    "Operations"        f.title
+    "Avant-plan"        f.circle_up
+    "Arriere-plan"      f.circle_down
+    "Rafraichissement"  f.refresh
+    no-label            f.separator
+    "Redemarrage"       f.restart
+    "Quitter Mwm"       f.quit_mwm
+}
+
+Menu Utilitaires
+{
+    "Utilitaires"       f.title
+    "Calculatrices"     f.menu Calc
+    "Presse-papier"     f.exec "xclipboard &"
+    "Agenda"            f.exec "datebook &"
+    "Calendrier"        f.exec "xcal &"
+    "Horloges"          f.menu Clocks
+    "Charge Machine"    f.exec xload
+}
+
+# Menu des calculatrices
+Menu Calc
+{
+    "Calculatrices"     f.title
+    "HP-10C"            f.exec "xhpcalc -radix &"
+}
+
+# Clocks Menu
+Menu Clocks
+{
+    "XClock"            f.exec "xclock -fn timB18 -digital -update 1 &"
+    "Oclock"            f.exec "oclock -geometry -3+3 &"
+}
+
+Menu Preferences
+{
+    "Preferences"       f.title
+    "Lock On"           f.exec "xset l on &"
+    "Lock Off"          f.exec "xset l off &"
+    "Mouse"             f.menu Mouse
+    "Bell"              f.menu Bell
+}
+
+Menu Mouse
+{
+    "Mouse"             f.title
+    "Mouse Fast"        f.exec "xset m 4 2 &"
+    "Mouse Normal"      f.exec "xset m 2 5 &"
+    "Mouse Slow"        f.exec "xset m 1 1 &"
+}
+
+Menu Bell
+{
+    "Bell"              f.title
+    "Bell Off"          f.exec "xset b off &"
+    "Bell On"           f.exec "xset b on &"
+    "Bell Long"         f.exec "xset b 100 600 1000 &"
+    "Bell Normal"       f.exec "xset b 100 600 100 &"
+    "Bell Short"        f.exec "xset b 100 600 10 &"
+}
+
+# Icon Window Menu Description
+Menu IconWindowMenu
+{
+    "Restauration"      _R      Alt<Key>F1      f.normalize
+    "Iconification"     _I      Alt<Key>F2      f.minimize
+    "Premier plan"      _P      Alt<Key>F3      f.raise
+    "Arriere plan"      _A      Alt<Key>F4      f.lower
+    "Taille Maximale"   _x      Alt<Key>F5      f.maximize
+    "Taille"            _T      Alt<Key>F6      f.resize
+    "Mouvement"         _M      Alt<Key>F7      f.move
+    no-label                                    f.separator
+    "Destruction"       _D      Alt<Key>F8      f.kill
+}
+
+# Default Window Menu Description
+Menu DefaultWindowMenu
+{
+    "Restauration"      _R      Alt<Key>F1      f.normalize
+    "Iconification"     _I      Alt<Key>F2      f.minimize
+    "Premier plan"      _P      Alt<Key>F3      f.raise
+    "Arriere plan"      _A      Alt<Key>F4      f.lower
+    "Taille Maximale"   _x      Alt<Key>F5      f.maximize
+    "Taille"            _T      Alt<Key>F6      f.resize
+    "Mouvement"         _M      Alt<Key>F7      f.move
+    no-label                                    f.separator
+    "Destruction"       _D      Alt<Key>F8      f.kill
+}
+
+# Alternate Window Menu Description without accelerators
+Menu NoAcceleratorWindowMenu
+{
+    "Restauration"      _R      f.normalize
+    "Mouvement"         _M      f.move
+    "Taille"            _T      f.resize
+    "Iconification"     _I      f.minimize
+    "Maximum"           _x      f.maximize
+    "Fond"              _F      f.lower
+    no-label                    f.separator
+    "Destruction"       _D      f.kill
+}
+
+
+#
+# key binding descriptions
+#
+Keys DefaultKeyBindings
+{
+    Alt<Key>Space               icon|window             f.post_wmenu
+}
+
+Keys SampleKeyBindings
+{
+    Shift<Key>Escape            icon|window             f.post_wmenu
+    Meta<Key>space              icon|window             f.post_wmenu
+    Meta<Key>Tab                root|icon|window        f.next_key
+    Meta Shift<Key>Tab          root|icon|window        f.prev_key
+    Meta<Key>Escape             root|icon|window        f.next_key
+    Meta Shift<Key>Escape       root|icon|window        f.prev_key
+    Meta<Key>Down               root|icon|window        f.circle_down
+    Meta<Key>Up                 root|icon|window        f.circle_up
+    Meta Ctrl Shift<Key>exclam  root|icon|window        f.set_behavior
+    Meta<Key>F6                 window                  f.next_key transient
+}
+
+
+#
+# button binding descriptions
+#
+Buttons DefaultButtonBindings
+{
+    <Btn1Down>          root            f.menu  Applications
+    <Btn1Down>          icon            f.normalize_and_raise
+    <Btn1Down>          frame           f.raise
+    <Btn2Down>          root            f.menu  Operations
+    <Btn3Down>          root            f.menu  Utilitaires
+    <Btn3Down>          icon            f.post_wmenu
+    <Btn3Down>          frame           f.lower
+    Shift<Btn1Down>     root            f.menu  Preferences
+    Shift<Btn2Down>     root            f.nop
+    Shift<Btn3Down>     root            f.nop
+    Shift<Btn1Down>     frame           f.raise
+    Shift<Btn3Down>     frame           f.lower
+    Meta<Btn1Down>      window          f.raise
+    Meta<Btn1Down>      icon            f.move
+}
+
+Buttons SampleButtonBindings
+{
+    <Btn1Down>          root            f.menu  RootMenu
+    <Btn3Down>          root            f.menu  RootMenu
+    <Btn1Down>          frame|icon      f.raise
+    <Btn3Down>          frame|icon      f.post_wmenu
+    Meta<Btn1Down>      icon|window     f.move
+    Meta<Btn3Down>      window          f.minimize
+}
+ 
+
+
+#
+#  END OF mwm RESOURCE DESCRIPTION FILE
+#

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<!-- Time-stamp: "evenements.html  15 sep 2021 13:47:10" -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+  <title>
+  Événements
+  </title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="Author" content="Olivier Carton">
+</head>
+
+<body>
+
+<h2>Événements</h2>
+
+<h3>Principe</h3>
+
+<p>Comme dans la plupart des environnements graphiques, Swing est basée
+sur une programmation par événements.  Elle utilise la notion de
+<em>générateur d'événements</em> qui envoie des événements et
+d'<em>auditeur d'événements</em> qui les reçoit.  Le principe de
+fonctionnement est le suivant.</p>
+
+<ul>
+<li>Un composant enregistre des auditeurs d'événements
+  (<tt>Listener</tt>).</li>
+<li>Lorsqu'un événement se produit dans un composant, il est envoyé
+  aux auditeurs enregistrés.</li>
+<li>Chaque auditeur définit les actions à entreprendre, dans des méthodes
+  aux noms prédéfinis.</li>
+</ul>
+
+<p>Par exemple, le fonctionnements des boutons est le suivant.</p>
+
+<ul>
+<li>Un bouton (<tt>JButton</tt>) enregistre des objets
+  <tt>ActionListener</tt> par l'intermédiaire de sa méthode
+  <tt>addActionListener(ActionListener)</tt>.</li>
+<li>Lors d'un clique, un <tt>ActionEvent</tt> est envoyé aux
+  <tt>ActionListener</tt> enregistrés. </li>
+<li>Concrètement, cet envoi d'un événement correspond à l'appel de la
+  méthode <tt>actionPerformed(ActionEvent)</tt> de chaque
+  <tt>ActionListener</tt>.</li>
+<li>La classe <tt>ActionListener</tt> est en fait une interface qui 
+  définit la méthode  <tt>actionPerformed(ActionEvent)</tt>.  Tout objet
+  peut implémenter cette interface, pourvu qu'il possède une méthode
+  <tt>actionPerformed</tt>.</li>
+</ul>
+
+<p>De manière générale, le nom d'un événement se termine par
+<tt>Event</tt> et le nom de l'auditeur correspondant se termine par
+<tt>Listener</tt>.</p>
+
+<h3>Événements principaux en Swing</h3>
+
+<p>Voici une liste des principaux événements utilisés par Swing.  Ils
+dérivent tous de la classe <tt>AWTEvent</tt> (et pas de la classe
+<tt>Event</tt> qui est obsolète).</p>
+
+<ul>
+<li><tt>ActionEvent</tt> pour les boutons (<tt>JButton</tt> et les classes
+  dérivées), les entrées de menus (<tt>JMenuItem</tt>), les zones de texte
+  (<tt>JTextField</tt>), etc &hellip;.</li>
+<li><tt>InputEvent</tt> et ses deux sous-classes <tt>KeyEvent</tt> et
+  <tt>MouseEvent</tt> pour le clavier et les mouvements de la souris.
+  </li> 
+<li><tt>ChangeEvent</tt> pour les curseurs.</li>
+<li><tt>TextEvent</tt> pour les composants de texte comme 
+  <tt>TextComponent</tt>.</li>
+<li><tt>UndoableEditEvent</tt> pour la gestion du undo/redo.</li>
+</ul>
+</body>
+
+</html>

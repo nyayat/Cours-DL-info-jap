@@ -1,0 +1,5 @@
+fun addk (k) = \(x) => x + k
+
+val f = addk (41)
+
+val main = print_int (f (1))

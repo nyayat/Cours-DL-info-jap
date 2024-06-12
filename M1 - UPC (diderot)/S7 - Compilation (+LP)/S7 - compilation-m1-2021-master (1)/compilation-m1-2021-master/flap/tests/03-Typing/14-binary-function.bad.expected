@@ -1,0 +1,7 @@
+Line 4, characters 21-30: Error (typechecking)
+  Type error:
+Expected:
+  int * int
+Given:
+  int * int * int
+

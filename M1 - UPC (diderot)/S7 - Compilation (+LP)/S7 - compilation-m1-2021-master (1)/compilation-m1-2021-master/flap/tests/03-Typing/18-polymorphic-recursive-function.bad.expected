@@ -1,0 +1,7 @@
+Line 2, characters 25-46: Error (typechecking)
+  Type error:
+Expected:
+  `b
+Given:
+  `a
+

@@ -1,0 +1,44 @@
+<HTML>
+<!-- Time-stamp: "jar.html  24 May 2004 10:19:40" -->
+<HEAD>
+  <TITLE>
+  Archives jar
+  </TITLE>
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1">
+  <META NAME="Author" content="Olivier Carton">
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF">
+<H2>Archives jar</H2>
+
+<P> Un fichier <TT>jar</TT> (acronyme de Java ARchive) est un fichier
+d'archive qui peut contenir des fichiers de classes et d'autres fichiers
+comme des fichiers images ou audio.  Le format d'une archive <TT>jar</TT>
+est similaire à celui d'un fichier <TT>tar</TT> compressé au format ZIP.
+</P>
+
+<P> Pour exécuter une archive <TT>jar</TT> exécutable, on utilise l'option
+<TT>-jar</TT> de la commande <TT>java</TT> de la manière suivante. </P>
+<PRE>
+  java -jar fichier.jar
+</PRE>
+
+<P> Pour extraire les fichiers contenus dans une archive <TT>jar</TT>, on
+utilise les options <TT>x</TT> et <TT>f</TT> de la commande <TT>jar</TT> de
+la manière suivante. </P> 
+<PRE>
+  jar xf fichier.jar
+</PRE>
+
+<P> Une archive <TT>jar</TT> peut contenir en outre un fichier
+<EM>manifeste</EM> de nom <TT>META-INF/MANIFEST.MF</TT> qui regroupe des
+informations sur le contenu de l'archive.  Ces informations sont données
+par des couples <EM>Propriété/Valeur</EM> avec une syntaxe de la forme
+<TT>Propriété: Valeur</TT>.  Une archive <TT>jar</TT> est exécutable si son
+fichier de manifeste indique la classe exécutable qui contient la fonction
+<TT>main</TT> à appeler. Celle-ci est spécifiée par la valeur de la
+propriété <TT>Main-Class</TT>.  </P>
+
+
+</BODY>
+</HTML>

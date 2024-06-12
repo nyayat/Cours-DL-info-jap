@@ -1,0 +1,5 @@
+get_x : [ `a `b] p<`a, `b> -> `a
+get_y : [ `a `b] p<`a, `b> -> `b
+p : p<int, string>
+x : int
+y : string

@@ -1,0 +1,10 @@
+val curry =
+    \(f) => \(x) => \(y) => f (x, y)
+
+val add = \(x, y) => x + y
+
+val g = curry (add)
+
+val h = g (1)
+
+val main = print_int (h (41))

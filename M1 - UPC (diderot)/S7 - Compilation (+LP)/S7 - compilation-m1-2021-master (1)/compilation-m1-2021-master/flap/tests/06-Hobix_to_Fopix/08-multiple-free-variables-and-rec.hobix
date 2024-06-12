@@ -1,0 +1,9 @@
+val f = \(z) =>
+    val x = z + 1;
+    val y = x;
+    val t = 0;
+    fun g (x) = f(y + x, x)
+    and f (a, b) = z + a;
+    \(k) => g (k) + x
+
+val main = print_int (f (21) (20))

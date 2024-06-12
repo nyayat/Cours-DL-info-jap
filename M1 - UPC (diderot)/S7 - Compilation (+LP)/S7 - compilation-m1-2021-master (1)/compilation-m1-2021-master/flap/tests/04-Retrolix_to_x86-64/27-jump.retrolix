@@ -1,0 +1,16 @@
+external printf
+
+globals (x)
+  l00: %rbx <- copy 1;
+  l01: jumpif eq %rbx, 22 -> l17, l11;
+  l11: %rdi <- copy "%d jump\n";
+  l12: %rsi <- copy %rbx;
+  l13: %rax <- copy 0;
+  l14: printf();
+  l15: %rbx <- add %rbx, 1;
+  ll6: jump l01;
+  l17: %rdi <- copy "street\n";
+  l18: %rax <- copy 0;
+  l20: printf();
+  l21: exit;
+end

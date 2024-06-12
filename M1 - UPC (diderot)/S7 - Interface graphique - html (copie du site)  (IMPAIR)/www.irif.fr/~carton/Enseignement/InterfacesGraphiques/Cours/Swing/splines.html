@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<!-- Time-stamp: "splines.html  15 Sep 2005 17:04:52" -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+  <title>
+  Courbes de Bézier et B-splines
+  </title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta name="Author" content="Olivier Carton" />
+</head>
+
+<body>
+<h1>Courbes de Bézier et B-splines</h1>
+
+<ul>
+<li><a href="#Bezier">Courbes de Bézier</a></li>
+<li><a href="#B-Spline">B-splines</a></li>
+<li><a href="#Conversion">Conversion</a></li>
+</ul>
+
+<h3><a name="Bezier">Courbes de Bézier</a></h3>
+
+<p>Les <em>courbes de Bézier</em> sont des courbes de degré 3.  Elles sont
+donc déterminées par quatre <em>points de contrôle</em>.  La courbe
+déterminée par les points P<sub>1</sub>, P<sub>2</sub>, P<sub>3</sub> et
+P<sub>4</sub> va de P<sub>1</sub> à P<sub>4</sub> et ses dérivées en
+P<sub>1</sub> et P<sub>4</sub> sont respectivement 3(P<sub>2</sub> -
+P<sub>1</sub>) et 3(P<sub>3</sub> - P<sub>4</sub>).  Ceci signifie en
+particulier que la courbe est tangente en P<sub>1</sub> et P<sub>4</sub>
+aux droites P<sub>1</sub>P<sub>2</sub> et P<sub>3</sub>P<sub>4</sub>.</p>
+
+<p class="figure">
+    <a name="fig:Bezier"><img src="bezier.png"></a> 
+    <br /><br />
+    Fig. 1 : Courbe de Bézier
+</p>
+
+<p>Si les coordonnées des points de contrôle sont (x<sub>1</sub>,
+y<sub>1</sub>), (x<sub>2</sub>, y<sub>2</sub>),  (x<sub>3</sub>,
+y<sub>3</sub>) et  (x<sub>4</sub>, y<sub>4</sub>), l'équation de
+la courbe est</p>
+
+<p class="equation">
+  x(t) = (1-t)<sup>3</sup>x<sub>1</sub> + 3t(1-t)<sup>2</sup>x<sub>2</sub> +
+         3t<sup>2</sup>(1-t)x<sub>3</sub> + t<sup>3</sup>x<sub>4</sub>
+	 &nbsp;&nbsp; pour 0 &le; t &le; 1<br/>
+  y(t) = (1-t)<sup>3</sup>y<sub>1</sub> + 3t(1-t)<sup>2</sup>y<sub>2</sub> +
+         3t<sup>2</sup>(1-t)y<sub>3</sub> + t<sup>3</sup>y<sub>4</sub>
+	 &nbsp;&nbsp; pour 0 &le; t &le; 1
+</p>
+
+<p>L'applette ci-dessous permet d'expérimenter la forme de la courbe de
+Bézier en fonction de la position des points de contrôle.  La courbe évolue
+lorsque les points de contrôle sont déplacés à la souris.</p>
+
+<p class="figure">
+  <applet codebase="Applets/" code="Bezier.class" 
+          name="Courbes de Bezier" width="500" height="400">
+  </applet> 
+</p>
+
+<p>La méthode de Casteljau permet la construction géométrique de points de
+la courbe.  Soient P<sub>1</sub>, P<sub>2</sub>, P<sub>3</sub> et
+P<sub>4</sub> les points de contrôle et soient L<sub>2</sub>, H et
+R<sub>3</sub> les milieux des segments P<sub>1</sub>P<sub>2</sub>,
+P<sub>2</sub>P<sub>3</sub> et P<sub>3</sub>P<sub>4</sub>.  Soient
+L<sub>3</sub> et R<sub>2</sub> les milieux des segments L<sub>2</sub>H et
+HR<sub>3</sub> et soit L<sub>4</sub> = R<sub>1</sub> le milieu du segment
+L<sub>3</sub>R<sub>2</sub> (cf. Figure <a href="#fig.Casteljau">2</a>).  Le
+point L<sub>4</sub> = R<sub>1</sub> appartient à la courbe de Bézier et il
+est obtenu pour t = 1/2.  De plus la courbe se décompose en deux courbes de
+Bézier : la courbe de points de contrôle L<sub>1</sub> = P<sub>1</sub>,
+L<sub>2</sub>, L<sub>3</sub> et L<sub>4</sub> et la courbe de points de
+contrôle R<sub>1</sub>, R<sub>2</sub>, R<sub>3</sub> et R<sub>4</sub> =
+P<sub>4</sub>.  Cette décomposition permet de poursuivre récursivement la
+construction de points de la courbe.</p>
+
+<p>On remarque que chaque point de la courbe est barycentre des points de
+contrôle affectés des poids (1-t)<sup>3</sup>, 3t(1-t)<sup>2</sup>,
+3t<sup>2</sup>(1-t) et t<sup>3</sup>.  Comme tous ces poids sont positifs,
+la courbe se situe entièrement dans l'enveloppe convexe des points de
+contrôle.</p>
+
+<p>Si dans la construction précédente, les milieux sont remplacés par les
+barycentres avec les poids t et 1-t, on obtient le point de la courbe de
+coordonnées x(t), y(t).</p>
+
+<p class="figure">
+    <a name="fig:Casteljau"><img src="casteljau.png"></a> 
+    <br /><br />
+    Fig. 2 : Construction de Casteljau
+</p>
+
+<h3><a name="B-Spline">B-splines</a></h3>
+
+<p>Les courbes B-splines sont aussi des courbes de degré 3.  Elles sont
+donc aussi déterminées par quatre point de contrôle.  Contrairement à une
+courbe de Bézier, une B-spline ne passe par aucun de ses points de
+contrôle.  Par contre, les B-splines sont adaptées pour être mises bout à
+bout afin de former une courbe ayant de multiple points de contrôle.</p>
+
+<p>Soient n+3 points P<sub>1</sub>,&hellip;,P<sub>n+3</sub>.  Ils
+déterminent n B-spline s<sub>1</sub>,&hellip;,s<sub>n</sub> de la manière
+suivante.  Chaque B-spline s<sub>i</sub> est déterminée par les points de
+contrôle P<sub>i</sub>, P<sub>i+1</sub>, P<sub>i+2</sub> et
+P<sub>i+3</sub>.
+
+<p>Si les coordonnées des points de contrôle sont (x<sub>1</sub>,
+y<sub>1</sub>), &hellip;, (x<sub>n+3</sub>, y<sub>n+3</sub>), l'équation de
+la spline s<sub>i</sub> est</p>
+
+<p class="equation">
+  x<sub>i</sub>(t) = 1/6[(1-t)<sup>3</sup>x<sub>i</sub> + 
+                         (3t<sup>3</sup>-6t<sup>2</sup>+4)x<sub>i+1</sub> +
+                         (-3t<sup>3</sup>+3t<sup>2</sup>+3t+1)x<sub>i+2</sub> +
+                         t<sup>3</sup>x<sub>i+3</sub>]
+	             &nbsp;&nbsp; pour 0 &le; t &le; 1<br/>
+  y<sub>i</sub>(t) = 1/6[(1-t)<sup>3</sup>y<sub>i</sub> + 
+                         (3t<sup>3</sup>-6t<sup>2</sup>+4)y<sub>i+1</sub> +
+                         (-3t<sup>3</sup>+3t<sup>2</sup>+3t+1)y<sub>i+2</sub> +
+                         t<sup>3</sup>y<sub>i+3</sub>]
+	             &nbsp;&nbsp; pour 0 &le; t &le; 1<br/>
+</p>
+
+<p>À partir des équations définissant les splines s<sub>i</sub>, on vérifie
+facilement les formules suivantes qui montrent que la courbe obtenue en
+mettant bout à bout les courbes s<sub>i</sub> est de classe C<sup>2</sup>,
+c'est à dire deux fois dérivable.</p>
+ 
+<p class="equation">
+  s<sub>i</sub>(1) = s<sub>i+1</sub>(0) = 
+    1/6(P<sub>i+1</sub> + 4P<sub>i+2</sub> + P<sub>i+3</sub>)<br />
+  s'<sub>i</sub>(1) = s'<sub>i+1</sub>(0) = 
+    1/2(P<sub>i+3</sub> - P<sub>i+1</sub>)<br />
+  s''<sub>i</sub>(1) = s''<sub>i+1</sub>(0) = 
+    P<sub>i+3</sub> - 2P<sub>i+2</sub> + P<sub>i+1</sub>
+</p>
+
+<p>L'applette ci-dessous permet d'expérimenter la forme des B-splines en
+fonction de la position des points de contrôle.  Le bouton gauche permet de
+déplacer les points de contrôle et le bouton droit d'en ajouter.</p>
+
+<p class="figure">
+  <applet codebase="Applets/" code="Bspline.class" 
+          name="Courbes B-splines" width="500" height="400">
+  </applet> 
+</p>
+
+<h3><a name="Conversion">Conversion</a></h3>
+
+<p>Puisque seules les courbes de Bézier sont présentes en Swing, il est
+nécessaire de savoir passer d'une B-Spline à une courbe de Bézier.  La
+B-spline de points de contrôle P<sub>1</sub>, P<sub>2</sub>, P<sub>3</sub>
+et P<sub>4</sub> est en fait la courbe de Bézier dont les points de
+contrôle P'<sub>1</sub>, P'<sub>2</sub>, P'<sub>3</sub> et P'<sub>4</sub>
+sont calculés de la manière suivante.  Si les coordonnées des points
+P<sub>1</sub>, P<sub>2</sub>, P<sub>3</sub> et P<sub>4</sub> sont
+(x<sub>1</sub>, y<sub>1</sub>), (x<sub>2</sub>, y<sub>2</sub>),
+(x<sub>3</sub>, y<sub>3</sub>) et (x<sub>4</sub>, y<sub>4</sub>), les
+coordonnées (x'<sub>1</sub>, y'<sub>1</sub>), (x'<sub>2</sub>,
+y'<sub>2</sub>), (x'<sub>3</sub>, y'<sub>3</sub>) et (x'<sub>4</sub>,
+y'<sub>4</sub>) des points P'<sub>1</sub>, P'<sub>2</sub>, P'<sub>3</sub>
+et P'<sub>4</sub> sont données par les formules suivantes pour
+les premières coordonnées et des formules similaires pour la seconde.</p>
+
+<table align="center" border="0" cellpadding="0">
+  <tr align="center">
+  <td>x'<sub>1</sub></td>
+  <td> = 1/6</td>
+  <td>(</td>
+  <td>x<sub>1</sub></td>
+  <td>+</td>
+  <td>4x<sub>2</sub></td>
+  <td>+</td>
+  <td>x<sub>3</sub></td>
+  <td></td>
+  <td></td>
+  <td>)</td>
+  </tr>
+  <tr align="center">
+  <td>x'<sub>2</sub></td>
+  <td> = 1/6</td>
+  <td>(</td>
+  <td></td>
+  <td></td>
+  <td>4x<sub>2</sub></td>
+  <td>+</td>
+  <td>2x<sub>3</sub></td>
+  <td></td>
+  <td></td>
+  <td>)</td>
+  </tr>
+  <tr align="center">
+  <td>x'<sub>3</sub></td>
+  <td> = 1/6</td>
+  <td>(</td>
+  <td></td>
+  <td></td>
+  <td>2x<sub>2</sub></td>
+  <td>+</td>
+  <td>4x<sub>3</sub></td>
+  <td></td>
+  <td></td>
+  <td>)</td>
+  </tr>
+  <tr align="center">
+  <td>x'<sub>4</sub></td>
+  <td> = 1/6</td>
+  <td>(</td>
+  <td></td>
+  <td></td>
+  <td>x<sub>2</sub></td>
+  <td>+</td>
+  <td>4x<sub>3</sub></td>
+  <td>+</td>
+  <td>x<sub>4</sub></td>
+  <td>)</td>
+  </tr>
+</table>
+
+<p>Les formules suivantes permettent la transformation inverse</p>
+
+<table align="center" border="0" cellpadding="0">
+  <tr align="center">
+  <td>x<sub>1</sub></td>
+  <td> =</td>
+  <td>6x'<sub>1</sub></td>
+  <td>-</td>
+  <td>7x'<sub>2</sub></td>
+  <td>+</td>
+  <td>2x'<sub>3</sub></td>
+  <td></td>
+  <td></td>
+  </tr>
+  <tr align="center">
+  <td>x<sub>2</sub></td>
+  <td> =</td>
+  <td></td>
+  <td></td>
+  <td>2x'<sub>2</sub></td>
+  <td>-</td>
+  <td>x'<sub>3</sub></td>
+  <td></td>
+  <td></td>
+  </tr>
+  <tr align="center">
+  <td>x<sub>3</sub></td>
+  <td> =</td>
+  <td></td>
+  <td>-</td>
+  <td>x'<sub>2</sub></td>
+  <td>+</td>
+  <td>2x'<sub>3</sub></td>
+  <td></td>
+  <td></td>
+  </tr>
+  <tr align="center">
+  <td>x<sub>4</sub></td>
+  <td> =</td>
+  <td></td>
+  <td></td>
+  <td>2x'<sub>2</sub></td>
+  <td>-</td>
+  <td>7x'<sub>3</sub></td>
+  <td>+</td>
+  <td>6x'<sub>4</sub></td>
+  </tr>
+</table>
+</body>
+</html>

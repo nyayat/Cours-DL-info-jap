@@ -1,0 +1,19 @@
+/* -*- coding: utf-8 -*- */
+/* Time-stamp: <style.css   6 nov 2019 07:53:42> */
+
+.canvas {
+    -fx-background-color:black;
+}
+
+.rectangle, .circle {
+    -fx-fill: red;
+}
+
+.triangle {
+    -fx-fill: blue;
+}
+
+Button {
+    -fx-pref-width: 90;
+    -fx-pref-height: 25;
+}

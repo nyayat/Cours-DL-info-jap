@@ -1,0 +1,7 @@
+Line 1, characters 14-21: Error (typechecking)
+  Type error:
+Expected:
+  int
+Given:
+  mut<int>
+

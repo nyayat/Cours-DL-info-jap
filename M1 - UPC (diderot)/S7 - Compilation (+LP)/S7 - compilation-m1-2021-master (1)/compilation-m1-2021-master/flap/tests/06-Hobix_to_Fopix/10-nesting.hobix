@@ -1,0 +1,9 @@
+val f = \(x) =>
+  val g = \(y) =>
+    (val h = \(z) =>
+      (val i = \(t) => x + y + z + t;
+      i (z + 1));
+    h (y + 1));
+  g (x + 1)
+
+val main = print_int (f (3))

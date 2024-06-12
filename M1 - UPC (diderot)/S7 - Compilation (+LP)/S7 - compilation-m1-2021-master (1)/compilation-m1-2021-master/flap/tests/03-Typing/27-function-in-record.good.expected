@@ -1,0 +1,4 @@
+f : int -> int
+boxed_f : f<int, int>
+apply_boxed_f : [ `a `b] f<`a, `b> * `a -> `b
+main : int

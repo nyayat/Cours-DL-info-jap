@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<!-- Time-stamp: "options.html  20 Jan 2006 16:26:03" -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+  <title>
+  Options sur la ligne de commande
+  </title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="Author" content="Olivier Carton">
+</head>
+
+<body>
+
+<h2>Options sur la ligne de commande</h2>
+
+<p>X permet à l'utilisateur de spécifier des options sur la ligne de
+commande.  C'est un moyen de donner des valeurs aux <A
+href="ressources.html">ressources</a>.  Ces options existent souvent sous
+une forme longue et une forme abrégée (par exemple <tt>-display</tt> ou
+<tt>-d</tt>).  Certaines options sont communes à toutes les applications
+qui utilisent le Xtoolkit.  Les autres sont spécifiques à chaque
+application.  Les principales options sont les suivantes. </p>
+
+<ul>
+<li><tt>-display <i>serveur</i></tt> ou <tt>-d <i>serveur</i></tt> :
+  permet de spécifier le serveur X à laquelle doit se connecter le client.
+  Le paramètre <tt><i>serveur</i></tt> a la forme <i>machine:m.n</i> où
+  <i>machine</i> est le nom ou le numéro IP sur laquelle tourne le serveur,
+   <i>m</i> est le numéro du serveur X sur la machine et <i>n</i> le numéro
+   de l'écran.  En effet plusieurs serveurs X peuvent tourner sur une même
+   machine et un même serveur peut gérer plusieurs écrans.
+</li>
+<li><tt>-geometry <i>dims</i></tt> ou <tt>-g <i>dims</i></tt> : 
+  permet de spécifier la taille et la position de la fenêtre principale de
+  l'application.  Le paramètre <tt><i>dimensions</i></tt> a la forme
+  générale <i>x-dim</i> x <i>y-dim</i> : <i>x-offset y-offset</i> où
+  <i>x-dim</i> et <i>y-dim</i> sont les dimensions horizontale et verticale
+  en pixels de la fenêtre.  Les deux paramètres <i>x-offset</i> et
+  <i>y-offset</i> donnent la position relative du coin en haut et à gauche
+  de la fenêtre dans la fenêtre racine.  Ils commencent par caractère
+  <tt>'+'</tt> si la position a comme origine le coin en haut et à gauche de la
+  fenêtre racine et ils commencent par caractère <tt>'-'</tt> si la position a
+  comme origine le coin en bas et à droite de la fenêtre racine.
+</li>
+<li><tt>-foreground <i>color</i></tt> ou <tt>-fg <i>color</i></tt> :
+  permet de spécifier la couleur d'affichage et des dessins de la fenêtre.
+</li>
+<li><tt>-background <i>color</i></tt> ou <tt>-bg <i>color</i></tt> :
+  permet de spécifier la couleur de fond de la fenêtre.
+</li>
+<li><tt>-reverse</tt> ou <tt>-rv</tt> :
+  permet d'inverser les couleurs d'affichage (foreground) et de fond
+  (background) de la fenêtre. 
+</li>
+<li><tt>-bordercolor <i>color</i></tt> ou <tt>-bd <i>color</i></tt> :
+  permet de spécifier la couleur des bords de la fenêtre.
+</li>
+<li><tt>-borderwidth <i>dim</i></tt> ou <tt>-bw <i>dim</i></tt> :
+  permet de spécifier la taille en pixels des bords de la fenêtre.
+</li>
+<li><tt>-font <i>font</i></tt> ou <tt>-fn <i>font</i></tt> :
+  permet de spécifier la fonte dans laquelle se font les affichages de la
+  fenêtre.
+</li>
+<li><tt>-iconic</tt> :
+  permet de lancer l'application sous forme iconifiée.
+</li>
+<li><tt>-title <i>title</i></tt> ou <tt>-T <i>title</i></tt> :
+  permet de spécifier le titre de la fenêtre.
+</li>
+<li><tt>-name <i>name</i> ou <tt>-n <i>name</i></tt></tt> :
+  permet de spécifier le nom de la fenêtre pour les ressources.
+</li>
+<li><tt>-xrm <i>ressource</i></tt> :
+  permet de spécifier une autre ressource directement en donnant la
+  ressource et sa valeur.
+</li>
+</ul>
+
+</body>
+</html>
+ 

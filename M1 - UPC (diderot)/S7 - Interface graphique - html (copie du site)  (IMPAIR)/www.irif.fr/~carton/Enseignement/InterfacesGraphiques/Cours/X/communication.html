@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<!-- Time-stamp: "communication.html  11 sep 2019 12:38:40" -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+  <title>Communication Client/Serveur</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="Author" content="Olivier Carton">
+</head>
+
+<body>
+<h2>Communication Client/Serveur</h2>
+
+<h3>Requêtes</h3>
+
+<p>Les requêtes sont envoyées au serveur par les client pour lui demander
+d'effectuer une opérations sur l'affichage.  Des exemple de requêtes :</p>
+<ul>
+<li>Création d'une fenêtre</li>
+<li>Affichage de texte ou de graphique dans une fenêtre</li>
+<li>Demande d'information</li>
+</ul>
+<p>Le serveur traite les requêtes dans leur ordre d'arrivée mais pas
+immédiatement.</p>
+
+<h3>Événements</h3>
+
+<p>Les événements sont générés par le serveur et envoyés aux clients en
+réponse à des actions de l'utilisateur.</p>
+<ul>
+<li>33 événements différents</li>
+<li>Envoyés au client par paquet et mis dans une file d'attente</li>
+<li>À chaque événement est associée une structure de données contenant
+  <ul>
+  <li>type</li>
+  <li>fenêtre où il a eu lieu</li>
+  <li>informations spécifiques</li>
+  </ul>
+</li>
+<li>Ils peuvent être visualisés à l'aide du client X <tt>xev</tt>.</li>
+</ul>
+
+<h3>Ressources</h3>
+
+<ul>
+<li>Informations locales (par exemple : couleur, fenêtre, polices de
+  caractères),</li>
+<li>Contrôlées et gérées par le serveur,</li>
+<li>Utilisées et partagées par les clients,</li>
+<li>Identifiées par un entier unique attribué par le serveur (ID),</li>
+<li>Interrogées et modifiées par le client X <tt>xrdb</tt>,</li>
+</ul>
+</body>
+</html>
+
+<h3>Rôle du serveur</h3>
+
+<ul>
+<li>Il traite les sorties graphiques en exécution des requêtes</li>
+<li>Il traite les entrées et les transmets aux clients</li>
+<li>Il ne redessine par le contenu des fenêtres.  Il se contente d'envoyer
+  un événement <tt>expose</tt> pour demander au client de le faire.</li>
+<li>N'interprète pas les entrées clavier et les mouvement de la souris.</li>
+<li>Ne fait pas de gestion logique des fenêtres.  C'est le rôle du 
+  <em>window manager</em>.</li>
+</ul>
+
+<h3>Fenêtres</h3>
+
+<p>C'est l'objet de base sous X-Window.</p>
+<ul>
+<li>Zone rectangulaire de l'écran</li>
+<li>Organisées en arbre 
+  <ul> 
+  <li>La fenêtre racine (root window) occupe tout l'écran.  Elle est crée
+     par le serveur.  Ni sa taille ni sa position ne sont modifiables.</li>
+  <li>Chaque fenêtre autre que la fenêtre racine a une fenêtre mère.
+    Seule la partie à l'intérieur de sa fenêtre mère est visible.</li>
+  <li>Chaque application a une fenêtre principale et des
+    sous-fenêtres.</li>
+  </ul>
+</li>
+<li>Une fenêtre n'est affichée qu'après demande explicite du client 
+  <ul>
+  <li>La création de la fenêtre crée aussi les ressources.</li>
+  <li>L'affiche provoque l'affichage réel à l'écran.  
+  </ul>
+</li>
+<li>Visibilité 
+  <ul>
+  <li>Ancêtre non visualisé</li>
+  <li>Tronquée par une ascendante</li>
+  <li>Éventuellement occulté par une <em>cousine</em></li>
+  </ul>
+</li>
+</ul>
+
+<h3>Gestion des fenêtres (Window manager)</h3>
+
+<ul>
+<li>Contrôle la taille et la position des fenêtres</li>
+<li>Contrôle l'ordre d'entassement des fenêtres</li>
+<li>Client privilégié qui demande au serveur de dérouter vers lui
+  certaines requêtes (un seul client de ce type à chaque instant)</li>
+<li>Définition d'un protocole (ICCCM) que tout gestionnaire de fenêtres
+  et toute application soit respecter pour des communications
+  harmonieuses</li>
+</ul>
+
+<h3>Programmation et librairies</h3>
+
+<ul>
+<li>Xlib : ensemble complet de fonction permettant le contrôle et l'accès
+  à toutes les ressources.  C'est une bibliothèque de bas niveau. </li>
+<li>X ne fournit pas d'interface graphique standard.</li>
+<li>Boîtes à outils (toolkit) construits au dessus de Xlib 
+  <ul>
+  <li>X Toolkit (MIT)</li>
+  <li>Open look (DEC)</li>
+  <li><a href="http://www.motifzone.net/">Motif (OSF)</a></li>
+  <li><a href="http://www.gtk.org/">GTK</a></li>
+  <li><a href="http://www.trolltech.com">Qt</a></li>
+  <li><a href="http://www.wxwindows.org/">wxWindows</a></li>
+  </ul>
+<li>Gain de programmation de 80%</li>
+</ul>

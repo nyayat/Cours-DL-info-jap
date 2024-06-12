@@ -1,0 +1,9 @@
+external printf
+
+globals ()
+  l00: %rdi <- copy "%c\n";
+  l01: %rsi <- copy 'a';
+  l02: %rax <- copy 0;
+  l03: printf();
+  l04: exit;
+end

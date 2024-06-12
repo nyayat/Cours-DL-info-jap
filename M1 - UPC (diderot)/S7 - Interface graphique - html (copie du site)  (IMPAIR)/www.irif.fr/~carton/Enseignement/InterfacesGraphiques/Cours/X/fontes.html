@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3c.org/TR/xhtml1/DTD/transitional.dtd" >
+<!-- Time-stamp: "fontes.html  10 Aug 2005 14:31:12" -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+  <title>
+  Fontes sous X
+  </title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="Author" content="Olivier Carton">
+</head>
+
+<body>
+
+<h2>Fontes sous X</h2>
+
+<h3>Nomenclature</h3>
+
+<p>Sous X, le nom d'une fonte est formé à partir des caractéristiques
+principales de celle-ci.  Le nom d'une fonte a la forme 
+<em>-fonderie-famille-poids-inclinaison-largeur-taille en pixels-taille en
+dixième de points-résolution horizontale en dpi-résolution verticale en
+dpi-espacement-largeur moyenne en dixième de pixels-ensemble de
+caractères</em>.  Ces caractéristiques sont les suivantes.</p>
+
+<dl>
+<dt>fonderie</dt>
+<dd>fabriquant de la la fonte.  Des valeurs possibles sont <em>adobe</em>,
+  <em>B&amp;H</em>, <em>Schumacher</em>, &hellip;</dd>
+<dt>famille</dt>
+<dd>nom génériques de la fonte.  Des valeurs possibles sont
+  <em>helvetica</em>, <em>lucida</em>, <em>times</em>, <em>courier</em>,
+  &hellip;</dd>
+<dt>poids</dt>
+<dd>épaisseur de la fonte.  Les valeurs possibles sont <em>regular</em>,
+  <em>medium</em>, <em>demibold</em> et <em>bold</em> par épaisseur
+  croissante. </dd>
+<dt>inclinaison</dt>
+<dd>Les valeurs possibles sont <em>i</em>, <em>o</em> et <em>r</em>.</dd>
+<dt>largeur</dt>
+<dd>Les valeurs possibles sont <em>normal</em> et <em>semicondensed</em>.</dd>
+<dt>taille en pixel</dt>
+<dd></dd>
+<dt>taille en dixième de points</dt>
+<dd></dd>
+<dt>résolution horizontale en dpi</dt>
+<dd></dd>
+<dt>résolution verticale en dpi</dt>
+<dd></dd>
+<dt>espacement</dt>
+<dd></dd>
+<dt>largeur moyenne en dixième de pixels</dt>
+<dd></dd>
+<dt>ensemble de caractères</dt>
+<dd></dd>
+</dl>
+
+Le caractère * peut être utilisé pour remplacer un ou
+plusieurs champs.</p>
+
+<h3>Fichiers</h3>
+
+<p>Les fichiers de fontes se trouvent dans des répertoires particuliers.
+Chacun de ces répertoires contient un fichier <a
+href="fonts.dir"><tt>fonts.dir</tt></a> qui contient des couples (<em>nom
+de fichier, nom de fonte</em>) permettant de faire les correspondances.
+Ces fichiers sont créés grâce à l'utilitaire <tt>mkfontdir</tt>.  Un
+répertoire de fontes peut aussi contenir un fichier <a
+href="fonts.alias"><tt>fonts.alias</tt></a> qui contient des couples
+(<em>alias, nom de fonte</em>) qui donnent des noms courts à des fontes
+très utilisées.</p>
+
+<h3>Serveur de fontes</h3>
+
+<p>Les serveurs X n'ont pas en mémoire toutes les fontes disponibles.  Ils
+les chargent au fur et à mesure des besoins.  Lorsque plusieurs serveurs X
+partagent les fontes, il est judicieux d'installer un serveur de fontes.
+Il s'agit d'un démon auquel se connectent les serveurs X pour obtenir de
+nouvelles fontes.</p>
+
+</body>
+</html>

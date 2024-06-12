@@ -1,0 +1,19 @@
+external printf
+
+def print_two_int ()
+  rax: %rax <- copy %rdi;
+  rbx: %rbx <- copy %rsi;
+  l10: %rdi <- copy "%d %d\n";
+  l11: %rsi <- copy %rax;
+  l12: %rdx <- copy %rbx;
+  l13: %rax <- copy 0;
+  l14: printf();
+  l15: ret;
+end
+
+globals (x)
+  l01: %rdi <- copy 37;
+  l02: %rsi <- copy 73;
+  l03: print_two_int();
+  l04: exit;
+end

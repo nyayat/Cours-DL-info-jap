@@ -1,0 +1,7 @@
+Line 12, characters 4-113: Error (typechecking)
+  Type error:
+Expected:
+  `b -> (`a -> `c)
+Given:
+  `a -> (`b -> `c)
+

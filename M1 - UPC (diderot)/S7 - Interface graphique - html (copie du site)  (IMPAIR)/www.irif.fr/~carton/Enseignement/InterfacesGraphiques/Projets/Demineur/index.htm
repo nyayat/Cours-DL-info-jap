@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<!-- Time-stamp: "index.html   3 Feb 2006 08:29:12" -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+  <title>
+  Projet de démineur
+  </title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="Author" content="Olivier Carton">
+</head>
+
+<body>
+<h1 align="center">Projet de Démineur</h1>
+<h2 align="center">Projet d'interfaces graphiques</h2>
+
+<h2>Modalités</h2> 
+
+<p>Le projet sera écrit en Java en utilisant SWING.  Il sera réalisé par
+binômes (2 personnes).  Un dossier comportant le rapport et un listing
+commenté des programmes écrits sera rendu au secrétariat de la licence
+avant le <b>lundi 9 mai 2005</b>.</p>
+
+<p>L'objectif du projet est de mettre en &oelig;uvre les techniques de la
+programmation orientée objet afin de réaliser avec SWING une interface
+utilisateur.  L'évaluation prendra très largement en compte l'architecture
+globale du programme, l'utilisation appropriée des objets SWING ainsi que
+la qualité de l'interface offerte à l'utilisateur.  Ce dernier point
+comprend en particulier la lisibilité, l'ergonomie et la cohérence de
+l'interface.</p>
+
+<h2>Objectif</h2> 
+
+<p>L'objectif du projet est de réaliser une interface permettant de jouer
+au démineur.</p>
+
+<h2>Description</h2>
+
+<p>Le <em>démineur</em> se joue seul sur une grille rectangulaire.
+Certaines cases de la grille contiennent une mine et d'autres rien.  Au
+départ, les contenus des cases sont invisibles (couverts) et le but est de
+découvrir quelles cases contiennent une mine.</p>
+
+<p>Le jeu se découle de la manière suivante. Le joueur sélectionne une case
+encore couverte pour découvrir son contenu.  Si la case contient une mine,
+la partie est terminée et le joueur a perdu.  Si la case ne contient rien,
+elle affiche le nombre de mines contenues dans les cases adjacentes et la
+partie se poursuit.  La partie se termine lorsque le joueur a découvert
+toutes les cases.</p>
+
+<p>Par cases <em>adjacentes</em>, on entend les cases qui touchent la case
+par un côté ou un coin.  Une case au centre de la grille a donc 8 cases
+adjacentes.  Les cases le long du bord en ont 5 et celles des coins 3.</p>
+
+
+<h2>Réalisation</h2>
+
+<p>Rien n'est vraiment imposé dans l'interface.  Celle-ci pourra comporter
+des menus, des boutons, des menus contextuels (popup menu) et tout ce que
+SWING fournit.  Lorsque l'AWT et SWING offrent des fonctionnalités
+similaires, les objets SWING doivent être utilisés en priorité.
+L'interface doit proposer au joueur une configuration initiale et gérer une
+notion de score.  Ce score pourra prendre en compte le nombre de cases
+découvertes et le temps écoulé pour finir la partie.  On pourra faire
+varier la difficulté de la partie en changeant le nombre total de mines
+contenues dans la grille.</p>
+
+<p>L'interface devra aussi offrir à l'utilisateur la possibilité de sauver
+une partie en cours et de reprendre une partie sauvée au préalable.  Ceci
+pourra se faire grâce à la sérialisation d'objets mais une meilleure
+solution consiste à utiliser 
+<a href="http://www.liafa.jussieu.fr/~carton/Enseignement/XML/">XML</a>.</p>
+
+<p>L'interface devra aussi permettre à l'utilisateur de revenir en arrière
+dans la partie en annulant un certain nombre des derniers mouvements.  Il
+sera alors possible de repartir en avant en effectuant à nouveau les
+mouvements annulés.</p>
+
+<p>Les extensions possibles de ce projet sont nombreuses.  Libre à vous
+d'ajouter des fonctionnalités.  Il est cependant conseillé de ne pas
+sacrifier la qualité à la quantité.  Un programme minimal (c'est-à-dire
+correspondant à ce qui est demandé) mais bien conçu est nettement
+préférable à un projet plus large mais moins abouti.</p>
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+/* Time-stamp: <style.css  14 Jun 2006 18:04:37> */
+/* Feuille de style */
+
+/* Fond blanc */
+body { background-color: white; }
+
+/* Equations et figures centrées */
+p.equation, p.figure {
+   text-align: center;
+}
+
+/* Zone de code : fond jaune clair, bordure noire et marges */
+pre {
+    background-color: #ffffcc;
+    border: 1px solid black;
+    margin: 10px;
+    padding: 5px;
+}

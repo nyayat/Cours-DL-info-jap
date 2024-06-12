@@ -1,0 +1,98 @@
+external printf
+
+def fact ( )
+local x:
+ f1: jumpif lte %rdi, 1 -> f2, f4;
+ f2: %rax <- copy 1;
+ f3: ret;
+ f4: x <- copy %rdi;
+ f5: %rdi <- sub %rdi, 1;
+ f6: fact();
+ f7: %rax <- mul %rax, x;
+ f8: ret;
+end
+
+def fact_tailrec_body ( )
+ ft1: jumpif lte %rdi, 1 -> ft2, ft4;
+ ft2: %rax <- copy %rsi;
+ ft3: ret;
+ ft4: %rsi <- mul %rsi, %rdi;
+ ft5: %rdi <- sub %rdi, 1;
+ ft6: fact_tailrec_body ( ) tail;
+end
+
+def fact_tailrec ( )
+  ftr1: %rsi <- copy 1;
+  ftr2: fact_tailrec_body ( ) tail;
+end
+
+def fact_iter ( )
+ y1: %rax <- copy 1;
+ y2: jumpif lte %rdi, 1 -> y6, y3;
+ y3: %rax <- mul %rax, %rdi;
+ y4: %rdi <- sub %rdi, 1;
+ y5: jump y2;
+ y6: ret;
+end
+
+def fact_adapt ( )
+  o1: switch %rdi -> o11, o11, o13, o15, o17, o19 orelse oE;
+  o11: %rax <- copy 1;
+  o12: ret;
+  o13: %rax <- copy 2;
+  o14: ret;
+  o15: %rax <- copy 6;
+  o16: ret;
+  o17: %rax <- copy 24;
+  o18: ret;
+  o19: fact ( ) tail;
+  oE: fact_iter ( ) tail;
+end
+
+def test_fact_impl ( )
+local saved_r12:
+ tf0: saved_r12 <- copy %r12;
+ tf1: %rax <- copy %rdi;
+ tf2: %rdi <- copy %rsi;
+ tf3: %rbx <- copy %rdx;
+ tf4: %r12 <- copy %rsi;
+ tf5: call %rax ();
+ tf6: %rdi <- copy "%s(%d) = %d\n";
+ tf7: %rsi <- copy %rbx;
+ tf8: %rdx <- copy %r12;
+ tf9: %rcx <- copy %rax;
+ tf10: %rax <- copy 0;
+ tf11: printf ();
+ tf12: %r12 <- copy saved_r12;
+ tf13: ret;
+end
+
+globals ( )
+local saved_r12, saved_r13:
+ xx: saved_r12 <- copy %r12;
+ xy: saved_r13 <- copy %r13;
+ x0: %r12 <- copy 30;
+ x1: %r13 <- copy 1;
+ x2: jumpif lte %r13, %r12 -> x3, xEND;
+ x3: %rdi <- copy &fact;
+ x4: %rsi <- copy %r13;
+ x5: %rdx <- copy "fact";
+ x6: test_fact_impl ( );
+ x7: %rdi <- copy &fact_iter;
+ x8: %rsi <- copy %r13;
+ x9: %rdx <- copy "fact_iter";
+ x10: test_fact_impl ( );
+ x11: %rdi <- copy &fact_adapt;
+ x12: %rsi <- copy %r13;
+ x13: %rdx <- copy "fact_adapt";
+ x14: test_fact_impl ( );
+ x15: %rdi <- copy &fact_tailrec;
+ x16: %rsi <- copy %r13;
+ x17: %rdx <- copy "fact_tailrec";
+ x18: test_fact_impl ( );
+ x19: %r13 <- add %r13, 1;
+ x20: jump x2;
+ xEND: %r12 <- copy saved_r12;
+ xEND0: %r13 <- copy saved_r13;
+ xEND1: exit;
+end

@@ -1,0 +1,2 @@
+Line 11, characters 17-35: Error (typechecking)
+  Invalid number of types in instantiation: 1 given while 2 were expected.

@@ -1,0 +1,7 @@
+(executable
+        (name marthe)
+        )
+
+(ocamllex (modules lexer))
+(menhir (modules parser) (infer true) (flags --explain))
+

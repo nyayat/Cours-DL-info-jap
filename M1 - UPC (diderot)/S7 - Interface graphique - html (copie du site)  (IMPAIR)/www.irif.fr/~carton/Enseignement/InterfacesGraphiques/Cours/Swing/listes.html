@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd" >
+<!-- Time-stamp: "listes.html   9 Feb 2005 15:53:56" -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr">
+<head>
+  <title>
+  Listes
+  </title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="Author" content="Olivier Carton">
+</head>
+
+<body>
+
+<h1>Listes</h1>
+
+<p>Les listes sont manipulées en Swing avec la classe <tt>JList</tt>.
+Les principales fonctionalitées offertes sont les suivantes.</p>
+
+<ul>
+<li>Les listes Swing utilisent l'architecture Modèle/Vue/Contrôleur.  La
+   gestion des éléments de la liste est confiée à un objet qui implémente
+   l'interface <tt>ListModel</tt>.  L'affichage proprement dit des objets
+   est confié à un objet qui implémente l'interface
+   <tt>ListCellRenderer</tt>. 
+</li>
+<li>Trois modes de selections sont offerts.  La gestion des éléments
+   selectionnés est déléguée à un objet qui implémente l'interface 
+   <tt>ListSelectionModel</tt>.
+</li>
+<li>Les listes implémentent l'interface <tt>Scrollable</tt> et peuvent
+  donc être placées dans un conteneur <tt>JScrollPane</tt> avec des
+   ascenseurs.
+</li>
+</ul>
+
+<h2>Utilisation simple</h2>
+
+<p>La classe <tt>JList</tt> a un contructeur qui prend en paramètre 
+un tableau de valeur à mettre dans la liste.  C'est la façon la plus
+simple de créer une liste avec des valeurs initiales.</p>
+
+<p>La ou les valeurs sélectionnées sont récupérées par les quatre
+méthodes.</p>
+<ul>
+<li><tt>Object getSelectedValue()</tt></li>
+<li><tt>Object[] getSelectedValues()</tt></li>
+<li><tt>int getSelectedIndex()</tt></li>
+<li><tt>int[] getSelectedIndices()</tt></li>
+</ul>
+
+<h2>Modèle de données</h2>
+
+<p>Les éléments d'une liste sont gérés par un objet qui implémente
+l'interface <tt>ListModel</tt>.  La classe <tt>DefaultListModel</tt>
+fournit une implémentation par défaut de cette interface.  Cette classe
+dérive de la classe <tt>AbstractListModel</tt> qui est en quelque sorte
+l'implémentation minimale de l'interface.  De cette classe dérivent aussi
+par exemple les classes <tt>BasicDirectoryModel</tt> et
+<tt>DefaultComboBoxModele</tt>.  Il est conseillé de partir de cette classe
+pour écrire une nouvelle classe implémentant <tt>ListModel</tt>.</p>
+
+<p>Lorsque qu'on crée une <tt>JList</tt> en passant un tableau en
+paramètre du contructeur, l'objet qui gère les éléments de la liste n'est
+pas de la classe <tt>DefaultListModel</tt>.  Il est d'une classe interne
+à la classe <tt>JList</tt>.  Pour être sûr que cette objet soit de la
+classe <tt>DefaultListModel</tt>, il faut le créer explicitement et le
+passer en paramètre du contructeur de <tt>JList</tt>.</p>
+
+<p>Le modèle gérant les données de la liste est retourné par la méthode 
+<tt>getModel</tt>.  Il peut être changé par la méthode
+<tt>setModel(ListModel)</tt>.</p>
+
+<h2>Modèle de selection</h2>
+
+<p>Il existe trois modes de selection des éléments qui sont les suivants.
+</p> 
+<ul>
+<li>Sélection simple (<tt>SINGLE_SELECTION</tt>) : un seul élément de la
+  liste peut être selectonné. </li>
+<li>Sélection par intervale (<tt>SINGLE_INTERVAL_SELECTION</tt>) :
+  plusieurs éléments contigus peuvent être selectionnés.</li>
+<li>Sélection multiple (<tt>MULTIPLE_INTERVAL_SELECTION</tt>) :
+  un sous-ensemble quelconque des éléments peuvent être sélectionnées.</li>
+</ul>
+
+<p>Sous unix, les sélections des éléments se fait par des cliques de
+souris avec éventuellement les modificateurs Shift et Control.  La
+sélection directe d'un élément (sans modificateur) désélectionne
+automatiquement tous les éléments sélectionnés auparavant.  La sélection
+avec Shif inclut tous les éléments entre le dernier et l'avant-dernier
+sélectionnés.  La sélection avec Control permet de sélectionner de nouveaux
+éléments sans désélectionner ceux qui le sont déjà.</p>
+
+<p>Le mode de sélection peut être changé en appelant la méthode
+<tt>setSelectionMode(int)</tt> qui prend en paramètre une des constantes
+<tt>SINGLE_SELECTION</tt>, <tt>SINGLE_INTERVAL_SELECTION</tt> ou
+<tt>MULTIPLE_INTERVAL_SELECTION</tt> définies dans l'interface
+<tt>ListSelectionModel</tt>.</p>
+
+<p>La gestion des éléments sélectionnés est déléguée à un objet qui
+implémente l'interface <tt>ListSelectionModel</tt>.  La classe
+<tt>DefaultListSelectionModel</tt> fournit une implémentation par défaut de
+cette interface.</p>
+
+</body>
+</html>

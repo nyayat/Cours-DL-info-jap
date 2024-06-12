@@ -1,0 +1,12 @@
+external printf
+
+globals (x)
+  l11: jumpif lt 1, 0 -> l17, l20;
+  l17: %rdi <- copy "lt\n";
+  l18: printf();
+  l19: exit;
+  l20: %rdi <- copy "not lt\n";
+  l21: %rax <- copy 0;
+  l22: printf();
+  l23: exit;
+end

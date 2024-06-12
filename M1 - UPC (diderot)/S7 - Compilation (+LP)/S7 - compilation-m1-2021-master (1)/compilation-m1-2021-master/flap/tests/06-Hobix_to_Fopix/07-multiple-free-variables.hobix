@@ -1,0 +1,7 @@
+val f = \(z) =>
+    val x = z + 1;
+    val y = x;
+    val t = 0;
+    \(k) => k + x
+
+val main = print_int (f (21) (20))
