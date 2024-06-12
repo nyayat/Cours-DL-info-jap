@@ -1,0 +1,87 @@
+open Globals
+open Utilities
+
+(* Robot nodes *)
+
+fun car_geometry(phase : phase; vec : float^2)
+        returns (newpos : position; newphase : phase)
+let
+  newphase = { phase with .ph_pos = newpos };
+  newpos = vec2pos(vec_add2(pos2vec(phase.ph_pos),
+                                mat_vec_prod2(mat_rot(phase.ph_head),
+                                              vec)));
+tel
+
+node driver(top : bool; sens : sensors; itr : interrupt; iti : itielts)
+   returns (rspeed : wheels; sta : status)
+let
+  automaton
+    state Preparing
+      do rspeed = idlew;
+         sta = Preparing
+      until top then Running
+
+    state Running
+      var arriving : bool;
+      do (rspeed, arriving) = Control.controller(sens, iti);
+         sta = Running
+      until arriving then Arrived | itr = Halt then Stopped
+
+    state Arrived
+      do rspeed = idlew;
+         sta = Arrived
+
+    state Stopped
+      do rspeed = idlew;
+         sta = Stopped
+  end
+tel
+
+(* Kinematic model of the car. At the beginning the robot can be positionned
+   arbitrarily after "top" pressed, it runs according to physics. *)
+node physical_model(top : bool; rspeed : wheels; ini_ph : phase)
+           returns (ph : phase)
+var last alpha0 : float; last x0 : float; last y0 : float;
+let
+  automaton
+    state Positioning
+      var dummy : phase; pos : position;
+      do (pos, dummy) = car_geometry(ini_ph, [ -. cDELTA, 0.0]);
+         x0 = pos.x;
+         y0 = pos.y;
+         alpha0 = ini_ph.ph_head;
+         ph = { ini_ph with .ph_vel = 0.0 };
+      until top then On
+
+    state On
+      var si, co, alpha, vL, vR, v : float; dummy : position;
+      do si = Mathext.sin((alpha *. pi) /. 180.0);
+         co = Mathext.cos((alpha *. pi) /. 180.0);
+         vL = Utilities.bound(rspeed.left, cMAXWHEEL) *. ((pi *. cD) /. 360.0);
+         vR = Utilities.bound(rspeed.right, cMAXWHEEL) *. ((pi *. cD) /. 360.0);
+         v = (vL +. vR) /. 2.0;
+         alpha =
+           Utilities.normalize(Utilities.integrator(
+                (vR -. vL) *. 180.0 /. (pi *. cB),
+                timestep,
+                alpha0));
+         (dummy, ph) = car_geometry({
+                            ph_pos = {
+                              x = Utilities.integrator(v *. co, timestep, x0);
+                              y = Utilities.integrator(v *. si, timestep, y0)
+                            };
+                            ph_vel = v;
+                            ph_head = alpha
+                          }, [ cDELTA, 0.0 ]);
+  end
+tel
+
+node simulate(iti : itielts; sens : sensors;
+              itr : interrupt; ini_ph : phase;
+              top : bool)
+     returns (ph : phase; sta : status)
+var rspeed : wheels;
+let
+  (rspeed, sta) = driver(top, sens, itr, iti);
+  ph = physical_model(top, rspeed, ini_ph);
+tel

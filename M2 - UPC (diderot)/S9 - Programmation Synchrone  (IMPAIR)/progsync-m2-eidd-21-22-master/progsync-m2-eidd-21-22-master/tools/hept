@@ -1,0 +1,163 @@
+#!/usr/bin/env bash
+
+# Functions
+
+VERBOSE=0
+MAXSTEP=0
+
+binary_exists() {
+    if ! command -v $1 &> /dev/null
+    then
+        cat <<EOF
+Command "$1" could not be found in \$PATH.
+Hint: $2
+EOF
+        exit 1
+    fi
+}
+
+help() {
+    cat <<EOF >&2
+Usage: $0 [OPTIONS] file.ept
+Options:
+        -s <node_name>       Simulate node <node_name>
+        -t                   Simulate in text mode
+        -g                   Simulate in graphical mode (hepts)
+        -m <maximum>         Stop after <maximum> steps in text mode
+        -c                   Check for required tools and terminate
+        -v                   Print internal information
+EOF
+}
+
+info() {
+    if [ $VERBOSE -ne 0 ]; then echo $1; fi
+}
+
+warn() {
+    echo -e "\e[93m$1\e[0m" >&2
+}
+
+die() {
+    echo -e "\e[31m$1\e[0m" >&2
+    exit 1
+}
+
+cmd() {
+    if [ $VERBOSE -ne 0 ]; then echo $1; fi
+    command $1
+}
+
+# Entry point
+
+VERBOSE=0
+if ! command -v hepts &> /dev/null
+then
+    GRAPHICAL=0
+else
+    GRAPHICAL=1
+fi
+
+NODES=""
+
+while getopts "cvs:htgm:" OPT
+do
+    case "${OPT}" in
+        v)
+            VERBOSE=1
+            ;;
+        s)
+            NODES="${NODES} ${OPTARG}"
+            ;;
+        t)
+            GRAPHICAL=0
+            ;;
+        g)
+            GRAPHICAL=1
+            ;;
+        h)
+            help
+            exit 0
+            ;;
+        c)
+            binary_exists "realpath" "brew install coreutils"
+            binary_exists "gcc" "use the package manager of your Linux distro"
+            binary_exists "heptc" "opam install heptagon"
+            binary_exists "hepts" "opam install lablgtk heptagon"
+            echo "All tools seem to be available, $0 ready to run simulations"
+            exit 0
+            ;;
+        m)
+            MAXSTEP=$(expr ${OPTARG})
+            ;;
+        ?)
+            help
+            ;;
+    esac
+done
+shift $((OPTIND-1))
+
+if [ $# -lt 1 ]
+then
+    help
+    exit 1
+fi
+
+if [ $GRAPHICAL -eq 1 ]
+then
+    binary_exists "hepts" "opam install lablgtk heptagon"
+fi
+binary_exists "heptc" "opam install heptagon"
+binary_exists "gcc" "use the package manager of your Linux distro"
+binary_exists "realpath" "brew install coreutils"
+
+CDIR=`pwd`
+FILE=$1
+TMPDIR=`mktemp -d`
+BASENAME=`basename $1 .ept`
+MOD="$(tr '[:lower:]' '[:upper:]' <<< ${BASENAME:0:1})${BASENAME:1}"
+BIN=$BASENAME.bin
+
+info "Entering temporary dir $TMPDIR"
+
+cp $FILE $TMPDIR
+cd $TMPDIR
+
+if [ "$NODES" = "" ]; then
+    warn "No node specified. In $FILE, there is:"
+    egrep -oh '(node|fun) *(\w+)' "$FILE"
+fi
+
+for NODE in $NODES
+do
+    info "Simulating node $NODE in $FILE"
+
+    if [ $GRAPHICAL -eq 1 ]
+    then
+        cmd "heptc -target c -s $NODE -hepts $FILE"
+    else
+        cmd "heptc -target c -s $NODE $FILE"
+    fi
+    if [ $? -ne 0 ]; then exit 1; fi
+
+    DIRN=${BASENAME//-/lex45_}_c
+    [ -d ${DIRN} ] || die "Could not find directory ${DIRN}"
+
+    cd ${DIRN}
+    cmd "gcc -I `heptc -where`/c *.c -o ../$BIN"
+    if [ $? -ne 0 ]
+    then
+        die "Could not compile the generated C code in $TMPDIR"
+    fi
+    cd ..
+
+    info "Running simulation of $NODE"
+
+    if [ $GRAPHICAL -eq 1 ]
+    then
+        cmd "hepts -mod $MOD -node $NODE -exec "`realpath $TMPDIR/$BIN`""
+    else
+        cmd "`realpath $TMPDIR/$BIN` ${MAXSTEP}"
+    fi
+    if [ $? -ne 0 ]; then die "Could not simulate node $NODE"; fi
+done
+info "Finished simulation"

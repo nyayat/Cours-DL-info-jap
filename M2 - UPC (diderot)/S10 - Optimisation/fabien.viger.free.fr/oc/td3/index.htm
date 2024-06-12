@@ -1,0 +1,273 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <title>Optimisation Combinatoire: TD 3</title>
+  <style type="text/css">
+    .blue { color: #0000ff }
+    .xslt { color: #116611 }
+    .cc { color: #116611 }
+    .html { color: #882222 }
+    .xml { color: #116611 }
+    .red { color: #ff0000 }
+    .orange { color: #ff8800 }
+    .pink { color: #ff00ff }
+    .grey { color: #555555 }
+    .hidden { color: #ffffff }
+    .bigsep { width: 50px }
+    .verticalline { border-left: solid #000000; }
+    .framed { border: solid #000000; }
+    .footnote { }
+    pre { color: #116611 }
+    tt { color: #116611 }
+  </style>
+  <!-- Google Analytics -->
+  <script type="text/javascript" async="" src="../../ga.js"></script>
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-20097933-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+  <!-- Syntax highlighting -->
+  <link type="text/css" rel="stylesheet" href="../../highlight/styles/googlecode.css">
+  <script type="text/javascript" src="../../highlight/highlight.pack.js"></script>
+  <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+<h2>TD 3: Arbres. Programmation Dynamique. DAGs.</h2>
+
+<h3>Rappels</h3>
+<ul>
+<li><a href="../cours/3.html">Page du Cours 3</a></li>
+<li><a href="../rendu.html">Procédure de rendu</a></li>
+<li>Heure limite de rendu du TD: <b class="pink">ce soir à 23h59</b>.</li>
+<li> Pour exécuter les tests : téléchargez <a href="test.tar.gz" download=""><tt>test.tar.gz</tt></a> et décompressez-le dans votre répertoire de travail </li>
+</ul>
+
+<hr>
+<h3>Exercice 1: Arbres</h3>
+<ol>
+  <li>
+    <b>Implémentez</b> dans un fichier <tt>tree.1.cc</tt> la fonction <tt>ParentVectorToChildVector(...)</tt> décrite dans le fichier <a href="tree.1.h" download="">tree.1.h</a>:
+    <pre><code class="c++">#ifndef __TREE_1_H
+#define __TREE_1_H
+
+#include &lt;vector&gt;
+using namespace std;
+
+// Entrée: le tableau de parents d'un arbre enraciné (ou d'une forêt d'arbres
+// enracinés): parent[i] = -1 si le noeud i est une racine, et sinon c'est
+// le noeud parent de i dans l'arbre qui contient i.
+//
+// Sortie: le tableau des liste d'enfants: l'élément i du tableau de sortie
+// est un vector&lt;int&gt; listant tous les enfants du noeud i (il pourra etre
+// vide si i n'a pas d'enfants), dans un ordre quelconque.
+//
+// Exemple:
+//
+//    .3.     vector&lt;int&gt; parents = [3, 2, 3, -1, 3, 1]  // size()=6 = num nodes
+//   .'|'.
+//  2  0  4   vector&lt;vector&lt;int&gt;&gt; enfants = [ [],
+//  |                                         [5],
+//  1                                         [1],
+//  |                                         [2, 0, 4],
+//  5                                         [],
+//                                            [] ]
+vector&lt;vector&lt;int&gt;&gt; ParentVectorToChildrenVector(const vector&lt;int&gt;&amp; parent);
+
+#endif  // __TREE_1_H
+</code></pre>
+  La complexité devra être O(N), où N est le nombre de noeuds de l'arbre (qui est égale à la taille du <tt>vector&lt;int&gt;</tt> donné en argument).
+    <br><br><b>Test</b>: <tt>make tree.1</tt>
+<!--    <pre>-->
+<!--    rm test.tar.gz; wget --no-cache <a href="test.tar.gz" download>http://fabien.viger.free.fr/oc/td3/test.tar.gz</a>-->
+<!--tar xf test.tar.gz-->
+<!--make tree.1</pre>-->
+    <br><br><b class="orange">RENDU</b>: <tt>tree.1.cc</tt>
+    <br><br>
+  </li>
+  <li>
+    <b>Implémentez</b> dans un fichier <tt>tree.2.cc</tt> la fonction <tt>Height()</tt> décrite dans le fichier <a href="tree.2.h" download="">tree.2.h</a>:
+    <pre><code class="c++">#ifndef __TREE_2_H
+#define __TREE_2_H
+
+#include &lt;vector&gt;
+using namespace std;
+
+// Entrée: un arbre, représenté par son tableau d'enfants (la sortie de la fonction
+// faite dans la question précédente), et un noeud X de cet arbre.
+//
+// Sortie: la hauteur du sous-arbre de X: 0 si X n'a pas d'enfant, 1 si X n'a que des
+// enfants qui n'ont eux-mêmes pas d'enfants, etc.
+//
+// Indice: la fonction pourra être récursive.
+// 
+// Exemple:
+//    .3.     vector&lt;vector&lt;int&gt;&gt; enfants = [ [], [], [1], [2, 0, 4], [] ]
+//   .'|'.
+//  2  0  4   -&gt; Height(enfants, 0) = 0 ;   Height(enfants, 1) = 0
+//  |         -&gt; Height(enfants, 2) = 1 ;   Height(enfants, 3) = 2
+//  1         -&gt; Height(enfants, 4) = 0
+int Height(const vector&lt;vector&lt;int&gt;&gt;&amp; enfants, int node);
+
+#endif  // __TREE_2_H
+</code></pre>
+    La complexité devra être O(taille du sous-arbre).
+    <br><br><b>Test</b>: <tt>make tree.2</tt>
+    <br><br><b class="orange">RENDU</b>: <tt>tree.2.cc</tt>
+    <br><br>
+  </li>
+  <li>
+    <b>Implémentez</b> dans un fichier <tt>tree.3.cc</tt> la fonction <tt>AllHeights()</tt> décrite dans le fichier <a href="tree.3.h" download="">tree.3.h</a>:
+    <pre><code class="c++">#ifndef __TREE_3_H
+#define __TREE_3_H
+
+#include &lt;vector&gt;
+using namespace std;
+
+// Entrée: un arbre, représenté par son tableau d'enfants (la sortie de la
+// fonction faite dans la question précédente).
+//
+// Sortie: les hauteurs de tous les noeuds de l'arbre (le tableau des valeurs
+// de Height(i) pour tous les noeuds i de 0 à N-1).
+//
+// Complexité: O(N).
+//
+// Indice: vous pourrez utiliser une fonction auxilliaire récursive, déclarée
+// et définie dans le .cc, qui ressemblera beaucoup à la Height() de la
+// question précédente, à la différence qu'elle utilisera la mémorisation.
+// 
+// Exemple:
+//    .3.     vector&lt;vector&lt;int&gt;&gt; enfants = [ [], [], [1], [2, 0, 4], [] ]
+//  .' | '.
+//  2  0  4   -&gt; AllHeights(enfants) = [0, 0, 1, 2, 0]
+//  |
+//  1
+vector&lt;int&gt; AllHeights(const vector&lt;vector&lt;int&gt;&gt;&amp; enfants);
+
+#endif  // __TREE_3_H
+</code></pre>
+    La complexité devra être O(N), où N est le nombre de noeuds total.
+    <br><br><b>Test</b>: <tt>make tree.3</tt>
+    <br><br><b class="orange">RENDU</b>: <tt>tree.3.cc</tt>
+    <br><br>
+  </li>
+  <li>
+    <b>Implémentez</b> dans un fichier <tt>tree.4.cc</tt> la fonction <tt>AllSubtreeSizes()</tt> décrite dans le fichier <a href="tree.4.h" download="">tree.4.h</a>:
+    <pre><code class="c++">#ifndef __TREE_4_H
+#define __TREE_4_H
+
+#include &lt;vector&gt;
+using namespace std;
+
+// Exactement comme la question précédente, mais cette fois on calcule pour
+// chaque noeud i la taille de son sous-arbre (nombre de noeuds, i inclus, qui
+// sont descendants de i).
+// 
+// Indices: le code ressemble beaucoup à la question précédente.
+//
+// Exemple:
+//    .3.     vector&lt;vector&lt;int&gt;&gt; enfants = [ [], [], [1], [2, 0, 4], [] ]
+//  .' | '.
+//  2  0  4   -&gt; AllSubtreeSizes(enfants) = [1, 1, 2, 5, 1]
+//  |
+//  1
+vector&lt;int&gt; AllSubtreeSizes(const vector&lt;vector&lt;int&gt;&gt;&amp; enfants);
+
+#endif  // __TREE_4_H
+</code></pre>
+    La complexité devra être O(N), où N est le nombre de noeuds total.
+    <br><br><b>Test</b>: <tt>make tree.4</tt>
+    <br><br><b class="orange">RENDU</b>: <tt>tree.4.cc</tt>
+    <br><br>
+  </li>
+</ol>
+
+<hr>
+<h3>Exercice 2: DAG</h3>
+<ol>
+  <li>
+    <b>Implémentez</b> dans un fichier <tt>toposort.cc</tt> la fonction <tt>TopologicalSort()</tt> décrite dans le fichier <a href="toposort.h" download="">toposort.h</a>,
+    qui utilise la classe <tt>DirectedGraph</tt> vue en TD1 pour les graphes dirigés (une implémentation de référence est contenue dans l'archive <tt>test.tar.gz</tt>
+    et devrait donc se trouver dans votre repertoire de travail, mais vous pouvez aussi utiliser la vôtre si vous préférez, a condition qu'elle ait exactement
+    la même interface):
+    <pre><code class="c++">#ifndef __TOPOSORT_H
+#define __TOPOSORT_H
+
+#include "graph.h"
+#include &lt;vector&gt;
+using namespace std;
+
+// Fait le tri topologique du graphe dirigé donné en argument, et renvoie
+// les indices des noeuds triés selon l'ordre topologique: les "feuilles"
+// (noeuds n'ayant pas d'arcs sortant) seront plutot vers le début.
+// Si le graphe a un cycle (ce n'est donc pas un DAG, il n'y a donc pas
+// d'ordre topologique), la fonction devra renvoyer une tableau vide.
+//
+// A NOTER / INDICES:
+// - Plusieurs ordres topologiques différents existent souvent.
+// - Puisque le graphe vous donne la liste des enfants d'un noeud, et
+//   que vous auriez plutot besoin de la liste des parents pour faire un
+//   tri topologique comme demandé, vous avec 2 choix:
+//   a) précalculer la liste des parents de chaque noeuds
+//   b) faire le tri topologique inverse (ou on commencerai par les noeuds
+//      n'ayant pas de parents), puis inverser le resultat.
+// - On pourra pré-calculer le "degré résiduel" de chaque noeud (entrant ou
+//   sortant, selon que vous avez choisi a) ou b)), et initialiser une file
+//   FIFO (queue&lt;int&gt; par exemple) qui contiendra tous les noeuds de degré
+//   residuel zéro, mise à jour dynamiquement.
+// - La complexité devra être O(M) (nombre d'arcs).
+//
+// Exemple:
+//
+// 2--&gt;5--&gt;6--&gt;7   Plusieurs ordres topologiques valides (liste non exhaustive):
+//     ^   |   |    - [4, 0, 7, 6, 5, 1, 2, 3]
+//     |   v   v    - [0, 4, 7, 6, 5, 2, 1, 3]
+// 3--&gt;1   0   4    - [4, 7, 0, 6, 5, 1, 3, 2]
+//
+vector&lt;int&gt; TopologicalSort(const DirectedGraph&amp; graph);
+
+#endif  // __TOPOSORT_H</code></pre>
+    <b>Test</b>: <tt>make toposort</tt>
+    <br><br><b class="orange">RENDU</b>: <tt>toposort.cc</tt>
+    <br><br>
+  </li>
+  <li>
+    <b>Implémentez</b> dans un fichier <tt>longest_path_dag.cc</tt> la fonction <tt>LongestPathInDag()</tt> écrite dans le fichier <a href="longest_path_dag.h" download="">longest_path_dag.h</a>:
+    <pre><code class="c++">// Entrée: un graphe dirigé et valué: on donne un poids positif à chaque
+// noeud dans le tableau "poids".
+//
+// Sortie: si le graphe est cyclique, renvoyez -1. Sinon, renvoyez la
+// somme des poids des noeuds sur le chemin le plus "lourd", i.e. le chemin
+// qui maximise la somme des poids de ses noeuds.
+//
+// Indices: Si vous avez codé TopologicalSort(), vous pourrez l'utiliser pour
+// obtenir la réponse relativement facilement. Sinon, pensez à la
+// programmation dynamique!
+// Dans les 2 cas, il pourra être utile de créer un tableau qui stockera pour
+// chaque noeud i le poids du plus lourd chemin partant de i.
+//
+// Exemple (les poids des noeuds sont mis entre parenthèse)
+//
+// 2(4)--&gt;5(5)--&gt;6(1)--&gt;7(2)     Le chemin le plus long/lourd est
+//        ^      |      ^        unique dans cet exemple: c'est
+//        |      v      |        2-&gt;5-&gt;6-&gt;0, qui a un poids total de 14.
+// 3(2)--&gt;1(1)   0(4)   4(11)
+//
+int LongestPathInDag(const DirectedGraph&amp; graph, vector&lt;int&gt;&amp; poids);</code></pre>
+    <b>Test</b>: <tt>make longest_path_dag</tt>
+    <br><br><b class="orange">RENDU</b>: <tt>longest_path_dag.cc</tt>
+    <br><br>
+  </li>
+</ol>
+
+<footer>
+N'oubliez pas de <a href="../rendu.html">soumettre votre travail</a>, <b class="red">après l'avoir testé</b>.
+</footer>
+</body>
+</html>

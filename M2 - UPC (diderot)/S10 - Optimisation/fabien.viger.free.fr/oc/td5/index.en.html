@@ -1,0 +1,227 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <title>Combinatorial Optimization: Exercise Session 5</title>
+  <style type="text/css">
+    .blue { color: #0000ff }
+    .xslt { color: #116611 }
+    .cc { color: #116611 }
+    .html { color: #882222 }
+    .xml { color: #116611 }
+    .red { color: #ff0000 }
+    .orange { color: #ff8800 }
+    .pink { color: #ff00ff }
+    .grey { color: #555555 }
+    .hidden { color: #ffffff }
+    .bigsep { width: 50px }
+    .verticalline { border-left: solid #000000; }
+    .framed { border: solid #000000; }
+    .footnote { }
+    pre { color: #116611 }
+    tt { color: #116611 }
+  </style>
+  <!-- Google Analytics -->
+  <script type="text/javascript" async="" src="../../ga.js"></script>
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-20097933-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+  <!-- Syntax highlighting -->
+  <link type="text/css" rel="stylesheet" href="../../highlight/styles/googlecode.css">
+  <script type="text/javascript" src="../../highlight/highlight.pack.js"></script>
+  <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+<a href="index.html"><img src="../fr_flag.svg" height="20px" alt="French Flag" style="vertical-align: text-top;"></a>
+<a href="index.html">Version française</a>
+
+<h2>Exercise Session 5: Greedy Algorithms</h2>
+
+<h3>Reminders</h3>
+<ul>
+<li><a href="../cours/5.html">Course Session 5</a> (in French)</li>
+<li><a href="../rendu.html">How to submit your work</a></li>
+<li>Deadline for submission: <b class="pink">tonight at 23h59</b>.</li>
+<li>To run the tests : download <a href="test.tar.gz" download=""><tt>test.tar.gz</tt></a> and unpack it in your work directory</li>
+</ul>
+
+
+<hr>
+<h3>Exercise 1: Knapsack</h3>
+<ol>
+  <li>
+    You have a knapsack with capacity <b>C</b> (weight capacity) and a list of <b>n</b> objects of weights
+    <tt>p[0]</tt>, <tt>p[1]</tt>, ... <tt>p[n-1]</tt>.
+    <br>Your goal: put as many objects in your knapsack as possible, without going over its capacity.
+    <br>
+    <br><b>Implement</b> in a file <tt>sac1.cc</tt> the function <tt>Sac1()</tt> described in file <a href="sac1.h" download="">sac1.h</a>:
+    <pre><code class="c++">#ifndef __SAC1_H
+#define __SAC1_H
+
+#include &lt;vector&gt;
+using namespace std;
+
+// We have a knapsack with capacity C, and objects of weight p[0], p[1], ...
+// We want to select as many objects as possible such that the sum of their
+// weights remains &lt;= C.
+// This function should return the maximum count of objects that can fit.
+//
+// EXAMPLE: C=12, p=[4, 7, 2, 5, 4, 1, 2, 10]
+//          -&gt; returns 4 because at most 4 objects can fit
+//                (for example objects #0, #2, #4 and #6 have total weight
+//                 4 + 2 + 4 + 2 = 12)
+int Sac1(int C, const vector&lt;int&gt;&amp; p);
+
+#endif  // __SAC1_H</code></pre>
+    <b>Test</b>:
+    <pre>rm test.tar.gz; wget --no-cache <a href="test.tar.gz" download="">http://fabien.viger.free.fr/oc/td5/test.tar.gz</a>
+tar xf test.tar.gz
+make sac1</pre>
+    <b class="orange">TO SUBMIT</b>: <tt>sac1.cc</tt>
+    <br><br>
+  </li>
+  <li>
+    Now, the objects are also <b>valued</b> (<tt>v[0]</tt>, <tt>v[1]</tt>, ...)
+    and can also be taken <b>partially</b>:
+    <br>for each object, you can choose to put an aribtrary fraction (a number in [0, 1]) of it in the knapsack:
+    <br>you'll gain the corresponding fraction of its value, while occupying the corresponding fraction of its weight.
+    <br><br>Which objects (and what fraction of them) should we choose to maximize the <b>value</b> carried in the
+    knapsack?
+    <br><br><b>Implement</b> in a file <tt>sac2.cc</tt> the function <tt>Sac2()</tt> described in file <a href="sac2.h" download="">sac2.h</a>:
+    <pre><code class="c++">#ifndef __SAC2_H
+#define __SAC2_H
+
+#include &lt;vector&gt;
+using namespace std;
+
+// We have a knapsack with capacity C, and objects of weight p[0], p[1], ...
+// and of values v[0], v[1], ...
+// This function returns the maximum value that one can carry in the knapsack,
+// assuming that each object can be taken fractionally.
+//
+// EXAMPLE: C=12, p=[4, 7, 2, 5, 5, 1, 10], v=[3.1, 99, 0.1, 0.2, 6.6, 0.4, 111]
+// -&gt; Must return 154.5. Explanation:
+//    the optimal solution is to take object #1 whole (weight 7, value 99)
+//    and half of object #6 (weight 10, value 111).
+//    This yield a total weight 7*1 + 10*0.5 = 12, and
+//    a total value 99*1 + 111*0.5 = 154.5.
+double Sac2(int C, const vector&lt;int&gt;&amp; p, const vector&lt;double&gt;&amp; v);
+
+#endif  // __SAC2_H</code></pre>
+    <b>Test</b>: <tt>make sac2</tt>
+    <br><br><b class="orange">TO SUBMIT</b>: <tt>sac2.cc</tt>
+    <br><br>
+  </li>
+</ol>
+
+<hr>
+<h3>Exercise 2: Minimum Spanning Tree</h3>
+<table><tr>
+<td>
+<ol>
+  <li>
+    <b>Implement</b> in a file <tt>prim.cc</tt> de Prim algorithm to find a minimum spanning tree: <tt>Prim()</tt>, described in file <a href="prim.h" download="">prim.h</a>:
+    <pre><code class="c++">#ifndef __PRIM_H
+#define __PRIM_H
+
+#include &lt;vector&gt;
+using namespace std;
+
+// Returns the weight of the minimum spanning tree for the given weighted graph:
+// N is the number of nodes, and "edges" the list of edges of the graph, with
+// their weights.
+//
+// EXAMPLE:
+// N = 4, edges = [{0, 1, 23}, {1, 3, 13}, {2, 1, 6}, {3, 2, 11}, {0, 2, 41}]
+//
+//    .--[23]--1--[13]--.      Nodes are sont 0,1,2,3.
+//  .´         |         `.    The edge weights are inside the [ ].
+// 0          [6]          3
+//  `.         |         .´    Minimum Spanning Tree: 23 + 6 + 11 = 40.
+//    `--[41]--2--[11]--´
+//
+struct Edge {
+  int node1;
+  int node2;
+  int weight;
+};
+int Prim(int N, const vector&lt;Edge&gt;&amp; edges);
+
+#endif  // __PRIM_H
+</code></pre>
+    <b>Test</b>: <tt>make prim</tt>
+    <br><br><b class="orange">TO SUBMIT</b>: <tt>prim.cc</tt>
+    <br><br>
+  </li>
+</ol>
+</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><img src="arbre_couvrant.png" width="240" height="194"></td>
+</tr></table>
+
+<hr>
+<h3>Exercise 3: Vertex coloring in a graph</h3>
+<table><tr>
+<td>
+<ol>
+  <li>
+    You're a teacher, and want to give homework to your students.
+    <br>But they may plagiarize each other, instead of working.
+    <br>To avoid that, you are ready to prepare several different versions of
+         the homework: 2 students who have 2 different versions won't be able
+         to copy each other's work.
+    <br>You also know the social network of the students: students would only
+         consider copy the work of a friend (i.e. directly linked in the social
+         graph).
+    <br>What's the minimum number of versions of the homework that you'll need
+         to create, and how shall you distribute those versions to the students,
+         so that any two friends don't get the same version?
+    <br><br><b>Implement</b> in a file <tt>color.cc</tt> the function <tt>Color()</tt>, described in file <a href="color.h" download="">color.h</a>:
+    <pre><code class="c++">#ifndef __COLOR_H
+#define __COLOR_H
+
+#include &lt;vector&gt;
+#include "ugraph.h"  // You have this file, it's in test.tar.gz.
+
+using namespace std;
+
+// Given an undirected graph, returns a vertex coloring that uses as few colors
+// as possible.
+// Input: the undirected graph.
+// Return value: the number of colors C of your coloring.
+// Side output: "color" must contain as many elements as the number of nodes
+//              in the graph, and color[i] shall be the color of node #i.
+//              color[i] must be in 0..C-1, and any two nodes directly connected
+//              by an edge of the graph must have different colors.
+//
+// NOTE: We do not expect an optimal algorithm (this is a NP-hard problem!), but
+// your heuristics should be as "good" as possible, and will be graded
+// accordingly. It shouldn't be too slow either: try to keep a linear or
+// log-linear complexity.
+int Color(const UndirectedGraph&amp; graph,
+          vector&lt;int&gt;* color);  // Side output. Don't forget to fill it!
+
+#endif  // __COLOR_H</code></pre>
+    <b>Test</b>: <tt>make color</tt>
+    <br><br><b class="orange">TO SUBMIT</b>: <tt>color.cc</tt>
+    <br><br>
+  </li>
+</ol>
+</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td><img src="graph_coloring.png" width="240" height="213"></td>
+</tr></table>
+
+<footer>
+Don't forget to <a href="../rendu.html">submit your work</a>, <b class="red">after you have tested it</b>.
+</footer>
+</body>
+</html>

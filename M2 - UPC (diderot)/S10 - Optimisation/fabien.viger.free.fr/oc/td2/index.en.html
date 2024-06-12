@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <title>Combinatorial Optimization: Exercise Session 1</title>
+  <title>Optimisation Combinatoire: TD 2</title>
+  <style type="text/css">
+    .blue { color: #0000ff }
+    .xslt { color: #116611 }
+    .cc { color: #116611 }
+    .html { color: #882222 }
+    .xml { color: #116611 }
+    .red { color: #ff0000 }
+    .orange { color: #ff8800 }
+    .pink { color: #ff00ff }
+    .grey { color: #555555 }
+    .hidden { color: #ffffff }
+    .bigsep { width: 50px }
+    .verticalline { border-left: solid #000000; }
+    .framed { border: solid #000000; }
+    .footnote { }
+    pre { color: #116611 }
+    tt { color: #116611 }
+  </style>
+  <!-- Google Analytics -->
+  <script type="text/javascript" async="" src="../../ga.js"></script>
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-20097933-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+  <!-- Syntax highlighting -->
+  <link type="text/css" rel="stylesheet" href="../../highlight/styles/googlecode.css">
+  <script type="text/javascript" src="../../highlight/highlight.pack.js"></script>
+  <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+<a href="index.html"><img src="../fr_flag.svg" height="20px" alt="French Flag" style="vertical-align: text-top;"></a>
+<a href="index.html">Version française</a>
+
+<h2>Exercise Session 2: BFS, Dijkstra</h2>
+
+<h3>Reminders</h3>
+<ul>
+<li><a href="../cours/1.html">Course Session 1+2</a> (in French)</li>
+<li><a href="../rendu.html">How to submit your work</a></li>
+<li>Deadline for submission: <b class="pink">tonight at 23h59</b>.</li>
+<li>To run the tests : download <a href="test.tar.gz" download=""><tt>test.tar.gz</tt></a> and unpack it in your work directory</li>
+</ul>
+
+<hr>
+<h3>Exercise 1: BFS</h3>
+<ol>
+  <li>
+    <b>Recover</b> the files <tt>graph.h</tt>, <tt>graph.cc</tt>, <tt>ugraph.h</tt> et <tt>ugraph.cc</tt>
+    made during Exercise Session 1 aka <a href="../td1/index.htm">TD 1</a>.
+    <br>
+    <b>Implement</b> in a file <tt>bfs.1.cc</tt> the function <tt>BFS()</tt>
+    described in the file <a href="bfs.1.h" download="">bfs.1.h</a>:
+    <pre><code class="c++">#include "ugraph.h"
+
+// Runs a Breadth-First-Search on the graph, starting from node "src".
+// See https://en.wikipedia.org/wiki/Breadth-first_search .
+// Returns a vector of size N (N is the number of nodes of the
+// graph) representing the "parent" tree: parent[i] is the parent of
+// node #i in the BFS tree. The parent of "src" is itself, and the
+// parent of a node that wasn't reached by the BFS exploration is -1.
+vector&lt;int&gt; BFS(const UndirectedGraph&amp; graph, int src);</code></pre>
+    Its time complexity must be O(M + N), where M is the number of arcs and N the number of nodes.
+    
+    <br><br> Use a queue <tt>deque</tt> from the the C++ STL
+    (Standard Template Library): <tt>#include &lt;deque&gt;</tt>.
+    The methods you'll need are :
+    <ul>
+      <li> <tt>q.empty()</tt>: tests whether the queue is empty</li>
+      <li> <tt>q.front()</tt>: returns the first element of the queue</li>
+      <li> <tt>q.push_back(elt)</tt>: add an element at the end of the queue</li>
+      <li> <tt>q.pop_front()</tt>: remove the first element of the queue</li>
+    </ul>
+    <br><br><b>Test</b>:
+    <pre>rm test.tar.gz; wget --no-cache <a href="test.tar.gz" download="">http://fabien.viger.free.fr/oc/td2/test.tar.gz</a>
+tar xf test.tar.gz
+make bfs.1</pre>
+    <b class="orange">TO SUBMIT</b>: <tt>bfs.1.cc</tt>
+    <br><br>
+  </li>
+  <li>
+    Implement the function <tt>GetBfsDistances()</tt> described in file
+    <a href="bfs.2.h" download="">bfs.2.h</a>:
+    <pre><code class="c++">#include &lt;vector&gt;
+using std::vector;
+
+// Extracts the distances of each node in the given BFS tree, which
+// is the returned format described in bfs.1.h
+// Eg. in the following tree, whose root is "2":
+//
+//         .---- 4
+//         v
+//   2 &lt;-- 3 &lt;-- 1
+//   ^
+//   '---- 0 &lt;-- 5
+//
+// The bfs tree is represented by the following 'parent' vector:
+// [2, 3, 2, 2, 3, 0]
+// And the distance vector should be:
+// [1, 2, 0, 1, 2, 2]
+//
+// If a node was not reached by the BFS, its parent is -1, and its distance
+// should also be -1.
+vector&lt;int&gt; GetBfsDistances(const vector&lt;int&gt;&amp; parents);</code></pre>
+    Try to achieve a time complexity O(N), where N is the number of nodes.
+    <br><br><b>Test</b>: <tt>make bfs.2</tt>
+    <br><b class="orange">TO SUBMIT</b>: <tt>bfs.2.cc</tt>
+    <br><br>
+  </li>
+  <li>
+    Implement the function <tt>GetShortestPathFromRootedTree()</tt>
+    described in file <a href="bfs.3.h" download="">bfs.3.h</a>:
+    <pre><code class="c++">#include &lt;vector&gt;
+using std::vector;
+
+// Returns the shortest path, from the source of a BFS to the given target node.
+// The argument is the target node and the BFS "parent" tree.
+// If the target node was not reached by the BFS, the returned path should be
+// empty.
+// Example: using the same example as in bfs.2.h, with BFS 'parent' tree:
+// [2, 3, 2, 2, 3, 0]
+// Then:
+// - the shortest path to node #4 should be: [2, 3, 4]
+// - the shortest path to node #0 should be: [2, 0]
+// - the shortest path to node #5 should be: [2, 0, 5]
+// - the shortest path to node #2 should be: [2]
+vector&lt;int&gt; GetShortestPathFromRootedTree(const vector&lt;int&gt;&amp; parent, int target);</code></pre>
+    Vous pourriez avoir besoin de la fonction <tt>reverse</tt> (<tt>#include &lt;algorithm&gt;</tt>) qui renverse l'ordre des éléments d'un vecteur : <tt>reverse(vec.begin(), vec.end())</tt>
+
+    <br><br><b>Test</b>: <tt>make bfs.3</tt>
+    <br><b class="orange">TO SUBMIT</b>: <tt>bfs.3.cc</tt>
+    <br><br>
+  </li>
+</ol>
+
+<hr>
+<h3>Exercise 2: Weighted graphs and Dijkstra</h3>
+<ol>
+  <li>
+    <b>Weighted (directed) graph</b>:<br>
+    Copy <tt>graph.h</tt> and <tt>graph.cc</tt> to new files
+    <tt>vgraph.h</tt> and <tt>vgraph.cc</tt>. In those new files,
+    modify the function <tt>AddArc()</tt> to give it an additional
+    argument: <tt>double length</tt>.
+    <br>Also modify the function <tt>Neighbors()</tt> so that it
+    returns a <tt>const vector&lt;pair&lt;int, double&gt;&gt;&amp;</tt>.
+    <br>Remove the <tt>MakeSimple()</tt> function, if you had added it.
+    <br><br><b>Test</b>: <tt>make vgraph</tt>
+    <br><b class="orange">TO SUBMIT</b>: <tt>vgraph.h</tt> et <tt>vgraph.cc</tt>
+    <br><br>
+  </li>
+  <li>
+    <b>(**)</b>
+    Implement the function <tt>Dijkstra()</tt>
+    described in the file <a href="dijkstra.h" download="">dijkstra.h</a>:
+    <pre><code class="c++">#include "vgraph.h"
+
+// Runs a Dijkstra search on the graph, starting from node "src".
+// See https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm .
+// Returns the same "parent" vector as BFS() in bfs.1.h.
+vector&lt;int&gt; Dijkstra(const DirectedGraph&amp; graph, int src);</code></pre>
+    You should use <tt>priority_queue&lt;&gt;</tt> on a custom <tt>struct</tt>
+    that you'll define, which will hold a node of the graph and its distance
+    from the source.
+    <br>That custom struct will lso have a custom comparison operator
+    <tt><b>operator&lt;</b></tt>, adapted to its use within our <tt>priority_queue</tt>.
+    <br>The time complexity must be O(N + M log(M)).
+    <br><b>Test</b>: <tt>make dijkstra</tt>
+    <br><b class="orange">TO SUBMIT</b>: <tt>dijkstra.cc</tt>
+    <br><br>
+  </li>
+</ol>
+
+<footer>
+Don't forget to <a href="../rendu.html">submit your work</a>, <b class="red">after you have tested it</b>.
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   width="900"
+   height="600"
+   id="Flag_of_France_bordered">
+  <metadata
+     id="metadata">
+  </metadata>
+  <defs
+     id="defs" />
+  <rect
+     width="900"
+     height="600"
+     x="0"
+     y="-7.1054274e-15"
+     id="bordure"
+     style="color:#000000;fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.769795;marker:none;visibility:visible;display:inline;overflow:visible;enable-background:accumulate" />
+  <rect
+     width="888"
+     height="588"
+     x="6"
+     y="6"
+     id="rouge"
+     style="fill:#ed2939" />
+  <rect
+     width="592"
+     height="588"
+     x="6"
+     y="6"
+     id="blanc"
+     style="fill:#ffffff" />
+  <rect
+     width="296"
+     height="588"
+     x="6"
+     y="6"
+     id="bleu"
+     style="fill:#002395" />
+</svg>

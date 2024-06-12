@@ -1,0 +1,168 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <title>Optimisation Combinatoire: TD 8</title>
+  <style type="text/css">
+    .blue { color: #0000ff }
+    .xslt { color: #116611 }
+    .cc { color: #116611 }
+    .html { color: #882222 }
+    .xml { color: #116611 }
+    .red { color: #ff0000 }
+    .orange { color: #ff8800 }
+    .pink { color: #ff00ff }
+    .grey { color: #555555 }
+    .hidden { color: #ffffff }
+    .bigsep { width: 50px }
+    .verticalline { border-left: solid #000000; }
+    .framed { border: solid #000000; }
+    .footnote { }
+    pre { color: #116611 }
+    tt { color: #116611 }
+  </style>
+  <!-- Google Analytics -->
+  <script type="text/javascript" async="" src="../../ga.js"></script>
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-20097933-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+  <!-- Syntax highlighting -->
+  <link type="text/css" rel="stylesheet" href="../../highlight/styles/googlecode.css">
+  <script type="text/javascript" src="../../highlight/highlight.pack.js"></script>
+  <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+<h2>TD 8: Programmation Linéaire et Entière</h2>
+
+<h3>Rappels</h3>
+<ul>
+<li><a href="../cours/8.html">Page du Cours 8</a></li>
+<li><a href="../rendu.html">Procédure de rendu</a></li>
+<li>Heure limite de rendu du TD: <b class="pink">ce soir à 23h59</b>.</li>
+<li> Pour exécuter les tests : téléchargez <a href="test.tar.gz" download=""><tt>test.tar.gz</tt></a> et décompressez-le dans votre répertoire de travail </li>
+</ul>
+
+<h3>Installation de or-tools</h3>
+Voir la procédure d'installation dans l'enoncé du <a href="../td7/index.htm">TD 7</a>.
+<br>Si vous n'arrivez pas à compiler avec le Makefile fourni dans <a href="test.tar.gz" download=""><tt>test.tar.gz</tt></a>, essayez avec <a href="Makefile" download=""><tt>celui-ci</tt></a>.
+<br><b>Pas besoin de réinstaller or-tools</b> si l'installation est encore là.
+<br>
+<br>Cette fois, on va créer un sous-repertoire "td8" dans <tt>or-tools_Ubuntu-[xyz...]/</tt>,
+ et <b>on travaillera dans ce sous-repertoire</b>:
+<pre>mkdir td8  # En etant dans le repertoire or-tools-BlaBlaBla
+cd td8
+wget --no-cache <a href="test.tar.gz" download="">http://fabien.viger.free.fr/oc/td8/test.tar.gz</a>
+tar xf test.tar.gz</pre>
+
+<hr>
+<h3>Exercice 1: supprimé</h3>
+<!--
+<h3>Exercice 1: Multi-commodity flot, version 2</h3>
+<ol>
+  <li>
+    <b>Reprenez</b> l'exercice 2 du dernier TD: <a href="../td7/flow.h" download><tt>flow.h</tt></a>,
+    <a href="../td7/corrige/flow.cc" download><tt>flow.cc</tt></a>.
+    <br/><b>Téléchargez</b> également le nouveau <a href="flow2.h" download><tt>flow2.h</tt></a>,
+    puis renommez <tt>flow.cc</tt> en <tt>flow2.cc</tt> et adaptez-le en fonction.
+    <pre><code class=c++>#ifndef __FLOW2_H
+#define __FLOW2_H
+
+#include "flow.h"
+
+// Come BestFlow() (voir flow.h), mais on ajoute une penalité pour trop
+// "remplir" les arcs du backbone: si le taux d'utilisation U d'un arc
+// (entre 0 et 1, 0 = pas utilisé, 1 = utilisé à sa limite de capacité)
+// est supérieur à x, on paiera une penalité proportionelle à (U-x).
+//
+// On veut toujours maximiser le gain global, mais en prenant en compte
+// la penalité de ces arcs trop remplis.
+//
+// Exemple:
+// - Un backbone avec 4 arcs de capacités 1000, 300, 500, 100.
+// - Une solution ou la somme des flots sur ces arcs vaut: 840, 300, 470, 90.
+// Si max_free_utilization_ratio=0.9, les arcs en "sur-utilisation" sont les
+// 2eme et 3eme arcs. Le 1er est en-dessous du seuil, le dernier est juste au
+// seuil. Les coefficients de sur-utilisations des arcs sont: 0, 0.1, 0.04, 0. 
+// Si penalt_cost=100, le coût de cette sur-utilisation est de:
+// 0.1*penalty_cost + 0.04*penalty_cost.
+//
+// INDICATIONS:
+// On pourra imiter et meme remplacer les contraintes de capacités en
+// introduisant des variables de "sur-utilisation", et en adaptant la contrainte
+// de capacité avec ces variables.
+vector&lt;FlowOnArc&gt; BestFlow2(int num_nodes, const vector&lt;BackboneArc&gt;&amp; backbone,
+                            const vector&lt;FlowDemand&gt;&amp; demands,
+                            double max_free_utilization_ratio,
+                            double penalty_cost);
+
+#endif  // __FLOW2_H</code>
+
+</pre>
+    <b>Test</b>: <pre>wget &hyphen;&hyphen;no-cache <a href="test.tar.gz" download>http://fabien.viger.free.fr/oc/td8/test.tar.gz</a>
+tar xf test.tar.gz
+make flow2</pre>
+    <b class="orange">RENDU</b>: <tt>flow2.cc</tt> (ne changez pas les .h!)
+    <br/><br/>
+  </li>
+</ol>
+-->
+
+<hr>
+<h3>Exercice 2: Job assignment</h3>
+<ol>
+  <li>
+    Vous gérez un datacenter et vous avez un ensemble de taches à faire tourner
+    sur vos machines.
+    <br><b>Implémentez</b> dans un fichier <tt>job.cc</tt> la fonction <tt>BestJobAssignment()</tt> décrite dans
+    <a href="job.h" download=""><tt>job.h</tt></a>.
+    <br><br><b>ATTENTION</b>: comme le modèle s'écrit avec des variables entières, il faut utiliser:
+    <ul>
+      <li><tt>CBC_MIXED_INTEGER_PROGRAMMING</tt> au lieu de <tt>GLOP_LINEAR_PROGRAMMING</tt> quand on créé le solveur.
+      <li><tt>MakeBoolVar(..)</tt> ou <tt>MakeIntVar(..)</tt> quand on créé une variable entière au lieu de <tt>MakeVar(..)</tt>
+    </li></ul>
+    <pre><code class="c++">#ifndef __JOB_H
+#define __JOB_H
+
+#include &lt;vector&gt;
+
+using std::vector;
+
+// On veut affecter des tâches (job) à des machines.
+// On a un ensemble de machines hétérogènes, et des descriptions de jobs.
+// Chaque job utilise une quantité prédéfinie de CPU, RAM et disque de la
+// machine sur laquelle il tournera, et chaque machine a une quantité
+// prédéfinie des CPU, RAM et disque.
+//
+// On veut maximiser le nombre de jobs affectés.
+//
+// Cette fonction doit renvoyer un assignment optimal des jobs à chaque
+// machine: l'élement #i sera le numero de machine à laquelle le job #i
+// sera affecté, où -1 si on décide de ne pas affecter le job.
+struct Resources {
+  double cpu;
+  double ram;
+  double disk;
+};
+vector&lt;int&gt; BestJobAssignment(const vector&lt;Resources&gt;&amp; jobs,
+                              const vector&lt;Resources&gt;&amp; machines);
+
+#endif  // __JOB_H</code></pre>
+    <b>Test</b>: <tt>make job</tt>
+    <br><br>
+    <b class="orange">RENDU</b>: <tt>job.cc</tt> (ne changez pas le .h!)
+    <br><br>
+  </li>
+</ol>
+
+<footer>
+N'oubliez pas de <a href="../rendu.html">soumettre votre travail</a>, <b classs="red">après l'avoir testé</b>.
+</footer>
+</body>
+</html>

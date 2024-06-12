@@ -1,0 +1,7 @@
+open Globals
+
+external fun read_obstacles() returns (obst : param_obsts)
+external fun read_itinerary() returns (iti : itielts)
+external fun read_traffic_lights() returns (tlights : param_tlights)
+external fun lookup_pos(pos : position) returns (data : map_data)
+external fun soundEffects(evt : event; sta : status) returns ()

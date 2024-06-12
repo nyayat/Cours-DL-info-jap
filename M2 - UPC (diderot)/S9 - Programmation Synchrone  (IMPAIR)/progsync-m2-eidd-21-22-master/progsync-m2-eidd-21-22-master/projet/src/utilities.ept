@@ -1,0 +1,216 @@
+open Globals
+
+(* Utility nodes *)
+
+fun min_float(a, b : float) returns (o : float)
+let
+  o = if a <. b then a else b;
+tel
+
+fun min_int(a, b : int) returns (o : int)
+let
+  o = if a < b then a else b;
+tel
+
+fun max_float(a, b : float) returns (o : float)
+let
+  o = if a <. b then b else a;
+tel
+
+fun max_int(a, b : int) returns (o : int)
+let
+  o = if a < b then b else a;
+tel
+
+node countdown(e : bool; ini : int) returns (o : int)
+var mem : int;
+let
+  mem = ini fby o;
+  o = mem - if e then 1 else 0;
+tel
+
+fun angle_dist(from, to : position) returns (angle, dist : float)
+let
+  dist = Mathext.hypot(to.x -. from.x, to.y -. from.y);
+  angle = Mathext.atan2(to.y -. from.y, to.x -. from.x) *. 180.0 /. pi;
+tel
+
+fun bound(x, ceiling : float) returns (o : float)
+let
+  o = if x <. -. ceiling then -. ceiling
+      else if x >. ceiling then ceiling
+      else x;
+tel
+
+fun norm_color(a : color) returns (norm : float)
+let
+  norm = Mathext.sqrt(Mathext.float(a.red) *. Mathext.float(a.red)
+                      +. Mathext.float(a.green) *. Mathext.float(a.green)
+                      +. Mathext.float(a.blue) *. Mathext.float(a.blue));
+tel
+
+fun compare_colors(a, b : color) returns (correlation : float)
+let
+  correlation = (Mathext.float(a.red) *. Mathext.float(b.red)
+                 +. Mathext.float(a.green) *. Mathext.float(b.green)
+                 +. Mathext.float(a.blue) *. Mathext.float(b.blue))
+                /. (norm_color(a) *. norm_color(b));
+tel
+
+(* Tries to interpret an RGB triple into a quantitative color. *)
+fun decode_color(a : color) returns (q : colorQ)
+var rr, gg, aa : float;
+let
+  rr = compare_colors(a, red);
+  gg = compare_colors(a, green);
+  aa = compare_colors(a, amber);
+  q = if rr >. 0.85 then Red
+      else if gg >. 0.85 then Green
+      else if aa >. 0.85 then Amber
+      else Other;
+tel
+
+(* Transforms a quantitative color into an RGB triple. *)
+fun encode_color(q : colorQ) returns (a : color)
+let
+  a = merge q (Red -> red) (Green -> green) (Amber -> amber) (Other -> gray);
+tel
+
+node rising_edge(b : bool) returns (e : bool)
+let
+  e = b and (false fby not b);
+tel
+
+node falling_edge(b : bool) returns (e : bool)
+let
+  e = false -> rising_edge(not b);
+tel
+
+node after(ini : int) returns (o : bool)
+var n : int;
+let
+  n = ini fby (if o then n else n - 1);
+  o = n = 0;
+tel
+
+node event_edge(e : event) returns (o : event)
+let
+  o = {
+        lightRun = rising_edge(e.lightRun);
+        speedExcess = rising_edge(e.speedExcess);
+        exitRoad = rising_edge(e.exitRoad);
+        collisionEvent = rising_edge(e.collisionEvent);
+        dirEvent = rising_edge(e.dirEvent)
+      };
+tel
+
+(* Integrates an input signal using trapezium formula. (1/s) *)
+node integrator(x, step, ini : float) returns (o : float)
+var s : float;
+let
+  s = ((ini -. (step *. x) /. 2.0) fby s) +. step *. x;
+  o = s -. (step *. x) /. 2.0;
+tel
+
+node integrator_en(x, step, ini : float; en : bool) returns (o : float)
+var oi : float :: . on en;
+let
+  oi = integrator(x when en, step when en, ini when en);
+  o = merge en oi ((ini whenot en) -> (pre o whenot en));
+tel
+
+node derivative(x, step : float) returns (y : float)
+let
+  y = (x -. 0.0 fby x) /. step;
+tel
+
+node lowpass(x, a : float) returns (y : float)
+let
+  y = a *. x +. (1.0 -. a) *. (0.0 fby y);
+tel
+
+(* Normalize an angle to the [-180, 180) interval. *)
+fun normalize(angle : float) returns (normal : float)
+let
+  normal = angle -. 360.0 *. Mathext.floor((angle +. 180.0) /. 360.0);
+tel
+
+fun pos2vec(pos : position) returns (vec : float^2)
+let
+  vec = [ pos.x, pos.y ];
+tel
+
+fun vec2pos(vec : float^2) returns (pos : position)
+let
+  pos = { x = vec[0]; y = vec[1] };
+tel
+
+fun mat_rot(alpha : float) returns (res : float^2^2)
+var si, co : float;
+let
+  si = Mathext.sin(alpha *. (pi /. 180.0));
+  co = Mathext.cos(alpha *. (pi /. 180.0));
+  res = [[co, -. si], [-. si, co]];
+tel
+
+fun vec_add<<n : int>>(v1, v2 : float^n) returns (o : float^n)
+let
+  o = map<<n>> ( +. )(v1, v2);
+tel
+
+fun vec_prod<<n : int>>(v1, v2 : float^n) returns (o : float^n)
+let
+  o = map<<n>> ( *. )(v1, v2);
+tel
+
+fun dotp<<n : int>>(v1, v2 : float^n) returns (o : float)
+let
+  o = fold<<n>> ( +. )(vec_prod<<n>>(v1, v2), 0.0);
+tel
+
+fun mat_vec_prod<<n : int>>(mat : float^n^n; vec : float^n)
+                   returns (o : float^n)
+let
+  o = map<<n>> (dotp<<n>>)(mat, vec^n);
+tel
+
+(* TODO The following two nodes are simple wrapper around the generic ones
+   defined below. They are needed since, as of October 24 2020, the Heptagon
+   compiler crashes when importing nodes with static parameters from another
+   module; see the GH issue below.
+
+   https://gitlab.inria.fr/synchrone/heptagon/-/issues/12
+
+   They should be removed once this issue has been fixed.
+*)
+
+fun vec_add2(v1, v2 : float^2) returns (o : float^2)
+let
+  o = vec_add<<2>>(v1, v2);
+tel
+
+fun mat_vec_prod2(mat : float^2^2; vec : float^2) returns (o : float^2)
+let
+  o = mat_vec_prod<<2>>(mat, vec);
+tel
+
+fun abs(x : float) returns (o : float)
+let
+  o = if x <. 0.0 then -. x else x;
+tel
+
+(* Time elapsed with |x| >= 1. *)
+node uptime(x, step : float) returns (t : float)
+let
+  t = integrator(if abs(x) >=. 1.0 then 1.0 else 0.0, step, 0.0);
+tel
+
+(* Variation of x (integral of |x'| over the time when enabled is true) adapted
+   for an angle normalized to [-180, 180). *)
+node variation(enabled : bool; x, step : float) returns (o : float)
+let
+  o = integrator_en(abs(normalize(x -. (0.0 fby x)) /. step),
+                    step,
+                    0.0,
+                    enabled);
+tel

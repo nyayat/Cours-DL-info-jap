@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <title>Optimisation Combinatoire: TD 7</title>
+  <style type="text/css">
+    .blue { color: #0000ff }
+    .xslt { color: #116611 }
+    .cc { color: #116611 }
+    .html { color: #882222 }
+    .xml { color: #116611 }
+    .red { color: #ff0000 }
+    .orange { color: #ff8800 }
+    .pink { color: #ff00ff }
+    .grey { color: #555555 }
+    .hidden { color: #ffffff }
+    .bigsep { width: 50px }
+    .verticalline { border-left: solid #000000; }
+    .framed { border: solid #000000; }
+    .footnote { }
+    pre { color: #116611 }
+    tt { color: #116611 }
+  </style>
+  <!-- Google Analytics -->
+  <script type="text/javascript" async="" src="../../ga.js"></script>
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-20097933-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+  <!-- Syntax highlighting -->
+  <link type="text/css" rel="stylesheet" href="../../highlight/styles/googlecode.css">
+  <script type="text/javascript" src="../../highlight/highlight.pack.js"></script>
+  <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+<h2>TD 7: Programmation Linéaire</h2>
+
+<h3>Rappels</h3>
+<ul>
+<li><a href="../cours/7.html">Page du Cours 7</a></li>
+<li><a href="../rendu.html">Procédure de rendu</a></li>
+<li>Heure limite de rendu du TD: <b class="pink">ce soir à 23h59</b>.</li>
+<li> Pour exécuter les tests : téléchargez <a href="test.tar.gz" download=""><tt>test.tar.gz</tt></a> et décompressez-le dans votre répertoire de travail </li>
+</ul>
+
+<h3><a href="../install_or_tools.html">Installation de or-tools pour le TD7</a></h3>
+
+<hr>
+<h3>Exercice 1: Menu optimal</h3>
+<ol>
+  <li>
+    <b>Complétez</b> l'implémentation de la fonction <tt>MenuMoinsCher()</tt> décrite dans le fichier <a href="menu.h" download="">menu.h</a> et implémentée dans <a href="menu.cc" download="">menu.cc</a> (<b class="red"> Téléchargez </b> le fichier menu.cc et complétez-le, il contient des informations supplémentaires):
+    <pre><code class="c++">#ifndef __MENU_H
+#define __MENU_H
+
+#include &lt;vector&gt;
+
+using std::vector;
+
+// On va résoudre le problème du "menu le plus économique".
+// Comme sur les paquets de céréales, on s'intéresse aux apport nutritifs
+// de nos ingrédients en calories, protéines, lipides, vitamine B1, etc.
+//
+// On connait la valeur des Apports Journaliers Recommandés (AJR) pour chacun
+// de ces éléments: elle est donnée dans le tableau "ajr".
+// Par exemple, si on veut au moins 2000 calories par jour, au moins 60g de
+// protéines, etc, on aura ajr = [2000, 60, ...].
+//
+// On a aussi une liste d'ingrédients: patates, riz, jus d'orange, poulet, etc.
+// Pour chaque ingrédient, on connait la valeur de ses apport dans tous les
+// éléments (pour 1kg de cet ingrédient), dans le même ordre que la liste "ajr".
+// Par exemple, 1kg de patate apporte 2500 calories, 10g de proteines, etc;
+// 1kg de riz apporte 4000 calories, 13g de proteines, etc; et ainsi de suite
+// pour les autres ingrédients: le tableau "apports_par_ingredient" contiendra
+// [[2500, 10, ...],  // 1kg de patates
+//  [4000, 13, ...],  // 1kg de riz
+//  ... ]             // .. autres ingrédients ..
+// 
+// Enfin, on a le prix au kg de chaque ingrédient dans "prix_par_ingredient".
+// Les ingrédients sont listés dans le même ordre que dans
+// "apports_par_ingredient". Par exemple, si 1kg de patate coûte 3.2€, 1kg de
+// riz coûte 5.4€, etc, on aura prix_par_ingredient = [3.2, 5.4, ...]. 
+//
+// Notre but: trouver le menu le moins cher possible pour aujourd'hui! Quels
+// ingrédients acheter, et en quelle quantité, pour couvrir *au moins* les AJR
+// (on peut avoir 'trop' d'un élément, par exemple trop de calories: ce n'est
+// pas grave!)
+//
+// Cette fonction doit trouver le menu journalier le moins cher, et renvoyer
+// les quantités de chaque ingrédient dans ce menu, dans le même ordre que
+// "prix_par_ingredient".
+// Par exemple si le menu idéal journalier est:
+// 0.3kg de patates, 0kg de riz, 0.2kg de jus d'orange, ...
+// Le tableau renvoyé sera: [0.3, 0, 0.2, ...].
+vector&lt;double&gt; MenuMoinsCher(const vector&lt;double&gt;&amp; ajr,
+                             const vector&lt;vector&lt;double&gt;&gt;&amp; apports_par_ingredient,
+                             const vector&lt;double&gt;&amp; prix_par_ingredient);
+
+#endif  // __MENU_H</code></pre>
+    <b>Test</b>: <tt>make menu</tt>
+    <br><br>
+    <b class="orange">RENDU</b>: <tt>menu.cc</tt> (ne changez pas menu.h!)
+    <br><br>
+  </li>
+</ol>
+
+<hr>
+<h3>Exercice 2: Multi-commodity flow</h3>
+<ol>
+  <li>
+    <b>Complétez</b> l'implémentation de la fonction <tt>BestFlow()</tt> décrite dans le fichier <a href="flow.h" download="">flow.h</a> et implémentée dans <a href="flow.cc" download="">flow.cc</a>:
+    <pre><code class="c++">#ifndef __FLOW_H
+#define __FLOW_H
+
+#include &lt;vector&gt;
+
+using std::vector;
+
+// Problème de l'affectation de traffic réseau dans un backbone:
+// On gère un backbone, qui est un graphe dirigé valué (chaque arc a une
+// certaine bande passante).
+// Le backbone est donné sous forme de ce graphe: on connait le nombre de
+// noeuds N, et on a les arcs valués (from, to, capacity) où "from" et "to"
+// sont des noeuds (donc des entiers entre 0 et N-1 inclus) et "capacity"
+// est la bande passante, en Gb/s.
+// On a également un ensemble de demandes commerciales de traffic, se
+// présentant sous la forme (origine, destination, bande passante max,
+// prix par Gb/s): cette demande correspond à un client qui veut envoyer
+// du traffic du noeud "origine" au noeud "destination" en empruntant notre
+// réseau, et qui est prêt a payer un certain prix par Gb/s qu'on lui alloue,
+// dans la limite de sa bande passante max.
+//
+// Quels demandes commerciales doit-on choisir, en quelles quantités?
+// Comment router le traffic réseau correspondant?
+struct BackboneArc {
+  int from;  // Un noeud
+  int to;    // Un noeud
+  double capacity;  // &gt;= 0
+};
+struct FlowDemand {
+  int src;  // Source: un noeud
+  int dst;  // Destination: un noeud
+  double demand;  // &gt;= 0
+  double price;   // per unit of demand (max profit = demand * price)
+};
+struct FlowOnArc {
+  int arc_index;  // Index dans l'entrée "backbone".
+  int demand_index;  // Index dans l'entrée "demands".
+  double flow;
+};
+vector&lt;FlowOnArc&gt; BestFlow(int num_nodes,
+                           const vector&lt;BackboneArc&gt;&amp; backbone,
+                           const vector&lt;FlowDemand&gt;&amp; demands);
+
+#endif  // __FLOW_H</code></pre>
+    <b>Test</b>: <tt>make flow</tt>
+    <br><br>
+    <b class="orange">RENDU</b>: <tt>flow.cc</tt> (ne changez pas flow.h!)
+    <br><br>
+  </li>
+</ol>
+
+<footer>
+N'oubliez pas de <a href="../rendu.html">soumettre votre travail</a>, <b classs="red">après l'avoir testé</b>.
+</footer>
+</body>
+</html>

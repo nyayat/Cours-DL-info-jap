@@ -1,0 +1,213 @@
+open Globals
+open Utilities
+
+(* Utilities *)
+
+node wallclock(rstatus : status) returns (time : float)
+var cpt : int;
+let
+  cpt = (if rstatus = Running then 1 else 0) + (0 fby cpt);
+  time = timestep *. Mathext.float(cpt);
+tel
+
+fun lookup_phase(ph : phase) returns (data : map_data)
+let
+  data = Map.lookup_pos(ph.ph_pos);
+tel
+
+(* Event detection *)
+
+fun light(lights : traflights; ph : phase)
+ returns (light_run : bool)
+var data : map_data;
+let
+  data = lookup_phase(ph);
+  light_run = ph.ph_vel >. 0.01 and data.tl_required
+              and (lights[> data.tl_number <]).tl_color = Red;
+tel
+
+fun speed(ph : phase) returns (speed_excess : bool)
+let
+  speed_excess = ph.ph_vel >. Mathext.float((lookup_phase(ph)).max_speed);
+tel
+
+fun exited_aux(pos : position; acc : bool) returns (accnew : bool)
+let
+  accnew = acc and (Map.lookup_pos(pos)).on_road;
+tel
+
+fun exited(ph : phase) returns (exit_road : bool)
+var positions : position^2; dummy : phase^2;
+let
+  (positions, dummy) =
+    map<<2>> Vehicle.car_geometry(ph^2, [[-. cDELTA, cB /. 2.0],
+                                        [-. cDELTA, -. cB /. 2.0]]);
+  exit_road = not fold<<2>> exited_aux(positions, true);
+tel
+
+node collision_aux(ph : phase; obst : obstacle; acc : bool)
+         returns (accnew : bool)
+var ang, angle, dist, distobst : float; close : bool;
+let
+  (ang, dist) = angle_dist(ph.ph_pos, obst.o_pos);
+  angle = (pi /. 180.0) *. abs(normalize(ph.ph_head -. ang));
+  accnew = acc or (obst.o_pres and (dist <=. cROBST or close));
+  distobst = dist -. cROBST;
+  close = Mathext.sin(angle) *. distobst <=. cSB
+          and Mathext.cos(angle) *. distobst <=. cSA
+          and Mathext.cos(angle) *. distobst >=. -. cSC;
+tel
+
+node collision(ph : phase; obstacles : obstacles)
+     returns (collision_event : bool)
+let
+  collision_event = fold<<obstnum>> collision_aux(ph^obstnum,
+                                                  obstacles,
+                                                  false);
+tel
+
+node wrong_dir(ph : phase) returns (wrong : bool)
+var data : map_data; error : float; ang : float;
+let
+  data = lookup_phase(ph);
+  ang = ph.ph_head *. (pi /. 180.0);
+  error = data.dir_x *. Mathext.cos(ang) +. data.dir_y *. Mathext.sin(ang);
+  wrong = error <. -. 0.5;
+tel
+
+fun aggregate_events(lightRun, speedExcess, exitRoad, collisionEvent,
+                     wrong : bool)
+            returns (o : event; itr : interrupt)
+let
+  o = { lightRun = lightRun;
+        speedExcess = speedExcess;
+        exitRoad = exitRoad;
+        collisionEvent = collisionEvent;
+        dirEvent = wrong };
+  itr = if exitRoad then Halt else Ok;
+tel
+
+node event_detection(sign : sign; ph : phase)
+            returns (itr : interrupt; evts : event)
+let
+  (evts, itr) = aggregate_events (light(sign.si_tlights, ph),
+                                  speed(ph),
+                                  exited(ph),
+                                  collision(ph, sign.si_obstacles),
+                                  wrong_dir(ph));
+tel
+
+(* Sensor aggregation *)
+
+fun ground_color_detection(ph : phase) returns (road_color : color)
+let
+  road_color = (lookup_phase(ph)).color;
+tel
+
+fun traffic_light_detection(ph : phase; traflights : traflights)
+                   returns (tlight_color : color)
+let
+  tlight_color = Utilities.encode_color(
+                   (traflights.[(lookup_phase(ph)).tl_number]
+                    default { tl_pos = { x = 0.0; y = 0.0 }; tl_color = Other })
+                   .tl_color
+                 );
+tel
+
+fun obstacles_detection_aux(ph : phase; obst : obstacle; acc : int)
+                   returns (accnew : int)
+var a, d, d1 : float; sonar : int;
+let
+  (a, d) = Utilities.angle_dist(ph.ph_pos, obst.o_pos);
+  d1 = d -. cROBST;
+  sonar = if Utilities.abs(Utilities.normalize(ph.ph_head -. a)) <=. 30.0
+              and d1 <=. 100.0 and obst.o_pres
+          then Mathext.int(d1)
+          else cSONARFAR;
+  accnew = Utilities.min_int(sonar, acc);
+tel
+
+node obstacle_detection(ph : phase; obstacles : obstacles)
+              returns (sonar : int)
+let
+  sonar = fold<<obstnum>> obstacles_detection_aux(ph^obstnum,
+                                                  obstacles,
+                                                  cSONARFAR);
+  () = Trace.trace_int("sonar", sonar);
+tel
+
+node robot_sensors(ph : phase; sign : sign) returns (sens : sensors)
+let
+  sens = { s_road = ground_color_detection(ph);
+           s_front = traffic_light_detection(ph, sign.si_tlights);
+           s_sonar = obstacle_detection(ph, sign.si_obstacles) }
+tel
+
+(* The city *)
+
+fun traffic_lights_aux(p : param_tlight; time : float) returns (tl : traflight)
+var cpt, period : int; light : colorQ;
+let
+  period = Utilities.max_int(1, p.ptl_amber + p.ptl_green + p.ptl_red);
+  cpt = Mathext.modulo(Mathext.int(time) + p.ptl_phase, period);
+  if cpt < p.ptl_green then light = Green
+  else if cpt < p.ptl_amber + p.ptl_green then light = Amber
+  else light = Red
+  end
+  end;
+  tl = { tl_pos = p.ptl_pos; tl_color = light };
+tel
+
+fun traffic_lights(time : float) returns (all_lights : traflights)
+var lights : param_tlights;
+let
+  lights = Map.read_traffic_lights();
+  all_lights = map<<trafnum>> traffic_lights_aux(lights, time^trafnum);
+tel
+
+fun all_obstacles_aux(po : param_obst; time : float) returns (o : obstacle)
+let
+  o = { o_pos = po.pot_pos;
+        o_pres = po.pot_since <=. time and time <=. po.pot_till };
+tel
+
+fun all_obstacles(time : float) returns (obstacles : obstacles)
+let
+  obstacles = map<<obstnum>> all_obstacles_aux(Map.read_obstacles(),
+                                               time^obstnum);
+tel
+
+node simulate(ph : phase; time : float)
+     returns (sign : sign; itr : interrupt; sens : sensors; evt : event)
+let
+  sign = { si_tlights = traffic_lights(time);
+           si_obstacles = all_obstacles(time) };
+  (itr, evt) = event_detection(sign, ph);
+  sens = robot_sensors(ph, sign);
+tel
+
+(* Scoring *)
+
+node scoringA(e : event; rstatus : status) returns (score : int)
+var penalty : int; collision_count : int;
+let
+  score = (10000 fby score)
+          + if Utilities.rising_edge(rstatus = Arrived) then 1000 else 0
+          + if rstatus = Running then penalty else 0;
+  penalty = (if Utilities.rising_edge(e.lightRun) then -500 else 0)
+            + (if Utilities.rising_edge(e.speedExcess) then -100 else 0)
+            + (if e.speedExcess then -2 else 0)
+            + (if Utilities.rising_edge(e.exitRoad) then -5000 else 0)
+            + (if Utilities.rising_edge(e.dirEvent) then -2000 else 0)
+            + (if collision_count = 0 then -500 else 0)
+            + (if collision_count < 0 then 10 else 0);
+  collision_count = Utilities.countdown(not e.collisionEvent, 20);
+tel
+
+node scoringB(ph : phase) returns (score : int)
+var v : float;
+let
+  v = Utilities.variation(ph.ph_vel >=. 1.0, ph.ph_head, timestep)
+      /. (1.0 +. Utilities.uptime(ph.ph_vel, timestep));
+  score = Mathext.int(1000.0 -. v);
+tel

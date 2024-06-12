@@ -1,0 +1,91 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>How to install or-tools (from source)</title>
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-20097933-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+  <style>
+    .blue { color: #0000ff }
+    .xslt { color: #116611 }
+    .cc { color: #116611 }
+    .html { color: #882222 }
+    .xml { color: #116611 }
+    .red { color: #ff0000 }
+    .orange { color: #ff8800 }
+    .pink { color: #ff00ff }
+    .grey { color: #555555 }
+    .hidden { color: #ffffff }
+    pre { color: #116611 }
+    tt { color: #116611 }
+  </style>
+</head>
+<body>
+
+<h1>How to install or-tools (binary)</h1>
+
+<pre>
+sudo apt install build-essential zlib1g-dev
+wget http://fabien.viger.free.fr/oc/or-tools_ubuntu_20.04_v9.3.10497_light.tar.xz
+tar xf or-tools_ubuntu_20.04_v9.3.10497_light.tar.xz
+cd or-tools_Ubuntu-20.04-64bit_v9.3.10497/
+sudo rm -f lib/libortools.so /usr/lib/libortools.so.9 /usr/lib/libortools.so
+ln -s "$PWD/lib/libortools.so.9" "$PWD/lib/libortools.so"
+sudo ln -s "$PWD/lib/libortools.so.9" /usr/lib/libortools.so.9
+sudo ln -s "$PWD/lib/libortools.so.9" /usr/lib/libortools.so
+# Then, verify that it worked:
+make test_cc
+</pre>
+
+<p>
+[For reference, this was taken from the <a href="https://developers.google.com/optimization/install/cpp/linux#ubuntu-21.10">official instructions</a>]
+
+<!--
+<h1>How to install or-tools (from source)</h1>
+
+<p><b>Note</b>: the reference instructions and links are on the <a href="https://developers.google.com/optimization/install">official website</a>, but this page hosts a "light" version that's much smaller to download (27MB instead of 290MB).
+
+<ol>
+<li>Install the prerequisites:
+<ul>
+  <li>University computer: skip this step, the prerequisites are already installed.
+  </li>
+  <li>Ubuntu/Debian: <tt>sudo apt-get -y install git wget pkg-config build-essential cmake autoconf libtool zlib1g-dev lsb-release</tt>
+  </li>
+  <li>Other Linux versions: choose the appropriate tab on the <a href="https://developers.google.com/optimization/install/cpp/source_linux#c++-tools">official website</a> and copy-paste the command in a terminal.
+  </li>
+  <li>Other OS (Windows, Mac): STOP! You should really use Linux.<br/>If you still really want to do it, see <a href="https://developers.google.com/optimization/install/cpp/source_mac">Mac OS</a> and <a href="https://developers.google.com/optimization/install/cpp/source_windows">Windows</a>.
+  </li>
+</ul>
+<br/>
+</li>
+<li>
+Download the source archive (27 MB): <a href="or-toolsv9.2-light.tar.xz" download>or-toolsv9.2-light.tar.xz</a>
+<br/>
+<br/>
+</li>
+<li>
+Unpack it, preferably in your home directory: <pre>tar xf or-toolsv9.2-light.tar.xz</pre>
+</li>
+<li>
+Go to the directory, and build.
+<br/>Warning: <b class="red">this is slow</b>, between 20 min and 1 hour depending on your computer.
+<pre>
+cd or-tools-stable
+make -j third_party &amp;&amp; make -j cc
+</pre>
+</li>
+<li>Verify that it was installed correctly:
+<pre>make -j test_cc</pre>
+</li>
+</ol>
+-->
+</body>
+</html>

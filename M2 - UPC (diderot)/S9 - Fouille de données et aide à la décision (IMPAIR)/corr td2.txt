@@ -1,0 +1,177 @@
+# coding=utf-8
+import math
+import random
+
+def simulation_coin(num_exp, num_coins_per_exp, K=1000):
+  """Simulates many coin toss (heads/tails) experiments, and output the
+     observed distribution of the ratios, discretized.
+     See the description of the returned list below.
+
+  Args:
+     num_exp: an integer. Number of experiments.
+     num_coins_per_exp: an integer. Number of coin tosses per experiment.
+     output_file: a string. Name of the file to output.
+
+  Returns:
+      A list of 101 elements: element #i will be the ratio of experiments
+      that yielded an observed ratio of tails approximately equal to 0.01*i
+      (when rounded with the function 0.01*int(100*ratio)).
+  """
+  num_ratios = [0]*(K+1)
+  for i in range(num_exp):
+    num_tails = 0
+    for j in range(num_coins_per_exp):
+      if random.random() < 0.5:
+        num_tails += 1
+    ratio = num_tails / num_coins_per_exp
+    num_ratios[int(K*ratio)] += 1
+  return num_ratios
+
+
+def proba_normal_var_above(value):
+  """Returns the probability that a random variable following a normal
+     distribution with mean 0 and standard deviation 1 is above “value”.
+
+  Args:
+     value: a float. See the top-level comment.
+  Returns:
+      a float. See the top-level comment.
+  """
+  return math.erfc(value / math.sqrt(2.0)) / 2.0
+
+
+def proba_sample_mean_above_true_mean_by_at_least(sample, delta):
+  """Given a statistical sample (a list) of i.i.d. values, returns the
+     probability there was of observing at least that mean, assuming that
+     the true mean was at most observed_mean-delta.
+
+  Args:
+     sample: a list of numbers. See toplevel comment.
+     delta: a number. See toplevel comment.
+  Returns:
+     A float. See toplevel comment.
+  """
+  n = len(sample)
+  mean = sum(sample) / float(n)
+  var_emp = sum([(x - mean) * (x - mean) for x in sample]) / float(n-1) if n > 1 else 0
+  s_emp = math.sqrt(var_emp)
+  if s_emp == 0.0:
+    # Corner case: constant distribution!
+    # - There is a 0% chance that the mean of a sample is above
+    #   the true mean by any delta > 0.
+    # - This becomes a 100% chance if delta < 0.
+    # - If delta = 0, this is a degenerate case: we can say that
+    #   there is a 50/50 chance to be above by 0, or below by 0.
+    if delta < 0:
+      return 1
+    if delta > 0:
+      return 0
+    return 0.5
+  # Normal case. We assimilate the distribution of the mean of
+  # a sample of size N to a normal distribution, such that
+  # sqrt(N)*(X - µ)/s ~ N(0,1).
+  return proba_normal_var_above(delta * math.sqrt(n) / s_emp)
+
+
+def proba_normal_var_below(value):
+  """Returns the probability that a random variable following a normal
+     distribution with mean 0 and standard deviation 1 is above “value”.
+
+  Args:
+     value: a float. See the top-level comment.
+  Returns:
+      a float. See the top-level comment.
+  """
+  return proba_normal_var_above(-value)
+
+
+def standard_percentile(p):
+  """Returns the value X such that the probability of drawing a
+  random variable following a normal distribution with mean 0 and standard
+  deviation 1 whose value is X or *below* is equal to p.
+
+  Example: If p=0.5, this should return 0 because there is a 0.5
+           probability of drawing a value above 0 in the normal
+           distribution with parameters (mean=0, stddev=1).
+           If p=0.84, this should return something close to 1 because
+           There is a ~0.84 probability to draw a value in [-infinity, 1].
+
+
+  Args:
+      p: a float. See toplevel comment.
+  Returns:
+      A float. See toplevel comment.
+  """
+  if p < 0 or p > 1:
+    raise ValueError('Invalid probability: %s' % p)
+  if p == 0:
+    return -float('inf')
+  if p == 1:
+    return float('inf')
+  if p == 0.5:
+    # This is kind of a corner case, because the expected value
+    # is 0. To avoid weird values like 1e-100, we return 0 here.
+    return 0
+  # To initialize the bounds of the binary search, we use the fact
+  # that the normal distribution decrease very quickly when far
+  # from its mean: the probability of drawing something outside
+  # [-40, 40] with the normal distribution N(0,1) is already so
+  # low that python can't express it with a floating-point number:
+  # it's just 0.0.
+  lo_x = -40
+  hi_x = 40
+  while True:
+    x = 0.5 * (lo_x + hi_x)
+    if x == lo_x or x == hi_x:
+      # We converged!
+      return x
+    if proba_normal_var_below(x) < p:
+      lo_x = x
+    else:
+      hi_x = x
+
+
+def confidence_interval_of_mean(sample, pvalue):
+  # µ_min and µ_max are the values such that:
+  # proba_sample_mean_above_true_mean_by_at_least(sample, X - µ_min)=pvalue
+  # and something similar with µ_max, with another function.. but we don't need
+  # to implement the reverse function, because this should be symmetric:
+  # µ_min = X - delta and µ_max = X + delta, delta>0,
+  # where proba_sample_mean_above_true_mean_by_at_least(sample, delta)=pvalue.
+  # We do a binary search again!
+  if pvalue < 0 or pvalue >= 0.5:
+    raise ValueError('Invalid p-value: %s' % pvalue)
+  n = len(sample)
+  if n < 2:
+    raise ValueError('Sample needs at least 2 elements (got %d)' % n)
+  X = sum(sample) / float(n)
+  if min(sample) == max(sample):
+    # Corner case: constant distribution (or so it seems!). The interval
+    # is always [X, X].
+    return (X, X)
+  if pvalue == 0:
+    return (X, X)
+  if pvalue == 1:
+    return (-float('inf'), float('inf'))
+  # First, find an interval for the binary search. This is sometimes called
+  # 'galloping'.
+  d_min = None
+  d_max = 1
+  while proba_sample_mean_above_true_mean_by_at_least(sample, d_max) > pvalue:
+    d_min = d_max
+    d_max *= 2
+  if d_min is None:
+    d_min = 1
+    while proba_sample_mean_above_true_mean_by_at_least(sample, d_min) <= pvalue:
+      d_max = d_min
+      d_min *= 0.5
+  # Now we have our first interval for the binary search! Perform the search.
+  while True:
+    d = 0.5 * (d_min + d_max)
+    if d == d_min or d == d_max:
+      break
+    if proba_sample_mean_above_true_mean_by_at_least(sample, d) > pvalue:
+      d_min = d
+    else:
+      d_max = d
+  return (X - d, X + d)

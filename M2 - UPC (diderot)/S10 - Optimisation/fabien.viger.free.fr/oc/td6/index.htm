@@ -1,0 +1,223 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <title>Optimisation Combinatoire: TD 6</title>
+  <style type="text/css">
+    .blue { color: #0000ff }
+    .xslt { color: #116611 }
+    .cc { color: #116611 }
+    .html { color: #882222 }
+    .xml { color: #116611 }
+    .red { color: #ff0000 }
+    .orange { color: #ff8800 }
+    .pink { color: #ff00ff }
+    .grey { color: #555555 }
+    .hidden { color: #ffffff }
+    .bigsep { width: 50px }
+    .verticalline { border-left: solid #000000; }
+    .framed { border: solid #000000; }
+    .footnote { }
+    pre { color: #116611 }
+    tt { color: #116611 }
+  </style>
+  <!-- Google Analytics -->
+  <script type="text/javascript" async="" src="../../ga.js"></script>
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-20097933-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+  <!-- Syntax highlighting -->
+  <link type="text/css" rel="stylesheet" href="../../highlight/styles/googlecode.css">
+  <script type="text/javascript" src="../../highlight/highlight.pack.js"></script>
+  <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+<a href="index.en.html"><img src="../uk_flag.svg" height="20px" alt="UK Flag" style="vertical-align: text-top;"></a>
+<a href="index.en.html">English version</a>
+
+<h2>TD 6: Algo probabilistes, Monte-Carlo, Heuristiques</h2>
+
+<h3>Rappels</h3>
+<ul>
+<li><a href="../cours/6.html">Page du Cours 6</a></li>
+<li><a href="../rendu.html">Procédure de rendu</a></li>
+<li>Heure limite de rendu du TD: <b class="pink">ce soir à 23h59</b>.</li>
+<li> Pour exécuter les tests : téléchargez <a href="test.tar.gz" download=""><tt>test.tar.gz</tt></a> et décompressez-le dans votre répertoire de travail </li>
+</ul>
+
+<h3>Information pour les TD suivants</h3>
+<ul>
+<li> Nous allons utiliser le package open source <tt>or-tools</tt> de Google (outils d'Optimisation Combinatoire) pour la programmation linéaire et entière. </li>
+<li> Les instructions d'installation <a href="../install_or_tools.html">sont ici</a>. Ça prend longtemps (~30min), donc je vous recommande fortement de le faire <b>dès maintenant</b>, et vous pourrez travailler sur ce TD en parallèle.</li>
+<li> Sans installer la librairie, vous ne pourrez pas faire des tests sur votre machine.
+</li>
+</ul>
+
+<hr>
+<h3>Exercice 1: Diamètre d'un graphe</h3>
+<table><tr>
+<td>
+Étant donné un graphe non dirigé et non valué, vous voulez connaître son diamètre:
+la plus grande distance entre 2 noeuds.
+<br>Problème: votre graphe peut être très grand (des <i>millions</i> de noeuds!).
+<br>On ne peut donc pas calculer la valeur <b>exacte</b> en faisant, par exemple, un BFS depuis chaque noeud...
+<br>
+<br>On va donc calculer une valeur <b>approchée</b>: une borne inférieure. Cf le cours -- pour ceux qui n'ont pas écouté, demandez-moi.
+<br>
+<br>Vous allez notamment réutiliser l'implémentation de graphe du TD1 et le BFS du <a href="../td2/index.htm">TD2</a>, qui sont dans <a href="test.tar.gz" download=""><tt>test.tar.gz</tt></a>.
+<ol>
+  <li>
+    <b>Complétez</b> dans le fichier  <a href="diam1.cc" download="">diam1.cc</a> la fonction <tt>DiametreLB()</tt> décrite dans le fichier <a href="diam1.h" download="">diam1.h</a>:
+    <pre><code class="c++">#ifndef __DIAM1_H
+#define __DIAM1_H
+
+#include &lt;utility&gt;
+#include "ugraph.h"
+
+using namespace std;
+
+// Étant donné un graphe, cette fonction trouve 2 noeuds dont la distance
+// (la longueur du plus court chemin entre ces 2 noeuds) est la plus grande
+// possible: cela représentera une borne inférieure du diamètre.
+//
+// ATTENTION:
+// Votre algorithme devra tourner en un temps maximal imparti par graphe:
+// Tmax = 50ms + (M+N)*1µs, où M est le nombre d'arêtes et N de noeuds.
+// Ça correspond a du O(M+N).
+// Par exemple, si M = 10M (10 millions), N = 1M (1million), Tmax = 11.05s.
+//
+// Ensuite, le score dépendra uniquement du diamètre obtenu: plus il est
+// grand, meilleur sera votre score.
+// Mais si le temps dépasse (sur ma machine!), le score sera 0: gardez une
+// bonne marge!
+pair&lt;int, int&gt; DiametreLB(const UndirectedGraph&amp; graph);
+
+#endif  // __DIAM1_H</code></pre>
+    <b>Test</b>:
+    <pre>rm test.tar.gz; wget --no-cache <a href="test.tar.gz" download="">http://fabien.viger.free.fr/oc/td6/test.tar.gz</a>
+tar xf test.tar.gz
+make diam1</pre>
+    <b class="orange">RENDU</b>: <tt>diam1.cc</tt>
+    <br><br>
+  </li>
+  <li>
+    <b>Implémentez</b> dans un fichier <tt>diam2.cc</tt> la fonction <tt>DiametreUB()</tt> décrite dans le fichier <a href="diam2.h" download="">diam2.h</a>:
+    <pre><code class="c++">#ifndef __DIAM2_H
+#define __DIAM2_H
+
+#include &lt;vector&gt;
+#include "ugraph.h"
+
+using namespace std;
+
+// Étant donné un graphe, cette fonction renvoie soit:
+// - un noeud (donc, un vector&lt;int&gt; avec un seul élément) "central",
+//   qui minimise le "rayon" du graphe pour ce centre: le "rayon" est
+//   la plus grande distance à un autre noeud du graphe.
+// - une sous-clique centrale, c'est-à-dire un sous-ensemble de noeuds
+//   tels qu'ils soient tous directement connectés entre eux par une
+//   arête, et tel que le "rayon" soit minimal pour ce "multi-centre".
+//
+// Dans les 2 cas, on peut déduire une borne supérieure sur le diamètre
+// du graphe:
+// - si on a renvoyé un noeud de rayon R: Diamètre &lt;= 2*R
+// - si on a renvoyé une sous-clique de rayon R: Diamètre &lt;= 2*R+1
+//
+// Pour faire simple, vous pourrez vous limiter à renvoyer un simple noeud.
+// Pour être un peu meilleur, vous pourrez renvoyer une arête (2 noeuds
+// liés par une arête). Voire une sous-clique...
+//
+// ATTENTION:
+// Même temps maximal imparti que pour l'exercice précédent.
+// Le score sera fonction de la borne sup du diamètre (voire formule en haut):
+// plus elle est petite, meilleur sera le score.
+vector&lt;int&gt; DiametreUB(const UndirectedGraph&amp; graph);
+
+#endif  // __DIAM2_H</code></pre>
+    <b>Test</b>: <tt>make diam2</tt>
+    <br><br><b class="orange">RENDU</b>: <tt>diam2.cc</tt>
+    <br><br>
+  </li>
+</ol>
+</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td valign="top"><img src="diametre.png" width="409" height="402"></td>
+</tr></table>
+
+<hr>
+<h3>Exercice 2: Minimum Feedback Arc Set</h3>
+<table><tr>
+<td>
+Un gérant de club de karaté est obsédé par le classement de ses élèves.
+Il dispose d'un historique des combats.
+<br>Il considère que A "gagne" contre B si A et B se sont combattues au moins une fois, et si A a remporté la majorité des combats contre B.
+<br>Intuitivement, il se dit que si A gagne contre B, et B contre C, alors A gagne contre C.
+<br>Mais c'est faux en pratique: parfois, C gagne contre A.
+<br>
+<br>Comment établir un classement?
+<br>Une solution est de chercher un <i>Feedback Arc Set</i> de taille minimale dans le graphe dirigé des "X gagne contre Y",
+<br>c'est-à-dire un ensemble d'arcs le plus petit possible tel que si on les enlève, le graphe devient acyclique:
+<br>on pourra alors trier les élèves en utilisant, par exemple, un ordre topologique.
+
+<br><br>
+<b>Implémentez</b> dans un fichier <tt>fas.cc</tt> la fonction <tt>MaxDAG()</tt> décrite dans le fichier <a href="fas.h" download="">fas.h</a>:
+    <pre><code class="c++">#ifndef __FAS_H
+#define __FAS_H
+
+#include "graph.h"
+
+// Renvoie un sous-graphe de "graph" (même noeuds, mais un sous-ensemble des
+// arcs), acyclique, et avec le plus d'arcs possible.
+// Comme les exercices précédents, vous aurez un temps maximal par graphe,
+// un peu supérieur cette fois:
+// Tmax = 50ms + (M+N)*10µs
+//
+// Le score sera:
+// - 0 si la sortie est incorrecte, ne serait-ce que sur un ensemble de test.
+// - si toutes les sorties sont correctes, la somme des scores:
+//   - chaque score sera de 0 si le temps max est dépassé
+//   - sinon il dépendra du nombre d'arcs du graphe que vous renvoyez.
+DirectedGraph MaxDAG(const DirectedGraph&amp; graph);
+
+#endif  // __FAS_H</code></pre>
+    <b>Test</b>: <tt>make fas</tt>
+    <br><br><b class="orange">RENDU</b>: <tt>fas.cc</tt>
+    <br><br>
+</td>
+<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+<td valign="top"><img src="dag.svg" width="409"></td>
+</tr></table>
+
+<!--<hr/>-->
+<!--<h3>Exercice 3: TSP (<i>Traveling Salesman Problem</i>) (**) (actuellement pas de test disponible pour cet exercice) </h3>-->
+<!--<table><tr>-->
+<!--<td>-->
+<!--On s'intéresse au problème du <a href="https://fr.wikipedia.org/wiki/Probl%C3%A8me_du_voyageur_de_commerce">voyageur de commerce</a>, dans sa version "tour": on veut revenir au point de départ.-->
+
+<!--<br/><br/>D'excellentes idées d'approximation, toutes en O(N² polylog(N)), sont décrites sur <a href="http://faculty.washington.edu/jtenenbg/courses/342/f08/sessions/tsp.html">cette page</a> (<a href="tsp.html">copie locale</a>),-->
+<!--de la plus simple à la plus compliquée (à la louche).-->
+<!--<br/><b>Attention</b>: parfois il n'est pas trivial de trouver comment obtenir cette complexité: un algo mal implementé peut facilement être en O(N³), ce qui sera trop lent!-->
+<!--<br/><br/>-->
+<!--<b>Implémentez</b> dans un fichier <tt>tsp.cc</tt> la fonction <tt>TSP()</tt> décrite dans le fichier <a href="tsp.h" download>tsp.h</a>:-->
+<!--    <pre><code class=c++></code></pre>-->
+<!--    <b>Test</b>: <tt>make tsp</tt>-->
+<!--    <br/><br/><b class="orange">RENDU</b>: <tt>tsp.cc</tt>-->
+<!--    <br/><br/>-->
+<!--</td>-->
+<!--<td>&nbsp;&nbsp;&nbsp;&nbsp;</td>-->
+<!--<td><img src="tsp_xkcd.png" width="640"/></td>-->
+<!--</tr></table>-->
+
+<footer>
+N'oubliez pas de <a href="../rendu.html">soumettre votre travail</a>, <b class="red">après l'avoir testé</b>.
+</footer>
+</body>
+</html>

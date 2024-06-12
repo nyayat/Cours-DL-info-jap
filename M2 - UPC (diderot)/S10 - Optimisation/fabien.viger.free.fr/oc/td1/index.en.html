@@ -1,0 +1,226 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <title>Combinatorial Optimization: Exercise Session 1</title>
+  <style type="text/css">
+    .blue { color: #0000ff }
+    .xslt { color: #116611 }
+    .cc { color: #116611 }
+    .html { color: #882222 }
+    .xml { color: #116611 }
+    .red { color: #ff0000 }
+    .orange { color: #ff8800 }
+    .pink { color: #ff00ff }
+    .grey { color: #555555 }
+    .hidden { color: #ffffff }
+    .bigsep { width: 50px }
+    .verticalline { border-left: solid #000000; }
+    .framed { border: solid #000000; }
+    .footnote { }
+    pre { color: #116611 }
+    tt { color: #116611 }
+  </style>
+  <!-- Google Analytics -->
+  <script type="text/javascript" async="" src="../../ga.js"></script>
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-20097933-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+  <!-- Syntax highlighting -->
+  <link type="text/css" rel="stylesheet" href="../../highlight/styles/googlecode.css">
+  <script type="text/javascript" src="../../highlight/highlight.pack.js"></script>
+  <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+<a href="index.html"><img src="../fr_flag.svg" height="20px" alt="French Flag" style="vertical-align: text-top;"></a>
+<a href="index.html">Version française</a>
+
+<h2>Exercise Session 1: Graphs</h2>
+
+<h3>Reminders</h3>
+<ul>
+<li><a href="../cours/1.html">Course Session 1+2</a> (in French)</li>
+<li><a href="../rendu.html">How to submit your work</a></li>
+<li>Deadline for submission: <b class="pink">tonight at 23h59</b>.</li>
+<li>To run the tests : download <a href="test.tar.gz" download=""><tt>test.tar.gz</tt></a> and unpack it in your work directory</li>
+</ul>
+
+<hr>
+<h3>Exercise 1: Directed Graph</h3>
+<ol>
+  <li>
+    <b>Complete</b> the file <a href="graph.h" download="">graph.h</a> and <b>implement</b>
+    it in another file <tt>graph.cc</tt>!
+    <br><br><b class="red">Important</b>: each function must have constant-time complexity O(1).
+    <pre><code class="c++">
+#include &lt;vector&gt;
+using std::vector;    
+// A directed graph is a set of nodes, linked by arcs. Arcs are directed: they
+// go from a node to another node.
+// In this implementation, the nodes are the integers {0 .. num_nodes-1}.
+//
+// For example, the following graph:
+//
+//  0 &lt;--- 1 &lt;--&gt; 3 ---&gt; 4
+//  ^      |       \     ^
+//  |      v        `----'
+//  '----- 2
+//
+// Can be obtained by:
+//   DirectedGraph g(5);
+//   g.AddArc(1, 0);
+//   g.AddArc(1, 3);
+//   g.AddArc(3, 1);
+//   g.AddArc(2, 0);
+//   g.AddArc(1, 2);
+//   g.AddArc(3, 4);
+//   g.AddArc(3, 4);
+//
+class DirectedGraph {
+ public:
+  // At construction, the graph has no arcs.
+  explicit DirectedGraph(int num_nodes);
+
+  int NumNodes() const;
+
+  void AddArc(int from, int to);
+
+  // Returns the number of arcs originating from "node".
+  // In the example above, OutDegree(1) = 3, OutDegree(4) = 0.
+  int OutDegree(int node) const;
+
+  // Returns all the destination nodes that were added with arcs
+  // originating from "node".
+  // In the example above, Neighbors(1) is {0, 2, 3} and Neighbors(2) is {0}.
+  const vector&lt;int&gt;&amp; Neighbors(int node) const;
+
+ private:
+  // TODO
+};</code></pre>
+    <b>Test</b> your code:
+    <pre>rm test.tar.gz; wget --no-cache <a href="test.tar.gz" download="">http://fabien.viger.free.fr/oc/td1/test.tar.gz</a>
+tar xf test.tar.gz
+make 1</pre>
+    <b class="orange">TO SUBMIT</b>: <tt>graph.h</tt>, <tt>graph.cc</tt>
+    <br><br>
+  </li>
+  <li>
+    <b>Add</b> a function (inside the <tt>DirectedGraph</tt> class) that returns
+    the number of arcs of the graph: <tt>int NumArcs() const</tt>
+    <br>How can you make it work in O(1) constant time? Feel free to adapt the rest of
+    the class. But be careful: the complexity of all other operations must remain O(1).
+    <br><br>
+    <b>Test</b>: <tt>make 2</tt>
+    <br><br>
+    <b class="orange">TO SUBMIT</b>: <tt>graph.h</tt>, <tt>graph.cc</tt> with the newly
+    added function (declared in the .h and defined in the .cc).
+    <br>Do not create <b>new</b> files <tt>graph.h</tt>, <tt>graph.cc</tt>!
+    Instead, modify the previous files you had.
+    <br>The exercises are incremental: as you progress, your files will pass more and
+    more of the automated tests.
+    <br><br>
+  </li>
+  
+  <li>
+    Add a function <tt>void MakeSimple()</tt> which removes all self-arcs (x→x) and
+    all multi-arcs (e.g. if the graph has the arc x→y 3 times, keep only one).
+    A graph without self-arcs nor multi-arcs is called <b>simple</b>.
+    <br>It must work in time complexity O(N + M log M), or even O(N + M) if you can (where N = number of nodes and M = number of arcs).
+    <br><br><b>Test</b>: <tt>make 3</tt>
+    <br><br>
+    <b class="orange">TO SUBMIT</b>: <tt>graph.h</tt>, <tt>graph.cc</tt> with the added function.
+    <br><br>
+  </li>
+</ol>
+
+<hr>
+<h3>Exercise 2: Undirected Graph, connected components</h3>
+<ol>
+  <li>
+    <b>Complete</b> the file <a href="ugraph.h" download="">ugraph.h</a> and <b>implement</b> it in another file <tt>ugraph.cc</tt>.
+    <br><br><b class="red">Important</b>: each function must have constant time complexity O(1).
+    <pre><code class="c++">#include "graph.h"
+
+// An undirected graph is just like a directed graph, but arcs are called
+// "edges" and they don't have a direction: an edge (a, b) is present both
+// in the adjacency list of a and the adjacency list of b.
+class UndirectedGraph {
+ public:
+  explicit UndirectedGraph(int num_nodes);
+
+  void AddEdge(int a, int b);
+
+  int NumNodes() const;
+  int NumEdges() const;
+  int Degree(int node) const;
+  const vector&lt;int&gt;&amp; Neighbors(int node) const;
+
+ private:
+  // TODO
+  // HINT: Use a DirectedGraph where you store each edge (a, b) as two arcs
+  // a-&gt;b and b-&gt;a !
+};</code></pre>
+  <b>Test</b>:
+    <pre>make u1</pre>
+    <b class="orange">TO SUBMIT</b>: <tt>ugraph.h</tt>, <tt>ugraph.cc</tt>
+    <br><br>
+  </li>
+  
+  <li>
+    <b>Add</b> a function <tt>vector&lt;int&gt; GetNodesConnectedTo(int node)</tt> that
+    returns all the nodes that are in the same connected component as <tt>node</tt>.
+    <br><br><b>Test</b>: <tt>make u2</tt>
+    <br><br>
+    <b class="orange">TO SUBMIT</b>: <tt>ugraph.h</tt>, <tt>ugraph.cc</tt>
+    with the added function
+    <br><br>
+  </li>
+  <li>
+    <b>Add</b> a function <tt>vector&lt;vector&lt;int&gt;&gt; ConnectedComponents()</tt>
+    that returns all the connected components of the graph, in any order.
+    <br><br><b>Test</b>: <tt>make u3</tt>
+    <br><br>
+    <b class="orange">TO SUBMIT</b>: <tt>ugraph.h</tt>, <tt>ugraph.cc</tt>
+    with the added function
+    <br><br>
+  </li>
+  <li>
+    <b>[*]</b> (Do this only if you have time! Please move on to TD2 before doing this)
+    <br>
+    <b>Implement</b> the function described in <a href="triangles.h" download="">triangles.h</a>:
+<pre><code class="c++">#include "ugraph.h"
+
+// Returns the number of sorted triples of nodes i&lt;j&lt;k such that
+// (i,j), (j,k) and (k,i) are edges of the graph.
+int NumTriangles(const UndirectedGraph&amp; graph);
+</code></pre>
+    <b>[**]</b> Try to have a time complexity better than O(N<sup>3</sup>) in practice
+    when the graph is <b>sparse</b>, meaning that its number of edges <b>M</b> is much
+    smaller than <b>N</b><sup>2</sup>, where <b>N</b> is the number of nodes.
+    <br>
+    <span class="hidden"><b>[**]</b> </span><b>Hint:</b> you could for example make a
+    local, partial copy of the (<tt>const</tt>) input graph. Arc by arc. The local
+    copy could be directed instead of undirected, after 'sorting' each input edge?
+    Also, you could remove duplicate and self-arcs on the spot?
+    <br>Those hints can help you write a more efficient algorithm.
+    <br><br><b>Test</b>: <tt>make triangles</tt>
+    <br><br>
+    <b class="orange">TO SUBMIT</b>: <tt>triangles.cc</tt> (if you made any modifications to <tt>ugraph.h</tt> and <tt>ugraph.cc</tt>, they need to be in the submitted files too)
+    <br><br>
+  </li>
+</ol>
+
+<footer>
+Don't forget to <a href="../rendu.html">submit your work</a>, <b class="red">after you have tested it</b>.
+</footer>
+
+</body>
+</html>

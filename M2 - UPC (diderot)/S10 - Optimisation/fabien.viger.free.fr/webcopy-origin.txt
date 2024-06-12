@@ -1,0 +1,328 @@
+Uri: http://fabien.viger.free.fr/highlight/highlight.pack.js
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\highlight\highlight.pack.js
+Content Type: application/x-javascript
+
+Uri: http://fabien.viger.free.fr/highlight/styles/googlecode.css
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\highlight\styles\googlecode.css
+Content Type: text/css
+
+Uri: http://fabien.viger.free.fr/oc/
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\index.htm
+Content Type: text/html
+
+Uri: http://fabien.viger.free.fr/oc/cours/1.html
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\cours\1.html
+Content Type: text/html
+
+Uri: http://fabien.viger.free.fr/oc/cours/3.html
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\cours\3.html
+Content Type: text/html
+
+Uri: http://fabien.viger.free.fr/oc/cours/4.html
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\cours\4.html
+Content Type: text/html
+
+Uri: http://fabien.viger.free.fr/oc/cours/5.html
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\cours\5.html
+Content Type: text/html
+
+Uri: http://fabien.viger.free.fr/oc/cours/6.html
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\cours\6.html
+Content Type: text/html
+
+Uri: http://fabien.viger.free.fr/oc/cours/7.html
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\cours\7.html
+Content Type: text/html
+
+Uri: http://fabien.viger.free.fr/oc/cours/8.html
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\cours\8.html
+Content Type: text/html
+
+Uri: http://fabien.viger.free.fr/oc/cours/9.html
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\cours\9.html
+Content Type: text/html
+
+Uri: http://fabien.viger.free.fr/oc/fr_flag.svg
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\fr_flag.svg
+Content Type: image/svg+xml
+
+Uri: http://fabien.viger.free.fr/oc/fvg.png
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\fvg.png
+Content Type: image/png
+
+Uri: http://fabien.viger.free.fr/oc/install_or_tools.html
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\install_or_tools.html
+Content Type: text/html
+
+Uri: http://fabien.viger.free.fr/oc/rendu.html
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\rendu.html
+Content Type: text/html
+
+Uri: http://fabien.viger.free.fr/oc/td1/
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td1\index.htm
+Content Type: text/html
+
+Uri: http://fabien.viger.free.fr/oc/td1/graph.h
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td1\graph.h
+Content Type: text/x-chdr
+
+Uri: http://fabien.viger.free.fr/oc/td1/index.en.html
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td1\index.en.html
+Content Type: text/html
+
+Uri: http://fabien.viger.free.fr/oc/td1/index.html
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td1\index.html
+Content Type: text/html
+
+Uri: http://fabien.viger.free.fr/oc/td1/test.tar.gz
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td1\test.tar.gz
+Content Type: application/x-gzip
+
+Uri: http://fabien.viger.free.fr/oc/td1/triangles.h
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td1\triangles.h
+Content Type: text/x-chdr
+
+Uri: http://fabien.viger.free.fr/oc/td1/ugraph.h
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td1\ugraph.h
+Content Type: text/x-chdr
+
+Uri: http://fabien.viger.free.fr/oc/td2/
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td2\index.htm
+Content Type: text/html
+
+Uri: http://fabien.viger.free.fr/oc/td2/bfs.1.h
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td2\bfs.1.h
+Content Type: text/x-chdr
+
+Uri: http://fabien.viger.free.fr/oc/td2/bfs.2.h
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td2\bfs.2.h
+Content Type: text/x-chdr
+
+Uri: http://fabien.viger.free.fr/oc/td2/bfs.3.h
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td2\bfs.3.h
+Content Type: text/x-chdr
+
+Uri: http://fabien.viger.free.fr/oc/td2/dijkstra.h
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td2\dijkstra.h
+Content Type: text/x-chdr
+
+Uri: http://fabien.viger.free.fr/oc/td2/index.en.html
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td2\index.en.html
+Content Type: text/html
+
+Uri: http://fabien.viger.free.fr/oc/td2/index.html
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td2\index.html
+Content Type: text/html
+
+Uri: http://fabien.viger.free.fr/oc/td2/test.tar.gz
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td2\test.tar.gz
+Content Type: application/x-gzip
+
+Uri: http://fabien.viger.free.fr/oc/td3/
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td3\index.htm
+Content Type: text/html
+
+Uri: http://fabien.viger.free.fr/oc/td3/longest_path_dag.h
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td3\longest_path_dag.h
+Content Type: text/x-chdr
+
+Uri: http://fabien.viger.free.fr/oc/td3/test.tar.gz
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td3\test.tar.gz
+Content Type: application/x-gzip
+
+Uri: http://fabien.viger.free.fr/oc/td3/toposort.h
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td3\toposort.h
+Content Type: text/x-chdr
+
+Uri: http://fabien.viger.free.fr/oc/td3/tree.1.h
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td3\tree.1.h
+Content Type: text/x-chdr
+
+Uri: http://fabien.viger.free.fr/oc/td3/tree.2.h
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td3\tree.2.h
+Content Type: text/x-chdr
+
+Uri: http://fabien.viger.free.fr/oc/td3/tree.3.h
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td3\tree.3.h
+Content Type: text/x-chdr
+
+Uri: http://fabien.viger.free.fr/oc/td3/tree.4.h
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td3\tree.4.h
+Content Type: text/x-chdr
+
+Uri: http://fabien.viger.free.fr/oc/td4/
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td4\index.htm
+Content Type: text/html
+
+Uri: http://fabien.viger.free.fr/oc/td4/cut.h
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td4\cut.h
+Content Type: text/x-chdr
+
+Uri: http://fabien.viger.free.fr/oc/td4/parcel.h
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td4\parcel.h
+Content Type: text/x-chdr
+
+Uri: http://fabien.viger.free.fr/oc/td4/parcel2.h
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td4\parcel2.h
+Content Type: text/x-chdr
+
+Uri: http://fabien.viger.free.fr/oc/td4/test.tar.gz
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td4\test.tar.gz
+Content Type: application/x-gzip
+
+Uri: http://fabien.viger.free.fr/oc/td5/
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td5\index.htm
+Content Type: text/html
+
+Uri: http://fabien.viger.free.fr/oc/td5/arbre_couvrant.png
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td5\arbre_couvrant.png
+Content Type: image/png
+
+Uri: http://fabien.viger.free.fr/oc/td5/color.h
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td5\color.h
+Content Type: text/x-chdr
+
+Uri: http://fabien.viger.free.fr/oc/td5/graph_coloring.png
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td5\graph_coloring.png
+Content Type: image/png
+
+Uri: http://fabien.viger.free.fr/oc/td5/index.en.html
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td5\index.en.html
+Content Type: text/html
+
+Uri: http://fabien.viger.free.fr/oc/td5/index.html
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td5\index.html
+Content Type: text/html
+
+Uri: http://fabien.viger.free.fr/oc/td5/prim.h
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td5\prim.h
+Content Type: text/x-chdr
+
+Uri: http://fabien.viger.free.fr/oc/td5/sac1.h
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td5\sac1.h
+Content Type: text/x-chdr
+
+Uri: http://fabien.viger.free.fr/oc/td5/sac2.h
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td5\sac2.h
+Content Type: text/x-chdr
+
+Uri: http://fabien.viger.free.fr/oc/td5/test.tar.gz
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td5\test.tar.gz
+Content Type: application/x-gzip
+
+Uri: http://fabien.viger.free.fr/oc/td6/
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td6\index.htm
+Content Type: text/html
+
+Uri: http://fabien.viger.free.fr/oc/td6/dag.svg
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td6\dag.svg
+Content Type: image/svg+xml
+
+Uri: http://fabien.viger.free.fr/oc/td6/diam1.cc
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td6\diam1.cc
+Content Type: text/x-c++src
+
+Uri: http://fabien.viger.free.fr/oc/td6/diam1.h
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td6\diam1.h
+Content Type: text/x-chdr
+
+Uri: http://fabien.viger.free.fr/oc/td6/diam2.h
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td6\diam2.h
+Content Type: text/x-chdr
+
+Uri: http://fabien.viger.free.fr/oc/td6/diametre.png
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td6\diametre.png
+Content Type: image/png
+
+Uri: http://fabien.viger.free.fr/oc/td6/fas.h
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td6\fas.h
+Content Type: text/x-chdr
+
+Uri: http://fabien.viger.free.fr/oc/td6/index.en.html
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td6\index.en.html
+Content Type: text/html
+
+Uri: http://fabien.viger.free.fr/oc/td6/index.html
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td6\index.html
+Content Type: text/html
+
+Uri: http://fabien.viger.free.fr/oc/td6/test.tar.gz
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td6\test.tar.gz
+Content Type: application/x-gzip
+
+Uri: http://fabien.viger.free.fr/oc/td7/
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td7\index.htm
+Content Type: text/html
+
+Uri: http://fabien.viger.free.fr/oc/td7/flow.cc
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td7\flow.cc
+Content Type: text/x-c++src
+
+Uri: http://fabien.viger.free.fr/oc/td7/flow.h
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td7\flow.h
+Content Type: text/x-chdr
+
+Uri: http://fabien.viger.free.fr/oc/td7/menu.cc
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td7\menu.cc
+Content Type: text/x-c++src
+
+Uri: http://fabien.viger.free.fr/oc/td7/menu.h
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td7\menu.h
+Content Type: text/x-chdr
+
+Uri: http://fabien.viger.free.fr/oc/td7/test.tar.gz
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td7\test.tar.gz
+Content Type: application/x-gzip
+
+Uri: http://fabien.viger.free.fr/oc/td8/
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td8\index.htm
+Content Type: text/html
+
+Uri: http://fabien.viger.free.fr/oc/td8/job.h
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td8\job.h
+Content Type: text/x-chdr
+
+Uri: http://fabien.viger.free.fr/oc/td8/test.tar.gz
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td8\test.tar.gz
+Content Type: application/x-gzip
+
+Uri: http://fabien.viger.free.fr/oc/td9/
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td9\index.htm
+Content Type: text/html
+
+Uri: http://fabien.viger.free.fr/oc/td9/job0.h
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td9\job0.h
+Content Type: text/x-chdr
+
+Uri: http://fabien.viger.free.fr/oc/td9/job1.h
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td9\job1.h
+Content Type: text/x-chdr
+
+Uri: http://fabien.viger.free.fr/oc/td9/job2.h
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td9\job2.h
+Content Type: text/x-chdr
+
+Uri: http://fabien.viger.free.fr/oc/td9/job3.h
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td9\job3.h
+Content Type: text/x-chdr
+
+Uri: http://fabien.viger.free.fr/oc/td9/job4.h
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td9\job4.h
+Content Type: text/x-chdr
+
+Uri: http://fabien.viger.free.fr/oc/td9/students.h
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td9\students.h
+Content Type: text/x-chdr
+
+Uri: http://fabien.viger.free.fr/oc/td9/test.tar.gz
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\td9\test.tar.gz
+Content Type: application/x-gzip
+
+Uri: http://fabien.viger.free.fr/oc/uk_flag.svg
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\oc\uk_flag.svg
+Content Type: image/svg+xml
+
+Uri: http://www.google-analytics.com/ga.js
+File Name: C:\Users\frtan\Desktop\DWS\fabien.viger.free.fr\ga.js
+Content Type: text/javascript
+

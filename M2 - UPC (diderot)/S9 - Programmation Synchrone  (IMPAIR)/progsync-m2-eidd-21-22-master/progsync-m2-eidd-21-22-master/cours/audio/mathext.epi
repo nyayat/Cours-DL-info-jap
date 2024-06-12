@@ -1,0 +1,16 @@
+external fun float(x : int) returns (o : float)
+external fun int(x : float) returns (o : int)
+external fun floor(x : float) returns (o : float)
+
+external fun sin(x : float) returns (o : float)
+external fun cos(x : float) returns (o : float)
+external fun atan2(y : float; x : float) returns (o : float)
+external fun hypot(x : float; y : float) returns (o : float)
+external fun sqrt(x2 : float) returns (o : float)
+external fun pow(x : float; y : float) returns (o : float)
+
+external fun modulo(x : int; y : int) returns (o : int)
+
+external fun piano_freq_of_key(k : int) returns (f : float)
+
+const pi : float = 3.14115

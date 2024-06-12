@@ -1,0 +1,238 @@
+(* Types *)
+
+const obstnum : int = 10
+
+const trafnum : int = 6
+
+const itinum : int = 50
+
+type color = { red : int; green : int; blue : int }
+
+type colorQ = Red | Green | Amber | Other
+
+type position = { x : float; y : float }
+
+type interrupt = Wait | Halt | Ok
+
+type status = Preparing | Running | Arrived | Stopped
+
+type event = {
+  lightRun : bool;
+  speedExcess : bool;
+  exitRoad : bool;
+  collisionEvent : bool;
+  dirEvent : bool
+}
+
+type obstacle = { o_pos : position; o_pres : bool }
+
+type obstacles = obstacle^obstnum
+
+type traflight = { tl_pos : position; tl_color : colorQ }
+
+type traflights = traflight^trafnum
+
+type sign = { si_tlights : traflights; si_obstacles : obstacles }
+
+type phase = { ph_pos : position; ph_vel : float; ph_head : float }
+
+type sensors = { s_road : color; s_front : color; s_sonar : int }
+
+type action = Go | Turn | Stop
+
+type itielt = { act : action; param : float }
+
+type itielts = itielt^itinum
+
+type wheels = { left : float; right : float }
+
+(* information on one point on the map *)
+type map_data = { on_road : bool; (* is it on the road? *)
+                  color : color; (* road color *)
+                  max_speed : int; (* maximum allowed speed *)
+                  tl_number : int; (* which traffic light is visible? *)
+                  tl_required : bool; (* should we stop on red traffic light? *)
+                  dir_x : float; (* directing vector, abscissa *)
+                  dir_y : float  (* directing vector, ordinate *) }
+
+(* information on one obstacle *)
+type param_obst = { pot_pos : position; (* position of the obstacle *)
+                    pot_since : float;  (* appearance time *)
+                    pot_till : float    (* disappearance time *) }
+
+type param_obsts = param_obst^obstnum
+
+type param_tlight = { ptl_pos : position; (* traffic light position *)
+                      ptl_green : int;    (* time on green (s) *)
+                      ptl_amber : int;    (* time on amber (s) *)
+                      ptl_red : int;      (* time on red (s) *)
+                      ptl_phase : int     (* initial phase (s) *) }
+
+type param_tlights = param_tlight^trafnum
+
+(* Constants *)
+
+const pi : float = 3.1415926
+
+const red : color = { red = 255; green = 0; blue = 0 }
+
+const green : color = { red = 0; green = 255; blue = 0 }
+
+const blue : color = { red = 0; green = 0; blue = 255 }
+
+const amber : color = { red = 255; green = 191; blue = 0 }
+
+const cyan : color = { red = 0; green = 255; blue = 255 }
+
+const gray : color = { red = 128; green = 128; blue = 128 }
+
+const magenta : color = { red = 255; green = 0; blue = 255 }
+
+const cB : float = 6.0
+
+const cD : float = 5.5
+
+const cDELTA : float = 0.0
+
+const cMAXWHEEL : float = 500.0
+
+const cMAXSPEED : float = 25.0
+
+const cSONARFAR : int = 1000
+
+const cROBST : float = 1.5
+
+const cSA : float = 3.0
+
+const cSB : float = 3.0
+
+const cSC : float = 7.0
+
+const idlew : wheels = { left = 0.0; right = 0.0 }
+
+const timestep : float = 0.01 (* in seconds *)
+
+(* Debugging *)
+
+(* TODO: define d_position *)
+
+fun dbg_position(msg : string; p : position) returns ()
+var w0, w1, w2, w3, w4, w5 : Debug.world;
+let
+  w0 = Debug.d_string(Debug.d_init(), msg);
+  w1 = Debug.d_string(w0, "{ x = ");
+  w2 = Debug.d_float(w1, p.x);
+  w3 = Debug.d_string(w2, "; y = ");
+  w4 = Debug.d_float(w3, p.y);
+  w5 = Debug.d_string(w4, " }\n");
+tel
+
+fun dbg_phase(msg : string; ph : phase) returns ()
+var w0, w1, w2, w3, w4, w5, w6, w7, w8, w9 : Debug.world;
+let
+  w0 = Debug.d_string(Debug.d_init(), msg);
+  w1 = Debug.d_string(w0, "{ x = ");
+  w2 = Debug.d_float(w1, ph.ph_pos.x);
+  w3 = Debug.d_string(w2, "; y = ");
+  w4 = Debug.d_float(w3, ph.ph_pos.y);
+  w5 = Debug.d_string(w4, "; head = ");
+  w6 = Debug.d_float(w5, ph.ph_head);
+  w7 = Debug.d_string(w6, "; vel = ");
+  w8 = Debug.d_float(w7, ph.ph_vel);
+  w9 = Debug.d_string(w8, " }\n");
+tel
+
+fun dbg_interrupt(msg : string; itr : interrupt) returns ()
+var w0, w1, w2 : Debug.world;
+let
+  w0 = Debug.d_string(Debug.d_init(), msg);
+  switch itr
+  | Wait do w1 = Debug.d_string(w0, "Wait");
+  | Halt do w1 = Debug.d_string(w0, "Halt");
+  | Ok do w1 = Debug.d_string(w0, "Ok");
+  end;
+  w2 = Debug.d_string(w1, "\n");
+tel
+
+fun dbg_status(msg : string; sta : status) returns ()
+var w0, w1, w2 : Debug.world;
+let
+  w0 = Debug.d_string(Debug.d_init(), msg);
+  switch sta
+  | Preparing do w1 = Debug.d_string(w0, "Preparing");
+  | Running do w1 = Debug.d_string(w0, "Running");
+  | Arrived do w1 = Debug.d_string(w0, "Arrived");
+  | Stopped do w1 = Debug.d_string(w0, "Stopped");
+  end;
+  w2 = Debug.d_string(w1, "\n");
+tel
+
+fun dbg_wheels(msg : string; wh : wheels) returns ()
+var w0, w1, w2, w3, w4, w5 : Debug.world;
+let
+  w0 = Debug.d_string(Debug.d_init(), msg);
+  w1 = Debug.d_string(w0, "{ left = ");
+  w2 = Debug.d_float(w1, wh.left);
+  w3 = Debug.d_string(w2, "; right = ");
+  w4 = Debug.d_float(w3, wh.right);
+  w5 = Debug.d_string(w4, " }\n");
+tel
+
+fun dbg_action(msg : string; act : action) returns ()
+var w0, w1, w2 : Debug.world;
+let
+  w0 = Debug.d_string(Debug.d_init(), msg);
+  switch act
+  | Go do w1 = Debug.d_string(w0, "Go");
+  | Turn do w1 = Debug.d_string(w0, "Turn");
+  | Stop do w1 = Debug.d_string(w0, "Stop");
+  end;
+  w2 = Debug.d_string(w1, "\n");
+tel
+
+fun d_color(w0 : Debug.world; c : color)
+   returns (w7 : Debug.world)
+var w1, w2, w3, w4, w5, w6 : Debug.world;
+let
+  w1 = Debug.d_string(w0, "{ red = ");
+  w2 = Debug.d_int(w1, c.red);
+  w3 = Debug.d_string(w2, "; green = ");
+  w4 = Debug.d_int(w3, c.green);
+  w5 = Debug.d_string(w4, "; blue = ");
+  w6 = Debug.d_int(w5, c.blue);
+  w7 = Debug.d_string(w6, " }");
+tel
+
+fun dbg_color(msg : string; c : color) returns ()
+var w0, w1, w2 : Debug.world;
+let
+  w0 = Debug.d_string(Debug.d_init(), msg);
+  w1 = d_color(w0, c);
+  w2 = Debug.d_string(w1, "\n");
+tel
+
+fun dbg_colorq(msg : string; c : colorQ) returns ()
+var w0, w1, w2 : Debug.world;
+let
+  w0 = Debug.d_string(Debug.d_init(), msg);
+  switch c
+  | Red do w1 = Debug.d_string(w0, "Red");
+  | Green do w1 = Debug.d_string(w0, "Green");
+  | Amber do w1 = Debug.d_string(w0, "Amber");
+  | Other do w1 = Debug.d_string(w0, "Other");
+  end;
+  w2 = Debug.d_string(w1, "\n");
+tel
+
+fun dbg_sensors(msg : string; s : sensors) returns ()
+var w0, w1, w2, w3, w4, w5, w6, w7 : Debug.world;
+let
+  w0 = Debug.d_string(Debug.d_init(), msg);
+  w1 = Debug.d_string(w0, "{ s_road = ");
+  w2 = d_color(w1, s.s_road);
+  w3 = Debug.d_string(w2, "; s_front = ");
+  w4 = d_color(w3, s.s_front);
+  w5 = Debug.d_string(w4, "; s_sonar = ");
+  w6 = Debug.d_int(w5, s.s_sonar);
+  w7 = Debug.d_string(w6, " }\n");
+tel

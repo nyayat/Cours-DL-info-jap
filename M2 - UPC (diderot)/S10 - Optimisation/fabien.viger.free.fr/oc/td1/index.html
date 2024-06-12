@@ -1,0 +1,209 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <title>Optimisation Combinatoire: TD 1</title>
+  <style type="text/css">
+    .blue { color: #0000ff }
+    .xslt { color: #116611 }
+    .cc { color: #116611 }
+    .html { color: #882222 }
+    .xml { color: #116611 }
+    .red { color: #ff0000 }
+    .orange { color: #ff8800 }
+    .pink { color: #ff00ff }
+    .grey { color: #555555 }
+    .hidden { color: #ffffff }
+    .bigsep { width: 50px }
+    .verticalline { border-left: solid #000000; }
+    .framed { border: solid #000000; }
+    .footnote { }
+    pre { color: #116611 }
+    tt { color: #116611 }
+  </style>
+  <!-- Google Analytics -->
+  <script type="text/javascript" async="" src="../../ga.js"></script>
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-20097933-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+  <!-- Syntax highlighting -->
+  <link type="text/css" rel="stylesheet" href="../../highlight/styles/googlecode.css">
+  <script type="text/javascript" src="../../highlight/highlight.pack.js"></script>
+  <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+
+<a href="index.en.html"><img src="../uk_flag.svg" height="20px" alt="UK Flag" style="vertical-align: text-top;"></a>
+<a href="index.en.html">English version</a>
+
+<h2>TD 1 Optimisation Combinatoire: Graphes</h2>
+
+<h3>Rappels</h3>
+<ul>
+<li><a href="../cours/1.html">Page du Cours 1</a></li>
+<li><a href="../rendu.html">Procédure de rendu</a></li>
+<li>Heure limite de rendu du TD1: <b class="pink">ce soir à 23h59</b>.</li>
+</ul>
+
+<hr>
+<h3>Exercice 1: Graphe dirigé</h3>
+<ol>
+  <li>
+    <b>Complétez</b> le fichier <a href="graph.h" download="">graph.h</a> et <b>implémentez-le</b> dans un fichier <tt>graph.cc</tt>!
+    <br><br><b class="red">Attention</b>: chaque méthode devra avoir une complexité O(1).
+    <pre><code class="c++">
+#include &lt;vector&gt;
+using std::vector;    
+// Un graphe dirigé est un ensemble de noeuds, liés par des arcs.
+// Chaque arc a une direction: il va d'un noeud vers un autre.
+// Dans cette implementation, les noeuds sont les entiers {0 .. num_nodes-1}.
+//
+// Par exemple, ce graphe:
+//
+//  0 &lt;--- 1 &lt;--&gt; 3 ---&gt; 4
+//  ^      |       \     ^
+//  |      v        `----'
+//  '----- 2
+//
+// Peut être obtenu en faisant:
+//   DirectedGraph g(5);
+//   g.AddArc(1, 0);
+//   g.AddArc(1, 3);
+//   g.AddArc(3, 1);
+//   g.AddArc(2, 0);
+//   g.AddArc(1, 2);
+//   g.AddArc(3, 4);
+//   g.AddArc(3, 4);
+//
+class DirectedGraph {
+ public:
+  // Après sa construction, un graphe n'a initialement pas d'arcs.
+  explicit DirectedGraph(int num_nodes);
+
+  int NumNodes() const;  // Renvoie le nombre de noeuds
+
+  void AddArc(int from, int to);  // Ajoute un arc from → to
+
+  // Renvoie le nombre d'arcs sortant du noeud "node".
+  // Dans l'exemple ci-dessus, OutDegree(1) = 3, OutDegree(4) = 0.
+  int OutDegree(int node) const;
+
+  // Renvoie tous les noeudsReturns all the destination nodes that were added with arcs
+  // originating from "node".
+  // In the example above, Neighbors(1) is {0, 2, 3} and Neighbors(2) is {0}.
+  const vector&lt;int&gt;&amp; Neighbors(int node) const;
+
+ private:
+  // TODO
+};</code></pre>
+    <b>Testez</b> votre code:
+    <pre>rm test.tar.gz; wget --no-cache <a href="test.tar.gz" download="">http://fabien.viger.free.fr/oc/td1/test.tar.gz</a>
+tar xf test.tar.gz
+make 1</pre>
+    <b class="orange">RENDU</b>: <tt>graph.h</tt>, <tt>graph.cc</tt>
+    <br><br>
+  </li>
+  <li>
+    <b>Ajoutez</b> une fonction qui renvoie le nombre d'arcs: <tt>int NumArcs() const</tt>
+    <br>Comment faire pour qu'elle tourne en O(1)? Vous pourrez adapter la classe, mais attention, la complexité de toutes les opérations doit rester O(1).
+    <br><br>
+    <b>Test</b>: <tt>make 2</tt>
+    <br><br>
+    <b class="orange">RENDU</b>: <tt>graph.h</tt>, <tt>graph.cc</tt> avec la nouvelle fonction (déclarée dans le .h et définie dans le .cc).
+    <br>N'ajoutez pas des 2<sup>ème</sup> fichiers <tt>graph.h</tt>, <tt>graph.cc</tt>! Modifiez simplement les fichiers obtenus précédemment. Les exercices sont progressifs: au fur et à mesure, vos fichiers vont passer de plus en plus de tests.
+    <br><br>
+  </li>
+  
+  <li>
+    Ajoutez une fonction <tt>void MakeSimple()</tt> qui éliminera toutes les boucles et multi-arcs du graphe, en le rendant donc <b>simple</b>.
+    <br>Elle devra fonctionner en O(N + M log M), voire en O(N + M) si vous y arrivez (où N = nombre de noeuds et M = nombre d'arcs).
+    <br><br><b>Test</b>: <tt>make 3</tt>
+    <br><br>
+    <b class="orange">RENDU</b>: <tt>graph.h</tt>, <tt>graph.cc</tt> avec la nouvelle fonction
+    <br><br>
+  </li>
+</ol>
+
+<hr>
+<h3>Exercice 2: Graphe non dirigé, composantes connexes</h3>
+<ol>
+  <li>
+    <b>Complétez</b> le fichier <a href="ugraph.h" download="">ugraph.h</a> et <b>implémentez-le</b> dans un fichier <tt>ugraph.cc</tt>!
+    <br><br><b class="red">Attention</b>: chaque méthode devra avoir une complexité O(1).
+    <pre><code class="c++">#include "graph.h"
+
+// Un graph non dirigé est comme un graph dirigé, mais ses arcs sont appelés
+// "arêtes" et n'ont pas de direction: une arête (a, b) est matérialisée à la
+// fois dans la liste d'adjacence de a et dans celle de b.
+class UndirectedGraph {
+ public:
+  explicit UndirectedGraph(int num_nodes);
+
+  void AddEdge(int a, int b);  // Ajoute une arête au graphe.
+
+  int NumNodes() const;
+  int NumEdges() const;
+  int Degree(int node) const;
+  const vector&lt;int&gt;&amp; Neighbors(int node) const;
+
+ private:
+  // TODO
+  // INDICE: Utilisez un DirectedGraph, et stockez-y chaque arête (a, b) comme 2
+  // arcs a→b et b→a !
+};</code></pre>
+  <b>Test</b>:
+    <pre>make u1</pre>
+    <b class="orange">RENDU</b>: <tt>ugraph.h</tt>, <tt>ugraph.cc</tt>
+    <br><br>
+  </li>
+  
+  <li>
+    <b>Ajoutez</b> une fonction <tt>vector&lt;int&gt; GetNodesConnectedTo(int node)</tt> qui renvoie les
+    noeuds qui sont dans la même composante connexe que <tt>node</tt>
+    <br><br><b>Test</b>: <tt>make u2</tt>
+    <br><br>
+    <b class="orange">RENDU</b>: <tt>ugraph.h</tt>, <tt>ugraph.cc</tt> avec la nouvelle fonction
+    <br><br>
+  </li>
+  <li>
+    <b>Ajoutez</b> une fonction <tt>vector&lt;vector&lt;int&gt;&gt; ConnectedComponents()</tt>
+    qui renvoie toutes les composantes connexes du graphes, dans un ordre quelquonque.
+    <br><br><b>Test</b>: <tt>make u3</tt>
+    <br><br>
+    <b class="orange">RENDU</b>: <tt>ugraph.h</tt>, <tt>ugraph.cc</tt> avec la nouvelle fonction
+    <br><br>
+  </li>
+  <li>
+    <b>[*]</b> (À faire seulement si vous avez le temps; privilégiez plutôt le TD 2 sinon)
+    <br>
+    <b>Implémentez</b> la fonction décrite dans <a href="triangles.h" download="">triangles.h</a>:
+<pre><code class="c++">#include "ugraph.h"
+
+// Renvoie le nombre de triplets ordonnés i&lt;j&lt;k tels que
+// (i,j), (j,k) et (k,i) sont des arêtes du graphe.
+int NumTriangles(const UndirectedGraph&amp; graph);
+</code></pre>
+    <b>[**]</b> Essayez d'obtenir une complexite meilleure que O(N<sup>3</sup>) dans le cas (commun en pratique) où le graphe n'est pas dense,
+    c'est-à-dire que son nombre <b>M</b> d'arêtes est très inférieur à <b>N</b><sup>2</sup>, où <b>N</b> est le nombre de noeuds.
+    <br>
+    <span class="hidden"><b>[**]</b> </span><b>Indice:</b> vous pouvez par exemple copier le graph dans un graph (dirigé?) temporaire, où vous aurez trié chaque liste d'adjacence et enlevé les doublons.
+    Cela peut vous aider à trouver un algorithme plus efficace.
+    <br><br><b>Test</b>: <tt>make triangles</tt>
+    <br><br>
+    <b class="orange">RENDU</b>: <tt>triangles.cc</tt> (si besoin, les modifications éventuelles de <tt>ugraph.h</tt> et <tt>ugraph.cc</tt> devront être dans le rendu)
+    <br><br>
+  </li>
+</ol>
+
+<footer>
+N'oubliez pas de <a href="../rendu.html">soumettre votre travail</a>, <b class="red">après l'avoir testé</b>.
+</footer>
+</body>
+</html>

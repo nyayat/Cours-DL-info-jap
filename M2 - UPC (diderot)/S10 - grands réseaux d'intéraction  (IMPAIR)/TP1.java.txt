@@ -1,0 +1,144 @@
+/* Corrige du TP 1 de GRI 2022, M2 Info Paris Diderot. Copyright Fabien de Montgolfier 
+Dans la première version, les 3 quarts du temps étaient passés à faire des conversion String->int alors j'ai réécrit à la main cette routine
+En plus ça économise pas mal de mémoire aussi 
+Limitations : 
+ - si le graphe est non-orienté, il est orienté selon le fichier. Par exemple une arête x--y va devenir un arc x->y (et pas x<-y !!)
+ - ne vérifie pas les multi-arcs. x peut donc être voisin de y deux fois. On va dire que this is a feature not a bug (on traite les multi-graphes)
+ - de même x peut être voisin de lui-même : boucles autorisées. This is a feature.
+ - ne vérifie pas que nblignes est le nombre de lignes du fichier. Si c'est plus grand, on alloue trop de mémoire. Si c'est plus petit, il manquera les derniers arcs. */
+
+import java.io.FileReader;     // pour BufferedReader
+import java.io.BufferedReader; // pour lire le fichier
+import java.io.IOException;    // idem
+import java.util.ArrayDeque;   // file du parcours en largeur
+
+class Sommet {
+    int degre; // son degré, = nombre de voisins
+    boolean visited; // dit si déjà visité par PL (ParcoursLargeur)
+    int []adj; // tableau d'adjacence. une case = un numero de voisin. sa longueur est degré
+    int dist; // sa distance à D, utilisé dans le parcours en largeur
+} // pas de constructeur on affectera tous les champs plus tard
+
+class Graphe { 
+    int n;      // nombre de sommets 
+    int m;      // nombre d'arcs
+    int dmax;   // degre max d'un sommet
+    Sommet[] V; // tableau des sommets. De taille n+1 normalement
+
+    Graphe(String filename, int nblignes) {
+	// construit à partir du fichier filename de (au moins) nblignes
+	n = m = dmax = 0; 
+	// Passe 1 : lit le fichier et le transforme en int[nblignes][2]
+	int orig[]=new int[nblignes], dest[]= new int[nblignes]; // l'origine et la destination de chaque arc
+	// donc la ligne numero i est deux nombre qui vont remplit dest[i] et orig[i]
+	try {
+	    BufferedReader read = new BufferedReader(new FileReader(filename));
+
+	      for(int l=0; l<nblignes; l++) {
+		String line = read.readLine();
+		if(line==null) // fin de fichier
+		    break;
+		if(line.length()==0||line.charAt(0) == '#') // commentaire
+		    continue;
+		int a = 0;
+		for (int pos = 0; pos < line.length(); pos++)
+		    {
+			char c = line.charAt(pos);
+			if(c==' ' || c == '\t')
+			    {
+				if(a!=0)
+				    orig[m]=a;
+				a=0;
+				continue;
+			    }
+			if(c < '0' || c > '9')
+			    {
+				System.out.println("ERREUR format ligne "+l+"c = "+c+" valeur "+(int)c);
+				System.exit(1);
+			    }
+			a = 10*a + c - '0';
+		    }
+		dest[m]=a;
+		n = Math.max(n, Math.max(orig[m],dest[m])); // au passage calcul du numéro de sommet max
+		m++;
+	      }
+	    read.close();
+	}  catch (IOException e) {
+	    System.out.println("ERREUR entree/sortie sur "+filename);
+	    System.exit(1);
+	}
+	// a ce point n est le NUMERO DE SOMMETS MAX. On le change pour avoir le NOMBRE DE SOMMETS, un de plus à cause du sommet 0
+	n++;
+	
+	// deuxième boucle, sur les sommets : alloue les sommets 
+	V = new Sommet[n];
+	for(int i=0;i<n;i++)
+	    V[i]=new Sommet();
+
+	// troisieme boucle, sur les arcs : calcule les degrés pour pas allouer trop de mémoire
+	for(int i = 0; i< m; i++)
+	    (V[orig[i]].degre)++; // si arrete orig--dest augmente le degre de orig 
+	
+	// quatrieme passe : alloue  les tableaux d'adjacance. Ici boucle sur les sommets
+	for(int i=0;i<n;i++) {
+	    if(V[i].degre>0)  // on n'alloue rien si pas de voisin
+		V[i].adj = new int[V[i].degre]; 
+	    dmax = Math.max(dmax ,  V[i].degre); // au passage calcul de degré max ici			
+	    V[i].degre=0; // on remet le degre a zero car degre pointe la première place libre où insérer un élément pour la cinquieme passe
+	}
+
+	// passe 5 (sur les arcs, encore) : enfin, remplit les listes d'adjacence
+	for(int i = 0; i< m; i++)
+	    V[orig[i]].adj[V[orig[i]].degre++] = dest[i]; // dest est mis dans la liste des voisins de orig en case numero degre
+    }
+    
+    public int PL(int D, int dist) {
+	// parcours en largeur du graphe depuis D 
+	// Retourne le nombre de sommets à distance dist de D
+	ArrayDeque<Integer> file = new ArrayDeque<Integer>(); // file du parcours. On aurait pu faire <Sommet> aussi.
+	file.add(D); // file = (D)
+	V[D].dist=0; // D a distance 0 de lui-meme
+	V[D].visited=true;
+	int rep=0; // Nombre de sommets à distance dist de D
+	if(dist==0) return 1; // trivial
+	while(!file.isEmpty()) { 
+	    int x = file.poll(); // extraire tete
+	    int i;
+	    for(i=0;i<V[x].degre;i++) { // parcours des voisins
+		int y = V[x].adj[i];
+		if(V[y].visited==false) {
+		    V[y].visited=true; // marqué comme déjà visité, car dans la file
+		    file.add(y);
+		    V[y].dist = 1+V[x].dist;
+		    if(V[y].dist==dist) // on est à la distance cible
+			rep++;
+		    else if (V[x].dist==dist+2) // on trop loin
+			return rep; // on peut arreter le parcours du coup !!
+		}
+	    }
+	}
+	return rep; // si on arrive là alors dist est >= diametre
+    }
+}
+
+public class TP1 {    
+    public static void main(String[] args) 
+    {
+	if (args.length != 4) {
+	    System.out.println("ERREUR Usage : java TP1 nomFichier.txt nblignes sommetDepart distance");
+	    return;
+	}
+	
+	Graphe G = new Graphe( args[0] , Integer.parseInt(args[1]) );
+			       
+	int D = Integer.parseInt(args[2]); // sommet de depart du parcours
+	int dist = Integer.parseInt(args[3]); // sommet d'arrivée
+	if(D<0 || D>G.n || dist <0 || dist >G.n )
+	    {
+		System.out.println("ERREUR distance et numéro de sommet doivent être positifs et inférieurs à "+G.n);
+		return;
+	    }
+	// affichages sobres et concis
+	System.out.print((G.n-1)+"\n"+G.m+"\n"+G.dmax+"\n"+G.PL(D,dist)+"\n");
+    }
+}

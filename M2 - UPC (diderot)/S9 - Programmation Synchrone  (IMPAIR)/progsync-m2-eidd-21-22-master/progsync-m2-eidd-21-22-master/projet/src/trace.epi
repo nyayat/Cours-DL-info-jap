@@ -1,0 +1,6 @@
+(* A basic library for producing VCD files from Heptagon code, typically used
+   for debugging purposes. *)
+
+external node trace_bool(name : string; v : bool) returns ()
+external node trace_int(name : string; v : int) returns ()
+external node trace_float(name : string; v : float) returns ()

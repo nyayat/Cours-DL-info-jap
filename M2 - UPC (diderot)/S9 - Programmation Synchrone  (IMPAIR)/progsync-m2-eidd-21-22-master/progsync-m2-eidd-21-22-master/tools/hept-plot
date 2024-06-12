@@ -1,0 +1,42 @@
+#!/usr/bin/env python
+
+import os, sys, tempfile
+
+try:
+    import matplotlib.pyplot as plt
+    import numpy as np
+    import pandas as pd
+except ImportError as e:
+    print("You need to install the Python packages matplotlib and pandas")
+    print("e.g., `pip install --user matplotlib pandas`")
+    os.exit(1)
+
+(_, tracefile) = tempfile.mkstemp(suffix = ".csv")
+print("hept-plot: saving trace to {}".format(tracefile))
+os.system("HEPT_TRACE=\"{}\" {}".format(tracefile, " ".join(sys.argv[1:])))
+
+trace = pd.read_csv(tracefile)
+trace = trace.loc[:, ~trace.columns.str.contains('^Unnamed')]
+trace.plot(kind = 'line')
+plt.legend(loc = 'upper left')
+plt.show()
+
+# if [ $# -lt 1 ]
+# then
+#     echo "Usage: $0 command"
+#     exit 1
+# fi
+
+# CSV_NAME=$(mktmp)
+
+# HEPT_TRACE="$CSV_NAME" $*
+# gnuplot <<EOF
+# set datafile separator ','
+
+# set key autotitle columnhead
+# set xdata time
+# set timefmt "%Y-%m-%dT%H:%M:%S" # specify our time string format
+# set format x "%H:%M:%S" # otherwise it will show only MM:SS
+# plot plot.csv using 1:2 with lines, '' using 1:3 with lines
+
+# EOF

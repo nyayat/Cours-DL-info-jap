@@ -1,0 +1,35 @@
+#+TITLE: Programmation synchrone 2021/2022 -- M2 Informatique & EIDD
+#+AUTHOR: Adrien Guatto
+#+EMAIL: guatto@irif.org
+#+LANGUAGE: fr
+#+OPTIONS: ^:nil p:nil
+
+Ce fichier contient le journal du cours. Il fait référence aux
+[notes](../notes/notes-de-cours-progsync.pdf).
+* Cours 01 <2021-09-28>
+  On lit les transparents d'introduction qui résument la logistique du cours. On
+  traite des notes de cours jusqu'à la page 8.
+* Cours 02 <2021-10-05>
+  Je commence par répéter quelques informations d'ordre logistique : il vaut
+  mieux amener votre propre ordinateur en TP, les machines de l'UFR étant très
+  lentes en termes d'accès au disque (déporte sur le réseau); il faut utiliser
+  la version d'Heptagon spécifiée plutôt que celle obtenue à un cours précédent.
+
+  On traite ensuite des notes de cours jusqu'à la réinitialisation, incluse.
+* Cours 03 <2021-10-12>
+  On traite la partie des notes de cours qui concerne les horloges.
+* Cours 04 <2021-10-19>
+  On traite la partie des notes de cours qui concerne les automates.
+* Cours 05 <2021-10-26>
+  On traite la partie des notes de cours qui concerne les tableaux et
+  itérateurs.
+* Cours 06 <2021-11-02>
+  On a discuté du projet, dont le code et le sujet peuvent être trouvés dans le
+  répertoire [[file:../projet/][projet]].
+* Cours 07 <2021-11-09>
+  On traite de l'exemple du sous-répertoire [[file:audio/][audio]].
+* Cours 08 <2021-11-16>
+  On traite de l'exemple du sous-répertoire
+  [[file:inverted-pendulum/][inverted-pendulum]].
+
+  On discute de la vérification automatique de programmes synchrones avec Kind2.

@@ -1,0 +1,9 @@
+open Globals
+
+
+node controller(sens : sensors; iti : itielts)
+       returns (rspeed : wheels; arriving : bool)
+let
+  rspeed = { left = 0.0; right = 0.0 };
+  arriving = false;
+tel

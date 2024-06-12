@@ -1,0 +1,20 @@
+map "oneway_olympic"
+graphics "map_02_oneway_olympic.bmp"
+guide "b-02.bmp"
+init 480. 100. 0.
+rd 4
+line 1 30 100. 100. 500. 100.
+arc  1 20 500. 150.  50. -90.  90.
+line 1 30 500. 200. 100. 200.
+arc  1 20 100. 150.  50.  90. 270.
+wp 1
+0 449. 100.
+tl 0
+st 0
+obst 2
+ 30.  30.  1. 10.
+200. 200.  8. 30.
+iti 2
+go 20
+stop 0.
+end

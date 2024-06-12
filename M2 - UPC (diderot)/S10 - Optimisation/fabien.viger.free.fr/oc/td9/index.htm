@@ -1,0 +1,305 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <title>Optimisation Combinatoire: TD 9</title>
+  <style type="text/css">
+    .blue { color: #0000ff }
+    .xslt { color: #116611 }
+    .cc { color: #116611 }
+    .html { color: #882222 }
+    .xml { color: #116611 }
+    .red { color: #ff0000 }
+    .orange { color: #ff8800 }
+    .pink { color: #ff00ff }
+    .grey { color: #555555 }
+    .hidden { color: #ffffff }
+    .bigsep { width: 50px }
+    .verticalline { border-left: solid #000000; }
+    .framed { border: solid #000000; }
+    .footnote { }
+    pre { color: #116611 }
+    tt { color: #116611 }
+  </style>
+  <!-- Google Analytics -->
+  <script type="text/javascript" async="" src="../../ga.js"></script>
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-20097933-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+  <!-- Syntax highlighting -->
+  <link type="text/css" rel="stylesheet" href="../../highlight/styles/googlecode.css">
+  <script type="text/javascript" src="../../highlight/highlight.pack.js"></script>
+  <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+<h2>TD 9: Programmation Linéaire et Entière avancée</h2>
+
+<h3>Rappels</h3>
+<ul>
+  <li><a href="../rendu.html">Procédure de rendu</a></li>
+  <li> Deadline de rendu : <b>Vendredi soir</b> (4 Mars) à <b>23:59:59</b></li>
+  <li> Pour exécuter les tests : téléchargez <a href="test.tar.gz" download=""><tt>test.tar.gz</tt></a> et décompressez-le dans votre répertoire de travail </li>
+  <!--
+  <li>Vous pouvez me <a href="https://meet.google.com/pre-jkrc-xtx">posez une question par video/audio</a> (partage d'écran possible)</li>
+  <li>Vous pouvez écrire vos questions sur le <a href="https://docs.google.com/document/d/1NYmSrib-8ILqDFwA5kyqsVArBGFmD0WsBP4zFXDZYjw/edit?usp=sharing">document partagé</a>, que je surveillerais pendant le TD</li>
+  -->
+</ul>
+
+<h3>Installation de or-tools</h3>
+Voir la procédure d'installation dans l'enoncé du <a href="../td7/index.htm">TD 7</a>.
+<br><b>Pas besoin de réinstaller</b> si l'installation est encore là.
+<br>Si vous n'arrivez pas à compiler avec le Makefile fourni dans <a href="test.tar.gz" download=""><tt>test.tar.gz</tt></a>, essayez avec <a href="Makefile" download=""><tt>celui-ci</tt></a>.
+<br>
+<br>Cette fois, on va créer un sous-repertoire "td9" dans <tt>or-tools-stable</tt>
+ (ou <tt>or-tools-Ubuntu...</tt>, selon votre installation)
+ et <b>on travaillera dans ce sous-repertoire</b>:
+<pre>mkdir td9  # En etant dans le repertoire or-tools-BlaBlaBla
+cd td9
+wget --no-cache <a href="test.tar.gz" download="">http://fabien.viger.free.fr/oc/td9/test.tar.gz</a>
+tar xf test.tar.gz</pre>
+
+<!--
+<hr/>
+<h3>Exercice 3: Multi-commodity Flow - avec sous-solutions</h3>
+<ol>
+  <li>
+    <b>Reprenez</b> l'exercice 2 du TD 7: <a href="../td7/flow.h" download><tt>flow.h</tt></a>,
+    <a href="../td7/corrige/flow.cc" download><tt>flow.cc</tt></a>.
+    <br/>
+    On va maintenant s'attaquer a des problèmes beaucoup plus grand.<b>Téléchargez</b> également le nouveau <a href="flow3.h" download><tt>flow3.h</tt></a>,
+    puis renommez <tt>flow.cc</tt> en <tt>flow2.cc</tt> et adaptez-le en fonction.
+    <pre><code class=c++></code></pre>
+    <b>Test</b>: <tt>make </tt>
+    <br/><br/>
+    <b class="orange">RENDU</b>: <tt>flow2.cc</tt> (ne changez pas les .h!)
+    <br/><br/>
+  </li>
+</ol>
+-->
+
+<hr>
+<h3>Exercice 1: Job assignment</h3>
+<ol>
+  <li>
+    <b>Reprenez</b> l'exercice 2 du TD 8: <a href="../td8/job.h" download=""><tt>job.h</tt></a>,
+    <a href="../td8/corrige/job.cc" download=""><tt>job.cc</tt></a>.
+    <br>
+    On ajoute à présent des <b>contraintes d'exclusivité locale</b>.
+    <br>Par exemple: "job X, job Y et job Z sont mutuellement exclusif sur la même machine (quelle qu'elle soit)":
+    <br>si le job Y tourne sur la machine #4, alors ni job X ni job Z ne pourront tourner sur la machine #4 (mais ils
+        pourront tourner sur une autre machine).
+    <br><b>Implémentez</b> dans un fichier <tt>job1.cc</tt> (vous pourrez copier <tt>job.cc</tt>)
+    la fonction <tt>BestJobAssignment1()</tt> décrite dans
+    <a href="job1.h" download=""><tt>job1.h</tt></a>.
+    <pre><code class="c++">#ifndef __JOB1_H
+#define __JOB1_H
+
+#include "job.h"
+
+// Comme BestJobAssignment(), mais on a des contraintes d'exclusivités locales:
+// pour chaque liste d'exclusivité L dans "local_exclusive",
+// cela exprime le fait que 2 jobs ayant des indices dans L ne peuvent être
+// placés sur la même machine.
+vector&lt;int&gt; BestJobAssignment1(const vector&lt;Resources&gt;&amp; jobs,
+                               const vector&lt;Resources&gt;&amp; machines,
+                               const vector&lt;vector&lt;int&gt;&gt;&amp; local_exclusive);
+
+#endif  // __JOB1_H</code></pre>
+    <b>Test</b>: <tt>make job1</tt>
+    <br><br>
+    <b class="orange">RENDU</b>: <tt>job1.cc</tt> (ne changez pas le .h!)
+    <br><br>
+  </li>
+  <li>
+    On revient à la version de base (sans les contraintes d'exclusivité locale), et on ajoute des contraintes de <b>dépendence locale</b>.
+    <br>Par exemple: "Si job X tourne sur une machine, il a besoin de job Y sur la même machine".
+    <br><b>NOTE</b>: <i>Je pourrais vous demander de cumuler ces contraintes avec les précédentes, il n'y aurait aucun problème! Mais ça vous empêcherait de "sauter" une question.</i>
+    <br><br><b>Implémentez</b> dans un fichier <tt>job2.cc</tt> (vous pourrez copier <tt>job.cc</tt>)
+    la fonction <tt>BestJobAssignment2()</tt> décrite dans
+    <a href="job2.h" download=""><tt>job2.h</tt></a>.
+    <pre><code class="c++">#ifndef __JOB2_H
+#define __JOB2_H
+
+#include "job.h"
+
+#include &lt;utility&gt;
+using std::pair;
+
+// Comme BestJobAssignment1(), mais on a en plus des contraintes de dépendance
+// locales: pour chaque paire (A, B) dans "local_dep", job A dépend de job B
+// localement, ce qui veut dire que si job A tourne sur une machine, alors
+// job B tourne aussi, et sur la meme machine.
+vector&lt;int&gt; BestJobAssignment2(const vector&lt;Resources&gt;&amp; jobs,
+                               const vector&lt;Resources&gt;&amp; machines,
+                               const vector&lt;pair&lt;int, int&gt;&gt;&amp; local_dep);
+
+#endif  // __JOB2_H</code></pre>
+    <b>Test</b>: <tt>make job2</tt>
+    <br><br>
+    <b class="orange">RENDU</b>: <tt>job2.cc</tt> (ne changez pas le .h!)
+    <br><br>
+  </li>
+  <li>
+    On ajoute à la version de base des contraintes d'<b>exclusivité globale</b>.
+    <br>Par exemple: "Si job X tourne (sur n'importe quelle machine), alors job Y ne peut pas tourner (meme sur une autre machine)".
+    <br><b>Implémentez</b> dans un fichier <tt>job3.cc</tt> (vous pourrez copier <tt>job.cc</tt>)
+    la fonction <tt>BestJobAssignment3()</tt> décrite dans
+    <a href="job3.h" download=""><tt>job3.h</tt></a>.
+    <pre><code class="c++">#ifndef __JOB3_H
+#define __JOB3_H
+
+#include "job.h"
+
+// Comme BestJobAssignment1(), mais les exclusivités sont globales
+// (2 jobs "exclusifs" ne peuvent pas tourner tous les 2, meme sur
+//  des machines différentes).
+vector&lt;int&gt; BestJobAssignment3(const vector&lt;Resources&gt;&amp; jobs,
+                               const vector&lt;Resources&gt;&amp; machines,
+                               const vector&lt;vector&lt;int&gt;&gt;&amp; global_exclusive);
+
+#endif  // __JOB3_H</code></pre>
+    <b>Test</b>: <tt>make job3</tt>
+    <br><br>
+    <b class="orange">RENDU</b>: <tt>job3.cc</tt> (ne changez pas le .h!)
+    <br><br>
+  </li>
+  <li>
+    On ajoute a la version de base des contraintes d'<b>inter-dépendance globale</b>.
+    <br>Par exemple: "job X et job Y ont besoin l'un de l'autre, mais peuvent tourner sur des machines différentes. Donc si job X tourne, alors job Y tourne (possiblement sur une autre machine), et vice-versa".
+    <br><b>Implémentez</b> dans un fichier <tt>job4.cc</tt> (vous pourrez copier <tt>job.cc</tt>)
+    la fonction <tt>BestJobAssignment4()</tt> décrite dans
+    <a href="job4.h" download=""><tt>job4.h</tt></a>.
+    <pre><code class="c++">#ifndef __JOB4_H
+#define __JOB4_H
+
+#include "job.h"
+
+#include &lt;utility&gt;
+using std::pair;
+
+// Comme BestJobAssignment2(), mais les dépendances sont bidirectionelles,
+// et globales: chaque paire (A, B) dans "global_dep" implique que
+// les jobs A et B ne peuvent pas tourner l'un sans l'autre (pas forcément
+// sur la même machine).
+vector&lt;int&gt; BestJobAssignment4(const vector&lt;Resources&gt;&amp; jobs,
+                               const vector&lt;Resources&gt;&amp; machines,
+                               const vector&lt;pair&lt;int, int&gt;&gt;&amp; global_dep);
+
+#endif  // __JOB4_H</code></pre>
+    <b>Test</b>: <tt>make job4</tt>
+    <br><br>
+    <b class="orange">RENDU</b>: <tt>job4.cc</tt> (ne changez pas le .h!)
+    <br><br>
+  </li>
+</ol>
+
+
+<hr>
+<h3>Exercice 2: assignement des étudiants</h3>
+
+Vous êtes chargé d'assigner des étudiants à différents cours.
+<ul>
+<li> Chaque cours dispose d'une capacité d'accueil limitée </li>
+<li> Pour chaque cours, chaque étudiant donne une valeur entre 0 et 10 exprimant son intérêt pour le cours </li>
+</ul>
+Votre objectif est que le moins bien loti des étudiants ne se plaigne pas trop, donc que sa valeur totale satisfaite (la somme des valeurs pour les cours auxquels il aura été assigné) soit la plus grande possible.
+
+<br>
+<ul>
+  <li>
+    <b>Implémentez</b> dans un fichier <tt>students.cc</tt>
+    la fonction <tt>StudentsAssignment()</tt> décrite dans
+    <a href="students.h" download=""><tt>students.h</tt></a>. Ça ressemblera beaucoup au problème des jobs, avec un objectif un peu différent.
+    
+    <pre><code class="c++">
+#include &lt;vector&gt;&amp;
+
+using std::vector;
+
+// DESCRIPTION DU PROBLÈME
+// Les étudiants sont numérotés de 0 à num_etudiants-1
+// Les cours sont numérotés de 0 à num_cours-1, chacun a une capacité limite
+// en nombre d'étudiants.
+// Ces limites sont stockées dans l'entrée "cours"
+// Chaque étudiant assigne des valeurs réelles aux différents cours:
+// de 0 (s'il ne veut pas s'inscrire) à 10 (s'il veut absolument s'inscrire)
+// La somme de ces valeurs vaut toujours 10.
+//
+// Ces valeurs sont stockées dans l'entrée "valeurs":
+//    valeurs[j][i] contient la valeur que l'étudiant j assigne au cours i.
+// La "valeur totale" d'un étudiant j est la somme des valeurs[j][i] pour
+// tous les cours auxquels il a pu être assigné.
+//
+// On ne pourra pas forcément assigner tout le monde à ses cours préférés,
+// mais on souhaite que le moins bien loti ne se plaigne pas: il faut
+// MAXIMISER la "valeur totale" MINIMALE parmi tous les étudiants.
+//
+// On renverra cette "valeur du moins bien loti".
+double StudentsAssignment(const vector&lt;int&gt;&amp; cours,
+                          const vector&lt;vector&lt;double&gt;&gt;&amp; valeurs);
+    </code></pre>
+    </li></ul>
+    <b>Test</b>: <tt>make students</tt>
+    <br><br>
+    <b class="orange">RENDU</b>: <tt>students.cc</tt>
+    <br><br>
+
+
+
+<hr>
+<h3>Exercice 3: Too Big For Mip</h3>
+<ol>
+  <li>
+    <b>Implémentez</b> dans un fichier <tt>job0.cc</tt>
+    la fonction <tt>BestJobAssignment0()</tt> décrite dans
+    <a href="job0.h" download=""><tt>job0.h</tt></a>.
+    <br><br><b>Indices</b>:
+    <ul>
+      <li>Vous pourrez copier-coller le code de <tt>job.cc</tt> pour avoir la fonction "de base", en le modifiant pour:
+        <ul>
+           <li>Ajouter une limite de temps: <tt>solver.set_time_limit(1000)</tt> donne au solveur une limite de 1 seconde, par exemple.</li>
+           <li>Prendre en compte les <tt>profits</tt>
+        </li></ul>
+      </li>
+      <li>Vous devrez sans doute, si vous utilisez les limite de temps, faire attention à la valeur de retour de <tt>Solve()</tt>: <tt>MPSolver::OPTIMAL</tt>, <tt>MPSolver::FEASIBLE</tt>, etc. Voir lignes 327-335 de <a href="https://github.com/google/or-tools/blob/master/ortools/linear_solver/linear_solver.h">linear_solver.h</a>.</li>
+      <li>Vous pourrez essayer de séparer le probleme en sous-problemes</li>
+    </ul>
+    <pre><code class="c++">#ifndef __JOB0_H
+#define __JOB0_H
+
+#include "job.h"
+
+// Comme le BestJobAssignment() original (sans contraintes exotiques),
+// mais cette fois:
+// 1) Les jobs rapportent un certain "profit", et vous voulez maximiser
+//    la somme des profits des jobs assignés.
+// 2) Vous devrez etre capables de traiter des problemes
+//    de taille beaucoup plus grande
+// 3) Vous ne devez pas dépasser 10s de temps de calcul.
+// 4) Du coup, vous n'etes pas obligé de renvoyer la solution optimale:
+//    votre solution sera jugée en fonction de sa qualité (elle devra
+//    bien sûr etre faisable!)
+vector&lt;int&gt; BestJobAssignment0(const vector&lt;Resources&gt;&amp; jobs,
+                               const vector&lt;double&gt;&amp; profits,
+                               const vector&lt;Resources&gt;&amp; machines);
+
+#endif  // __JOB0_H</code></pre>
+    <b>Test</b>: <tt>make job0</tt>
+    <br><br>
+    <b class="orange">RENDU</b>: <tt>job0.cc</tt> (ne changez pas le .h!)
+    <br><br>
+  </li>
+</ol>
+
+<footer>
+N'oubliez pas de <a href="../rendu.html">soumettre votre travail</a>, <b classs="red">après l'avoir testé</b>.
+</footer>
+</body>
+</html>

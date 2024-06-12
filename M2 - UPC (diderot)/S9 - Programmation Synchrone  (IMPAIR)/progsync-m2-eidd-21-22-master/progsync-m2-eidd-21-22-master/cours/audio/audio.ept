@@ -1,0 +1,515 @@
+(******************************************************************************)
+(*                  SYNTHÈSE SONORE ÉLÉMENTAIRE EN HEPTAGON                   *)
+(******************************************************************************)
+
+(* Le but de ce fichier est de démontrer quelques techniques élémentaires de
+   génération de son en Heptagon, à travers de modestes expérimentations. Il n'a
+   bien sûr pas vocation à se substituer à un cours de traitement du signal ou
+   d'acoustique. En revanche, il peut facilement servir d'illustration de
+   diverses techniques de programmation en Heptagon. *)
+
+(* Le flot d'échantillons sonores produits par ce programme synchrone est
+   branché à un petit bout de code C qui les envoie au système sonore de votre
+   système d'exploitation par le biais de la bibliothèque SDL2. Votre OS les
+   transmet à la carte son qui elle même les envoie à vos enceintes, casque ou
+   écouteurs. *)
+
+(* Les langages synchrones ont été utilisés pour la synthèse sonore. Si ce sujet
+   vous intéresse, vous pouvez par exemple consulter la page du langage Faust, à
+   la syntaxe rudimentaire mais aux bibliothèques acoustiques, sonores et
+   musicales très développées : http://faust.grame.fr *)
+
+(* On va utiliser une petite bibliothèque de composants mathématiques. Les
+   curieuses et curieux pourront aller voir mathext.epci. *)
+
+open Mathext
+
+(* Avant de commencer, on a besoin de quelques définitions et outils. *)
+
+(* Le nombre d'échantillons, c'est à dire ici de pas synchrones, que le système
+   sonore va consommer une seconde. *)
+
+const period : int = 44100
+
+(* Un signal mono est un simple flot de nombres à virgule flottante. *)
+
+type mono = float
+
+(* Un signal stéréo fournit deux échantillons, gauche et droit, la carte son se
+   chargeant de les mixer pour donner l'impression d'un son 'surround'. *)
+
+type stereo = { l : float; r : float }
+
+(* Le signal constant silencieux. *)
+
+const silence : stereo = { l = 0.0; r = 0.0 }
+
+(* On peut dupliquer un signal mono pour obtenir un signal stéréo
+   inintéressant, les deux canaux portant la même valeur. *)
+
+fun stereo_of_mono(a : mono) returns (o : stereo)
+let
+  o = { l = a; r = a }
+tel
+
+(* On peut appliquer un gain à un signal stéréo, c'est à dire le multiplier par
+   un flottant pour l'amener à une amplitude différente. *)
+
+fun stereo_gain(g : float; s : stereo) returns (o : stereo)
+let
+  o = { l = g *. s.l; r = g *. s.r };
+tel
+
+(* Étant donné deux signaux, on peut les combiner via leur somme. *)
+
+fun stereo_sum(s1, s2 : stereo) returns (o : stereo)
+let
+  o = { l = s1.l +. s2.l; r = s1.r +. s2.r }
+tel
+
+(* Quand on utilise les deux fonctions qu'on vient de définir, gare à
+   l'amplitude en sortie ! Une amplitude trop élevée risque de dépasser la
+   capacité de votre carte son, enceintes ou écouteurs, ce qui cause un
+   phénomène de saturation : tous les échantillons d'amplitude trop élevée sont
+   écrasés sur l'amplitude maximale. *)
+
+(* La fonction mix ci-dessous pallie le défaut de la fonction stereo_sum en
+   renormalisant le résultat. De plus, elle traite un tableau de signaux, et
+   donc moralement un nombre d'entrées arbitraires. *)
+
+fun stereo_mix<<n : int>>(s : stereo^n) returns (o : stereo)
+let
+  o = stereo_gain(1.0 /. float(n), fold<<n>> stereo_sum(s, silence));
+tel
+
+(* On peut commencer à écouter un peu de son, par exemple celui du silence. *)
+
+node main0() returns (o : stereo)
+let
+  o = silence;
+tel
+
+(* Quid du noeud suivant ? *)
+
+node cracks() returns (o : stereo)
+let
+  o = { l = 4200.0; r = 4200.0 };
+tel
+
+(* On entendu un craquement, puis plus rien, puis un craquement lorsqu'on
+   interromp le programme. Pourquoi ?
+
+   Physiquement, le son est une vibration produit par une onde acoustique, c'est
+   à dire une oscillation de la pression de l'air. Autrement dit, il s'agit
+   d'une *variation*. Donc, le signal constant ne peut pas donner lieu à un son,
+   sauf au premier instant (passage de 0 à 4200) puis lorsqu'on interromp le
+   programme (passage de 4200 à 0).
+
+   Et si on essayait un signal qui varie ? Par exemple, un signal carré qui
+   passe de 1 à 0 toutes les demi-secondes. *)
+
+node periodic(p : int) returns (o : int)
+var n : int;
+let
+  o = 0 fby (if n = p then 0 else n);
+  n = o + 1;
+tel
+
+node beats_1() returns (o : stereo)
+let
+  o = stereo_of_mono(if periodic(period) <= period / 2 then 1.0 else -. 1.0);
+tel
+
+(* On obtient une série de battements simples. En faisant en sorte que le canal
+   droit soit l'inverse de canal gauche, on obtient un effet intéressant. *)
+
+node beats_2() returns (o : stereo)
+var l : float;
+let
+  l = if periodic(period) <= period / 2 then 1.0 else -. 1.0;
+  o = { l = l; r = -. l };
+tel
+
+(* Essayons maintenant de générer un signal qui croît indéfiniment. *)
+
+node fcnt(ini : float; step : float) returns (o : float)
+let
+  o = ini fby (o +. step);
+tel
+
+node sawtooth_1() returns (o : stereo)
+let
+  o = stereo_of_mono(fcnt(0.0, 1.0));
+tel
+
+(* On entend quelques craquements, puis plus rien. Normal : ce signal n'oscille
+   pas vraiment, ou du moins pas avant d'atteindre l'overflow. Pourquoi ne pas
+   tester un signal périodique en dents de scie, dans ce cas ? *)
+
+node sawtooth_2() returns (o : stereo)
+var t : float;
+let
+  t = float(periodic(128));
+  o = stereo_of_mono(t);
+tel
+
+(* Tiens, un son à peu près constant ! Pas très harmonieux cependant. *)
+
+(* Est-ce qu'appliquer un gain ferait une différence ? Pour bien observer la
+   différence, on n'a qu'à faire passer le gain de 0 à 1 à chaque seconde.
+   C'est très facile à programmer en Heptagon. *)
+
+node sawtooth_3() returns (o : stereo)
+var t : float; g : float;
+let
+  t = float(periodic(128));
+  g = float(periodic(period)) /. float(period);
+  o = stereo_gain(g, stereo_of_mono(t));
+tel
+
+(* On entend nettement le signal en dent de scie, avec un pic à la fin de la
+   seconde. De façon intéressante, si on augmente le gain, le son apparaît comme
+   plus pincé, un peu comme les notes d'une guitare. *)
+
+node sawtooth_4() returns (o : stereo)
+var t : float; g : float;
+let
+  t = float(periodic(128));
+  g = 3.0 *. float(periodic(period)) /. float(period);
+  o = stereo_gain(g, stereo_of_mono(t));
+tel
+
+(* En augmentant la période, les pics s'éloignent, en la diminuant, les
+   pics se rapprochent. *)
+
+node period_per_sec(a : int) returns (o : float)
+let
+  o = float(periodic(period / a)) /. float(period / a);
+tel
+
+node sawtooth_5() returns (o : stereo)
+var t : float; g : float;
+let
+  t = float(periodic(128));
+  g = period_per_sec(2);
+  o = stereo_gain(g, stereo_of_mono(t));
+tel
+
+(* On peut aussi appliquer des gains différents sur le canal mono et stéréo. *)
+
+node every_sec(s : int) returns (c : bool)
+let
+  c = periodic(period * s) = ((- 1) fby 0);
+tel
+
+node sawtooth_6() returns (o : stereo)
+var t : float; g1, g2 : float;
+let
+  t = float(periodic(128));
+  o = { l = g1 *. t; r = g2 *. t };
+  automaton
+    state FastLeftSlowRight
+      do g1 = period_per_sec(1);
+         g2 = period_per_sec(8);
+      until every_sec(5) then SlowLeftFastRight
+
+    state SlowLeftFastRight
+      do g1 = period_per_sec(5);
+         g2 = period_per_sec(1);
+      until every_sec(5) then FastLeftSlowRight
+  end
+tel
+
+(* Tous ces sons ne sont pas très harmonieux. Peut-on en obtenir de plus purs ?
+
+   Le traitement du signal nous enseigne, via la théorie de la transformée de
+   Fourier, que tout signal raisonnablement régulier peut se décomposer en une
+   somme (infinie) de sinusoïde. Autrement dit, les signaux sinusoïdaux peuvent
+   servir de briques de base élémentaires mais universelles. Considérés comme
+   des signaux audio, ils forment des tons purs, élémentaires.
+ *)
+
+node pure_tone(p : float) returns (o : float)
+var t : float;
+let
+  t = fcnt(0.0, 1.0);
+  o = sin(t *. (p /. float(period)) *. 2.0 *. Mathext.pi);
+tel
+
+(* Par exemple, la sinusoïde de fréquence 440.1 Hz, communément désignée sous le
+   nom de La 440, devrait vous être familière. *)
+
+node main_pure_1() returns (o : stereo)
+let
+  o = stereo_of_mono(pure_tone(440.0));
+tel
+
+(* En plus d'être la tonalité du téléphone, elle sert de référence pour
+   l'accordage des pianos, violons et d'autres instruments.
+
+   https://fr.wikipedia.org/wiki/La_440 *)
+
+(* En mélangeant plusieurs sinusoïdes ensembles, on peut obtenir des effets
+   rétro assez amusants. *)
+
+node some_pure_tone(p : float; i : int) returns (s : stereo)
+let
+  s = stereo_gain(period_per_sec(i + 1), stereo_of_mono(pure_tone(p)));
+tel
+
+node oscillating_counter<<m : int>>(i : int) returns (last o : int = 0)
+var step : int;
+let
+  step = if every_sec(1) then 1 else 0;
+  automaton
+    state Init
+      do o = i
+      until true then Increase
+
+    state Increase
+      do o = last o + step
+      until o >= m then Decrease
+
+    state Decrease
+      do o = last o - step
+      until o <= 0 then Increase
+  end
+tel
+
+node main_pure_2() returns (o : stereo)
+var periods : float^3; speeds : int^3;
+let
+  periods = [440.0, 261.6256, 4186.009];
+  speeds = map<<3>>(oscillating_counter<<10>>)([1, 3, 7]);
+  o = stereo_mix<<3>>(map<<3>> some_pure_tone(periods, speeds));
+tel
+
+(* Enfin, les amatrices et amateurs de piano pourront trouver sur la page
+
+   https://en.wikipedia.org/wiki/Piano_key_frequencies
+
+   une formule associant une fréquence de sinusoïde à une note de piano. On peut
+   l'utiliser comme suit. *)
+
+fun piano_freq_of_key(k : int) returns (f : float)
+let
+  f = Mathext.pow(2.0, (Mathext.float(k) -. 49.0) /. 12.0) *. 440.0;
+tel
+
+node tone_of_piano_key(k : int) returns (o : stereo)
+let
+  o = stereo_of_mono(pure_tone(piano_freq_of_key(k)));
+tel
+
+node maintain(c : bool; x : int on c; ini : int) returns (o : int)
+let
+  o = merge c x ((ini fby o) whenot c);
+tel
+
+node main_pure_3() returns (o : stereo)
+var k : int; c : bool;
+let
+  o = tone_of_piano_key(k);
+  k = maintain(c, 40 + periodic(53 - 40), 40);
+  c = periodic(period) = 0;
+tel
+
+(* On peut essayer de programmer un piano midi. *)
+
+(* Pour générer des transitions propres entre les notes, on a besoin de modifier
+   nos tons à travers une "enveloppe". La plus classique est l'enveloppe dite
+   "Attack-Decay-Sustain-Release", cf. Wikipédia.
+
+   https://en.wikipedia.org/wiki/Envelope_(music)#ADSR
+
+   Le noeud ci-dessous produit une telle enveloppe périodiquement, tous les t
+   instants. L'enveloppe prend la forme d'un gain entre 0 et 1.
+
+   Les paramètres a, d et s doivent-être tels que 0.0 < a + d + s < 1.0. Ils
+   expriment la fraction de t correspondant à chacune des quatre phases, la
+   phase d étant la fraction de t définie comme 1 - a - d - s.
+
+   Le paramètre s_level est le niveau de la phase S, entre 0 et 1 donc.
+
+ *)
+
+node adsr_envelope(t : int; a, d, s : float; s_level : float)
+          returns (e : float)
+var c, a_stop, d_stop, s_stop : int;
+let
+  a_stop = int(float(t) *. a);
+  d_stop = a_stop + int(float(t) *. d);
+  s_stop = d_stop + int(float(t) *. s);
+  c = periodic(t);
+  automaton
+    state Attack
+      do e = float(c) /. float(a_stop);
+      unless c >= a_stop continue Decay
+
+    state Decay
+      var f : float;
+      do e = 1.0 -. (1.0 -. s_level) *. f;
+         f = float(c - a_stop) /. float(d_stop - a_stop);
+      unless c >= d_stop continue Sustain
+
+    state Sustain
+      do e = s_level;
+      unless c >= s_stop continue Release
+
+    state Release
+      do e = s_level *. (1.0 -. float(c - s_stop) /. float(t - s_stop));
+      until c + 1 >= t continue Attack
+  end
+tel
+
+node midi_piano<<n : int>>(keys : int^2^n; time : int^n) returns (o : stereo)
+var i, j : int; next : bool; duree_mesure : int; e : float;
+let
+  duree_mesure = 2 * period; (* 1 mesure = 8 noires = 4 sec à 120 BPM. *)
+
+  i = periodic(n);
+  j = maintain(next, i, 0);
+  o = stereo_gain(e, stereo_mix<<2>>(map<<2>> tone_of_piano_key(keys[>j<])));
+  e = adsr_envelope(duree_mesure / time[> j <], 0.3, 0.1, 0.4, 0.5);
+
+  automaton
+    state Next
+      do next = true
+      until true then Wait
+
+    state Wait
+      var c : int;
+      do next = false;
+         c = 0 fby (c + 1);
+      until c >= (duree_mesure / time[> j <]) then Next
+    end
+tel
+
+const num_keys : int = 82
+
+node main_pure_4() returns (o : stereo)
+var keys : int^2^num_keys; time : int^num_keys;
+let
+  keys = [
+          [44, 00], [37, 00], [40, 00], [42, 00],
+          [44, 00], [37, 00], [40, 00], [42, 00],
+          [44, 00], [37, 00], [40, 00], [42, 00],
+          [44, 00], [37, 00], [40, 00], [42, 00],
+          [44, 00], [37, 00], [41, 00], [42, 00],
+          [44, 00], [37, 00], [41, 00], [42, 00],
+          [44, 00], [37, 00], [41, 00], [42, 00],
+          [44, 00], [37, 00], [41, 00], [42, 00],
+
+          [44, 00],
+          [37, 00],
+          [40, 37], [42, 00], [44, 00],
+          [37, 00], [40, 00], [42, 00],
+
+          [35, 39], [32, 00], [35, 00], [37, 00],
+          [39, 00], [32, 00], [35, 00], [37, 00],
+          [35, 39], [32, 00], [35, 00], [37, 00],
+          [39, 00], [32, 00], [35, 00],
+
+          [42, 00],
+          [35, 00],
+          [35, 40], [39, 00], [42, 00],
+          [35, 00], [40, 00], [39, 00],
+          [33, 37], [30, 00], [33, 00], [35, 00],
+          [33, 00], [30, 00], [33, 00], [35, 00],
+          [33, 37], [30, 00], [33, 00], [35, 00],
+          [37, 00], [30, 00], [33, 00],
+
+          [0, 0], [0, 0], [0, 0], [0, 0] (* silence *)
+          ];
+  time = [
+          4, 4, 8, 8,
+          4, 4, 8, 8,
+          4, 4, 8, 8,
+          4, 4, 8, 8,
+          4, 4, 8, 8,
+          4, 4, 8, 8,
+          4, 4, 8, 8,
+          4, 4, 8, 8,
+
+          2,
+          2,
+          8, 8, 2,
+          2, 8, 8,
+          4, 4, 8, 8,
+          4, 4, 8, 8,
+          4, 4, 8, 8,
+          4, 4, 4,
+
+          2,
+          2,
+          8, 8, 2,
+          2, 8, 8,
+          4, 4, 8, 8,
+          4, 4, 8, 8,
+          4, 4, 8, 8,
+          4, 4, 4,
+
+          1, 1, 1, 1 (* silence *)
+          ];
+  o = midi_piano<<num_keys>>(keys, time);
+tel
+
+(* Bonus : la méthode de Karplus-Strong pour la synthèse de son de guitare.
+
+   https://en.wikipedia.org/wiki/Karplus%E2%80%93Strong_string_synthesis
+
+   http://sites.music.columbia.edu/cmc/MusicAndComputers/chapter4/04_09.php
+*)
+
+node flip(i: int) returns (o: float)
+let
+  o = if (i % 2 = 0) then 1.0 else -.1.0
+tel
+
+node karplus_strong<<l:int>>() returns (y : float)
+var b : float^l; i: int;
+let
+  i = 0 fby ((i+1) % l);
+  y  = 0.5 *. (b[>i<] +. 0.0 fby y);
+  b = (mapi<<l>> flip ()) fby ([b with [i] = y]);
+tel
+
+node repeat<<n : int>>(x : stereo) returns (o : stereo)
+var last t : stereo^n = silence^n;
+let
+  automaton
+    state Fill
+      do o = x;
+         t = [ last t with [ periodic(n) ] = x ]
+      until periodic(n) = n - 1 then Repeat
+
+    state Repeat
+      do o = t[> periodic(n) <]
+  end
+tel
+
+node saturating_counter(max : int) returns (o : int)
+var c : int;
+let
+  c = 0 fby (c + 1);
+  o = if c < max then c else max;
+tel
+
+node main_kp() returns (o : stereo)
+var s : stereo;
+let
+  s = repeat<<period>>({ l = karplus_strong<<115>>();
+                         r = karplus_strong<<55>>() });
+  o = stereo_gain(float(saturating_counter(5 * period)) /. float(5 * period),
+                  s);
+tel
+
+(* Le noeud principal du programme. *)
+
+(* Vous pouvez choisir un des noeuds principaux main_XXX écrits ci-dessus, ou
+   bien écrire le votre. *)
+
+node main() returns (o : stereo)
+let
+  o = main_pure_4();
+tel

@@ -1,0 +1,8 @@
+go 20.
+go 30.
+go 10.
+turn -15.
+go 20.
+turn 75.
+stop 0.
+

@@ -1,0 +1,223 @@
+(******************************************************************************)
+(*                       PENDULE INVERSÉ EN HEPTAGON                          *)
+(******************************************************************************)
+
+(* Le but de ce fichier est d'illustrer l'automatique par un exemple classique,
+   le pendule inversé. Il s'agit d'un mobile sur lequel est fixé une tringle
+   rigide à l'extrémité de laquelle se trouve une sphère d'une certaine
+   masse. Le but est de déplacer le mobile de sorte à maintenir la sphère à la
+   verticale.
+
+   https://en.wikipedia.org/wiki/Inverted_pendulum
+
+   Le présent fichier est conçu pour s'interfacer avec l'interface graphique en
+   Python contenue dans `main.py`. *)
+
+(* On commence par quelques fonctions et noeuds utilitaires. *)
+
+fun max(x, y : float) returns (z : float)
+let
+  z = if x <. y then y else x;
+tel
+
+fun min(x, y : float) returns (z : float)
+let
+  z = if x <. y then x else y;
+tel
+
+fun clamp(x, x_min, x_max : float) returns (y : float)
+let
+  y = min(x_max, max(x_min, x));
+tel
+
+fun abs(x : float) returns (y : float)
+let
+  y = if x >. 0.0 then x else -. x;
+tel
+
+fun ignore_below(x, eps : float) returns (y : float)
+let
+  y = if abs(x) <. eps then 0.0 else x;
+tel
+
+node maintain(ini : float; c : bool; x : float on c) returns (y : float)
+let
+  y = merge c x ((ini -> pre y) whenot c);
+tel
+
+node edge(b : bool) returns (c : bool)
+let
+  c = b -> (b <> pre b);
+tel
+
+(* Le pendule inversé, en tant que dispositif physique, voit sa dynamique
+   gouvernée par des équations différentielles. Pour le simuler, nous avons
+   besoin de résoudre celles-ci, ou du moins d'approcher leur solution par des
+   moyens numériques. *)
+
+(* La résolution d'équations différentielles par des moyens numériques constitue
+   un vaste pan de l'analyse numérique. Nous allons nous contenter de solutions
+   très simples, dites à pas fixe, où chaque instant synchrone sera supposé
+   correspondre à une certaine durée de temps physique `dt`. *)
+
+const dt : float = 0.01
+
+(* L'intégration s'effectue par la méthode des rectangles, à la manière de la
+   définition de l'intégrale de Riemann. Plus `dt` est petit, plus les valeurs
+   calculées vont être précises. *)
+
+node integ(x_ini, dx : float) returns (x : float)
+let
+  x = x_ini -> (dt *. dx +. pre x);
+tel
+
+(* La dérivée s'effectue en suivant la formule classique
+
+   x'(t) = lim_{dt → ∞} (x(t + dt) - x(t)) / dt
+
+   sauf qu'ici on s'arrête à un `dt` fixé, qu'on espère assez petit. *)
+
+node deriv(x : float) returns (dx : float)
+let
+  dx = 0.0 -> ((x -. pre x) /. dt);
+tel
+
+(* Pour définir la physique du pendule, on a besoin de certaines constantes : la
+   constante gravitationnelle sur Terre, la longueur de la tige, et la masse. *)
+
+const g : float = 9.81
+
+const l : float = 100.0
+
+const m : float = 10.0
+
+(* Une partie de la simulation dépend du référentiel choisi, un rectangle de
+   `max_w` unités de côté et `max_h` unités de haut. *)
+
+const max_w : int = 1200
+
+const max_h : int = 300
+
+(* L'équation différentielle ci-dessous gouverne la physique du pendule inversé.
+   Ici ℓ est la longueur du pendule, m sa masse, g la gravité à la surface de la
+   Terre, et θ l'angle par rapport à la verticale.
+
+     ℓ · d²θ/d²t - m · g · sin(θ) = - d²x₀/d²t · cos(θ)
+
+   On peut exprimer d²θ/d²t en fonction de x₀.
+
+     d²θ/d²t = (m · g · sin(θ) - d²x₀/d²t · cos(θ)) / ℓ
+
+   Ensuite, on intègre.
+
+     θ = ∫² (m · g · sin(θ) - d²x₀/d²t · cos(θ)) / ℓ · d²t
+
+   On peut maintenant approcher la solution de l'intégrale et les dérivées
+   numériquement, à l'aide des noeuds integ() et deriv() définis précédemment,
+   pour obtenir la valeur de θ en fonction de celle de x₀.
+
+   Attention : comme θ apparaît à gauche et à droite du signe égal, on doit
+   introduire un délai (`fby`) pour éviter une erreur de causalité. *)
+
+node pendulum(d2x0 : float) returns (theta : float)
+var thetap, d2theta : float;
+let
+  thetap = 0.0 fby theta;
+  d2theta = (g *. Mathext.sin(thetap) -. d2x0 *. Mathext.cos(thetap)) /. l;
+  theta = integ(0.0, integ(0.0, d2theta));
+tel
+
+(* Notre but est maintenant d'écrire des contrôleurs, c'est à dire des noeuds
+   qui vont chercher à maintenir l'angle θ à 0 en déplaçant le mobile vers la
+   gauche quand il est positif, et vers la droite quand il est négatif. *)
+
+(* En pratique, on va écrire nos contrôleurs de manière générique, comme des
+   noeuds cherchant à calculer une _consigne_ `y` de sorte à ramener leur entrée
+   d'erreur `e` à 0. *)
+
+(* Il faut commencer par calculer l'erreur à fournir aux contrôleurs, en
+   fonction de θ. Pour ce faire, on ramène les angles dans l'intervalle [π, 2π]
+   dans l'intervalle [-π, 0]. *)
+
+fun error(theta : float) returns (err : float)
+var tm : float;
+let
+  tm = Mathext.fmod(theta, 2.0 *. Mathext.pi);
+  err = if tm <. Mathext.pi then tm else tm -. 2.0 *. Mathext.pi;
+tel
+
+(* On peut maintenant écrire nos contrôleurs. *)
+
+(* Le premier contrôleur, le contrôleur bang-bang, est le plus simple. Si
+   l'erreur est positive, on envoie `act`, si elle est négative on envoie
+   `act`. *)
+
+node bangbang(e, act : float) returns (y : float)
+var eps : float;
+let
+  eps = 0.001;
+  y = if e >. eps then act
+      else if e <. -. eps then -. act
+      else 0.0;
+tel
+
+(* Le contrôleurs PID agit de façon proportionnelle à l'erreur, son intégrale et
+   sa dérivée. Il est paramétré par trois _gains_, c'est à dire les facteurs
+   qu'on applique respectivement à l'erreur, l'intégrale et la dérivée. *)
+
+node pid(e : float; kp, ki, kd : float) returns (y : float)
+let
+  y = kp *. e +. ki *. integ(0.0, e) +. kd *. deriv(e);
+tel
+
+(* Le noeud ci-dessous réunit tous les composants du fichier, le pendule et son
+   mobile, ainsi que la détection d'erreur, et envoie les données nécessaires à
+   l'interface graphique. Ces données sont représentées par le type `pend`. *)
+
+type pend = { x0 : float; y0 : float; x : float; y : float;
+              mode_name : string; theta : float; error : float }
+
+node cart(mouse_x0 : float; mouse_diff, mode_diff : bool) returns (p : pend)
+var x_ini, y_ini, x0user, x0, x, y, theta, error : float;
+    last d2x0 : float = 0.0;
+    mouse_click, mode_change : bool;
+    mode_name : string;
+let
+  mouse_click = edge(mouse_diff);
+  mode_change = edge(mode_diff);
+  x_ini = Mathext.float(max_w) /. 2.0;
+  y_ini = Mathext.float(max_h) /. 2.0;
+  x0user = maintain(x_ini, mouse_click, mouse_x0 when mouse_click);
+
+  x0 = integ(x_ini, integ(0.0, d2x0));
+  theta = pendulum(d2x0);
+  error = 0.0 fby error(theta);
+
+  x = x0 +. l *. Mathext.sin(theta);
+  y = y_ini +. l *. Mathext.cos(theta);
+
+  p = { x0 = x0; y0 = y_ini; x = x; y = y;
+        mode_name = mode_name;
+        theta = theta; error = error };
+
+  automaton
+    state User
+      do mode_name = "user";
+         d2x0 = x0user -. (x_ini fby x0);
+      unless mode_change then PID
+
+    state PID
+      var kP, kI, kD : float;
+      do mode_name = "PID control";
+         d2x0 = 10.0 *. pid(error, kP, kI, kD);
+         kP = 40.0;
+         kI = 41.0;
+         kD = 70.0;
+      unless mode_change then BangBang
+
+    state BangBang
+      do mode_name = "BangBang control";
+         d2x0 = bangbang(error, 50.0)
+      unless mode_change then User
+  end;
+tel

@@ -1,0 +1,11 @@
+external fun dbg(msg : string) returns ()
+external fun dbg_bool(msg : string; x : bool) returns ()
+external fun dbg_int(msg : string; x : int) returns ()
+external fun dbg_float(msg : string; x : float) returns ()
+
+type world
+external fun   d_init()                  returns (n : world)
+external fun d_string(w : world; string) returns (n : world)
+external fun   d_bool(w : world;   bool) returns (n : world)
+external fun    d_int(w : world;    int) returns (n : world)
+external fun  d_float(w : world;  float) returns (n : world)

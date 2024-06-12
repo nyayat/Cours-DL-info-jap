@@ -1,0 +1,21 @@
+open Globals
+
+node the_challenge(initial_ph : phase; top : bool)
+          returns (ph : phase; sta : status; sign : sign; evt : event;
+                   scoreA, scoreB : int; time : float)
+var itr : interrupt; ini_sens, sens : sensors;
+let
+  ini_sens = { s_road = { red = 128; green = 128; blue = 128 };
+               s_front = { red = 128; green = 128; blue = 128 };
+               s_sonar = cSONARFAR };
+  (ph, sta) = Vehicle.simulate(Map.read_itinerary(),
+                               ini_sens fby sens,
+                               Ok fby itr,
+                               initial_ph,
+                               top);
+  (sign, itr, sens, evt) = City.simulate(ph, time);
+  () = Map.soundEffects(Utilities.event_edge(evt), sta);
+  scoreA = City.scoringA(evt, sta);
+  time = City.wallclock(sta);
+  scoreB = City.scoringB(ph);
+tel

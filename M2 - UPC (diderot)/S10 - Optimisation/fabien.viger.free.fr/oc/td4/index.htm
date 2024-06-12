@@ -1,0 +1,220 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <title>Optimisation Combinatoire: TD 4</title>
+  <style type="text/css">
+    .blue { color: #0000ff }
+    .xslt { color: #116611 }
+    .cc { color: #116611 }
+    .html { color: #882222 }
+    .xml { color: #116611 }
+    .red { color: #ff0000 }
+    .orange { color: #ff8800 }
+    .pink { color: #ff00ff }
+    .grey { color: #555555 }
+    .hidden { color: #ffffff }
+    .bigsep { width: 50px }
+    .verticalline { border-left: solid #000000; }
+    .framed { border: solid #000000; }
+    .footnote { }
+    pre { color: #116611 }
+    tt { color: #116611 }
+  </style>
+  <!-- Google Analytics -->
+  <script type="text/javascript" async="" src="../../ga.js"></script>
+  <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-20097933-1']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+  </script>
+  <!-- Syntax highlighting -->
+  <link type="text/css" rel="stylesheet" href="../../highlight/styles/googlecode.css">
+  <script type="text/javascript" src="../../highlight/highlight.pack.js"></script>
+  <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+<h2>TD 4: Programmation Dynamique</h2>
+
+<h3>Rappels</h3>
+<ul>
+<li><a href="../cours/4.html">Page du Cours 4</a></li>
+<li><a href="../rendu.html">Procédure de rendu</a></li>
+<li>Heure limite de rendu du TD: <b class="pink">ce soir à 23h59</b>.</li>
+<li> Pour exécuter les tests : téléchargez <a href="test.tar.gz" download=""><tt>test.tar.gz</tt></a> et décompressez-le dans votre répertoire de travail </li>
+</ul>
+
+
+<hr>
+<h3>Exercice 1: Parcelles de culture</h3>
+<ol>
+  <li>
+    Un fermier dispose d'un champ oblong composé de Nx1 parcelles de culture carrées juxtaposées, numérotées 0, ..., N-1.
+    <br>Chaque parcelle a des caractéristiques différentes, et le fermier sait que la parcelle #i lui rapportera Gain[i] s'il l'utilise pour faire pousser du maïs.
+    <br>Il y a cependant une contrainte: le fermier ne peut jamais utiliser deux parcelles adjacentes.
+    <br>Comment peut-il maximiser son gain?
+    <br>
+    <br><b>Implémentez</b> dans un fichier <tt>parcel.cc</tt> la fonction <tt>MaxGain()</tt> décrite dans le fichier <a href="parcel.h" download="">parcel.h</a>:
+    <pre><code class="c++">#ifndef __PARCEL_H
+#define __PARCEL_H
+
+#include &lt;vector&gt;
+using namespace std;
+
+// Le gain de cultiver la parcelle #i est gain[i]. Si on cultive la parcelle
+// #i, on ne peut pas cultiver la parcelle #i-1 ni la parcelle #i+1.
+// Cette fonction renvoie le gain maximum.
+//
+// EXEMPLE:
+// MaxGain([3, 7, 2, 1, 8, 4, 3]) = 18
+int MaxGain(const vector&lt;int&gt;&amp; gain);
+
+#endif  // __PARCEL_H</code></pre>
+    On pourra utiliser l'approche <i>récursive</i> avec mémorisation
+    (avec par exemple une fonction <tt>MaxGainAux()</tt> qui prendrait en argument
+     supplémentaire un tableau de mémorisation et un indice indiquant une partie "déjà traitée"),
+    ou l'approche <i>itérative</i>.
+    <br><br><b>Test</b>:
+    <pre>rm test.tar.gz; wget --no-cache <a href="test.tar.gz" download="">http://fabien.viger.free.fr/oc/td4/test.tar.gz</a>
+tar xf test.tar.gz
+make parcel</pre>
+    <b class="orange">RENDU</b>: <tt>parcel.cc</tt>
+    <br><br>
+  </li>
+  <li>
+    <b>Décrivez</b> dans un fichier <tt>parcel.txt</tt> la complexité en temps et en espace
+    de votre algorithme.
+    <br>Si vous trouvez comment faire, décrivez également comment on pourrait utiliser un
+    espace <i>constant</i> sans augmenter la complexité en temps.
+    <br><br>
+  </li>
+  <li>
+    <b>Implémentez</b> dans un fichier <tt>parcel2.cc</tt> la fonction <tt>OptimalParcels()</tt> décrite dans le fichier <a href="parcel2.h" download="">parcel2.h</a>:
+    <pre><code class="c++">#ifndef __PARCEL2_H
+#define __PARCEL2_H
+
+#include &lt;vector&gt;
+using namespace std;
+
+// Le problème est le même, mais au lieu de renvoyer le gain maximum, on
+// veut renvoyer la liste des parcelles à cultiver pour obtenir le gain maximal.
+// La liste doit être triée en ordre croissant.
+//
+// EXEMPLE:
+// OptimalParcels([3, 7, 2, 1, 8, 4, 3]) = [1, 4, 6] (indices des parcelles choisies)
+vector&lt;int&gt; OptimalParcels(const vector&lt;int&gt;&amp; gain);
+
+#endif  // __PARCEL2_H</code></pre>
+    <b>Test</b>: <tt>make parcel2</tt>
+    <br><br><b class="orange">RENDU</b>: <tt>parcel2.cc</tt>
+    <br><br>
+  </li>
+</ol>
+
+<hr>
+<h3>Exercice 2: Découpe optimale</h3>
+<ol>
+  <li>
+    Vous gérez une scierie qui coupe des planches. Pour simplifier, on supposera que toutes les
+    planches font la même largeur: seule leur longueur diffère.
+    <br>Votre unique client, une grande enseigne de distribution, vous a donné une liste de modèles:
+    chaque modèle à une longueur précise, et vous sera payé un prix donné. La demande est supposée infinie,
+    pour tous les modèles.
+    <br>À chaque fois qu'un tronc d'arbre arrive, il sera automatiquement découpé en planches très longues d'une
+    longueur L.
+    <br>Votre travail est de déterminer comment couper cette planche de longueur L en planches vendables,
+    pour <b>maximiser le prix total de vente</b>.
+    <br><br>
+    <b>Implémentez</b> dans un fichier <tt>cut.cc</tt> la fonction <tt>OptimalCut()</tt> décrite dans le fichier <a href="cut.h" download="">cut.h</a>:
+    <pre><code class="c++">#ifndef __CUT_H
+#define __CUT_H
+
+#include &lt;vector&gt;
+using namespace std;
+
+// Description d'un modèle de planche vendable: longueur et prix.
+struct PricedCut {
+  int length;  // Sera toujours &gt;= 1.
+  double price;  // Sera toujours &gt; 0.
+};
+
+// Détermine la manière optimale de découper une planche de longueur L
+// en planches vendables (pour maximiser le prix de vente total).
+// Renvoie le prix de vente maximal.
+// Écrit la liste des modèles choisis (un même modèle peut être répété
+// plusieurs fois), dans un ordre quelquonque, dans le vecteur "cut_indices"
+// (on écrira simplément l'indice des modèles).
+//
+// IMPORTANT: Le test de cette fonction est en 2 parties: d'abord, il teste
+// simplement la valeur de renvoi, ensuite il teste "cut_indices". Si vous
+// ne remplissez pas ce dernier, vous pourrez quand meme avoir des points.
+//
+// ATTENTION: les gains sont des nombres réels (double), pas des entiers.
+//
+// EXEMPLE:
+// OptimalCut(257, {{40, 3.8}, {70, 6.7}, {90, 9.0}}) = 6.7 + 9.0 + 9.0
+// avec cut_indices = [1,2,2]. 
+double OptimalCut(int L, const vector&lt;PricedCut&gt;&amp; cuts,
+                  vector&lt;int&gt;* cut_indices)
+
+#endif  // __CUT_H</code></pre>
+    <b>Test</b>: <tt>make cut</tt>
+    <br><br><b class="orange">RENDU</b>: <tt>cut.cc</tt>
+    <br><br>
+  </li>
+</ol>
+
+<!--
+<hr/>
+<h3>Exercice 3: Sac à dos</h3>
+<ol>
+  <li>
+    Vous avez un sac à dos qui a une certaine capacité (en kilogrammes).
+    <br/>Vous disposez d'un ensemble d'objets ayant chacun un certain poids et une valeur.
+    <br/>Tous les objets ne rentreront pas forcément dans le sac à dos, a cause de la capacité limitée.
+    <br/>Comment choisir les objets à mettre dans son sac à dos pour maximiser leurs valeurs?
+    <br/><br/>
+    <b>Implémentez</b> dans un fichier <tt>sac.cc</tt> la fonction <tt>Knapsack()</tt> décrite dans le fichier <a href="sac.h" download>sac.h</a>:
+    <pre><code class="c++">#ifndef __SAC_H
+#define __SAC_H
+
+#include &lt;vector&gt;
+using namespace std;
+
+// Description d'un objet qu'on peut mettre dans le sac à dos.
+struct Item {
+  int weight;    // Poids
+  double value;  // Valeur.
+};
+
+// Détermine le choix optimal d'objets à placer dans un sac à dos de
+// capacité C pour maximiser leur valeur.
+// Renvoie cette valeur maximale, et écrit la liste des objets choisis (un même
+// objet ne peut être pris qu'une fois!), dans un ordre quelquonque, dans le
+// vecteur "chosen_objects".
+//
+// IMPORTANT: Le test de cette fonction est en 2 parties: d'abord, il teste
+// simplement la valeur de renvoi, ensuite il teste "chosen_objects". Si vous
+// ne remplissez pas ce dernier, vous pourrez quand meme avoir des points.
+double Knapsack(int C, const vector&lt;Item&gt;&amp; items,
+                vector&lt;int&gt;* chosen_items)
+
+
+#endif  // __SAC_H</code></pre>
+    <b>Test</b>: <tt>make sac</tt>
+    <br/><br/><b class="orange">RENDU</b>: <tt>sac.cc</tt>
+    <br/><br/>
+  </li>
+</ol>
+-->
+
+<footer>
+N'oubliez pas de <a href="../rendu.html">soumettre votre travail</a>, <b class="red">après l'avoir testé</b>.
+</footer>
+</body>
+</html>
